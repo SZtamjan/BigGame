@@ -31,8 +31,6 @@ public class SelectionManeger : MonoBehaviour
         {
             Hex selectedHex = result.GetComponent<Hex>();
 
-           
-
             Debug.Log($"neighbours For {selectedHex.HexCoords} are: ");
             foreach (var neighboursPos in neighbours)
             {
