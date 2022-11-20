@@ -13,7 +13,7 @@ public class SelectionManeger : MonoBehaviour
 
     public HexGrid hexGrid;
 
-    List<Vector3Int> neighbours = new List<Vector3Int>();
+    
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class SelectionManeger : MonoBehaviour
         if (FindTarget(mousePosition,out result))
         {
             Hex selectedHex = result.GetComponent<Hex>();
-
+            List<Vector3Int> neighbours = hexGrid.GetNeighborsFor(selectedHex.HexCoords);
             Debug.Log($"neighbours For {selectedHex.HexCoords} are: ");
             foreach (var neighboursPos in neighbours)
             {
