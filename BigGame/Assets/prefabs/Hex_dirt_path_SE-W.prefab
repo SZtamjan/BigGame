@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5806433175975722589}
   - component: {fileID: 7438613568101839352}
   - component: {fileID: 4674653851558380850}
+  - component: {fileID: 2911762481396227177}
+  - component: {fileID: 5962369196964798470}
   m_Layer: 0
   m_Name: Hex_dirt_path_SE-W
   m_TagString: Untagged
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2911762481396227177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620089799906895079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222bef8518d0b6a4f9f9bcf0f5267f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexCoordinates: {fileID: 0}
+--- !u!114 &5962369196964798470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620089799906895079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5171a58c96e86404699abe409ccfd723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetCoordinates: {x: 0, y: 0, z: 0}
