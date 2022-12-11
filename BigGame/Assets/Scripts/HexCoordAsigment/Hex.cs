@@ -8,8 +8,7 @@ using UnityEngine;
 [SelectionBase]
 public class Hex : MonoBehaviour
 {
-    [SerializeField]
-   
+    [SerializeField]   
     private HexCoordinates hexCoordinates;
 
     public Vector3Int HexCoords => hexCoordinates.GetHexCoords();

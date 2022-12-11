@@ -17,7 +17,6 @@ public class HexGrid : MonoBehaviour
             hexTileDict[hex.HexCoords] = hex;
         }
        
-        
 
     }
 
