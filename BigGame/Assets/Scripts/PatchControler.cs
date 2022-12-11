@@ -20,11 +20,11 @@ public class PatchControler : MonoBehaviour
 
     public HexGrid hexGrid;
     public GameObject StartHex;
-    
-   
+    public List<Droga> drogaList = new List<Droga>();
+
     [Header("Testowe ")]
     [SerializeField]
-    public List<Droga> drogaList = new List<Droga>();
+    
     public List<Vector3Int> neighbours;
 
     void Start()
