@@ -29908,6 +29908,7 @@ GameObject:
   - component: {fileID: 690298125}
   - component: {fileID: 690298127}
   - component: {fileID: 690298126}
+  - component: {fileID: 690298128}
   m_Layer: 0
   m_Name: land
   m_TagString: Untagged
@@ -30499,6 +30500,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &690298128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690298124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c29425afb8b2f54596d06ed9b5369fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &690399997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2955404031258080917, guid: 9f397eee1775f304b9c3527c115a1598, type: 3}
