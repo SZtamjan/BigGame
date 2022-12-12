@@ -1,63 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
     public GameObject gigaPrefab;
-    
+    public GameObject start;
 
     public void ButtonClick()
     {
-        var gdzie = GetComponent<PatchControler>().drogaList.First();
-        if (gdzie.jednostka==null)
-        {
-            float x = gdzie.Coordinations.x;
-            float y = 0.13f;
-            float z = gdzie.Coordinations.z;
-
-            GameObject putToList = SpawnObjectAtLocation(x, y, z, 90);
-            PutToList(putToList, gdzie);
-        }
-        else
-        {
-            Debug.Log("MIejsce zajête");
-        }
-        
+        float x = start.transform.position.x;
+        float y = Convert.ToSingle(0.13);
+        float z = start.transform.position.z;
+        SpawnObjectAtLocation(x, y, z);
     }
 
-    private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota)
+    private void SpawnObjectAtLocation(float posX, float posY, float posZ)
     {
         
         GameObject newObject;
         newObject = Instantiate(gigaPrefab, new Vector3(posX, posY, posZ), transform.rotation);
-        newObject.transform.Rotate(0, rota, 0);
-        newObject.transform.SetParent(GameObject.Find("Grid").transform, false);
-        return newObject;
-
-    }
-    public void EvilButtonClick()
-    {
-        var gdzie = GetComponent<PatchControler>().drogaList.Last();
-        if (gdzie.jednostka == null)
-        {
-            float x = gdzie.Coordinations.x;
-        float y = 0.13f;
-        float z = gdzie.Coordinations.z;
-
-        GameObject putToList = SpawnObjectAtLocation(x, y, z, -90);
-        PutToList(putToList, gdzie);
-        }
-        else
-        {
-            Debug.Log("Miejsce zajête");
-        }
-    }
-    public void PutToList(GameObject unit, PatchControler.Droga miejsce)
-    {
-        miejsce.jednostka = unit;
+        newObject.transform.Rotate(0, 90, 0);
+        newObject.transform.SetParent(GameObject.Find("land").transform, false);
 
     }
 }
