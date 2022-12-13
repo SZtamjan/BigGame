@@ -20,6 +20,7 @@ public class HexGrid : MonoBehaviour
         {
             hexTileDict[hex.HexCoords] = hex;
         }
+
        gameManager.SetActive(true);
 
     }

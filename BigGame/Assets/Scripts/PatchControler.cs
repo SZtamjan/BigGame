@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PatchControler : MonoBehaviour
 {
-    private Vector3 offset=new(0.8659766f, 1, 0.75f);
+    private Vector3 offset=new(0.86f, 1, 0.75f);
     [System.Serializable]
     public class Droga
     {
