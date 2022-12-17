@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   damage: 10
-  movment: 1
-  reach: 0
+  movmentDistance: 1
+  attackReach: 1
+  playersUnit: 1
 --- !u!1001 &4721894398332830050
 PrefabInstance:
   m_ObjectHideFlags: 0

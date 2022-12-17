@@ -21,15 +21,23 @@ public class GameManager : MonoBehaviour
 
     public void PlayerTurnEnd()
     {
+
+        if (playerTurn)
+        {
+            playerTurn = false;
+            GetComponent<PatchControler>().PlayerUnitMove();
+        }
         
-        playerTurn = false;
-        GetComponent<PatchControler>().PlayerUnitMove();
         
 
     }
     public void ComputerTurnEnd()
     {
-        playerTurn=true;
+        if (!playerTurn)
+        {
+            playerTurn = true;
+        }
+       
     }    
 
 

@@ -10,7 +10,7 @@ public class UnitStatistic : MonoBehaviour
     [SerializeField]
     int damage = 10;
     [SerializeField]
-    int movment = 1;
+    int movmentDistance = 1;
     [SerializeField]
     int attackReach = 1;
     [SerializeField]
@@ -28,15 +28,15 @@ public class UnitStatistic : MonoBehaviour
         return damage;
     }
 
-    public int ReturnMovment()
+    public int ReturnMovmentDistance()
     {
-        return movment;
+        return movmentDistance;
     }
     public int ReturnattackReach()
     {
         return attackReach;
     }
-    public bool ReturnattackplayersUnit()
+    public bool ReturnAttackPlayersUnit()
     {
         return playersUnit;
     }
