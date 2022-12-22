@@ -109,15 +109,9 @@ public class PatchControler : MonoBehaviour
                
                 var unit = drogaList[i].jednostka.GetComponent<UnitStatistic>();
                 GameObject enemy = PlayerUnitCheckAttackReach(unit, i);
-                bool isFriendly =false;
-                if (enemy!=null)
-                {
-                    isFriendly = enemy.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit();
-                }
-                
 
-
-                if ((enemy != null)&&(!isFriendly))
+               
+                if ((enemy != null)&&(!enemy.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit()))
                 {
                    
                     PlayerUnitAttack(unit,enemy);
@@ -127,10 +121,10 @@ public class PatchControler : MonoBehaviour
                     PlayerUnitAttack(unit);
 
                 }
-                //else if (enemy != null && isFriendly)
-                //{
-                //    Debug.Log("nic nie rób");
-                //}
+                else if (enemy != null && enemy.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit())
+                {
+                   
+                }
                 else
                 {
                     int movmentDistance = PlayerMovmentDistance(unit,i);
@@ -172,7 +166,7 @@ public class PatchControler : MonoBehaviour
         int freeDistance = movementDistance;
         for (int i = movementDistance; i >= 1 ; i--)
         {
-            if (WielkoscListy < position+i)
+            if (drogaList.Count()-1<position+i)
             {
                 freeDistance--;
             }            
@@ -189,20 +183,19 @@ public class PatchControler : MonoBehaviour
 
     GameObject PlayerUnitCheckAttackReach(UnitStatistic unit, int position)
     {
-        if (position + 1> WielkoscListy)
+        if (position + 1>=drogaList.Count-1)
         {
             return null;
         }
-        int attackReach = unit.ReturnattackReach();
-        for (int i = position ; i <= position+ attackReach; i++)
+        for (int i = position+1 ; i <= position+unit.ReturnattackReach(); i++)
         {
-            if (i> WielkoscListy)
+            if (position+i>drogaList.Count()-1)
             {
                 return null;
             }
-            if (drogaList[i+1].jednostka!=null)
+            if (drogaList[i].jednostka!=null)
             {
-                return drogaList[i+1].jednostka;
+                return drogaList[i].jednostka;
             }
         }
 

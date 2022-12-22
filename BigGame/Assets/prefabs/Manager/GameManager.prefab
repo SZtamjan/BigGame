@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 399384177496903715}
   - component: {fileID: 399384177496903714}
   - component: {fileID: 399384177496903717}
-  - component: {fileID: 1925389920348225789}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62,17 +61,4 @@ MonoBehaviour:
   hexGrid: {fileID: 8234275202817942692, guid: 66360a9f687c58b4483dcdcea5953361, type: 3}
   StartHex: {fileID: 0}
   drogaList: []
-  WielkoscListy: 0
---- !u!114 &1925389920348225789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399384177496903716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b6662e11a6ed3449fc5a911ae83cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTurn: 0
+  neighbours: []
