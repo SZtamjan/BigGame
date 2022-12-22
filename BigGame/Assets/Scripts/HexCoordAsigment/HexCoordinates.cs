@@ -22,13 +22,25 @@ public class HexCoordinates : MonoBehaviour
     private void Awake()
     {
         offsetCoordinates = ConvetPositionToOffset(transform.position);
+        
     }
 
     private Vector3Int ConvetPositionToOffset(Vector3 position)
     {
+
+       
         int x = Mathf.CeilToInt(position.x / xOffset);
+        float test = position.x / xOffset;
+
+
+        int test2 = (int)test;
+
         int y = Mathf.CeilToInt(position.y / yOffset);
         int z = Mathf.CeilToInt(position.z / zOffset);
+        if (x == -5&&y==0&&z==0)
+        {
+
+        }
         return new Vector3Int(x, y, z);
     }
 }

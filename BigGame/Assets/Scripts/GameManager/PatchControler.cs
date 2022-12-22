@@ -80,6 +80,7 @@ public class PatchControler : MonoBehaviour
 
     Vector3 TrueCoorde(Vector3 wektor)
     {
+       
         if (wektor.z % 2==0)
         {
             wektor.x *= offset.x;

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
         if (playerTurn)
         {
-            playerTurn = false;
+            //playerTurn = false;
             GetComponent<PatchControler>().PlayerUnitMove();
         }
         
