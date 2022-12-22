@@ -1,9 +1,49 @@
 fileFormatVersion: 2
-guid: 82fbbf11f167ee540b189d6cb3d00b7a
+guid: 4d74b0ec706242742bfb56bb7eae57a0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House
+    second: {fileID: 2100000, guid: acce1ecd339fdc6448a4e0202d1689e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HouseChimney
+    second: {fileID: 2100000, guid: b3793275995eafb4eb2410901364f75c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HouseDoor
+    second: {fileID: 2100000, guid: 2407047171ab6894a836aa6dc1835312, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HouseFence
+    second: {fileID: 2100000, guid: c53d6e68f14f4cb438b418d9a9bfa4bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HouseFlor
+    second: {fileID: 2100000, guid: 103e9c9eeeac60940b70ae54161ff61a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HousePillars
+    second: {fileID: 2100000, guid: 2fb0669c46f57b44b972a1e0c0257fcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HouseRoof
+    second: {fileID: 2100000, guid: a7e5ce676dd93ba4599be5eec276b4cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hex_flat_mat
+    second: {fileID: 2100000, guid: 0057cd99d5679ee4f845562680813766, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
