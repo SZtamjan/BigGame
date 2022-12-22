@@ -16,7 +16,7 @@ public class UnitStatistic : MonoBehaviour
     [SerializeField]
     bool playersUnit = true;
 
-
+    public int Hp { get { return hp; } }
 
     public int ReturnHp()
     {

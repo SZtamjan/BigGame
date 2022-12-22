@@ -648,7 +648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182019679}
+      - m_Target: {fileID: 182019677}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PlayerTurnEnd
         m_Mode: 1
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182019679}
+      - m_Target: {fileID: 182019677}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ComputerTurnEnd
         m_Mode: 1
@@ -1158,11 +1158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196076795195b334faa5e602f32f3a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &182019679
+--- !u!114 &182019677 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1925389920348225789, guid: 21fdf9cf46edcf0419590ac68bd523e8, type: 3}
+  m_PrefabInstance: {fileID: 399384177390401150}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182019674}
   m_Enabled: 1
@@ -1170,7 +1169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b6662e11a6ed3449fc5a911ae83cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTurn: 1
 --- !u!1001 &201109575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6911,11 +6909,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8203848807415547841, guid: f503a96c065bdc84e81570cb7bbef786, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.27
+      value: 4.86
       objectReference: {fileID: 0}
     - target: {fileID: 8203848807710962061, guid: f503a96c065bdc84e81570cb7bbef786, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.75
+      value: -2.34
       objectReference: {fileID: 0}
     - target: {fileID: 8203848807768094777, guid: f503a96c065bdc84e81570cb7bbef786, type: 3}
       propertyPath: m_Name
