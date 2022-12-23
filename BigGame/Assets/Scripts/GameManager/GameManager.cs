@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Kto zaczyna")]
     [SerializeField]
-    public bool playerTurn = false;
+    public bool playerTurn = true;
+    public bool devMode = false;
 
 
     void GameManeger()
@@ -14,17 +15,45 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public bool ReturnTurn()
+
+    public bool CanPlayerMove()
     {
+        if (devMode)
+        {
+            return true;
+        }
+        if (!playerTurn)
+        {
+            Debug.Log("Tura komputera");
+        }
         return playerTurn;
     }
+    public bool CanComputerMove()
+    {
+        if (devMode)
+        {
+            return true;
+        }
+        if (playerTurn)
+        {
+            Debug.Log("Tura Gracza");
+        }
+        return !playerTurn;
+    }
+
+    public bool ReturnTurn()
+    {        
+        return playerTurn;
+    }
+
+
 
     public void PlayerTurnEnd()
     {
 
-        if (playerTurn)
+        if (CanPlayerMove())
         {
-            //playerTurn = false;
+            playerTurn = false;
             GetComponent<PatchControler>().PlayerUnitMove();
         }
         
@@ -33,7 +62,7 @@ public class GameManager : MonoBehaviour
     }
     public void ComputerTurnEnd()
     {
-        if (!playerTurn)
+        if (CanComputerMove())
         {
             playerTurn = true;
         }

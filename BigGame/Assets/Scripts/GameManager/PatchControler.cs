@@ -14,7 +14,6 @@ public class PatchControler : MonoBehaviour
         public GameObject jednostka;
     }
 
-
     [Header("Starting ")]
     [SerializeField]
 
@@ -31,17 +30,8 @@ public class PatchControler : MonoBehaviour
 
     void Start()
     {
-
-
         PatchGenerator();
         WielkoscListy = drogaList.Count - 1;
-
-
-
-
-        //testo = hexGrid.GetNeighborsFor(cordy);
-        //testDroga = new Droga() { Coordinations = TrueCoorde(testo[0]), jednostka = null };
-        //drogaList.Add(testDroga);
 
     }
     void PatchGenerator()
@@ -96,6 +86,7 @@ public class PatchControler : MonoBehaviour
 
     }
 
+    #region Player Units Movs 
 
     public void PlayerUnitMove()
     {
@@ -127,14 +118,14 @@ public class PatchControler : MonoBehaviour
                 }
                 else
                 {
-                    int movmentDistance = PlayerMovmentDistance(unit, i);
+                    int movmentDistance = PlayerUnitMovmentDistance(unit, i);
                     for (int ii = i; ii < i + movmentDistance; ii++)
                     {
 
 
                         drogaList[ii + 1].jednostka = drogaList[ii].jednostka;
 
-                        PlayerMovment(drogaList[ii + 1].Coordinations, drogaList[ii].jednostka);
+                        PlayerUnitMovment(drogaList[ii + 1].Coordinations, drogaList[ii].jednostka);
                         drogaList[ii].jednostka = null;
                     }
 
@@ -154,12 +145,12 @@ public class PatchControler : MonoBehaviour
         Debug.Log("Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ jednostce");
     }
 
-    void PlayerMovment(Vector3 coordinations, GameObject jednostka)
+    void PlayerUnitMovment(Vector3 coordinations, GameObject jednostka)
     {
         jednostka.transform.position = coordinations;
     }
 
-    int PlayerMovmentDistance(UnitStatistic unit, int position)
+    int PlayerUnitMovmentDistance(UnitStatistic unit, int position)
     {
         int movementDistance = unit.ReturnMovmentDistance();
 
@@ -183,13 +174,13 @@ public class PatchControler : MonoBehaviour
 
     GameObject PlayerUnitCheckAttackReach(UnitStatistic unit, int position)
     {
-        if (position + 1 >= drogaList.Count - 1)
+        if (position + 1 > drogaList.Count - 1)
         {
             return null;
         }
         for (int i = position + 1; i <= position + unit.ReturnattackReach(); i++)
         {
-            if (position + i > drogaList.Count() - 1)
+            if (position + 1 > drogaList.Count() - 1)
             {
                 return null;
             }
@@ -202,6 +193,7 @@ public class PatchControler : MonoBehaviour
         return null;
     }
 
+    #endregion
 
     // Update is called once per frame
     void Update()
