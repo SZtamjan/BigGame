@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4721894399120368838}
-  - component: {fileID: 2754649718569051242}
+  - component: {fileID: -526276150656640007}
   m_Layer: 0
   m_Name: Giga
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2754649718569051242
+--- !u!114 &-526276150656640007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +71,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5e192b1089e1554980af9889cc6ec9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.111
+      value: 0.064
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5e192b1089e1554980af9889cc6ec9f, type: 3}
       propertyPath: m_LocalRotation.w

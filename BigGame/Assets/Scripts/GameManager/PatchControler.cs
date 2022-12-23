@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PatchControler : MonoBehaviour
 {
-    private Vector3 offset=new(0.86f, 1, 0.75f);
+    private Vector3 offset = new(0.86f, 1, 0.75f);
     [System.Serializable]
     public class Droga
     {
@@ -20,9 +20,9 @@ public class PatchControler : MonoBehaviour
 
     public HexGrid hexGrid;
     public GameObject StartHex;
-    
-   
-   
+
+
+
     [SerializeField]
     public List<Droga> drogaList = new List<Droga>();
 
@@ -34,7 +34,7 @@ public class PatchControler : MonoBehaviour
 
 
         PatchGenerator();
-        WielkoscListy=drogaList.Count-1;
+        WielkoscListy = drogaList.Count - 1;
 
 
 
@@ -80,14 +80,13 @@ public class PatchControler : MonoBehaviour
 
     Vector3 TrueCoorde(Vector3 wektor)
     {
-       
-        if (wektor.z % 2==0)
+        if (wektor.z % 2 == 0)
         {
             wektor.x *= offset.x;
         }
         else
         {
-            wektor.x = (wektor.x*offset.x)-(offset.x/2);
+            wektor.x = (wektor.x * offset.x) - (offset.x / 2);
 
         }
         wektor.y = 0.13f;
@@ -100,39 +99,39 @@ public class PatchControler : MonoBehaviour
 
     public void PlayerUnitMove()
     {
-        
-        for (int i = WielkoscListy; i>= 0; i--)
-        {
-            
 
-            if ((drogaList[i].jednostka != null ) && (drogaList[i].jednostka.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit()))
+        for (int i = WielkoscListy; i >= 0; i--)
+        {
+
+
+            if ((drogaList[i].jednostka != null) && (drogaList[i].jednostka.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit()))
             {
-               
+
                 var unit = drogaList[i].jednostka.GetComponent<UnitStatistic>();
                 GameObject enemy = PlayerUnitCheckAttackReach(unit, i);
 
-               
-                if ((enemy != null)&&(!enemy.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit()))
+
+                if ((enemy != null) && (!enemy.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit()))
                 {
-                   
-                    PlayerUnitAttack(unit,enemy);
+
+                    PlayerUnitAttack(unit, enemy);
                 }
-                else if((i + unit.ReturnattackReach() > WielkoscListy))
+                else if ((i + unit.ReturnattackReach() > WielkoscListy))
                 {
                     PlayerUnitAttack(unit);
 
                 }
                 else if (enemy != null && enemy.GetComponent<UnitStatistic>().ReturnAttackPlayersUnit())
                 {
-                   
+
                 }
                 else
                 {
-                    int movmentDistance = PlayerMovmentDistance(unit,i);
-                    for (int ii = i; ii < i+movmentDistance; ii++)
+                    int movmentDistance = PlayerMovmentDistance(unit, i);
+                    for (int ii = i; ii < i + movmentDistance; ii++)
                     {
 
-                    
+
                         drogaList[ii + 1].jednostka = drogaList[ii].jednostka;
 
                         PlayerMovment(drogaList[ii + 1].Coordinations, drogaList[ii].jednostka);
@@ -148,9 +147,9 @@ public class PatchControler : MonoBehaviour
 
     void PlayerUnitAttack(UnitStatistic unit)
     {
-        Debug.Log("Jednostka zadaje "+unit.ReturnDamage()+" obrarzeñ zamkowi");
+        Debug.Log("Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ zamkowi");
     }
-    void PlayerUnitAttack(UnitStatistic unit,GameObject target)
+    void PlayerUnitAttack(UnitStatistic unit, GameObject target)
     {
         Debug.Log("Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ jednostce");
     }
@@ -160,41 +159,41 @@ public class PatchControler : MonoBehaviour
         jednostka.transform.position = coordinations;
     }
 
-    int PlayerMovmentDistance(UnitStatistic unit,int position)
+    int PlayerMovmentDistance(UnitStatistic unit, int position)
     {
         int movementDistance = unit.ReturnMovmentDistance();
-        
+
         int freeDistance = movementDistance;
-        for (int i = movementDistance; i >= 1 ; i--)
+        for (int i = movementDistance; i >= 1; i--)
         {
-            if (drogaList.Count()-1<position+i)
+            if (drogaList.Count() - 1 < position + i)
             {
                 freeDistance--;
-            }            
-            else if (drogaList[position+i].jednostka!=null)
+            }
+            else if (drogaList[position + i].jednostka != null)
             {
-                freeDistance=i-1;
+                freeDistance = i - 1;
             }
 
         }
-       
+
 
         return freeDistance;
     }
 
     GameObject PlayerUnitCheckAttackReach(UnitStatistic unit, int position)
     {
-        if (position + 1>=drogaList.Count-1)
+        if (position + 1 >= drogaList.Count - 1)
         {
             return null;
         }
-        for (int i = position+1 ; i <= position+unit.ReturnattackReach(); i++)
+        for (int i = position + 1; i <= position + unit.ReturnattackReach(); i++)
         {
-            if (position+i>drogaList.Count()-1)
+            if (position + i > drogaList.Count() - 1)
             {
                 return null;
             }
-            if (drogaList[i].jednostka!=null)
+            if (drogaList[i].jednostka != null)
             {
                 return drogaList[i].jednostka;
             }
@@ -207,9 +206,9 @@ public class PatchControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    
+
 
 }
