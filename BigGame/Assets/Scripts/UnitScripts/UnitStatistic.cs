@@ -36,7 +36,7 @@ public class UnitStatistic : MonoBehaviour
     {
         return attackReach;
     }
-    public bool ReturnAttackPlayersUnit()
+    public bool IsThisPlayerUnit()
     {
         return playersUnit;
     }

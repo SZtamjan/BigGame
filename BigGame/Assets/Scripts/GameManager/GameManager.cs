@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
         {
             playerTurn = false;
             GetComponent<PatchControler>().PlayerUnitMove();
+
+
         }
         
         
@@ -64,7 +66,9 @@ public class GameManager : MonoBehaviour
     {
         if (CanComputerMove())
         {
+            
             playerTurn = true;
+            GetComponent<PatchControler>().ComputerUnitMove();
         }
        
     }    

@@ -26,6 +26,8 @@ public class HexCoordinates : MonoBehaviour
 
     private Vector3Int ConvetPositionToOffset(Vector3 position)
     {
+        //int x = (int)((decimal)position.x / (decimal)xOffset); // dzia³a ale nie dzia³a
+
         int x = Mathf.CeilToInt(position.x / xOffset);
         int y = Mathf.CeilToInt(position.y / yOffset);
         int z = Mathf.CeilToInt(position.z / zOffset);
