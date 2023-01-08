@@ -6494,6 +6494,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3563802291678898581, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1679032424}
     - target: {fileID: 7203101441182389875, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: StartHex
       value: 
@@ -26211,6 +26215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f503a96c065bdc84e81570cb7bbef786, type: 3}
+--- !u!20 &1679032424 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5718863955212279398, guid: f503a96c065bdc84e81570cb7bbef786, type: 3}
+  m_PrefabInstance: {fileID: 1679032423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1681461351
 GameObject:
   m_ObjectHideFlags: 0
