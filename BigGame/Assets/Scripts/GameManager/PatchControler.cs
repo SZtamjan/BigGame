@@ -13,17 +13,23 @@ public class PatchControler : MonoBehaviour
         public Vector3 Coordinations;
         public GameObject jednostka;
     }
+    [System.Serializable]
+    public class Castle
+    {
+        public GameObject castle;
+        public GameObject jednostka=null;
+    }
 
     [Header("Starting ")]
     [SerializeField]
 
     public HexGrid hexGrid;
     public GameObject StartHex;
+    [SerializeField] public Castle PlayerCastle;
+    [SerializeField] public Castle ComputerCastle;
 
-
-
-    [SerializeField]
-    public List<Droga> drogaList = new List<Droga>();
+    [SerializeField] public List<Droga> drogaList = new List<Droga>();
+    
 
     public int patchLenght;
 
@@ -66,8 +72,9 @@ public class PatchControler : MonoBehaviour
 
             }
             loopBreaker++;
-                if (loopBreaker>100)
+                if (loopBreaker>1000)
             {
+                Debug.Log("coœ posz³o nie tak \n generowanie drogi siê zepsu³o");
                 warunek = false;
             }
         } while (warunek);
@@ -95,43 +102,47 @@ public class PatchControler : MonoBehaviour
     #region Computer Unit Movs
     public void ComputerUnitMove()
     {
-         for (int i = 0; i<=patchLenght; i++)
+         for (int i = 0; i<=patchLenght; i++) // movment for path
          {
 
             if ((drogaList[i].jednostka != null) && (!drogaList[i].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
             {
-                var unit = drogaList[i].jednostka.GetComponent<UnitStatistic>();
-                GameObject enemy = ComputerUnitCheckAttackReach(unit, i);
+                GameObject unit = drogaList[i].jednostka;
+                var unitStatisctis = unit.GetComponent<UnitStatistic>();
+                GameObject enemy = ComputerUnitCheckAttackReach(unitStatisctis, i);
 
 
 
                 if ((enemy != null) && (enemy.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
                 {
-
-                    ComputerUnitAttack(unit, enemy);
+                    Debug.Log("Enemy w Moj¹");
+                    UnitAttack(unit, enemy);
                 }
 
-                else if ((i - unit.ReturnattackReach() < 0))
+                else if ((i - unitStatisctis.ReturnattackReach() < 0))
                 {
-                    ComputerUnitAttack(unit);
+                    Debug.Log("Enemy w Zamek");
+                    UnitAttack(unit);
 
                 }
-
-                else if (enemy != null && !enemy.GetComponent<UnitStatistic>().IsThisPlayerUnit())
-                {
-
-                }
-
                 else
                 {
-                    int movmentDistance = ComputerUnitMovmentDistance(unit, i);
+                    int movmentDistance = ComputerUnitMovmentDistance(unitStatisctis, i);
                     for (int ii = i; ii > i - movmentDistance; ii--)
                     {
 
-
+                        Vector3 nextTile;
                         drogaList[ii - 1].jednostka = drogaList[ii].jednostka;
+                        if (ii-1==0)
+                        {
+                            nextTile = PlayerCastle.castle.transform.position;
+                        }
+                        else
+                        {
+                            nextTile=drogaList[ii-2].Coordinations;
+                        }
 
-                        UnitMovment(drogaList[ii - 1].Coordinations, drogaList[ii].jednostka);
+                        UnitMovment(drogaList[ii - 1].Coordinations, drogaList[ii].jednostka,nextTile);
                         drogaList[ii].jednostka = null;
                     }
 
@@ -141,6 +152,28 @@ public class PatchControler : MonoBehaviour
 
             }
 		 }
+        // movment for castle
+        if (ComputerCastle.jednostka!=null)
+        {
+            if (drogaList.Last().jednostka != null)
+            {
+                if (drogaList.Last().jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit())
+                {
+                    UnitAttack(ComputerCastle.jednostka, drogaList.Last().jednostka);
+                }
+
+
+            }
+            if (drogaList.Last().jednostka == null || drogaList.Last().jednostka.GetComponent<UnitStatistic>().ReturnHp() <= 0)
+            {
+                UnitCastleMovment(ComputerCastle, drogaList.Last(), drogaList[patchLenght-1].Coordinations);
+
+            }
+            
+        }
+        
+
+
     }
 
 
@@ -166,10 +199,6 @@ public class PatchControler : MonoBehaviour
         return freeDistance;
     }
 
-    void ComputerUnitAttack(UnitStatistic unit)
-    {
-        Debug.Log("Evil Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ zamkowi");
-    }
     GameObject ComputerUnitCheckAttackReach(UnitStatistic unit, int position)
     {
         if (position == 0)
@@ -178,7 +207,7 @@ public class PatchControler : MonoBehaviour
         }
         for (int i = position - 1; i >= position - unit.ReturnattackReach(); i--)
         {
-            if (position - 1 <= 0)
+            if (position - 1 < 0)
             {
                 return null;
             }
@@ -191,20 +220,7 @@ public class PatchControler : MonoBehaviour
         return null;
     }
 
-    void ComputerUnitAttack(UnitStatistic unit, GameObject target)
-    {
-        Debug.Log("Evil Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ jednostce");
-    }
-
     #endregion
-
-    
-
-
-
-
-
-
 
 
     #region Player Units Movs 
@@ -212,49 +228,72 @@ public class PatchControler : MonoBehaviour
     public void PlayerUnitMove()
     {
 
-        for (int i = patchLenght; i >= 0; i--)
+        for (int i = patchLenght; i >= 0; i--) // movs from path
         {
 
 
             if ((drogaList[i].jednostka != null) && (drogaList[i].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
             {
 
-                var unit = drogaList[i].jednostka.GetComponent<UnitStatistic>();
-                GameObject enemy = PlayerUnitCheckAttackReach(unit, i);
+                GameObject unit = drogaList[i].jednostka;
+                var unitStatisctis = unit.GetComponent<UnitStatistic>();
+                GameObject enemy = PlayerUnitCheckAttackReach(unitStatisctis, i);
 
 
                 if ((enemy != null) && (!enemy.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
                 {
-
-                    PlayerUnitAttack(unit, enemy);
+                    Debug.Log("Ja w Enemy");
+                    UnitAttack(unit, enemy);
                 }
-                else if ((i + unit.ReturnattackReach() > patchLenght))
+                else if ((i + unitStatisctis.ReturnattackReach() > patchLenght))
                 {
-                    PlayerUnitAttack(unit);
+                    Debug.Log("Ja w Zamek");
+                    UnitAttack(unit);
 
-                }
-                else if (enemy != null && enemy.GetComponent<UnitStatistic>().IsThisPlayerUnit())
-                {
-
-                }
-                else
-                {
-                    int movmentDistance = PlayerUnitMovmentDistance(unit, i);
+                }                
+                
+                    int movmentDistance = PlayerUnitMovmentDistance(unitStatisctis, i);
                     for (int ii = i; ii < i + movmentDistance; ii++)
                     {
 
 
                         drogaList[ii + 1].jednostka = drogaList[ii].jednostka;
-
-                        UnitMovment(drogaList[ii + 1].Coordinations, drogaList[ii].jednostka);
+                        Vector3 nextTile;
+                        if (ii+1==patchLenght)
+                        {
+                            nextTile = ComputerCastle.castle.transform.position;
+                        }
+                        else
+                        {
+                            nextTile = drogaList[ii + 2].Coordinations;
+                        }
+                        UnitMovment(drogaList[ii + 1].Coordinations, drogaList[ii].jednostka, nextTile);
                         drogaList[ii].jednostka = null;
                     }
 
 
-                }
+                
 
             }
         }
+        if (PlayerCastle.jednostka != null)// movs from castle
+        {
+            if (drogaList[0].jednostka != null)
+            {
+                if (!drogaList[0].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit())
+                {
+                    UnitAttack(PlayerCastle.jednostka, drogaList[0].jednostka);
+                }
+
+
+            }
+            if (drogaList[0].jednostka == null || drogaList[0].jednostka.GetComponent<UnitStatistic>().ReturnHp()<=0)
+            {
+                UnitCastleMovment(PlayerCastle, drogaList[0], drogaList[1].Coordinations);
+
+            }
+        }
+        
     }
 
     void PlayerUnitAttack(UnitStatistic unit)
@@ -264,6 +303,7 @@ public class PatchControler : MonoBehaviour
     void PlayerUnitAttack(UnitStatistic unit, GameObject target)
     {
         Debug.Log("Moja Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ jednostce");
+        target.GetComponent<UnitStatistic>().DamageTaken(unit.ReturnDamage());
     }
 
 
@@ -297,7 +337,7 @@ public class PatchControler : MonoBehaviour
         }
         for (int i = position + 1; i <= position + unit.ReturnattackReach(); i++)
         {
-            if (position + 1 > patchLenght)
+            if (i > patchLenght)
             {
                 return null;
             }
@@ -312,12 +352,39 @@ public class PatchControler : MonoBehaviour
 
     #endregion
 
+
     #region Player and Computer / Universal method
-    void UnitMovment(Vector3 coordinations, GameObject jednostka)
+    void UnitMovment(Vector3 coordinations, GameObject jednostka, Vector3 nextTile)
     {
-        jednostka.transform.position = coordinations;
+        jednostka.GetComponent<UnitMove>().AddToDestination(coordinations, nextTile);
     }
+
+    void UnitAttack(GameObject unit)
+    {
+        UnitStatistic unitStat = unit.GetComponent<UnitStatistic>();
+        Debug.Log("Moja Jednostka zadaje " + unitStat.ReturnDamage() + " obrarzeñ zamkowi");
+    }
+    void UnitAttack(GameObject unit, GameObject target)
+    {
+        
+        UnitStatistic unitStats = unit.GetComponent<UnitStatistic>();
+        Debug.Log("Moja Jednostka zadaje " + unitStats.ReturnDamage() + " obrarzeñ jednostce");
+        target.GetComponent<UnitStatistic>().DamageTaken(unitStats.ReturnDamage());        
+    }
+
+    void UnitCastleMovment(Castle castle, Droga miejsce,Vector3 nextTile)
+    {
+        miejsce.jednostka = castle.jednostka;        
+        UnitMovment(miejsce.Coordinations, castle.jednostka, nextTile);
+        castle.jednostka = null;
+
+    }
+
+    
+
+
     #endregion
+
 
     // Update is called once per frame
     void Update()

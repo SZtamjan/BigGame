@@ -9,47 +9,38 @@ public class SpawnerScript : MonoBehaviour
     public GameObject gigaPrefab;
     public GameObject EvilGigaPrefab;
 
-    public void ButtonClick()
+    public void SpawnMyUnit()
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         { 
-            var gdzie = GetComponent<PatchControler>().drogaList.First();
+            var gdzie = GetComponent<PatchControler>().PlayerCastle;
             if (gdzie.jednostka==null)
             {
-                float x = gdzie.Coordinations.x;
-                float y = 0.13f;
-                float z = gdzie.Coordinations.z;
+                float x = gdzie.castle.transform.position.x;
+                float y = 0.5f;
+                float z = gdzie.castle.transform.position.z;
 
                 GameObject putToList = SpawnObjectAtLocation(x, y, z, 90,gigaPrefab);
                 PutToList(putToList, gdzie);
             }
             else
             {
-                Debug.Log("MIejsce zajête");
+                Debug.Log("Miejsce zajête");
             }
         }
     }
 
-    private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota,GameObject spawn)
-    {
-        
-        GameObject newObject;
-        newObject = Instantiate(spawn, new Vector3(posX, posY, posZ), transform.rotation);
-        newObject.transform.Rotate(0, rota, 0);
-        newObject.transform.SetParent(GameObject.Find("Grid").transform, false);
-        return newObject;
-
-    }
-    public void EvilButtonClick()
+   
+    public void SpawnEnemyUnit()
     {
         if (GetComponent<GameManager>().CanComputerMove())
         {
-            var gdzie = GetComponent<PatchControler>().drogaList.Last();
+            var gdzie = GetComponent<PatchControler>().ComputerCastle;
             if (gdzie.jednostka == null)
             {
-                float x = gdzie.Coordinations.x;
-                float y = 0.13f;
-                float z = gdzie.Coordinations.z;
+                float x = gdzie.castle.transform.position.x;
+                float y = 0.5f;
+                float z = gdzie.castle.transform.position.z;
 
                 GameObject putToList = SpawnObjectAtLocation(x, y, z, -90, EvilGigaPrefab);
                 PutToList(putToList, gdzie);
@@ -60,7 +51,18 @@ public class SpawnerScript : MonoBehaviour
             }
         }
     }
-    public void PutToList(GameObject unit, PatchControler.Droga miejsce)
+
+    private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota, GameObject spawn)
+    {
+
+        GameObject newObject;
+        newObject = Instantiate(spawn, new Vector3(posX, posY, posZ), transform.rotation);
+        newObject.transform.Rotate(0, rota, 0);
+        newObject.transform.SetParent(GameObject.Find("Grid").transform, false);
+        return newObject;
+
+    }
+    public void PutToList(GameObject unit, PatchControler.Castle miejsce)
     {
         miejsce.jednostka = unit;
 

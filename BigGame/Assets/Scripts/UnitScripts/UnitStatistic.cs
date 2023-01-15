@@ -41,6 +41,15 @@ public class UnitStatistic : MonoBehaviour
         return playersUnit;
     }
 
+    public void DamageTaken(int obtained)
+    {
+        hp-= obtained;
+
+        if (hp<=0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
 
