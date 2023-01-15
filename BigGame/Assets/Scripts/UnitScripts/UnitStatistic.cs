@@ -6,7 +6,7 @@ public class UnitStatistic : MonoBehaviour
 {
     [Header("Statystyki ")]
     [SerializeField]
-    int hp = 100;
+    int unitHP = 100;
     [SerializeField]
     int damage = 10;
     [SerializeField]
@@ -20,7 +20,7 @@ public class UnitStatistic : MonoBehaviour
 
     public int ReturnHp()
     {
-        return hp;
+        return unitHP;
     }
 
     public int ReturnDamage()
@@ -40,9 +40,5 @@ public class UnitStatistic : MonoBehaviour
     {
         return playersUnit;
     }
-
-
-
-
 
 }
