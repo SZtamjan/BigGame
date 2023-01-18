@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PatchControler : MonoBehaviour
 {
-    private Vector3 offset = new(0.86f, 1, 0.75f);
+    
     [System.Serializable]
     public class Droga
     {
@@ -21,83 +21,30 @@ public class PatchControler : MonoBehaviour
     }
 
     [Header("Starting ")]
-    [SerializeField]
-
-    public HexGrid hexGrid;
-    public GameObject StartHex;
+    
     [SerializeField] public Castle PlayerCastle;
     [SerializeField] public Castle ComputerCastle;
 
-    [SerializeField] public List<Droga> drogaList = new List<Droga>();
-    
+    [SerializeField] public static List<Droga> pathway = new List<Droga>();
+    [SerializeField] public List<Droga> pathwayDebug = new List<Droga>();
 
     public int patchLenght;
 
+    public void StartPath()
+    {
+        patchLenght = pathway.Count - 1;
+        pathwayDebug = pathway;
+
+    }
 
     void Start()
     {
-        PatchGenerator();
-        patchLenght = drogaList.Count - 1;
+        StartPath();
 
-    }
-    void PatchGenerator()
-    {
-        List<Vector3Int> controlLista = new();
-
-        Vector3Int cordy = StartHex.GetComponent<HexCoordinates>().GetHexCoords();
-        Droga testDroga = new Droga() { Coordinations = TrueCoorde(cordy), jednostka = null };
-        drogaList.Add(testDroga);
-        controlLista.Add(cordy);
-
-        List<Vector3Int> neighbours = new();
-        bool warunek = true;
-        int loopBreaker = 0;
-        do
-        {
-            neighbours = hexGrid.GetNeighborsFor(controlLista.Last());
-            foreach (var item in neighbours)
-            {
-                if (!controlLista.Contains(item))
-                {
-                    controlLista.Add(item);
-                    drogaList.Add(new Droga { Coordinations = TrueCoorde(item), jednostka = null });
-
-                }
-
-
-            }
-            if ((controlLista.Count > 2) && neighbours.Count == 1)
-            {
-                warunek = false;
-
-            }
-            loopBreaker++;
-                if (loopBreaker>1000)
-            {
-                Debug.Log("coœ posz³o nie tak \n generowanie drogi siê zepsu³o");
-                warunek = false;
-            }
-        } while (warunek);
-    }
-
-    Vector3 TrueCoorde(Vector3 wektor)
-    {
-        if (wektor.z % 2 == 0)
-        {
-            wektor.x *= offset.x;
-        }
-        else
-        {
-            wektor.x = (wektor.x * offset.x) - (offset.x / 2);
-
-        }
-        wektor.y = 0.13f;
-        wektor.z *= offset.z;
-        return wektor;
 
 
     }
-
+    
 
     #region Computer Unit Movs
     public void ComputerUnitMove()
@@ -105,9 +52,9 @@ public class PatchControler : MonoBehaviour
          for (int i = 0; i<=patchLenght; i++) // movment for path
          {
 
-            if ((drogaList[i].jednostka != null) && (!drogaList[i].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
+            if ((pathway[i].jednostka != null) && (!pathway[i].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
             {
-                GameObject unit = drogaList[i].jednostka;
+                GameObject unit = pathway[i].jednostka;
                 var unitStatisctis = unit.GetComponent<UnitStatistic>();
                 GameObject enemy = ComputerUnitCheckAttackReach(unitStatisctis, i);
 
@@ -125,29 +72,28 @@ public class PatchControler : MonoBehaviour
                     UnitAttack(unit);
 
                 }
-                else
-                {
+                
                     int movmentDistance = ComputerUnitMovmentDistance(unitStatisctis, i);
                     for (int ii = i; ii > i - movmentDistance; ii--)
                     {
 
                         Vector3 nextTile;
-                        drogaList[ii - 1].jednostka = drogaList[ii].jednostka;
+                        pathway[ii - 1].jednostka = pathway[ii].jednostka;
                         if (ii-1==0)
                         {
                             nextTile = PlayerCastle.castle.transform.position;
                         }
                         else
                         {
-                            nextTile=drogaList[ii-2].Coordinations;
+                            nextTile=pathway[ii-2].Coordinations;
                         }
 
-                        UnitMovment(drogaList[ii - 1].Coordinations, drogaList[ii].jednostka,nextTile);
-                        drogaList[ii].jednostka = null;
+                        UnitMovment(pathway[ii - 1].Coordinations, pathway[ii].jednostka,nextTile);
+                        pathway[ii].jednostka = null;
                     }
 
 
-                }
+                
 
 
             }
@@ -155,18 +101,18 @@ public class PatchControler : MonoBehaviour
         // movment for castle
         if (ComputerCastle.jednostka!=null)
         {
-            if (drogaList.Last().jednostka != null)
+            if (pathway.Last().jednostka != null)
             {
-                if (drogaList.Last().jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit())
+                if (pathway.Last().jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit())
                 {
-                    UnitAttack(ComputerCastle.jednostka, drogaList.Last().jednostka);
+                    UnitAttack(ComputerCastle.jednostka, pathway.Last().jednostka);
                 }
 
 
             }
-            if (drogaList.Last().jednostka == null || drogaList.Last().jednostka.GetComponent<UnitStatistic>().ReturnHp() <= 0)
+            if (pathway.Last().jednostka == null || pathway.Last().jednostka.GetComponent<UnitStatistic>().ReturnHp() <= 0)
             {
-                UnitCastleMovment(ComputerCastle, drogaList.Last(), drogaList[patchLenght-1].Coordinations);
+                UnitCastleMovment(ComputerCastle, pathway.Last(), pathway[patchLenght-1].Coordinations);
 
             }
             
@@ -182,15 +128,21 @@ public class PatchControler : MonoBehaviour
         int movementDistance = unit.ReturnMovmentDistance();
 
         int freeDistance = movementDistance;
+       
         for (int i = movementDistance; i >= 1; i--)
         {
+           
             if (0 > position - i)
             {
                 freeDistance--;
             }
-            else if (drogaList[position - i].jednostka != null)
+            else if (pathway[position - i].jednostka != null)
             {
-                freeDistance = i - 1;
+                if (pathway[position - i].jednostka.GetComponent<UnitStatistic>().ReturnHp()>0)
+                {
+                    freeDistance = i - 1;
+                }
+               
             }
 
         }
@@ -211,9 +163,9 @@ public class PatchControler : MonoBehaviour
             {
                 return null;
             }
-            if (drogaList[i].jednostka != null)
+            if (pathway[i].jednostka != null)
             {
-                return drogaList[i].jednostka;
+                return pathway[i].jednostka;
             }
         }
 
@@ -232,10 +184,10 @@ public class PatchControler : MonoBehaviour
         {
 
 
-            if ((drogaList[i].jednostka != null) && (drogaList[i].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
+            if ((pathway[i].jednostka != null) && (pathway[i].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit()))
             {
 
-                GameObject unit = drogaList[i].jednostka;
+                GameObject unit = pathway[i].jednostka;
                 var unitStatisctis = unit.GetComponent<UnitStatistic>();
                 GameObject enemy = PlayerUnitCheckAttackReach(unitStatisctis, i);
 
@@ -257,7 +209,7 @@ public class PatchControler : MonoBehaviour
                     {
 
 
-                        drogaList[ii + 1].jednostka = drogaList[ii].jednostka;
+                        pathway[ii + 1].jednostka = pathway[ii].jednostka;
                         Vector3 nextTile;
                         if (ii+1==patchLenght)
                         {
@@ -265,10 +217,10 @@ public class PatchControler : MonoBehaviour
                         }
                         else
                         {
-                            nextTile = drogaList[ii + 2].Coordinations;
+                            nextTile = pathway[ii + 2].Coordinations;
                         }
-                        UnitMovment(drogaList[ii + 1].Coordinations, drogaList[ii].jednostka, nextTile);
-                        drogaList[ii].jednostka = null;
+                        UnitMovment(pathway[ii + 1].Coordinations, pathway[ii].jednostka, nextTile);
+                        pathway[ii].jednostka = null;
                     }
 
 
@@ -278,49 +230,45 @@ public class PatchControler : MonoBehaviour
         }
         if (PlayerCastle.jednostka != null)// movs from castle
         {
-            if (drogaList[0].jednostka != null)
+            if (pathway[0].jednostka != null)
             {
-                if (!drogaList[0].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit())
+                if (!pathway[0].jednostka.GetComponent<UnitStatistic>().IsThisPlayerUnit())
                 {
-                    UnitAttack(PlayerCastle.jednostka, drogaList[0].jednostka);
+                    UnitAttack(PlayerCastle.jednostka, pathway[0].jednostka);
                 }
 
 
             }
-            if (drogaList[0].jednostka == null || drogaList[0].jednostka.GetComponent<UnitStatistic>().ReturnHp()<=0)
+            if (pathway[0].jednostka == null || pathway[0].jednostka.GetComponent<UnitStatistic>().ReturnHp()<=0)
             {
-                UnitCastleMovment(PlayerCastle, drogaList[0], drogaList[1].Coordinations);
+                UnitCastleMovment(PlayerCastle, pathway[0], pathway[1].Coordinations);
 
             }
         }
         
     }
 
-    void PlayerUnitAttack(UnitStatistic unit)
-    {
-        Debug.Log("Moja Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ zamkowi");
-    }
-    void PlayerUnitAttack(UnitStatistic unit, GameObject target)
-    {
-        Debug.Log("Moja Jednostka zadaje " + unit.ReturnDamage() + " obrarzeñ jednostce");
-        target.GetComponent<UnitStatistic>().DamageTaken(unit.ReturnDamage());
-    }
-
-
+   
     int PlayerUnitMovmentDistance(UnitStatistic unit, int position)
     {
         int movementDistance = unit.ReturnMovmentDistance();
 
         int freeDistance = movementDistance;
+        
         for (int i = movementDistance; i >= 1; i--)
         {
+           
             if (patchLenght < position + i)
             {
                 freeDistance--;
             }
-            else if (drogaList[position + i].jednostka != null)
+            else if (pathway[position + i].jednostka != null )
             {
-                freeDistance = i - 1;
+                if (pathway[position + i].jednostka.GetComponent<UnitStatistic>().ReturnHp() > 0)
+                {
+                    freeDistance = i - 1;
+                }
+                
             }
 
         }
@@ -341,9 +289,9 @@ public class PatchControler : MonoBehaviour
             {
                 return null;
             }
-            if (drogaList[i].jednostka != null)
+            if (pathway[i].jednostka != null)
             {
-                return drogaList[i].jednostka;
+                return pathway[i].jednostka;
             }
         }
 
@@ -362,13 +310,13 @@ public class PatchControler : MonoBehaviour
     void UnitAttack(GameObject unit)
     {
         UnitStatistic unitStat = unit.GetComponent<UnitStatistic>();
-        Debug.Log("Moja Jednostka zadaje " + unitStat.ReturnDamage() + " obrarzeñ zamkowi");
+        Debug.Log("Jednostka zadaje " + unitStat.ReturnDamage() + " obrarzeñ zamkowi");
     }
     void UnitAttack(GameObject unit, GameObject target)
     {
         
         UnitStatistic unitStats = unit.GetComponent<UnitStatistic>();
-        Debug.Log("Moja Jednostka zadaje " + unitStats.ReturnDamage() + " obrarzeñ jednostce");
+        Debug.Log("Jednostka zadaje " + unitStats.ReturnDamage() + " obrarzeñ jednostce");
         target.GetComponent<UnitStatistic>().DamageTaken(unitStats.ReturnDamage());        
     }
 
@@ -389,7 +337,7 @@ public class PatchControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
 

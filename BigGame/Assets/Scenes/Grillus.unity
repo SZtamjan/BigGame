@@ -5525,6 +5525,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4114810896226165581, guid: 4feac798c0f1da4408ba89094ed1ae93, type: 3}
   m_PrefabInstance: {fileID: 1326995504}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1748670125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748670123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479033ce1ae9e9d4f8e6d86b57d47700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  defenceArmaments: []
 --- !u!4 &1754553025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5746083340184466966, guid: d8d8a7b42da1b0841a5262df217fe0b0, type: 3}
@@ -6571,6 +6585,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1756893352}
+    - target: {fileID: 4340605472721432590, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: StartHex
+      value: 
+      objectReference: {fileID: 1791967594}
+    - target: {fileID: 7203101441182389874, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7203101441182389875, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: StartHex
       value: 
@@ -6600,6 +6622,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7203101441182389875, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: pathwayDebug.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203101441182389875, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: Castles.Array.data[0].castle
       value: 
       objectReference: {fileID: 1748670123}
@@ -6615,6 +6641,14 @@ PrefabInstance:
       propertyPath: EvilgigaPrefab
       value: 
       objectReference: {fileID: 4721894399120368837, guid: ad0cb6f6d9ef0c348974ee175c10bf0f, type: 3}
+    - target: {fileID: 7203101441182389883, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: devMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203101441182389883, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: playerTurn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8742569726464788414, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_RootOrder
       value: 2

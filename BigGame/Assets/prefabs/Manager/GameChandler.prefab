@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c29425afb8b2f54596d06ed9b5369fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 7203101441182389874}
 --- !u!1 &7203101441182389874
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,16 +53,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7203101441182389877}
+  - component: {fileID: 7203101441182389883}
   - component: {fileID: 7203101441182389876}
   - component: {fileID: 7203101441182389875}
-  - component: {fileID: 7203101441182389883}
+  - component: {fileID: 4340605472721432590}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7203101441182389877
 Transform:
   m_ObjectHideFlags: 0
@@ -79,6 +79,24 @@ Transform:
   m_Father: {fileID: 8742569726464788414}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7203101441182389883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203101441182389874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b6662e11a6ed3449fc5a911ae83cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  hexGrid: {fileID: 1292401085693881687}
+  playerTurn: 1
+  devMode: 0
+  turnCounter: 1
+  turnDisplay: {fileID: 4644443948765878707}
 --- !u!114 &7203101441182389876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,17 +123,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912622da7b78ca8439b5dc2fa8465cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexGrid: {fileID: 1292401085693881680}
-  StartHex: {fileID: 0}
   PlayerCastle:
     castle: {fileID: 0}
     jednostka: {fileID: 0}
   ComputerCastle:
     castle: {fileID: 0}
     jednostka: {fileID: 0}
-  drogaList: []
+  pathwayDebug: []
   patchLenght: 0
---- !u!114 &7203101441182389883
+--- !u!114 &4340605472721432590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,11 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7203101441182389874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b6662e11a6ed3449fc5a911ae83cf6, type: 3}
+  m_Script: {fileID: 11500000, guid: 890d968906b88584c81c8febd4935003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTurn: 1
-  devMode: 0
+  hexGrid: {fileID: 1292401085693881680}
+  StartHex: {fileID: 0}
 --- !u!1 &8742569726464788415
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +330,11 @@ PrefabInstance:
 --- !u!224 &2713488898283971328 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5432969980136831270, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+  m_PrefabInstance: {fileID: 7984308949388368422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4644443948765878707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3366888797414556565, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
   m_PrefabInstance: {fileID: 7984308949388368422}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8742569726141028916

@@ -10,18 +10,16 @@ public class HexGrid : MonoBehaviour
     Dictionary<Vector3Int, Hex> hexTileDict = new Dictionary<Vector3Int, Hex>();
     Dictionary<Vector3Int, List<Vector3Int>> hexTileNeighbourDict = new Dictionary<Vector3Int, List<Vector3Int>>();
 
-    [Header("")]
-    [SerializeField]
-    GameObject gameManager;
+    
 
-    void Start()
+    public void GenerateHexGrid()
     {
         foreach (var hex in FindObjectsOfType<Hex>())
         {
             hexTileDict[hex.HexCoords] = hex;
         }
 
-       gameManager.SetActive(true);
+      
 
     }
 

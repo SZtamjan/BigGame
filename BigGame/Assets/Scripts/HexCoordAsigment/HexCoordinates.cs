@@ -9,7 +9,7 @@ using UnityEngine;
 public class HexCoordinates : MonoBehaviour
 {
     public static float xOffset = 0.86f, yOffset = 1, zOffset = 0.75f;
-
+    public static Vector3 offSet =new Vector3(xOffset, yOffset, zOffset);
     internal Vector3Int GetHexCoords()=>offsetCoordinates;
     
 
@@ -17,7 +17,7 @@ public class HexCoordinates : MonoBehaviour
     [SerializeField]
     private Vector3Int offsetCoordinates;
 
-
+    
 
     private void Awake()
     {

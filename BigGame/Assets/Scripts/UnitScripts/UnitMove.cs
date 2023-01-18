@@ -15,8 +15,9 @@ public class UnitMove : MonoBehaviour
 
 
     public float speed = 1f;
+
     
-    
+
     void Update()
     {
         
@@ -71,7 +72,10 @@ public class UnitMove : MonoBehaviour
 
     public void AddToDestination(Vector3 place, Vector3 nextTile)
     {
+        place.y = 0.14f;
+        nextTile.y = 0.14f;
         posAndRot addToQ = new posAndRot() { pos = place, rot = nextTile };
+        
         destination.Add(addToQ);
        
     }
