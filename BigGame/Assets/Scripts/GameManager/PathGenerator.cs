@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using static PatchControler;
 using static HexCoordinates;
+using static DrogaClass;
 
 public class PathGenerator : MonoBehaviour
 {
@@ -73,3 +74,5 @@ public class PathGenerator : MonoBehaviour
     }
 
 }
+
+

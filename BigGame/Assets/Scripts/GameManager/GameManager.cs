@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static PatchControler;
 
 public class GameManager : MonoBehaviour
@@ -14,16 +15,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject hexGrid;
 
-
-
-    [Header("Kto zaczyna")]   
+    [Header("Kto zaczyna")]
     public bool playerTurn = true;
     public bool devMode = false;
-    public int turnCounter=1;
+    public static int turnCounter = 1;
     public GameObject turnDisplay;
-    public int x = 1;
+    public GameObject turnButton;
+    public int x;
+    public GameObject aiCompom;
+   
 
-    
+
 
     public static event Action<GameState> onGameStateChange;
 
@@ -35,14 +37,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateGameState(GameState.Start);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {turnCounter}";
-        
+
 
     }
 
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Lose:
                 break;
-           
+
             default:
                 break;
         }
@@ -79,21 +81,24 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(AiMoveCoroutine());
         }
-        
+
     }
 
     IEnumerator AiMoveCoroutine()
     {
-        yield return new WaitForSeconds(.3f);
-        if (x%6==0)
+        
+        if (turnCounter % 6 == 0)
         {
             gameObject.GetComponent<SpawnerScript>().SpawnEnemyUnit();
-            yield return new WaitForSeconds(.5f);
+            
         }
-        x++;       
+
         ComputerTurnEnd();
-        
-        yield return null;
+        print(Time.time);
+        yield return new WaitForSecondsRealtime(1);
+        print(Time.time);
+        turnButton.GetComponent<Button>().interactable = true;
+
     }
     private void GenerateHexGrid()
     {
@@ -106,14 +111,17 @@ public class GameManager : MonoBehaviour
         {
             GameManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
-        
+
     }
 
     void StartingFunction()
     {
 
         hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
+
+
         GameManager.instance.UpdateGameState(GameState.MapGeneration);
+        gameObject.GetComponent<PatchControler>().StartPath();
     }
 
 
@@ -143,7 +151,7 @@ public class GameManager : MonoBehaviour
     }
 
     public bool ReturnTurn()
-    {        
+    {
         return playerTurn;
     }
 
@@ -158,25 +166,32 @@ public class GameManager : MonoBehaviour
             GetComponent<PatchControler>().PlayerUnitMove();
 
             turnCounter++;
+            if (!devMode)
+            {
+                turnButton.GetComponent<Button>().interactable = false;
+            }
+            
+
             GameManager.instance.UpdateGameState(GameState.EnemyTurn);
 
         }
-        
-        
+
+
 
     }
 
     public void ComputerTurnEnd()
     {
-        
+
         if (CanComputerMove())
-        {            
+        {
             playerTurn = true;
             GetComponent<PatchControler>().ComputerUnitMove();
             GameManager.instance.UpdateGameState(GameState.PlayerTurn);
         }
-       
-    }    
+
+        
+    }
 
     public enum GameState
     {

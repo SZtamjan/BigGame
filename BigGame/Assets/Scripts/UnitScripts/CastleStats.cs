@@ -1,29 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CastleClass;
 
 public class CastleStats : MonoBehaviour
 {
-    [System.Serializable]
-    public class Defences
-    {
-        int damage;
-        int reach;
-    }
-
-    
 
 
     [Header("Statystyki ")]
     [SerializeField]
     int hp = 100;
 
-    public List<Defences> defenceArmaments;
+    public List<CastleArmaments> defenceArmaments;
 
 
     private void Start()
     {
-        defenceArmaments = new List<Defences>();
+        defenceArmaments = new List<CastleArmaments>();
     }
 
     public int ReturnHp()
@@ -31,7 +24,7 @@ public class CastleStats : MonoBehaviour
         return hp;
     }
 
-    public void addDefenceArmaments(Defences arnaments)
+    public void addDefenceArmaments(CastleArmaments arnaments)
     {
         defenceArmaments.Add(arnaments);
     }

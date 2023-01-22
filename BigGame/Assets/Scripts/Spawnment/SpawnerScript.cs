@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static CastleClass;
 
 public class SpawnerScript : MonoBehaviour
 {
     public GameObject gigaPrefab;
     public GameObject EvilGigaPrefab;
-    public static GameObject spawner;
+    
 
     private void Start()
     {
-        spawner = GetComponent<GameObject>();
+        
     }
 
     public void SpawnMyUnit()
@@ -68,7 +69,7 @@ public class SpawnerScript : MonoBehaviour
         return newObject;
 
     }
-    public void PutToList(GameObject unit, PatchControler.Castle miejsce)
+    public void PutToList(GameObject unit, Castle miejsce)
     {
         miejsce.jednostka = unit;
     }
