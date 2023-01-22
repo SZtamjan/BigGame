@@ -5,11 +5,11 @@ using UnityEngine;
 public class UnitControler : MonoBehaviour
 {
     public UnitScriptableObjects unitScriptableObjects;
-    private int hp;
-    private int damage;
-    private int movmentDistance;
-    private int attackReach;
-    private bool playersUnit;
+    public int hp;
+    public int damage;
+    public int movmentDistance;
+    public int attackReach;
+    public bool playersUnit;
 
     private void Start()
     {

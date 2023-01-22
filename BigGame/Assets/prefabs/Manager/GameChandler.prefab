@@ -96,9 +96,9 @@ MonoBehaviour:
   playerTurn: 1
   devMode: 0
   turnDisplay: {fileID: 4644443948765878707}
+  turnButton: {fileID: 5068909889161450537}
   x: 0
   aiCompom: {fileID: 0}
-  turnButton: {fileID: 5068909889161450537}
 --- !u!114 &7203101441182389876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +210,30 @@ PrefabInstance:
     - target: {fileID: 2448312525355953603, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SpawnMyUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936651493720255589, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936651493720255589, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936651493720255589, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936651493720255589, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936651493720255589, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -396
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936651493720255589, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3097126466848209848, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

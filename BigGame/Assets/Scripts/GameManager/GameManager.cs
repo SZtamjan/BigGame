@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
     public static int turnCounter = 1;
     public GameObject turnDisplay;
     public GameObject turnButton;
-    public int x;
     public GameObject aiCompom;
-   
+    public int ileSekundCzekac = 1;
+
 
 
 
@@ -60,9 +60,11 @@ public class GameManager : MonoBehaviour
                 GenerateHexGrid();
                 break;
             case GameState.PlayerTurn:
+                turnButton.GetComponent<Button>().interactable = true;
                 break;
             case GameState.EnemyTurn:
-                AiMove();
+                turnButton.GetComponent<Button>().interactable = false;
+                EnemyMove();
                 break;
             case GameState.Victory:
                 break;
@@ -75,11 +77,12 @@ public class GameManager : MonoBehaviour
 
         onGameStateChange?.Invoke(newState);
     }
-    public void AiMove()
+    public void EnemyMove()
     {
         if (!devMode)
         {
             StartCoroutine(AiMoveCoroutine());
+
         }
 
     }
@@ -87,18 +90,19 @@ public class GameManager : MonoBehaviour
     IEnumerator AiMoveCoroutine()
     {
         
-        if (turnCounter % 6 == 0)
+
+        yield return new WaitForSeconds(ileSekundCzekac);
+        if (turnCounter % 1 == 0)
         {
             gameObject.GetComponent<SpawnerScript>().SpawnEnemyUnit();
-            
+
         }
 
+        
         ComputerTurnEnd();
-        print(Time.time);
-        yield return new WaitForSecondsRealtime(1);
-        print(Time.time);
-        turnButton.GetComponent<Button>().interactable = true;
+        yield return new WaitForSeconds(ileSekundCzekac);
 
+        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
     }
     private void GenerateHexGrid()
     {
@@ -114,7 +118,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void StartingFunction()
+    private void StartingFunction()
     {
 
         hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
@@ -166,11 +170,11 @@ public class GameManager : MonoBehaviour
             GetComponent<PatchControler>().PlayerUnitMove();
 
             turnCounter++;
-            if (!devMode)
-            {
-                turnButton.GetComponent<Button>().interactable = false;
-            }
-            
+            //if (!devMode)
+            //{
+            //    turnButton.GetComponent<Button>().interactable = false;
+            //}
+
 
             GameManager.instance.UpdateGameState(GameState.EnemyTurn);
 
@@ -187,10 +191,10 @@ public class GameManager : MonoBehaviour
         {
             playerTurn = true;
             GetComponent<PatchControler>().ComputerUnitMove();
-            GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+
         }
 
-        
+
     }
 
     public enum GameState
