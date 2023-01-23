@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4721894399120368838}
   - component: {fileID: -526276150656640007}
+  - component: {fileID: 4941914840598872977}
   m_Layer: 0
   m_Name: Giga
   m_TagString: Untagged
@@ -46,11 +47,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c62465ebe359864893fad9f823eff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHP: 100
+  unitScriptableObjects: {fileID: 11400000, guid: cac1ebd836d2f974fb1f2cf627c4b03c, type: 2}
+  hp: 0
   damage: 10
   movmentDistance: 1
   attackReach: 1
   playersUnit: 1
+--- !u!114 &4941914840598872977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721894399120368837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0981cfe98c75d4b8d39960562f25f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: []
+  speed: 1
 --- !u!1001 &1672396389401863934
 PrefabInstance:
   m_ObjectHideFlags: 0

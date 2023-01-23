@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4721894399120368838}
   - component: {fileID: -526276150656640007}
+  - component: {fileID: 1373876392475222894}
   m_Layer: 0
   m_Name: EvilGiga
   m_TagString: Untagged
@@ -46,11 +47,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c62465ebe359864893fad9f823eff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHP: 100
+  unitScriptableObjects: {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
+  hp: 0
   damage: 10
   movmentDistance: 1
   attackReach: 1
   playersUnit: 0
+--- !u!114 &1373876392475222894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721894399120368837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0981cfe98c75d4b8d39960562f25f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: []
+  speed: 1
 --- !u!1001 &4721894398332830050
 PrefabInstance:
   m_ObjectHideFlags: 0

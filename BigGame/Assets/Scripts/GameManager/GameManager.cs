@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     public static int turnCounter = 1;
     public GameObject turnDisplay;
     public GameObject turnButton;
-    public GameObject aiCompom;
-    public int ileSekundCzekac = 1;
+    public float ileSekundCzekac = 0.75f;
+    public int coIleTurAiSpawn = 5;
 
 
 
@@ -60,9 +60,11 @@ public class GameManager : MonoBehaviour
                 GenerateHexGrid();
                 break;
             case GameState.PlayerTurn:
+                playerTurn = true;
                 turnButton.GetComponent<Button>().interactable = true;
                 break;
             case GameState.EnemyTurn:
+                playerTurn = false;
                 turnButton.GetComponent<Button>().interactable = false;
                 EnemyMove();
                 break;
@@ -84,6 +86,10 @@ public class GameManager : MonoBehaviour
             StartCoroutine(AiMoveCoroutine());
 
         }
+        else
+        {
+            GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+        }
 
     }
 
@@ -92,7 +98,7 @@ public class GameManager : MonoBehaviour
         
 
         yield return new WaitForSeconds(ileSekundCzekac);
-        if (turnCounter % 1 == 0)
+        if (turnCounter % coIleTurAiSpawn == 0)
         {
             gameObject.GetComponent<SpawnerScript>().SpawnEnemyUnit();
 
@@ -166,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         if (CanPlayerMove())
         {
-            playerTurn = false;
+            
             GetComponent<PatchControler>().PlayerUnitMove();
 
             turnCounter++;
@@ -189,9 +195,9 @@ public class GameManager : MonoBehaviour
 
         if (CanComputerMove())
         {
-            playerTurn = true;
+            
             GetComponent<PatchControler>().ComputerUnitMove();
-
+            
         }
 
 

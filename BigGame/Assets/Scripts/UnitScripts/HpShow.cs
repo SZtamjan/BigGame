@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HP : MonoBehaviour
+public class HpShow : MonoBehaviour
 {
 
     private Image Healthbar;
@@ -17,7 +17,7 @@ public class HP : MonoBehaviour
     {
         //Find
         Healthbar = GetComponent<Image>();
-        MaxHealth = unit.GetComponent<UnitStatistic>().ReturnHp();
+        MaxHealth = unit.GetComponent<UnitControler>().ReturnHp();
 
         atCam = Camera.main.transform;
     }
@@ -26,7 +26,7 @@ public class HP : MonoBehaviour
     {
         transform.LookAt(atCam.position);
 
-        CurrentHealth = unit.GetComponent<UnitStatistic>().ReturnHp();
+        CurrentHealth = unit.GetComponent<UnitControler>().ReturnHp();
         Healthbar.fillAmount = 1.0f * CurrentHealth / MaxHealth;
     }
 

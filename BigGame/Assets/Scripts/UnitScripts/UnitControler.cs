@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitControler : MonoBehaviour
-{
+{   
     public UnitScriptableObjects unitScriptableObjects;
+    [Header("Statystyki tylko do odczytu")]
     public int hp;
     public int damage;
     public int movmentDistance;
