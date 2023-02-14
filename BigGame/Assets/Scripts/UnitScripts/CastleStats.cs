@@ -29,6 +29,15 @@ public class CastleStats : MonoBehaviour
         defenceArmaments.Add(arnaments);
     }
 
+    public void DamageTaken(int obtained)
+    {
+        hp -= obtained;
+
+        if (hp <= 0)
+        {
+            Debug.Log("KoniecGry");
+        }
+    }
 
 
 }

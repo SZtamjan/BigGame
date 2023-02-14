@@ -57,7 +57,7 @@ public class PatchControler : MonoBehaviour
                 else if ((i - unitStatisctis.ReturnattackReach() < 0))
                 {
                     Debug.Log("Enemy w Zamek");
-                    UnitAttack(unit);
+                    UnitAttack(unit, PlayerCastle.castle.GetComponent<CastleStats>());
 
                 }
 
@@ -188,7 +188,7 @@ public class PatchControler : MonoBehaviour
                 else if ((i + unitStatisctis.ReturnattackReach() > pathLenght))
                 {
                     Debug.Log("Ja w Zamek");
-                    UnitAttack(unit);
+                    UnitAttack(unit, ComputerCastle.castle.GetComponent<CastleStats>());
 
                 }
 
@@ -295,17 +295,20 @@ public class PatchControler : MonoBehaviour
         jednostka.GetComponent<UnitMove>().AddToDestination(coordinations, nextTile);
     }
 
-    void UnitAttack(GameObject unit)
+    void UnitAttack(GameObject unit, CastleStats castle) // w zamek atak
     {
         UnitControler unitStat = unit.GetComponent<UnitControler>();
-        Debug.Log("Jednostka zadaje " + unitStat.ReturnDamage() + " obrarzeñ zamkowi");
+        int damage = unitStat.ReturnDamage();
+        Debug.Log("Jednostka zadaje " + damage + " obrarzeñ zamkowi");        
+        castle.DamageTaken(damage);
     }
-    void UnitAttack(GameObject unit, GameObject target)
+    void UnitAttack(GameObject unit, GameObject target) // w jednostke atak
     {
 
         UnitControler unitStats = unit.GetComponent<UnitControler>();
-        Debug.Log("Jednostka zadaje " + unitStats.ReturnDamage() + " obrarzeñ jednostce");
-        target.GetComponent<UnitControler>().DamageTaken(unitStats.ReturnDamage());
+        int damage = unitStats.ReturnDamage();
+        Debug.Log("Jednostka zadaje " + damage + " obrarzeñ jednostce");        
+        target.GetComponent<UnitControler>().DamageTaken(damage);
     }
 
     void UnitCastleMovment(Castle castle, Droga miejsce, Vector3 nextTile)
