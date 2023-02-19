@@ -60,30 +60,27 @@ public class PatchControler : MonoBehaviour
                     UnitAttack(unit, PlayerCastle.castle.GetComponent<CastleStats>());
 
                 }
-
-                int movmentDistance = ComputerUnitMovmentDistance(unitStatisctis, i);
-                for (int ii = i; ii > i - movmentDistance; ii--)
+                else
                 {
-
-                    Vector3 nextTile;
-                    pathway[ii - 1].jednostka = pathway[ii].jednostka;
-                    if (ii - 1 == 0)
+                    int movmentDistance = ComputerUnitMovmentDistance(unitStatisctis, i);
+                    for (int ii = i; ii > i - movmentDistance; ii--)
                     {
-                        nextTile = PlayerCastle.castle.transform.position;
-                    }
-                    else
-                    {
-                        nextTile = pathway[ii - 2].Coordinations;
-                    }
 
-                    UnitMovment(pathway[ii - 1].Coordinations, pathway[ii].jednostka, nextTile);
-                    pathway[ii].jednostka = null;
+                        Vector3 nextTile;
+                        pathway[ii - 1].jednostka = pathway[ii].jednostka;
+                        if (ii - 1 == 0)
+                        {
+                            nextTile = PlayerCastle.castle.transform.position;
+                        }
+                        else
+                        {
+                            nextTile = pathway[ii - 2].Coordinations;
+                        }
+
+                        UnitMovment(pathway[ii - 1].Coordinations, pathway[ii].jednostka, nextTile);
+                        pathway[ii].jednostka = null;
+                    }
                 }
-
-
-
-
-
             }
         }
         // movment for castle
@@ -195,29 +192,28 @@ public class PatchControler : MonoBehaviour
                     UnitAttack(unit, ComputerCastle.castle.GetComponent<CastleStats>());
 
                 }
-
-                int movmentDistance = PlayerUnitMovmentDistance(unitStatisctis, i);
-                for (int ii = i; ii < i + movmentDistance; ii++)
+                else
                 {
+                    int movmentDistance = PlayerUnitMovmentDistance(unitStatisctis, i);
+                    for (int ii = i; ii < i + movmentDistance; ii++)
+                    {
 
 
-                    pathway[ii + 1].jednostka = pathway[ii].jednostka;
-                    Vector3 nextTile;
-                    if (ii + 1 == pathLenght)
-                    {
-                        nextTile = ComputerCastle.castle.transform.position;
+                        pathway[ii + 1].jednostka = pathway[ii].jednostka;
+                        Vector3 nextTile;
+                        if (ii + 1 == pathLenght)
+                        {
+                            nextTile = ComputerCastle.castle.transform.position;
+                        }
+                        else
+                        {
+                            nextTile = pathway[ii + 2].Coordinations;
+                        }
+                        UnitMovment(pathway[ii + 1].Coordinations, pathway[ii].jednostka, nextTile);
+                        pathway[ii].jednostka = null;
                     }
-                    else
-                    {
-                        nextTile = pathway[ii + 2].Coordinations;
-                    }
-                    UnitMovment(pathway[ii + 1].Coordinations, pathway[ii].jednostka, nextTile);
-                    pathway[ii].jednostka = null;
                 }
-
-
-
-
+                
             }
         }
         if (PlayerCastle.jednostka != null)// movs from castle
