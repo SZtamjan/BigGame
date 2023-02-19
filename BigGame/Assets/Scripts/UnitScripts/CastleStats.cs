@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CastleClass;
+using static GameManager;
 
 public class CastleStats : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CastleStats : MonoBehaviour
     int hp = 100;
 
     public List<CastleArmaments> defenceArmaments;
+
+    public bool isMyCastle = true;
 
 
     private void Start()
@@ -29,6 +32,24 @@ public class CastleStats : MonoBehaviour
         defenceArmaments.Add(arnaments);
     }
 
+    public void DamageTaken(int obtained)
+    {
+        hp -= obtained;
+
+        if (hp <= 0)
+        {
+            Debug.Log("KoniecGry");
+            if (!isMyCastle)
+            {
+                GameManager.instance.UpdateGameState(GameState.Victory);
+            }
+            else
+            {
+                GameManager.instance.UpdateGameState(GameState.Lose);
+            }
+        }
+
+    }
 
 
 }

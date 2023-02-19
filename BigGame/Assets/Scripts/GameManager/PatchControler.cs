@@ -57,33 +57,30 @@ public class PatchControler : MonoBehaviour
                 else if ((i - unitStatisctis.ReturnattackReach() < 0))
                 {
                     Debug.Log("Enemy w Zamek");
-                    UnitAttack(unit);
+                    UnitAttack(unit, PlayerCastle.castle.GetComponent<CastleStats>());
 
                 }
-
-                int movmentDistance = ComputerUnitMovmentDistance(unitStatisctis, i);
-                for (int ii = i; ii > i - movmentDistance; ii--)
+                else
                 {
-
-                    Vector3 nextTile;
-                    pathway[ii - 1].jednostka = pathway[ii].jednostka;
-                    if (ii - 1 == 0)
+                    int movmentDistance = ComputerUnitMovmentDistance(unitStatisctis, i);
+                    for (int ii = i; ii > i - movmentDistance; ii--)
                     {
-                        nextTile = PlayerCastle.castle.transform.position;
-                    }
-                    else
-                    {
-                        nextTile = pathway[ii - 2].Coordinations;
-                    }
 
-                    UnitMovment(pathway[ii - 1].Coordinations, pathway[ii].jednostka, nextTile);
-                    pathway[ii].jednostka = null;
+                        Vector3 nextTile;
+                        pathway[ii - 1].jednostka = pathway[ii].jednostka;
+                        if (ii - 1 == 0)
+                        {
+                            nextTile = PlayerCastle.castle.transform.position;
+                        }
+                        else
+                        {
+                            nextTile = pathway[ii - 2].Coordinations;
+                        }
+
+                        UnitMovment(pathway[ii - 1].Coordinations, pathway[ii].jednostka, nextTile);
+                        pathway[ii].jednostka = null;
+                    }
                 }
-
-
-
-
-
             }
         }
         // movment for castle
@@ -147,6 +144,10 @@ public class PatchControler : MonoBehaviour
         }
         for (int i = position - 1; i >= position - unit.ReturnattackReach(); i--)
         {
+            if (i<0)
+            {
+                return null;
+            }
             if (position - 1 < 0)
             {
                 return null;
@@ -188,32 +189,31 @@ public class PatchControler : MonoBehaviour
                 else if ((i + unitStatisctis.ReturnattackReach() > pathLenght))
                 {
                     Debug.Log("Ja w Zamek");
-                    UnitAttack(unit);
+                    UnitAttack(unit, ComputerCastle.castle.GetComponent<CastleStats>());
 
                 }
-
-                int movmentDistance = PlayerUnitMovmentDistance(unitStatisctis, i);
-                for (int ii = i; ii < i + movmentDistance; ii++)
+                else
                 {
+                    int movmentDistance = PlayerUnitMovmentDistance(unitStatisctis, i);
+                    for (int ii = i; ii < i + movmentDistance; ii++)
+                    {
 
 
-                    pathway[ii + 1].jednostka = pathway[ii].jednostka;
-                    Vector3 nextTile;
-                    if (ii + 1 == pathLenght)
-                    {
-                        nextTile = ComputerCastle.castle.transform.position;
+                        pathway[ii + 1].jednostka = pathway[ii].jednostka;
+                        Vector3 nextTile;
+                        if (ii + 1 == pathLenght)
+                        {
+                            nextTile = ComputerCastle.castle.transform.position;
+                        }
+                        else
+                        {
+                            nextTile = pathway[ii + 2].Coordinations;
+                        }
+                        UnitMovment(pathway[ii + 1].Coordinations, pathway[ii].jednostka, nextTile);
+                        pathway[ii].jednostka = null;
                     }
-                    else
-                    {
-                        nextTile = pathway[ii + 2].Coordinations;
-                    }
-                    UnitMovment(pathway[ii + 1].Coordinations, pathway[ii].jednostka, nextTile);
-                    pathway[ii].jednostka = null;
                 }
-
-
-
-
+                
             }
         }
         if (PlayerCastle.jednostka != null)// movs from castle
@@ -295,17 +295,20 @@ public class PatchControler : MonoBehaviour
         jednostka.GetComponent<UnitMove>().AddToDestination(coordinations, nextTile);
     }
 
-    void UnitAttack(GameObject unit)
+    void UnitAttack(GameObject unit, CastleStats castle) // w zamek atak
     {
         UnitControler unitStat = unit.GetComponent<UnitControler>();
-        Debug.Log("Jednostka zadaje " + unitStat.ReturnDamage() + " obrarzeñ zamkowi");
+        int damage = unitStat.ReturnDamage();
+        Debug.Log("Jednostka zadaje " + damage + " obrarzeñ zamkowi");        
+        castle.DamageTaken(damage);
     }
-    void UnitAttack(GameObject unit, GameObject target)
+    void UnitAttack(GameObject unit, GameObject target) // w jednostke atak
     {
 
         UnitControler unitStats = unit.GetComponent<UnitControler>();
-        Debug.Log("Jednostka zadaje " + unitStats.ReturnDamage() + " obrarzeñ jednostce");
-        target.GetComponent<UnitControler>().DamageTaken(unitStats.ReturnDamage());
+        int damage = unitStats.ReturnDamage();
+        Debug.Log("Jednostka zadaje " + damage + " obrarzeñ jednostce");        
+        target.GetComponent<UnitControler>().DamageTaken(damage);
     }
 
     void UnitCastleMovment(Castle castle, Droga miejsce, Vector3 nextTile)
