@@ -147,6 +147,10 @@ public class PatchControler : MonoBehaviour
         }
         for (int i = position - 1; i >= position - unit.ReturnattackReach(); i--)
         {
+            if (i<0)
+            {
+                return null;
+            }
             if (position - 1 < 0)
             {
                 return null;

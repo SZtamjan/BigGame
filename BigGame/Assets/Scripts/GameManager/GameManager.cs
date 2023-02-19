@@ -20,9 +20,11 @@ public class GameManager : MonoBehaviour
     public bool devMode = false;
     public static int turnCounter = 1;
     public GameObject turnDisplay;
+    public GameObject endScreen;
     public GameObject turnButton;
     public float ileSekundCzekac = 0.75f;
     public int coIleTurAiSpawn = 5;
+   
 
 
 
@@ -69,8 +71,10 @@ public class GameManager : MonoBehaviour
                 EnemyMove();
                 break;
             case GameState.Victory:
+                ShowVictoryScreen();
                 break;
             case GameState.Lose:
+                ShowLoseScreen();
                 break;
 
             default:
@@ -79,6 +83,19 @@ public class GameManager : MonoBehaviour
 
         onGameStateChange?.Invoke(newState);
     }
+
+    private void ShowLoseScreen()
+    {
+        endScreen.SetActive(true);
+        endScreen.GetComponent<TextMeshProUGUI>().text = "DEFEAT";
+    }
+
+    private void ShowVictoryScreen()
+    {
+        endScreen.SetActive(true);
+        endScreen.GetComponent<TextMeshProUGUI>().text = "VICTORY";
+    }
+
     public void EnemyMove()
     {
         if (!devMode)
@@ -126,7 +143,7 @@ public class GameManager : MonoBehaviour
 
     private void StartingFunction()
     {
-
+        endScreen.SetActive(false);
         hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
 
 
