@@ -5,12 +5,14 @@ using UnityEngine;
 public class UnitControler : MonoBehaviour
 {   
     public UnitScriptableObjects unitScriptableObjects;
+    public GameObject hpbar;
     [Header("Statystyki tylko do odczytu")]
     public int hp;
     public int damage;
     public int movmentDistance;
     public int attackReach;
     public bool playersUnit;
+
 
     private void Start()
     {
@@ -19,6 +21,8 @@ public class UnitControler : MonoBehaviour
         movmentDistance = unitScriptableObjects.movmentDistance;
         attackReach = unitScriptableObjects.attackReach;
         playersUnit = unitScriptableObjects.playersUnit;
+
+        hpbar.GetComponent<HpUnitsShow>().MaxHP(hp);
 
     }
     public int ReturnHp()
@@ -52,6 +56,7 @@ public class UnitControler : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
     }
 
 
