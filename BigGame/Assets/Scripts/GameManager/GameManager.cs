@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState state;
+    public static GameObject _this;
 
     [Header("Starting Hex Grid Function")]
     [SerializeField]
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _this = gameObject;
         instance = this;
     }
 
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
             case GameState.Lose:
                 ShowLoseScreen();
                 break;
-
+           
             default:
                 break;
         }
@@ -228,6 +230,7 @@ public class GameManager : MonoBehaviour
         EnemyTurn,
         Victory,
         Lose
+       
     }
 
     // Start is called before the first frame update
