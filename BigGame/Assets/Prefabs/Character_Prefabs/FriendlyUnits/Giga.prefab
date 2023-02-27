@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitScriptableObjects: {fileID: 11400000, guid: cac1ebd836d2f974fb1f2cf627c4b03c, type: 2}
+  hpbar: {fileID: 9148518249831355487}
   hp: 0
   damage: 10
   movmentDistance: 1
@@ -78,22 +79,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1764608137538969019, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4753795198023060626, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4797977062339489550, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
       propertyPath: unit
       value: 
       objectReference: {fileID: 4721894399120368837}
-    - target: {fileID: 4797977062339489550, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7621105725289394849, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
       propertyPath: m_Name
       value: HPCanvas
@@ -186,13 +179,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4797977062339489550, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
+--- !u!1 &5648472281665063138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6437592454609301020, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
+  m_PrefabInstance: {fileID: 1672396389401863934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9074507803880341523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7699654955040106221, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
   m_PrefabInstance: {fileID: 1672396389401863934}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9148518249831355487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7621105725289394849, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
+  m_PrefabInstance: {fileID: 1672396389401863934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6653103989399753928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148518249831355487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34502036694cbee45a1f152265c9e4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpbar: {fileID: 5648472281665063138}
+  atCam: {fileID: 0}
 --- !u!1001 &4721894398332830050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247,10 +265,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b5e192b1089e1554980af9889cc6ec9f, type: 3}
       propertyPath: m_Name
       value: rycerz__prototyp__
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: b5e192b1089e1554980af9889cc6ec9f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e192b1089e1554980af9889cc6ec9f, type: 3}
