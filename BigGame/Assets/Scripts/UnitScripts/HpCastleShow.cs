@@ -8,9 +8,6 @@ public class HpCastleShow : MonoBehaviour
 {
     public Slider slider;
 
-    public GameObject hpGetter;
-
-    
 
     public void SetMaxHealth(int health)
     {

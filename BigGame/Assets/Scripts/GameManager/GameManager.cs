@@ -74,9 +74,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Victory:
                 ShowVictoryScreen();
+                StopGame();
                 break;
             case GameState.Lose:
                 ShowLoseScreen();
+                StopGame();
                 break;
            
             default:
@@ -84,6 +86,11 @@ public class GameManager : MonoBehaviour
         }
 
         onGameStateChange?.Invoke(newState);
+    }
+
+    private void StopGame()
+    {
+        turnButton.GetComponent<Button>().interactable = false;
     }
 
     private void ShowLoseScreen()
@@ -194,12 +201,7 @@ public class GameManager : MonoBehaviour
             
             GetComponent<PatchControler>().PlayerUnitMove();
 
-            turnCounter++;
-            //if (!devMode)
-            //{
-            //    turnButton.GetComponent<Button>().interactable = false;
-            //}
-
+            turnCounter++;     
 
             GameManager.instance.UpdateGameState(GameState.EnemyTurn);
 
