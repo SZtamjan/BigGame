@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18371253, g: 0.2281209, b: 0.29892272, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13331,14 +13331,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294697804}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.1945797, y: -0.20289548, z: 0.16068962, w: 0.9461242}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.684, y: -20.893, z: 14.465}
 --- !u!1 &1295810800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4265240243564638209, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
@@ -22270,6 +22270,10 @@ PrefabInstance:
       propertyPath: Castles.Array.data[1].castle
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7203101441182389876, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: gigaPrefab
+      value: 
+      objectReference: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
     - target: {fileID: 7203101441182389876, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: EvilGigaPrefab
       value: 

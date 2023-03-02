@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        turnCounter = 1;
         UpdateGameState(GameState.Start);
 
     }

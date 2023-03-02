@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitMove : MonoBehaviour
 {
+
     [System.Serializable]
     private class posAndRot
     {
@@ -16,7 +17,19 @@ public class UnitMove : MonoBehaviour
 
     public float speed = 1f;
 
+    private Animator myAnim;
 
+    public bool playWalk = true;
+    public bool playIdle = false;
+
+    public bool attack = false;
+    public bool die = false;
+
+    private void Start()
+    {
+        myAnim = GetComponent<Animator>();
+       
+    }
 
     void Update()
     {
@@ -43,7 +56,7 @@ public class UnitMove : MonoBehaviour
 
             else if (Vector3.Distance(transform.position, destination[0].pos) < 0.2f)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position), 5f * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position), 20f * Time.deltaTime);
 
 
                 float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position));
@@ -61,10 +74,51 @@ public class UnitMove : MonoBehaviour
 
         }
 
+      
+        if (myAnim!=null)
+        {
+            if (destination.Count>0&& playWalk)
+            {
+                myAnim.SetTrigger("walk");
+                playWalk = false;
+                playIdle = true;
 
+            }
+            else if (destination.Count>0)
+            {
 
+            }
+            else if (playIdle)
+            {
+                myAnim.SetTrigger("idle");
+                playWalk = true;
+                playIdle = false;
 
+            }
+        }
+        
 
+        if (myAnim!=null && die)
+        {
+            if (die)
+            {
+                myAnim.SetTrigger("die");
+                
+            }
+            die = false;
+
+        }
+
+        if (myAnim != null && attack)
+        {
+            if (attack)
+            {
+                myAnim.SetTrigger("attack");
+
+            }
+            attack = false;
+
+        }
 
 
 
