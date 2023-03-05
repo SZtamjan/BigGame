@@ -9,6 +9,6 @@ public class BuildingCard : MonoBehaviour
     public void StartBulding()
     {
 
-        GameManager._this.GetComponent<Building>().StartBuilding(stucture, gameObject);
+        GameManager.gameManager.GetComponent<Building>().StartBuilding(stucture, gameObject);
     }
 }

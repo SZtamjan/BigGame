@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState state;
-    public static GameObject _this;
+    public static GameObject gameManager;
 
     [Header("Starting Hex Grid Function")]
     [SerializeField]
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _this = gameObject;
+        gameManager = gameObject;
         instance = this;
     }
 

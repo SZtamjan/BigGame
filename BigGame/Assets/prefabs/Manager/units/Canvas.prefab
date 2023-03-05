@@ -1218,6 +1218,7 @@ GameObject:
   - component: {fileID: 3272849220849175603}
   - component: {fileID: 9146083863652398216}
   - component: {fileID: 3097126466848209848}
+  - component: {fileID: 2743705437554683417}
   m_Layer: 5
   m_Name: Button-Jednostka1 (2)
   m_TagString: Untagged
@@ -1340,6 +1341,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2743705437554683417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3033413328202129540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
 --- !u!1 &3366888797414556565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1772,7 @@ GameObject:
   - component: {fileID: 1783081292692944770}
   - component: {fileID: 6627110711160835627}
   - component: {fileID: 2448312525355953603}
+  - component: {fileID: 572638049063611460}
   m_Layer: 5
   m_Name: Button-Jednostka1
   m_TagString: Untagged
@@ -1880,6 +1895,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &572638049063611460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5496283607336534726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
 --- !u!1 &6196068843389643303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2440,7 @@ GameObject:
   - component: {fileID: 2030262519986681942}
   - component: {fileID: 1433714208902449296}
   - component: {fileID: 6242226069286687135}
+  - component: {fileID: 3817248452750299801}
   m_Layer: 5
   m_Name: Button-Jednostka1 (1)
   m_TagString: Untagged
@@ -2534,6 +2563,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3817248452750299801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956584205031806865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
 --- !u!1 &8598679831833296578
 GameObject:
   m_ObjectHideFlags: 0

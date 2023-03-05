@@ -16,7 +16,7 @@ public class UnitMove : MonoBehaviour
 
 
     public float speed = 1f;
-
+    public float angle;
     private Animator myAnim;
 
     public bool playWalk = true;
@@ -28,7 +28,7 @@ public class UnitMove : MonoBehaviour
     private void Start()
     {
         myAnim = GetComponent<Animator>();
-       
+
     }
 
     void Update()
@@ -40,10 +40,10 @@ public class UnitMove : MonoBehaviour
 
 
 
-            if (destination.Count > 1 && Vector3.Distance(transform.position, destination[0].pos) < 1f && Vector3.Distance(transform.position, destination[0].pos) < 0.8f)
+            if (destination.Count > 1 && Vector3.Distance(transform.position, destination[0].pos) < 1f && Vector3.Distance(transform.position, destination[0].pos) < 0.2f)
             {
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position), 5f * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position), 8f * Time.deltaTime);
 
 
 
@@ -54,12 +54,18 @@ public class UnitMove : MonoBehaviour
                 }
             }
 
-            else if (Vector3.Distance(transform.position, destination[0].pos) < 0.2f)
+            else if (Vector3.Distance(transform.position, destination[0].pos) < 0.1f)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position), 20f * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position), 10f * Time.deltaTime );
 
 
-                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position));
+                angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(destination[0].rot - transform.position));
+
+                if (playIdle && Vector3.Distance(transform.position, destination[0].pos) < 0.13f && angle >= 3f)
+                {
+                    playWalk = false;
+                    myAnim.SetTrigger("idle");
+                }
 
                 if (angle < 0.1f && Vector3.Distance(transform.position, destination[0].pos) < 0.01f)
                 {
@@ -67,24 +73,21 @@ public class UnitMove : MonoBehaviour
                 }
 
 
-
-
-
             }
 
         }
 
-      
-        if (myAnim!=null)
+
+        if (myAnim != null)
         {
-            if (destination.Count>0&& playWalk)
+            if (destination.Count > 0 && playWalk)
             {
                 myAnim.SetTrigger("walk");
                 playWalk = false;
                 playIdle = true;
 
             }
-            else if (destination.Count>0)
+            else if (destination.Count > 0)
             {
 
             }
@@ -96,14 +99,14 @@ public class UnitMove : MonoBehaviour
 
             }
         }
-        
 
-        if (myAnim!=null && die)
+
+        if (myAnim != null && die)
         {
             if (die)
             {
                 myAnim.SetTrigger("die");
-                
+
             }
             die = false;
 

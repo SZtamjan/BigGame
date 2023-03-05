@@ -7,16 +7,14 @@ using static CastleClass;
 
 public class SpawnerScript : MonoBehaviour
 {
-    public GameObject gigaPrefab;
-    public GameObject EvilGigaPrefab;
-    
+    public GameObject EvilGigaPrefab;    
 
     private void Start()
     {
         
     }
 
-    public void SpawnMyUnit()
+    public void SpawnMyUnit(GameObject unit)
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         { 
@@ -27,7 +25,7 @@ public class SpawnerScript : MonoBehaviour
                 float y = 0.5f;
                 float z = gdzie.castle.transform.position.z;
 
-                GameObject putToList = SpawnObjectAtLocation(x, y, z, 90,gigaPrefab);
+                GameObject putToList = SpawnObjectAtLocation(x, y, z, 90, unit);
                 PutToList(putToList, gdzie);
             }
             else
