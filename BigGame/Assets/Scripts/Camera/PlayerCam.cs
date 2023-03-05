@@ -12,10 +12,13 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+
     //Zoom
+    /*
     public float zoomSpeed = 1.0f;
     public float minFOV = 10.0f;
     public float maxFOV = 60.0f;
+    */
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +36,6 @@ public class PlayerCam : MonoBehaviour
 
         xRotation -= mouseY;
 
-        //Limit rotation - old
-        //xRotation = Mathf.Clamp(xRotation, 20f, 65f);
-        //yRotation = Mathf.Clamp(yRotation, -15f, 15f);
 
         //Limit rotation - static
         xRotation = Mathf.Clamp(xRotation, 60f, 60f);
@@ -44,7 +44,11 @@ public class PlayerCam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
+
+
+
         //Zoom
+        /*
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0)
         {
@@ -52,8 +56,12 @@ public class PlayerCam : MonoBehaviour
             fov -= scroll * zoomSpeed;
             fov = Mathf.Clamp(fov, minFOV, maxFOV);
             Camera.main.fieldOfView = fov;
-        }
+        }*/
 
 
     }
+
+
+
+
 }
