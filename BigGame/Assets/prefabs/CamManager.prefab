@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5718863954631345886}
   - component: {fileID: 5718863954631345881}
+  - component: {fileID: 7854445865443957143}
   - component: {fileID: 5718863954631345880}
   - component: {fileID: 5718863954631345883}
   m_Layer: 0
@@ -55,6 +56,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   orientation: {fileID: 5718863956545681320}
+--- !u!114 &7854445865443957143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718863954631345884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b219619d4775cf49b1e7379323f9e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 10
+  zoomMin: 60
+  zoomMax: 90
 --- !u!54 &5718863954631345880
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -267,9 +283,6 @@ MonoBehaviour:
   sensX: 400
   sensY: 400
   orientation: {fileID: 5718863956545681320}
-  zoomSpeed: 20
-  minFOV: 50
-  maxFOV: 90
 --- !u!1 &5718863955288922904
 GameObject:
   m_ObjectHideFlags: 0

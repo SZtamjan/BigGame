@@ -831,6 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: []
   speed: 0.5
+  angle: 0
   playWalk: 1
   playIdle: 0
   attack: 0
@@ -4465,6 +4466,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1764608137538969019, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4753795198023060626, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -4576,24 +4581,5 @@ RectTransform:
 --- !u!1 &5747741489843528367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7621105725289394849, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
-  m_PrefabInstance: {fileID: 2740316308786909198}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4203245971544134130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5747741489843528367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34502036694cbee45a1f152265c9e4e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpbar: {fileID: 9174222850071789074}
-  atCam: {fileID: 0}
---- !u!1 &9174222850071789074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6437592454609301020, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
   m_PrefabInstance: {fileID: 2740316308786909198}
   m_PrefabAsset: {fileID: 0}
