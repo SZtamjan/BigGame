@@ -1465,9 +1465,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnerScript, Assembly-CSharp
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 2743705437554683417}
+        m_TargetAssemblyTypeName: SpawnUnitCard, Assembly-CSharp
+        m_MethodName: SpawnUnit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1774,6 +1774,7 @@ GameObject:
   - component: {fileID: 6310614226384157075}
   - component: {fileID: 2346841476541881587}
   - component: {fileID: 9130204939034184444}
+  - component: {fileID: 8316907828966809520}
   m_Layer: 5
   m_Name: Button-Jednostka1 (3)
   m_TagString: Untagged
@@ -1884,9 +1885,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnerScript, Assembly-CSharp
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 8316907828966809520}
+        m_TargetAssemblyTypeName: BuildingCard, Assembly-CSharp
+        m_MethodName: StartBulding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1896,6 +1897,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8316907828966809520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678691704998636932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df1a80a3380fc44f883716dd4be27a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stucture: {fileID: 29919056458180626, guid: 89081469f1c321840b21eecb0ae09375, type: 3}
 --- !u!1 &5496283607336534726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,9 +2033,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnerScript, Assembly-CSharp
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 572638049063611460}
+        m_TargetAssemblyTypeName: SpawnUnitCard, Assembly-CSharp
+        m_MethodName: SpawnUnit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2043,7 +2057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
+  Unit: {fileID: 4721894399120368837, guid: 7027855f06a62d94882c8317f14ac6ad, type: 3}
 --- !u!1 &6196068843389643303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,9 +2701,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnerScript, Assembly-CSharp
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 3817248452750299801}
+        m_TargetAssemblyTypeName: SpawnUnitCard, Assembly-CSharp
+        m_MethodName: SpawnUnit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4312813338356591050}
   - component: {fileID: 897882587421255279}
   - component: {fileID: 3139321464299213477}
+  - component: {fileID: 4988607385338720839}
   m_Layer: 0
   m_Name: hex_flat_gravel
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4988607385338720839
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499825007264002928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8562928185355181518, guid: 20e19425ae500e04e8a9118caff08ed1, type: 3}

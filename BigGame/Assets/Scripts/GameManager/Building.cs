@@ -50,6 +50,7 @@ public class Building : MonoBehaviour
             {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
+                var x = Physics.Raycast(ray);
                 if (Physics.Raycast(ray,out hit,100,mask))
                 {
                     Debug.Log("I hit something");
