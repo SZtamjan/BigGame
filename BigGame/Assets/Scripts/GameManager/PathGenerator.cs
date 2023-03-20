@@ -12,13 +12,13 @@ public class PathGenerator : MonoBehaviour
     public HexGrid hexGrid;
     public GameObject StartHex;
     private Vector3 offsets = offSet;
-    // Start is called before the first frame update
+
     public void PatchGenerator()
     {
         List<Vector3Int> controlLista = new();
 
         Vector3Int cordy = StartHex.GetComponent<HexCoordinates>().GetHexCoords();
-        Droga testDroga = new Droga() { Coordinations = TrueCoorde(cordy), jednostka = null };
+        Droga testDroga = new Droga() { coordinations = TrueCoorde(cordy), unit = null };
         pathway.Add(testDroga);
         controlLista.Add(cordy);
 
@@ -33,7 +33,7 @@ public class PathGenerator : MonoBehaviour
                 if (!controlLista.Contains(item))
                 {
                     controlLista.Add(item);
-                    pathway.Add(new Droga { Coordinations = TrueCoorde(item), jednostka = null });
+                    pathway.Add(new Droga { coordinations = TrueCoorde(item), unit = null });
 
                 }
 

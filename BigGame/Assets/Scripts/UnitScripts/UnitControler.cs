@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitControler : MonoBehaviour
-{   
+{
     public UnitScriptableObjects unitScriptableObjects;
     public GameObject hpbar;
+   
     [Header("Statystyki tylko do odczytu")]
-    public int hp;
-    public int damage;
-    public int movmentDistance;
-    public int attackReach;
-    public bool playersUnit;
+    [SerializeField] private int hp;
+    [SerializeField] private int damage;
+    [SerializeField] private int movmentDistance;
+    [SerializeField] private int attackReach;
+    [SerializeField] private bool playersUnit;
 
-
+    private Animator animator;
     private void Start()
     {
         hp = unitScriptableObjects.hp;
@@ -23,8 +24,10 @@ public class UnitControler : MonoBehaviour
         playersUnit = unitScriptableObjects.playersUnit;
 
         hpbar.GetComponent<HpUnitsShow>().MaxHP(hp);
+        animator = GetComponent<Animator>();
 
     }
+    #region return stats
     public int ReturnHp()
     {
         return hp;
@@ -39,14 +42,18 @@ public class UnitControler : MonoBehaviour
     {
         return movmentDistance;
     }
+
     public int ReturnattackReach()
     {
         return attackReach;
     }
+
     public bool IsThisPlayerUnit()
     {
         return playersUnit;
     }
+
+    #endregion
 
     public void DamageTaken(int obtained)
     {
@@ -54,12 +61,39 @@ public class UnitControler : MonoBehaviour
 
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            animator.SetBool("death", true);
+            Destroy(gameObject, 8f);
         }
+        Invoke("playHurt", 0.8f);
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
     }
 
 
 
+    #region Play Animation
 
+    public void playMove()
+    {
+        animator.SetTrigger("walk");
+        StartCoroutine(GetComponent<UnitMove>().MoveThisUnit());
+    }
+    public void playAttack()
+    {
+        animator.SetTrigger("attack");
+    }
+    public void playHurt()
+    {
+
+        animator.SetTrigger("hurt");
+    }
+
+
+
+
+    #endregion
+
+    public void MoveUnit(Vector3 pos, Vector3 rot)
+    {
+        gameObject.GetComponent<UnitMove>().AddToDestination(pos, rot);
+    }
 }

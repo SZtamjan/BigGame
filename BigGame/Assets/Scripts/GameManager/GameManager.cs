@@ -9,8 +9,8 @@ using static PatchControler;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public GameState state;
     public static GameObject gameManager;
+    public GameState state;
 
     [Header("Starting Hex Grid Function")]
     [SerializeField]
@@ -23,11 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject turnDisplay;
     public GameObject endScreen;
     public GameObject turnButton;
-    public float ileSekundCzekac = 0.75f;
     public int coIleTurAiSpawn = 5;
-   
-
-
 
 
     public static event Action<GameState> onGameStateChange;
@@ -48,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {turnCounter}";
+
 
 
     }
@@ -65,23 +61,17 @@ public class GameManager : MonoBehaviour
                 GenerateHexGrid();
                 break;
             case GameState.PlayerTurn:
-                playerTurn = true;
-                turnButton.GetComponent<Button>().interactable = true;
+                GameStatePlayerTurn();
                 break;
             case GameState.EnemyTurn:
-                playerTurn = false;
-                turnButton.GetComponent<Button>().interactable = false;
-                EnemyMove();
+                GameStateEnemyTurn();
                 break;
             case GameState.Victory:
-                ShowVictoryScreen();
-                StopGame();
+                GameStateVictory();
                 break;
             case GameState.Lose:
-                ShowLoseScreen();
-                StopGame();
+                GameStateLose();
                 break;
-           
             default:
                 break;
         }
@@ -89,9 +79,70 @@ public class GameManager : MonoBehaviour
         onGameStateChange?.Invoke(newState);
     }
 
-    private void StopGame()
+
+    #region  GamaState Functions
+
+    private void StartingFunction()
+    {
+        endScreen.SetActive(false);
+
+        GameManager.instance.UpdateGameState(GameState.MapGeneration);
+
+    }
+
+    private void GenerateHexGrid()
+    {
+        hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
+
+        gameObject.GetComponent<PathGenerator>().PatchGenerator();
+        gameObject.GetComponent<PatchControler>().StartPath();
+
+        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+
+    }
+
+    private void GameStatePlayerTurn()
+    {
+        updateTurnShower();
+        playerTurn = true;
+        Invoke("ActivateTurnButton", devMode ? 0f : 1f);
+    }
+
+    private void GameStateEnemyTurn()
+    {
+        playerTurn = false;
+        EnemyMove();
+        turnCounter++;
+    }
+
+    private void GameStateVictory()
+    {
+        ShowVictoryScreen();
+        StopGame();
+    }
+
+    private void GameStateLose()
+    {
+        ShowLoseScreen();
+        StopGame();
+    }
+
+    #endregion
+
+    void DisableTurnButton()
     {
         turnButton.GetComponent<Button>().interactable = false;
+    }
+
+    void ActivateTurnButton()
+    {
+        turnButton.GetComponent<Button>().interactable = true;
+    }
+
+
+    private void StopGame()
+    {
+        DisableTurnButton();
     }
 
     private void ShowLoseScreen()
@@ -110,7 +161,7 @@ public class GameManager : MonoBehaviour
     {
         if (!devMode)
         {
-            StartCoroutine(AiMoveCoroutine());
+            GetComponent<PatchControler>().ComputerUnitPhaze();
 
         }
         else
@@ -120,46 +171,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    IEnumerator AiMoveCoroutine()
-    {
-        
-
-        yield return new WaitForSeconds(ileSekundCzekac);
-        if (turnCounter % coIleTurAiSpawn == 0)
-        {
-            gameObject.GetComponent<SpawnerScript>().SpawnEnemyUnit();
-
-        }
-
-        
-        ComputerTurnEnd();
-        yield return new WaitForSeconds(ileSekundCzekac);
-
-        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
-    }
-    private void GenerateHexGrid()
-    {
-        gameObject.GetComponent<PathGenerator>().PatchGenerator();
-        if (playerTurn)
-        {
-            GameManager.instance.UpdateGameState(GameState.PlayerTurn);
-        }
-        else
-        {
-            GameManager.instance.UpdateGameState(GameState.EnemyTurn);
-        }
-
-    }
-
-    private void StartingFunction()
-    {
-        endScreen.SetActive(false);
-        hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
-
-
-        GameManager.instance.UpdateGameState(GameState.MapGeneration);
-        gameObject.GetComponent<PatchControler>().StartPath();
-    }
 
 
     public bool CanPlayerMove()
@@ -174,6 +185,7 @@ public class GameManager : MonoBehaviour
         }
         return playerTurn;
     }
+
     public bool CanComputerMove()
     {
         if (devMode)
@@ -187,29 +199,13 @@ public class GameManager : MonoBehaviour
         return !playerTurn;
     }
 
-    public bool ReturnTurn()
-    {
-        return playerTurn;
-    }
-
-
-
     public void PlayerTurnEnd()
     {
-
         if (CanPlayerMove())
         {
-            
-            GetComponent<PatchControler>().PlayerUnitMove();
-
-            turnCounter++;     
-
-            GameManager.instance.UpdateGameState(GameState.EnemyTurn);
-
+            DisableTurnButton();
+            GetComponent<PatchControler>().PlayerUnitPhase();
         }
-
-
-
     }
 
     public void ComputerTurnEnd()
@@ -217,13 +213,19 @@ public class GameManager : MonoBehaviour
 
         if (CanComputerMove())
         {
-            
-            GetComponent<PatchControler>().ComputerUnitMove();
-            
+
+            GetComponent<PatchControler>().ComputerUnitPhaze();
+
         }
 
 
     }
+
+    public void updateTurnShower()
+    {
+        turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {turnCounter}";
+    }
+
 
     public enum GameState
     {
@@ -233,9 +235,9 @@ public class GameManager : MonoBehaviour
         EnemyTurn,
         Victory,
         Lose
-       
+
     }
 
-    // Start is called before the first frame update
+
 
 }

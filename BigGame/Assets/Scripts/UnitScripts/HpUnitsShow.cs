@@ -32,7 +32,15 @@ public class HpUnitsShow : MonoBehaviour
             GetComponent<Canvas>().enabled = true;
             Healthbar.fillAmount = 1.0f * hp / MaxHealth;
         }
+        if (hp<=0)
+        {
+            Invoke("DisableHpBar", 1.5f);
+        }
         
+    }
+    public void DisableHpBar()
+    {
+        GetComponent<Canvas>().enabled = false;
     }
 
     public void MaxHP(int maxHP)

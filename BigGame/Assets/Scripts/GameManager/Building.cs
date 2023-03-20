@@ -8,7 +8,7 @@ public class Building : MonoBehaviour
     Camera cam;
     public LayerMask mask;
     public bool isBuilding=false;
-    private GameObject card;
+    //private GameObject card;
     public GameObject parent;
 
     void Start()
@@ -18,13 +18,12 @@ public class Building : MonoBehaviour
 
     public void StartBuilding(GameObject stucture, GameObject _card)
     {
-        card = _card;
         if (GetComponent<GameManager>().CanPlayerMove())
         {
             if (!isBuilding)
             {
                 isBuilding = true;
-                StartCoroutine(whereToBuild(stucture));
+                StartCoroutine(WhereToBuild(stucture,_card));
             }
             else
             {
@@ -42,7 +41,7 @@ public class Building : MonoBehaviour
     }
 
 
-    IEnumerator whereToBuild(GameObject stucture)
+    IEnumerator WhereToBuild(GameObject stucture,GameObject card)
     {
         while (isBuilding)
         {
@@ -50,7 +49,6 @@ public class Building : MonoBehaviour
             {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                var x = Physics.Raycast(ray);
                 if (Physics.Raycast(ray,out hit,100,mask))
                 {
                     Debug.Log("I hit something");
@@ -58,6 +56,7 @@ public class Building : MonoBehaviour
                     Debug.Log(hitObject.name);
                     isBuilding=false;
                     Build(hitObject, stucture);
+                    Destroy(card);
                 }
                 else
                 {
