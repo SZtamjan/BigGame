@@ -185,6 +185,7 @@ public class PatchControler : MonoBehaviour
 
     public void PlayerMoveUnitsOnPath()
     {
+        bool wasThereAttack = false;
         int firstUnit = FirstPlayerUnitPosition() ?? 0;
         for (int i = firstUnit; i >= 0; i--)
         {
@@ -197,10 +198,18 @@ public class PatchControler : MonoBehaviour
                 {
                     continue;
                 }
+                if (!wasThereAttack)
+                {
+                    wasThereAttack = PlayerUnitAttack(i, thisTile, thisUnit, thisUnitController);
+                }
+                else
+                {
+                    PlayerUnitAttack(i, thisTile, thisUnit, thisUnitController);
+                }
 
-                bool wasThereAttack = PlayerUnitAttack(i, thisTile, thisUnit, thisUnitController);
 
-                float timeDelay = wasThereAttack ? 2.8f : 2.8f;
+
+                float timeDelay = wasThereAttack ? 2.8f : 0.8f;
 
                 StartCoroutine(PlayerActualMove(i, thisTile, thisUnit, thisUnitController, timeDelay));
 
@@ -209,6 +218,9 @@ public class PatchControler : MonoBehaviour
             }
 
         }
+
+        PlayerMoveFromCastle();
+
 
     }
     IEnumerator PlayerActualMove(int i, Droga thisTile, GameObject thisUnit, UnitControler thisUnitController, float timeDelay)
@@ -247,7 +259,7 @@ public class PatchControler : MonoBehaviour
         if (thisTile.unit == null)
         {
             yield return new WaitForSeconds(timeDelay);
-            thisUnitController.playMove();
+            thisUnitController.PlayMove();
         }
         yield return null;
     }
@@ -290,6 +302,7 @@ public class PatchControler : MonoBehaviour
 
     public void ComputerMoveUnitsOnPath()
     {
+        bool wasThereAttack = false;
         int firstUnit = FirstComputerUnitPosition() ?? 0;
         for (int i = firstUnit; i <= pathLenght; i++)
         {
@@ -302,15 +315,23 @@ public class PatchControler : MonoBehaviour
                 {
                     continue;
                 }
+                if (!wasThereAttack)
+                {
+                    wasThereAttack = ComputerUnitAttack(i, thisTile, thisUnit, thisUnitController);
+                }
+                else
+                {
+                    ComputerUnitAttack(i, thisTile, thisUnit, thisUnitController);
+                }
 
-                bool wasThereAttack = ComputerUnitAttack(i, thisTile, thisUnit, thisUnitController);
-                float timeDelay = wasThereAttack ? 2.8f : 2.8f;
+
+                float timeDelay = wasThereAttack ? 2.8f : 0.8f;
 
                 StartCoroutine(ComputerActualMove(i, thisTile, thisUnit, thisUnitController, timeDelay));
 
             }
         }
-
+        ComputerMoveFromCastle();
     }
 
     IEnumerator ComputerActualMove(int i, Droga thisTile, GameObject thisUnit, UnitControler thisUnitController, float timeDelay)
@@ -345,7 +366,7 @@ public class PatchControler : MonoBehaviour
         if (thisTile.unit == null)
         {
             yield return new WaitForSeconds(timeDelay);
-            thisUnitController.playMove();
+            thisUnitController.PlayMove();
         }
         yield return null;
 
@@ -370,7 +391,7 @@ public class PatchControler : MonoBehaviour
             }
             if (PlayerCastle.jednostka == null)
             {
-                thisUnitController.playMove();
+                thisUnitController.PlayMove();
             }
         }
     }
@@ -392,7 +413,7 @@ public class PatchControler : MonoBehaviour
             }
             if (ComputerCastle.jednostka == null)
             {
-                thisUnitController.playMove();
+                thisUnitController.PlayMove();
             }
         }
 
@@ -527,7 +548,7 @@ public class PatchControler : MonoBehaviour
     private void Attack(UnitControler unit, CastleStats target) // atak w zamek
     {
         int damage = unit.ReturnDamage();
-        unit.playAttack();
+        unit.PlayAttack();
         target.DamageTaken(damage);
 
     }
@@ -535,7 +556,7 @@ public class PatchControler : MonoBehaviour
     private bool Attack(UnitControler unit, UnitControler target) // atakw w jednostkê
     {
         int damage = unit.ReturnDamage();
-        unit.playAttack();
+        unit.PlayAttack();
         target.DamageTaken(damage);
 
         return target.ReturnHp() <= 0;
@@ -546,14 +567,17 @@ public class PatchControler : MonoBehaviour
 
     public void ComputerUnitPhaze()
     {
+
         StartCoroutine(ComputerUnitAction());
     }
 
     IEnumerator ComputerUnitAction()
     {
 
+        yield return null;
         ComputerMoveUnitsOnPath();
-        ComputerMoveFromCastle();
+
+
 
         yield return null;
         GameManager.instance.UpdateGameState(GameManager.GameState.PlayerTurn);
@@ -570,7 +594,7 @@ public class PatchControler : MonoBehaviour
     IEnumerator PlayerUnitsAction()
     {
         PlayerMoveUnitsOnPath();
-        PlayerMoveFromCastle();
+
 
         yield return new WaitForSeconds(1f);
         GameManager.instance.UpdateGameState(GameManager.GameState.EnemyTurn);

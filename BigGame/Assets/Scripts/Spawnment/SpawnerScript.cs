@@ -7,19 +7,19 @@ using static CastleClass;
 
 public class SpawnerScript : MonoBehaviour
 {
-    public GameObject EvilGigaPrefab;    
+    public GameObject EvilGigaPrefab;
 
     private void Start()
     {
-        
+
     }
 
     public void SpawnMyUnit(GameObject unit)
     {
         if (GetComponent<GameManager>().CanPlayerMove())
-        { 
+        {
             var gdzie = GetComponent<PatchControler>().PlayerCastle;
-            if (gdzie.jednostka==null)
+            if (gdzie.jednostka == null)
             {
                 float x = gdzie.castle.transform.position.x;
                 float y = 0.5f;
@@ -35,26 +35,25 @@ public class SpawnerScript : MonoBehaviour
         }
     }
 
-   
+
     public void SpawnEnemyUnit()
     {
-        if (GetComponent<GameManager>().CanComputerMove())
-        {
-            var gdzie = GetComponent<PatchControler>().ComputerCastle;
-            if (gdzie.jednostka == null)
-            {
-                float x = gdzie.castle.transform.position.x;
-                float y = 0.5f;
-                float z = gdzie.castle.transform.position.z;
 
-                GameObject putToList = SpawnObjectAtLocation(x, y, z, -90, EvilGigaPrefab);
-                PutToList(putToList, gdzie);
-            }
-            else
-            {
-                Debug.Log("Miejsce zajête");
-            }
+        var gdzie = GetComponent<PatchControler>().ComputerCastle;
+        if (gdzie.jednostka == null)
+        {
+            float x = gdzie.castle.transform.position.x;
+            float y = 0.5f;
+            float z = gdzie.castle.transform.position.z;
+
+            GameObject putToList = SpawnObjectAtLocation(x, y, z, -90, EvilGigaPrefab);
+            PutToList(putToList, gdzie);
         }
+        else
+        {
+            Debug.Log("Miejsce zajête");
+        }
+
     }
 
     private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota, GameObject spawn)

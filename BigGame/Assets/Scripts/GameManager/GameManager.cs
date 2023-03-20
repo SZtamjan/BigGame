@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
     private void GameStateEnemyTurn()
     {
         playerTurn = false;
+        
         EnemyMove();
         turnCounter++;
     }
@@ -161,6 +162,10 @@ public class GameManager : MonoBehaviour
     {
         if (!devMode)
         {
+            if (turnCounter%coIleTurAiSpawn==1)
+            {
+                GetComponent<SpawnerScript>().SpawnEnemyUnit();
+            }
             GetComponent<PatchControler>().ComputerUnitPhaze();
 
         }

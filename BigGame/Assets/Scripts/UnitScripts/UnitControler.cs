@@ -64,7 +64,7 @@ public class UnitControler : MonoBehaviour
             animator.SetBool("death", true);
             Destroy(gameObject, 8f);
         }
-        Invoke("playHurt", 0.8f);
+        Invoke("PlayHurt", 0.8f);
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
     }
 
@@ -72,16 +72,16 @@ public class UnitControler : MonoBehaviour
 
     #region Play Animation
 
-    public void playMove()
+    public void PlayMove()
     {
         animator.SetTrigger("walk");
         StartCoroutine(GetComponent<UnitMove>().MoveThisUnit());
     }
-    public void playAttack()
+    public void PlayAttack()
     {
         animator.SetTrigger("attack");
     }
-    public void playHurt()
+    public void PlayHurt()
     {
 
         animator.SetTrigger("hurt");
