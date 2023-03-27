@@ -83,7 +83,6 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayHurt()
     {
-
         animator.SetTrigger("hurt");
     }
 

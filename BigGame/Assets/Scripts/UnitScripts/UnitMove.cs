@@ -19,29 +19,12 @@ public class UnitMove : MonoBehaviour
     public float angle;
     private Animator myAnim;
 
-    public bool playWalk = true;
-    public bool playIdle = false;
-
-    public bool attack = false;
-    public bool die = false;
-
     private void Start()
     {
         myAnim = GetComponent<Animator>();
 
     }
-
-    void Update()
-    {
-
-        
-
-
-        
-
-
-
-    }
+       
 
     public IEnumerator MoveThisUnit()
     {
