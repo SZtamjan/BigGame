@@ -795,7 +795,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5262224467928460434}
   - component: {fileID: 7417945024203126914}
-  - component: {fileID: 4288783218377153402}
   - component: {fileID: 2313084954825176907}
   m_Layer: 0
   m_Name: Knight
@@ -842,25 +841,6 @@ MonoBehaviour:
   movmentDistance: 0
   attackReach: 0
   playersUnit: 1
---- !u!114 &4288783218377153402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4777472483807655464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e0981cfe98c75d4b8d39960562f25f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: []
-  speed: 0.5
-  angle: 0
-  playWalk: 1
-  playIdle: 0
-  attack: 0
-  die: 0
 --- !u!95 &2313084954825176907
 Animator:
   serializedVersion: 4

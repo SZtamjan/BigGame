@@ -412,9 +412,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3761988949605504594}
-  - component: {fileID: 7121714728020446248}
   - component: {fileID: 8199983252732270699}
-  - component: {fileID: 9143703041573459823}
+  - component: {fileID: 7121714728020446248}
   m_Layer: 0
   m_Name: Skeleton_Warrior
   m_TagString: Untagged
@@ -442,6 +441,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8199983252732270699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575258820587949288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c62465ebe359864893fad9f823eff0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitScriptableObjects: {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
+  hpbar: {fileID: 6635068166924253637}
+  hp: 0
+  damage: 0
+  movmentDistance: 0
+  attackReach: 0
+  playersUnit: 0
+  isAttacking: 0
 --- !u!95 &7121714728020446248
 Animator:
   serializedVersion: 4
@@ -462,44 +481,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8199983252732270699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575258820587949288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c62465ebe359864893fad9f823eff0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitScriptableObjects: {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
-  hpbar: {fileID: 6635068166924253637}
-  hp: 0
-  damage: 0
-  movmentDistance: 0
-  attackReach: 0
-  playersUnit: 0
---- !u!114 &9143703041573459823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575258820587949288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e0981cfe98c75d4b8d39960562f25f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: []
-  speed: 0.5
-  angle: 0
-  playWalk: 1
-  playIdle: 0
-  attack: 0
-  die: 0
 --- !u!1 &4677500271417211095
 GameObject:
   m_ObjectHideFlags: 0

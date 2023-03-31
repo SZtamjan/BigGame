@@ -19,7 +19,7 @@ public class PathGenerator : MonoBehaviour
 
         Vector3Int cordy = StartHex.GetComponent<HexCoordinates>().GetHexCoords();
         Droga testDroga = new Droga() { coordinations = TrueCoorde(cordy), unit = null };
-        pathway.Add(testDroga);
+        PathWay.Add(testDroga);
         controlLista.Add(cordy);
 
         List<Vector3Int> neighbours = new();
@@ -33,7 +33,7 @@ public class PathGenerator : MonoBehaviour
                 if (!controlLista.Contains(item))
                 {
                     controlLista.Add(item);
-                    pathway.Add(new Droga { coordinations = TrueCoorde(item), unit = null });
+                    PathWay.Add(new Droga { coordinations = TrueCoorde(item), unit = null });
 
                 }
 

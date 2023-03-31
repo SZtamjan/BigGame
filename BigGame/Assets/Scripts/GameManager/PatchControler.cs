@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static CastleClass;
 using static DrogaClass;
 
@@ -13,610 +14,229 @@ public class PatchControler : MonoBehaviour
     public Castle PlayerCastle;
     public Castle ComputerCastle;
 
-    public static List<Droga> pathway = new List<Droga>();
+    public static List<Droga> PathWay = new List<Droga>();
     public List<Droga> pathwayDebug = new List<Droga>();
 
     public int pathLenght;
 
     public void StartPath()
     {
-        pathwayDebug = pathway;
-        pathLenght = pathway.Count - 1;
+        pathwayDebug = PathWay;
+        pathLenght = PathWay.Count - 1;
     }
 
 
-    // ----------------------------------------- OLD CODE
-    #region Move First Units
-    //public void MoveFirstsUnits()
-    //{
-    //    FirstUnitsPathReservation();
+    #region Universal actions
+    public void UnitAttack(UnitControler thisUnit, UnitControler targetUnit)
+    {
+        if (targetUnit != null)
+        {
+            thisUnit.SetTargetToAttack(targetUnit);
+        }
+    }
 
+    public void UnitAttack(UnitControler thisUnit, CastleStats targetUnit)
+    {
+        if (targetUnit != null)
+        {
+            thisUnit.SetTargetToAttack(targetUnit);
+        }
+    }
 
+    public void ClearWantingUnits(bool playerUnit)
+    {
+        foreach (var item in PathWay)
+        {
+            if (item.wantingUnit != null)
+            {
+                if (item.wantingUnit.GetComponent<UnitControler>().IsThisPlayerUnit() == playerUnit)
+                {
+                    item.wantingUnit = null;
+                }
+            }
 
-    //    FirstUnitPlayerMove();
-
-    //    FirstUnitComputerMove();
-
-    //    FirtsUnitReservationClear();
-    //}
-
-    //public void FirstUnitsPathReservation()
-    //{
-    //    #region path reservation
-
-    //    int? firstPlayerPos = FirstPlayerUnitPosition();
-    //    int? firstEnemyPos = FirstComputerUnitPosition();
-
-    //    if (firstPlayerPos != null)
-    //    {
-    //        int playerPos = firstPlayerPos ?? 0;
-    //        var thisUnit = pathway[playerPos].unit;
-    //        var moveDistance = thisUnit.GetComponent<UnitControler>().ReturnMovmentDistance();
-    //        for (int i = 1; i <= moveDistance; i++)
-    //        {
-    //            if (firstPlayerPos + i > pathLenght)
-    //            {
-    //                break;
-    //            }
-    //            pathway[playerPos + i].wantingUnit = thisUnit;
-    //            pathway[playerPos + i].holdPower = i;
-    //        }
-    //    }
-
-
-    //    if (firstEnemyPos != null)
-    //    {
-    //        int enemyPos = firstEnemyPos ?? 0;
-    //        var thisUnit = pathway[enemyPos].unit;
-    //        var moveDistance = thisUnit.GetComponent<UnitControler>().ReturnMovmentDistance();
-    //        for (int i = 1; i <= moveDistance; i++)
-    //        {
-    //            if (enemyPos - i < 0)
-    //            {
-    //                break;
-    //            }
-    //            if (pathway[enemyPos - i].holdPower <= i && pathway[enemyPos - i].holdPower != 0)
-    //            {
-    //                break;
-    //            }
-    //            pathway[enemyPos - i].wantingUnit = thisUnit;
-    //            pathway[enemyPos - i].holdPower = i;
-    //        }
-    //    }
-
-
-    //    #endregion
-    //}
-
-    //public void FirstUnitPlayerMove()
-    //{
-    //    int? firstPlayerPos = FirstPlayerUnitPosition();
-    //    if (firstPlayerPos != null)
-    //    {
-    //        int playerPos = firstPlayerPos ?? 0;
-    //        var thisUnit = pathway[playerPos].unit;
-    //        var moveDistance = thisUnit.GetComponent<UnitControler>().ReturnMovmentDistance();
-    //        for (int i = 1; i <= moveDistance; i++)
-    //        {
-    //            if (playerPos + i > pathLenght)
-    //            {
-    //                break;
-    //            }
-    //            if (pathway[playerPos + i].unit != null)
-    //            {
-    //                break;
-    //            }
-    //            if (pathway[playerPos + i].wantingUnit == thisUnit)
-    //            {
-    //                Vector3 nextTile;
-    //                if (playerPos + i + 1 > pathLenght)
-    //                {
-    //                    nextTile = ComputerCastle.castle.transform.position;
-    //                }
-    //                else
-    //                {
-    //                    nextTile = pathway[playerPos + i + 1].coordinations;
-    //                }
-    //                thisUnit.GetComponent<UnitControler>().MoveUnit(pathway[playerPos + i].coordinations, nextTile);
-    //                pathway[playerPos + i].unit = thisUnit;
-    //                pathway[playerPos + i - 1].unit = null;
-
-    //            }
-    //        }
-
-    //    }
-    //}
-
-    //public void FirstUnitComputerMove()
-    //{
-    //    int? firstEnemyPos = FirstComputerUnitPosition();
-    //    if (firstEnemyPos != null)
-    //    {
-    //        int computerPos = firstEnemyPos ?? 0;
-    //        var thisUnit = pathway[computerPos].unit;
-    //        var moveDistance = thisUnit.GetComponent<UnitControler>().ReturnMovmentDistance();
-    //        for (int i = 1; i <= moveDistance; i++)
-    //        {
-    //            if (computerPos - i < 0)
-    //            {
-    //                break;
-    //            }
-    //            if (pathway[computerPos - i].unit != null)
-    //            {
-    //                break;
-    //            }
-    //            if (pathway[computerPos - i].wantingUnit == thisUnit)
-    //            {
-    //                Vector3 nextTile;
-    //                if (computerPos - i - 1 < 0)
-    //                {
-    //                    nextTile = PlayerCastle.castle.transform.position;
-    //                }
-    //                else
-    //                {
-    //                    nextTile = pathway[computerPos - i - 1].coordinations;
-    //                }
-
-    //                thisUnit.GetComponent<UnitControler>().MoveUnit(pathway[computerPos - i].coordinations, nextTile);
-    //                pathway[computerPos - i].unit = thisUnit;
-    //                pathway[computerPos - i + 1].unit = null;
-
-    //            }
-
-    //        }
-    //    }
-    //}
-
-    //public void FirtsUnitReservationClear()
-    //{
-    //    foreach (var item in pathway)
-    //    {
-    //        item.wantingUnit = null;
-    //        item.holdPower = 0;
-    //    }
-
-    //}
+        }
+    }
 
     #endregion
 
-    //---------------------------------------------
-    #region Rest Units Move 
-
-
-    public void PlayerMoveUnitsOnPath()
+    public void PlayerUnitPhase()
     {
-        bool wasThereAttack = false;
-        int firstUnit = FirstPlayerUnitPosition() ?? 0;
-        for (int i = firstUnit; i >= 0; i--)
-        {
-            var thisTile = pathway[i];
-            if (thisTile.unit != null)
-            {
-                var thisUnit = thisTile.unit;
-                var thisUnitController = thisUnit.GetComponent<UnitControler>();
-                if (!thisUnitController.IsThisPlayerUnit())
-                {
-                    continue;
-                }
-                if (!wasThereAttack)
-                {
-                    wasThereAttack = PlayerUnitAttack(i, thisTile, thisUnit, thisUnitController);
-                }
-                else
-                {
-                    PlayerUnitAttack(i, thisTile, thisUnit, thisUnitController);
-                }
-
-
-
-                float timeDelay = wasThereAttack ? 2.8f : 0.8f;
-
-                StartCoroutine(PlayerActualMove(i, thisTile, thisUnit, thisUnitController, timeDelay));
-
-
-
-            }
-
-        }
-
-        PlayerMoveFromCastle();
-
-
-    }
-    IEnumerator PlayerActualMove(int i, Droga thisTile, GameObject thisUnit, UnitControler thisUnitController, float timeDelay)
-    {
-
-
-        var moveDistance = thisUnitController.ReturnMovmentDistance();
-        Vector3 nextTile;
-
-        for (int ii = 1; ii <= moveDistance; ii++)
-        {
-            if (i + ii > pathLenght)
-            {
-                break;
-            }
-            if (pathway[i + ii].unit != null)
-            {
-                break;
-            }
-            if (i + ii + 1 > pathLenght)
-            {
-                nextTile = ComputerCastle.castle.transform.position;
-            }
-            else
-            {
-                nextTile = pathway[i + ii + 1].coordinations;
-            }
-
-
-            pathway[i + ii - 1].unit = null;
-            pathway[i + ii].unit = thisUnit;
-
-            thisUnitController.MoveUnit(pathway[i + ii].coordinations, nextTile);
-
-        }
-        if (thisTile.unit == null)
-        {
-            yield return new WaitForSeconds(timeDelay);
-            thisUnitController.PlayMove();
-        }
-        yield return null;
+        ClearWantingUnits(true);
+        PlayerUnitPathAction();
+        PlayerUnitCastleAction();        
     }
 
-    public bool PlayerUnitAttack(int i, Droga thisTile, GameObject thisUnit, UnitControler thisUnitController)
-    {
-        var attackReach = thisUnitController.ReturnattackReach();
-        for (int ii = 1; ii <= attackReach; ii++)
-        {
-            if (i + ii > pathLenght)
-            {
-                Attack(thisUnitController, ComputerCastle.castle.GetComponent<CastleStats>());
-                return true;
+    #region Player Units Actions
 
-            }
-            if (pathway[i + ii].unit == null)
+
+    public void PlayerUnitPathAction()
+    {
+        for (int i = pathLenght; i >= 0; i--)
+        {
+            if (PathWay[i].unit == null)
             {
                 continue;
             }
-            if (pathway[i + ii].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
+            if (!PathWay[i].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
             {
                 continue;
             }
 
-            var targetController = pathway[i + ii].unit.GetComponent<UnitControler>();
-            Attack(thisUnitController, targetController);
-            if (targetController.ReturnHp() <= 0)
+            var thisUnit = PathWay[i].unit;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+            var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
+            var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
+
+            bool target = false;
+
+            for (int ii = 1; ii <= thisUnitAttackReach; ii++)
             {
-                pathway[i + ii].unit = null;
-            }
-            return true;
-
-        }
-
-
-
-        return false;
-    }
-
-
-    public void ComputerMoveUnitsOnPath()
-    {
-        bool wasThereAttack = false;
-        int firstUnit = FirstComputerUnitPosition() ?? 0;
-        for (int i = firstUnit; i <= pathLenght; i++)
-        {
-            var thisTile = pathway[i];
-            if (thisTile.unit != null)
-            {
-                var thisUnit = thisTile.unit;
-                var thisUnitController = thisUnit.GetComponent<UnitControler>();
-                if (thisUnitController.IsThisPlayerUnit())
+                if (i + ii > pathLenght)
+                {
+                    UnitAttack(thisUnitController, ComputerCastle.castle.GetComponent<CastleStats>());
+                    target= true;
+                    break;
+                }
+                if (PathWay[i + ii].unit == null)
                 {
                     continue;
                 }
-                if (!wasThereAttack)
+                if (PathWay[ii + i].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
                 {
-                    wasThereAttack = ComputerUnitAttack(i, thisTile, thisUnit, thisUnitController);
+                    continue;
                 }
-                else
-                {
-                    ComputerUnitAttack(i, thisTile, thisUnit, thisUnitController);
-                }
-
-
-                float timeDelay = wasThereAttack ? 2.8f : 0.8f;
-
-                StartCoroutine(ComputerActualMove(i, thisTile, thisUnit, thisUnitController, timeDelay));
-
-            }
-        }
-        ComputerMoveFromCastle();
-    }
-
-    IEnumerator ComputerActualMove(int i, Droga thisTile, GameObject thisUnit, UnitControler thisUnitController, float timeDelay)
-    {
-        var moveDistance = thisUnitController.ReturnMovmentDistance();
-        Vector3 nextTile;
-
-        for (int ii = 1; ii <= moveDistance; ii++)
-        {
-            if (i - ii < 0)
-            {
+                UnitAttack(thisUnitController, PathWay[i + ii].unit.GetComponent<UnitControler>());
+                target = true;
                 break;
             }
-            if (pathway[i - ii].unit != null)
-            {
-                break;
-            }
-            if (i - ii - 1 < 0)
-            {
-                nextTile = PlayerCastle.castle.transform.position;
-            }
-            else
-            {
-                nextTile = pathway[i - ii - 1].coordinations;
-            }
-            pathway[i - ii + 1].unit = null;
-            pathway[i - ii].unit = thisUnit;
 
-            thisUnitController.MoveUnit(pathway[i - ii].coordinations, nextTile);
+
+
+            List<int> positions = new List<int>();
+            PathWay[i].wantingUnit = thisUnit;
+            for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
+            {
+                if (i + ii > pathLenght)
+                {
+                    break;
+                }
+
+                if (PathWay[i + ii].wantingUnit != null)
+                {
+                    break;
+                }
+
+                if (PathWay[i + ii].wantingUnit == null)
+                {
+                    positions.Add(i + ii);
+                    PathWay[i + ii].wantingUnit = thisUnit;
+                    PathWay[i + ii - 1].wantingUnit = null;
+                    continue;
+
+                }
+
+
+
+
+            }
+
+            thisUnitController.SetWaypoints(positions);
+
+            if (!target)
+            {
+                thisUnitController.MoveAction();
+            }
+
 
         }
-        if (thisTile.unit == null)
-        {
-            yield return new WaitForSeconds(timeDelay);
-            thisUnitController.PlayMove();
-        }
-        yield return null;
+
 
     }
-
-
-    #endregion
-
-    #region move from Castle
-    public void PlayerMoveFromCastle()
+    public void PlayerUnitCastleAction()
     {
         if (PlayerCastle.jednostka != null)
         {
+
             var thisUnit = PlayerCastle.jednostka;
             var thisUnitController = thisUnit.GetComponent<UnitControler>();
-            if (pathway[0].unit == null)
+            var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
+            var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
+
+            GameObject target = null;
+
+            for (int i = 0; i < thisUnitAttackReach; i++)
+            {
+                if (i > pathLenght)
+                {
+                    break;
+                }
+                if (PathWay[i].unit == null)
+                {
+                    continue;
+                }
+                if (PathWay[i].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    continue;
+                }
+                target = PathWay[i].unit;
+                break;
+
+            }
+
+            List<int> positions = new List<int>();
+            for (int i = 0; i < thisUnitMoveDistance; i++)
             {
 
-                pathway[0].unit = thisUnit;
-                thisUnitController.MoveUnit(pathway[0].coordinations, pathway[1].coordinations);
+                if (PathWay[i].wantingUnit == null)
+                {
+                    positions.Add(i);
+                    PathWay[i].wantingUnit = thisUnit;
+                }
+                else if (PathWay[i].wantingUnit.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    break;
+                }
+                else if (!PathWay[i].wantingUnit.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    if (PathWay[i].wantingUnit.GetComponent<UnitControler>().ReturnHp() - thisUnitController.ReturnDamage() <= 0)
+                    {
+                        positions.Add(i);
+                        PathWay[i].wantingUnit = thisUnit;
+                    }
+                    break;
+                }
+
+
+
+            }
+
+
+            UnitAttack(thisUnitController, target?.GetComponent<UnitControler>());
+
+            thisUnitController.SetWaypoints(positions);
+
+            if (target == null)
+            {
+                thisUnitController.MoveAction();
+            }
+
+            if ((positions?.Count ?? 0) > 0)
+            {
                 PlayerCastle.jednostka = null;
             }
-            if (PlayerCastle.jednostka == null)
-            {
-                thisUnitController.PlayMove();
-            }
+
         }
     }
 
-    public void ComputerMoveFromCastle()
-    {
-
-
-        if (ComputerCastle.jednostka != null)
-        {
-            var thisUnit = ComputerCastle.jednostka;
-            var thisUnitController = thisUnit.GetComponent<UnitControler>();
-            if (pathway.Last().unit == null)
-            {
-
-                pathway.Last().unit = thisUnit;
-                thisUnitController.MoveUnit(pathway[pathLenght].coordinations, pathway[pathLenght - 1].coordinations);
-                ComputerCastle.jednostka = null;
-            }
-            if (ComputerCastle.jednostka == null)
-            {
-                thisUnitController.PlayMove();
-            }
-        }
-
-    }
 
     #endregion
-
-    int? FirstPlayerUnitPosition()
-    {
-        int? firstPos = null;
-        for (int i = pathLenght; i >= 0; i--)
-        {
-
-            if (pathway[i].unit == null)
-            {
-                continue;
-            }
-            if (pathway[i].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
-            {
-                firstPos = i;
-                break;
-            }
-        }
-        return firstPos;
-    }
-
-    int? FirstComputerUnitPosition()
-    {
-        int? FirstEnemyUnit = null;
-        for (int i = 0; i <= pathLenght; i++)
-        {
-            if (pathway[i].unit == null)
-            {
-                continue;
-            }
-            if (!pathway[i].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
-            {
-                FirstEnemyUnit = i;
-                break;
-            }
-        }
-        int? positions = FirstEnemyUnit;
-
-        return positions;
-    }
-
-    #region Units Attack
-
-
-    // stara funkcja mo¿e pos³u¿y jako karta do u¿ycia do zaakakowania poza tur¹
-    #region 
-    //public void PlayerUnitAttack()
-    //{
-    //    bool didSomeoneAttack = false;
-
-    //    int firstUnit = FirstPlayerUnitPosition() ?? 0;
-    //    for (int i = firstUnit; i >= 0; i--)
-    //    {
-    //        var thisTile = pathway[i];
-    //        if (thisTile.unit != null)
-    //        {
-    //            var thisUnit = thisTile.unit;
-    //            var thisUnitController = thisUnit.GetComponent<UnitControler>();
-
-    //            for (int ii = 1; ii <= thisUnitController.ReturnattackReach(); ii++)
-    //            {
-    //                if (i + ii > pathLenght)
-    //                {
-    //                    Attack(thisUnitController, ComputerCastle.castle.GetComponent<CastleStats>());
-    //                    didSomeoneAttack = true;
-    //                    break;
-    //                }
-    //                if (pathway[i + ii].unit == null)
-    //                {
-    //                    continue;
-    //                }
-    //                if (pathway[i + ii].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
-    //                {
-    //                    continue;
-    //                }
-
-    //                bool toClear = Attack(thisUnitController, pathway[i + ii].unit.GetComponent<UnitControler>());
-    //                if (toClear)
-    //                {
-    //                    pathway[i + ii].unit = null;
-    //                }
-    //                didSomeoneAttack = true;
-    //                break;
-
-    //            }
-
-
-    //        }
-
-    //    }
-
-    //    return didSomeoneAttack;
-    //}
-    #endregion
-
-    public bool ComputerUnitAttack(int i, Droga thisTile, GameObject thisUnit, UnitControler thisUnitController)
-    {
-        var attackReach = thisUnitController.ReturnattackReach();
-        for (int ii = 1; ii <= attackReach; ii++)
-        {
-            if (i - ii < 0)
-            {
-                Attack(thisUnitController, PlayerCastle.castle.GetComponent<CastleStats>());
-                return true;
-            }
-            if (pathway[i - ii].unit == null)
-            {
-                continue;
-            }
-            if (!pathway[i - ii].unit.GetComponent<UnitControler>().IsThisPlayerUnit())
-            {
-                continue;
-            }
-            var targetController = pathway[i - ii].unit.GetComponent<UnitControler>();
-            Attack(thisUnitController, targetController);
-            if (targetController.ReturnHp() <= 0)
-            {
-                pathway[i - ii].unit = null;
-            }
-            return true;
-        }
-
-
-        return false;
-    }
-
-    private void Attack(UnitControler unit, CastleStats target) // atak w zamek
-    {
-        int damage = unit.ReturnDamage();
-        unit.PlayAttack();
-        target.DamageTaken(damage);
-
-    }
-
-    private bool Attack(UnitControler unit, UnitControler target) // atakw w jednostkê
-    {
-        int damage = unit.ReturnDamage();
-        unit.PlayAttack();
-        target.DamageTaken(damage);
-
-        return target.ReturnHp() <= 0;
-    }
-
-    #endregion
-
 
     public void ComputerUnitPhaze()
     {
 
-        StartCoroutine(ComputerUnitAction());
-    }
-
-    IEnumerator ComputerUnitAction()
-    {
-
-        yield return null;
-        ComputerMoveUnitsOnPath();
-
-
-
-        yield return null;
-        GameManager.instance.UpdateGameState(GameManager.GameState.PlayerTurn);
-        yield return null;
-    }
-
-
-
-    public void PlayerUnitPhase()
-    {
-        StartCoroutine(PlayerUnitsAction());
-    }
-
-    IEnumerator PlayerUnitsAction()
-    {
-        PlayerMoveUnitsOnPath();
-
-
-        yield return new WaitForSeconds(1f);
-        GameManager.instance.UpdateGameState(GameManager.GameState.EnemyTurn);
-        yield return null;
-    }
-
-
-
-
-
-
-
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
-
 
 
 }

@@ -11,6 +11,6 @@ public class DrogaClass : MonoBehaviour
         public Vector3 coordinations;
         public GameObject unit;
         public GameObject wantingUnit;
-        public int holdPower;
     }
+
 }

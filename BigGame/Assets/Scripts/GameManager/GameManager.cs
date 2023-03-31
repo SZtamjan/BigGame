@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public GameState state;
 
     [Header("Starting Hex Grid Function")]
-    [SerializeField]
     public GameObject hexGrid;
 
     [Header("Kto zaczyna")]
@@ -26,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int coIleTurAiSpawn = 5;
 
 
-    public static event Action<GameState> onGameStateChange;
+    public static event Action<GameState> OnGameStateChange;
 
     private void Awake()
     {
@@ -42,12 +41,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
 
-
-
-    }
 
     public void UpdateGameState(GameState newState)
     {
@@ -76,7 +70,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        onGameStateChange?.Invoke(newState);
+        OnGameStateChange?.Invoke(newState);
     }
 
 
@@ -103,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
-        updateTurnShower();
+        UpdateTurnShower();
         playerTurn = true;
         Invoke("ActivateTurnButton", devMode ? 0f : 1f);
     }
@@ -208,7 +202,7 @@ public class GameManager : MonoBehaviour
     {
         if (CanPlayerMove())
         {
-            DisableTurnButton();
+            //DisableTurnButton();
             GetComponent<PatchControler>().PlayerUnitPhase();
         }
     }
@@ -226,7 +220,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void updateTurnShower()
+    public void UpdateTurnShower()
     {
         turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {turnCounter}";
     }
