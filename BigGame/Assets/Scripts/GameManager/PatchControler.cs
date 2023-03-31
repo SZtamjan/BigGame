@@ -9,6 +9,7 @@ using static DrogaClass;
 
 public class PatchControler : MonoBehaviour
 {
+    public static PatchControler Instance;
 
     [Header("Starting ")]
     public Castle PlayerCastle;
@@ -18,6 +19,11 @@ public class PatchControler : MonoBehaviour
     public List<Droga> pathwayDebug = new List<Droga>();
 
     public int pathLenght;
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     public void StartPath()
     {

@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
   m_Name: KnightStat
   m_EditorClassIdentifier: 
+  unit: {fileID: 4777472483807655464, guid: 2ef0964c169612245a279d5eddcbb66a, type: 3}
   hp: 3
   damage: 2
   movmentDistance: 1
   attackReach: 1
   playersUnit: 1
+  cost: 5
+  name: Karta wpierdolu
+  desc: To naprawde karta wpierdolu
+  artwork: {fileID: 21300000, guid: bb0478c3811b4464d8aa7e2d82f59f6d, type: 3}

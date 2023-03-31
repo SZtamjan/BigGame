@@ -26,7 +26,17 @@ public class UnitControler : MonoBehaviour
     private GameObject EnemyCastle;
 
     private Animator animator;
-    private void Start()
+    void Start()
+    {
+        SetStats();
+    }
+    public void SetSO(UnitScriptableObjects stats)
+    {
+        unitScriptableObjects = stats;
+        SetStats();
+    }
+
+    private void SetStats()
     {
         hp = unitScriptableObjects.hp;
         damage = unitScriptableObjects.damage;

@@ -4,6 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UnitScriptableObjects", menuName = "UnitScriptableObjects/UnitStats")]
 public class UnitScriptableObjects : ScriptableObject
 {
+    //Prefabs
+    [Header("Jednostka ")]
+    public GameObject unit;
+
+    //Staty Jednostki
     [Header("Statystyki ")]
     [SerializeField]
     public int hp = 5;
@@ -15,4 +20,15 @@ public class UnitScriptableObjects : ScriptableObject
     public int attackReach = 1;
     [SerializeField]
     public bool playersUnit = true;
+
+    //Card Stats
+    [Header("Karta ")]
+    [SerializeField]
+    public int cost = 5;
+    [SerializeField]
+    public new string name = "Karta wpierdolu";
+    [SerializeField]
+    public string desc = "To naprawdê karta wpierdolu";
+    [SerializeField]
+    public Sprite artwork;
 }

@@ -11,10 +11,10 @@ public class SpawnerScript : MonoBehaviour
 
     private void Start()
     {
-
+        
     }
 
-    public void SpawnMyUnit(GameObject unit)
+    public void SpawnMyUnit(UnitScriptableObjects card)
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         {
@@ -25,13 +25,15 @@ public class SpawnerScript : MonoBehaviour
                 float y = 0.5f;
                 float z = gdzie.castle.transform.position.z;
 
-                GameObject putToList = SpawnObjectAtLocation(x, y, z, 90, unit);
-                PutToList(putToList, gdzie);
+                GameObject spawnedUnit = SpawnObjectAtLocation(x, y, z, 90, card.unit);
+                PutToList(spawnedUnit, gdzie);
+                spawnedUnit.GetComponent<UnitControler>().SetSO(card);
             }
             else
             {
                 Debug.Log("Miejsce zajête");
             }
+
         }
     }
 
