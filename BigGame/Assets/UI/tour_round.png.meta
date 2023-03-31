@@ -36,9 +36,9 @@ TextureImporter:
     filterMode: 1
     aniso: 0
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -109,12 +109,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 83
-        y: 671
-        width: 417
-        height: 158
+        y: 672
+        width: 418
+        height: 157
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 45, y: 14, z: 46, w: 17}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -134,8 +134,8 @@ TextureImporter:
         width: 461
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 66, y: 27, z: 63, w: 30}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -155,8 +155,8 @@ TextureImporter:
         width: 362
         height: 182
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 23, y: 22, z: 21, w: 22}
       outline: []
       physicsShape: []
       tessellationDetail: 0

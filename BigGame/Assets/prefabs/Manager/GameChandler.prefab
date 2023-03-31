@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8359177570369321992}
+  - component: {fileID: 4104380824514123332}
   m_Layer: 0
   m_Name: EconomyManager
   m_TagString: Untagged
@@ -75,6 +76,20 @@ Transform:
   m_Father: {fileID: 8742569726464788414}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4104380824514123332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296268291549008285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6f6957ef3dc61448fbdcd5f569a6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyUI: {fileID: 3114544725325097337}
+  playerCashSO: {fileID: 11400000, guid: 987e0527b431c9744a874bf4a7a6a8a3, type: 2}
 --- !u!1 &2530115829848271857
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +922,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5432969980136831270, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
   m_PrefabInstance: {fileID: 7984308949388368422}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3114544725325097337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5040903758886056799, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+  m_PrefabInstance: {fileID: 7984308949388368422}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4265240243564638209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6196068843389643303, guid: fe5ba016053c0104d9b363fd372be624, type: 3}

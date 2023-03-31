@@ -51,4 +51,10 @@ public class Economy : MonoBehaviour
         }
 
     }
+
+    public void CashOnTurn()
+    {
+        cash += playerCashSO.cashCastleOnTurn;
+        UIUpdate();
+    }
 }

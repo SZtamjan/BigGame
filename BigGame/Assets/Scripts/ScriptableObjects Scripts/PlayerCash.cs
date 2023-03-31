@@ -8,4 +8,5 @@ public class PlayerCash : ScriptableObject
     //Prefabs
     [Header("Cash gracza ")]
     public int playerCash = 100;
+    public int cashCastleOnTurn = 10;
 }

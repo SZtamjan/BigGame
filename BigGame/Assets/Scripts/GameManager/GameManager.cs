@@ -97,17 +97,19 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
+        Economy.Instance.CashOnTurn();
         UpdateTurnShower();
         playerTurn = true;
         Invoke("ActivateTurnButton", devMode ? 0f : 1f);
+       
     }
 
     private void GameStateEnemyTurn()
     {
         playerTurn = false;
-        
-        EnemyMove();
         turnCounter++;
+        EnemyMove();
+        
     }
 
     private void GameStateVictory()
@@ -204,6 +206,7 @@ public class GameManager : MonoBehaviour
         {
             //DisableTurnButton();
             GetComponent<PatchControler>().PlayerUnitPhase();
+            GameManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
     }
 
@@ -222,7 +225,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTurnShower()
     {
-        turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {turnCounter}";
+        string asd = turnCounter.ToString();
+        turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {asd}";
     }
 
 

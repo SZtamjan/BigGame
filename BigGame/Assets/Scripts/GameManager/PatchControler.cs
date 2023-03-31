@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static CastleClass;
 using static DrogaClass;
+using static GameManager;
 
 public class PatchControler : MonoBehaviour
 {
@@ -240,7 +241,7 @@ public class PatchControler : MonoBehaviour
 
     public void ComputerUnitPhaze()
     {
-
+        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
