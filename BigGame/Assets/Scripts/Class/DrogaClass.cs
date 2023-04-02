@@ -9,7 +9,7 @@ public class DrogaClass : MonoBehaviour
     public class Droga
     {
         public Vector3 coordinations;
-        public GameObject unit;
+        public GameObject unitMain;
         public GameObject wantingUnit;
     }
 

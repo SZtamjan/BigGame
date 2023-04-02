@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,7 +80,7 @@ public class GameManager : MonoBehaviour
     private void StartingFunction()
     {
         endScreen.SetActive(false);
-
+        PatchControler.Instance.StartNewPathWay();
         GameManager.instance.UpdateGameState(GameState.MapGeneration);
 
     }
@@ -97,19 +98,20 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
+        ActivateTurnButton();
         Economy.Instance.CashOnTurn();
         UpdateTurnShower();
         playerTurn = true;
-        Invoke("ActivateTurnButton", devMode ? 0f : 1f);
-       
+
+
     }
 
     private void GameStateEnemyTurn()
     {
         playerTurn = false;
         turnCounter++;
-        EnemyMove();
-        
+        StartCoroutine(EnemyMove());
+
     }
 
     private void GameStateVictory()
@@ -154,23 +156,28 @@ public class GameManager : MonoBehaviour
         endScreen.GetComponent<TextMeshProUGUI>().text = "VICTORY";
     }
 
-    public void EnemyMove()
+    private IEnumerator EnemyMove()
     {
+        yield return new WaitForEndOfFrame();
         if (!devMode)
         {
-            if (turnCounter%coIleTurAiSpawn==1)
+            if (turnCounter % coIleTurAiSpawn == 1)
             {
                 GetComponent<SpawnerScript>().SpawnEnemyUnit();
+                yield return new WaitForSeconds(1f);
             }
             GetComponent<PatchControler>().ComputerUnitPhaze();
+            yield return new WaitForSeconds(0.3f);
+            GameManager.instance.StartCoroutine(Endturn(false));
 
         }
         else
         {
+            yield return new WaitForEndOfFrame();
             GameManager.instance.UpdateGameState(GameState.PlayerTurn);
         }
-
     }
+
 
 
 
@@ -204,24 +211,92 @@ public class GameManager : MonoBehaviour
     {
         if (CanPlayerMove())
         {
-            //DisableTurnButton();
+            DisableTurnButton();
             GetComponent<PatchControler>().PlayerUnitPhase();
+            StartCoroutine(Endturn(true));
+        }
+    }
+
+    private IEnumerator Endturn(bool playerUnit)
+    {
+        yield return new WaitForEndOfFrame();
+        bool wait = true;
+        while (wait)
+        {
+            
+            if (!playerUnit)
+            {
+
+            }
+            for (int i = 0; i <= PathWay.Count() - 1; i++)
+            {
+
+                yield return new WaitForEndOfFrame();
+                if (PathWay[i].unitMain == null)
+                {
+                    wait = false;
+                    continue;
+                }
+                var thisUnit = PathWay[i].unitMain;
+                var thisUnitController = thisUnit.GetComponent<UnitControler>();
+                if (thisUnitController.IsThisPlayerUnit() != playerUnit)
+                {
+                    continue;
+                }
+                if (thisUnitController.ImDoingSomething())
+                {
+                    wait = true;
+                    break;
+                }
+                wait = false;
+            }
+
+            GameObject UnitInCastle;
+            if (playerUnit)
+            {
+                UnitInCastle = PatchControler.Instance.PlayerCastle.jednostka;
+            }
+            else
+            {
+                UnitInCastle = PatchControler.Instance.ComputerCastle.jednostka;
+            }
+            if (UnitInCastle != null)
+            {
+                if (UnitInCastle.GetComponent<UnitControler>().ImDoingSomething())
+                {
+                    wait = true;
+                    continue;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                if (wait)
+                {
+                    continue;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            
+        }
+
+        if (playerUnit)
+        {
             GameManager.instance.UpdateGameState(GameState.EnemyTurn);
         }
-    }
-
-    public void ComputerTurnEnd()
-    {
-
-        if (CanComputerMove())
+        else
         {
-
-            GetComponent<PatchControler>().ComputerUnitPhaze();
-
+            GameManager.instance.UpdateGameState(GameState.PlayerTurn);
         }
-
-
     }
+
 
     public void UpdateTurnShower()
     {

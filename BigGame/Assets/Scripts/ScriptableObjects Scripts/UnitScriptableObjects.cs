@@ -20,6 +20,8 @@ public class UnitScriptableObjects : ScriptableObject
     public int attackReach = 1;
     [SerializeField]
     public bool playersUnit = true;
+    [SerializeField]
+    public float moveSpeed = 0.5f;
 
     //Card Stats
     [Header("Karta ")]
