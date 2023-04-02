@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Transform orientation;
+
     [Header("Movement")]
     public float moveSpeed;
-
     public float groundDrag;
 
     [Header("Ground Check")]
@@ -14,7 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded = true;
 
-    public Transform orientation;
+
+    [Header("RMB Movement")]
+    public float movementSpeed = 50.0f;
+    public bool collided = false;
 
     float horizontalInput;
     float verticalInput;
@@ -34,6 +38,14 @@ public class PlayerMovement : MonoBehaviour
         //ground check
         //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 5f + 5f, whatIsGround);
 
+        //RMB Movement
+        if (Input.GetMouseButton(1) && !collided)
+        {
+            float horizontalMovement = Input.GetAxis("Mouse X") * -movementSpeed * Time.deltaTime;
+            float verticalMovement = Input.GetAxis("Mouse Y") * -movementSpeed * Time.deltaTime;
+            transform.Translate(horizontalMovement, 0, verticalMovement, Space.World);
+        }
+        collided = false;
         //handle drag
         if (grounded)
             rb.drag = groundDrag;
@@ -42,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
 
         MyInput();
         SpeedControl();
+    }
+
+    public void JustCollided()
+    {
+        collided = true;
     }
 
     private void FixedUpdate()
