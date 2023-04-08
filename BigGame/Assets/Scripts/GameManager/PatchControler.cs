@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 using static CastleClass;
 using static DrogaClass;
 using static GameManager;
+using static UnityEngine.GraphicsBuffer;
 
 public class PatchControler : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class PatchControler : MonoBehaviour
         if (targetUnit != null)
         {
             thisUnit.SetTargetToAttack(targetUnit);
+            targetUnit.HiddenDamageTaken(thisUnit.ReturnDamage());
         }
     }
 
@@ -58,14 +60,17 @@ public class PatchControler : MonoBehaviour
 
     public void PlayerUnitPhase()
     {
-        PlayerUnitPathAction();
+        PlayerUnitPathAttack();
+        PlayerUnitPathWalk();
+
+        //PlayerUnitPathAction();
         PlayerUnitCastleAction();
     }
 
     #region Player Units Actions
 
 
-    public void PlayerUnitPathAction()
+    private void PlayerUnitPathAction()
     {
         //select units
         for (int i = pathLenght; i >= 0; i--)
@@ -81,17 +86,23 @@ public class PatchControler : MonoBehaviour
 
             var thisUnit = PathWay[i].unitMain;
             var thisUnitController = thisUnit.GetComponent<UnitControler>();
+
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+
             var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
             var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
 
             //Unit attack
-            bool target = false;
+
             for (int ii = 1; ii <= thisUnitAttackReach; ii++)
             {
                 if (i + ii > pathLenght)
                 {
                     UnitAttack(thisUnitController, ComputerCastle.castle.GetComponent<CastleStats>());
-                    target = true;
+
                     break;
                 }
                 if (PathWay[i + ii].unitMain == null)
@@ -103,7 +114,7 @@ public class PatchControler : MonoBehaviour
                     continue;
                 }
                 UnitAttack(thisUnitController, PathWay[i + ii].unitMain.GetComponent<UnitControler>());
-                target = true;
+
                 break;
             }
 
@@ -144,17 +155,135 @@ public class PatchControler : MonoBehaviour
 
             thisUnitController.SetWaypoints(positions);
 
-            if (!target)
-            {
-                thisUnitController.MoveAction();
-            }
+
+            thisUnitController.MoveAction();
+
 
 
         }
 
 
     }
-    public void PlayerUnitCastleAction()
+
+    private void PlayerUnitPathAttack()
+    {
+        for (int i = pathLenght; i >= 0; i--)
+        {
+            if (PathWay[i].unitMain == null)
+            {
+                continue;
+            }
+            if (!PathWay[i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+            {
+                continue;
+            }
+
+            var thisUnit = PathWay[i].unitMain;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+
+            var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
+
+            for (int ii = 1; ii <= thisUnitAttackReach; ii++)
+            {
+                if (i + ii > pathLenght)
+                {
+                    UnitAttack(thisUnitController, ComputerCastle.castle.GetComponent<CastleStats>());
+
+                    break;
+                }
+                if (PathWay[i + ii].unitMain == null)
+                {
+                    continue;
+                }
+                if (PathWay[ii + i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    continue;
+                }
+                if (PathWay[ii + i].unitMain.GetComponent<UnitControler>().ReturnHiddenHp() <= 0)
+                {
+                    continue;
+                }
+
+                UnitAttack(thisUnitController, PathWay[i + ii].unitMain.GetComponent<UnitControler>());
+
+                break;
+            }
+
+        }
+    }
+
+    private void PlayerUnitPathWalk()
+    {
+        for (int i = pathLenght; i >= 0; i--)
+        {
+            if (PathWay[i].unitMain == null)
+            {
+                continue;
+            }
+            if (!PathWay[i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+            {
+                continue;
+            }
+
+            var thisUnit = PathWay[i].unitMain;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+
+            var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
+
+            List<int> positions = new List<int>();
+            PathWay[i].unitMain = thisUnit;
+            for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
+            {
+                if (i + ii > pathLenght)
+                {
+                    break;
+                }
+
+                if (PathWay[i + ii].unitMain == null)
+                {
+                    positions.Add(i + ii);
+                    PathWay[i + ii].unitMain = thisUnit;
+                    PathWay[i + ii - 1].unitMain = null;
+                    continue;
+
+                }
+
+                if (PathWay[i + ii].unitMain != null)
+                {
+                    var nextUnitOnPathController = PathWay[i + ii].unitMain.GetComponent<UnitControler>();
+                    if (!(nextUnitOnPathController.IsThisPlayerUnit()) && (nextUnitOnPathController.ReturnHiddenHp() <= 0))
+                    {
+                        positions.Add(i + ii);
+                        PathWay[i + ii].unitMain = thisUnit;
+                        PathWay[i + ii - 1].unitMain = null;
+                        continue;
+                    }
+                    break;
+                }
+
+
+
+            }
+
+            thisUnitController.SetWaypoints(positions);
+
+
+            thisUnitController.MoveAction();
+
+        }
+    }
+
+    private void PlayerUnitCastleAction()
     {
         if (PlayerCastle.jednostka != null)
         {
@@ -247,15 +376,17 @@ public class PatchControler : MonoBehaviour
 
     public void ComputerUnitPhaze()
     {
-        ComputerUnitPathAction();
+        ComputerUnitPathAttack();
+        ComputerUnitPathWalk();
+        //ComputerUnitPathAction();
         ComputerUnitCastleAction();
-        
+
 
     }
 
     #region Computer Unit Action
 
-    public void ComputerUnitPathAction()
+    private void ComputerUnitPathAction()
     {
         //select units
         for (int i = 0; i <= pathLenght; i++)
@@ -339,7 +470,119 @@ public class PatchControler : MonoBehaviour
         }
     }
 
-    public void ComputerUnitCastleAction()
+    private void ComputerUnitPathAttack()
+    {
+        for (int i = 0; i <= pathLenght; i++)
+        {
+            if (PathWay[i].unitMain == null)
+            {
+                continue;
+            }
+            if (PathWay[i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+            {
+                continue;
+            }
+
+            var thisUnit = PathWay[i].unitMain;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+
+            var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
+
+            for (int ii = 1; ii <= thisUnitAttackReach; ii++)
+            {
+                if (i - ii < 0)
+                {
+                    UnitAttack(thisUnitController, PlayerCastle.castle.GetComponent<CastleStats>());
+
+                    break;
+                }
+                if (PathWay[i - ii].unitMain == null)
+                {
+                    continue;
+                }
+                if (!PathWay[i - ii].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    continue;
+                }
+                if (PathWay[i - ii].unitMain.GetComponent<UnitControler>().ReturnHiddenHp() <= 0)
+                {
+                    continue;
+                }
+                UnitAttack(thisUnitController, PathWay[i - ii].unitMain.GetComponent<UnitControler>());
+
+                break;
+            }
+        }
+    }
+
+    private void ComputerUnitPathWalk()
+    {
+        for (int i = 0; i <= pathLenght; i++)
+        {
+            if (PathWay[i].unitMain == null)
+            {
+                continue;
+            }
+            if (PathWay[i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+            {
+                continue;
+            }
+
+            var thisUnit = PathWay[i].unitMain;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+
+            var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
+            List<int> positions = new List<int>();
+            PathWay[i].unitMain = thisUnit;
+            for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
+            {
+                if (i - ii < 0)
+                {
+                    break;
+                }
+                if (PathWay[i - ii].unitMain == null)
+                {
+                    positions.Add(i - ii);
+                    PathWay[i - ii].unitMain = thisUnit;
+                    PathWay[i - ii + 1].unitMain = null;
+                    continue;
+                }
+                if (PathWay[i - ii].unitMain != null)
+                {
+                    var nextUnitOnPathController = PathWay[i - ii].unitMain.GetComponent<UnitControler>();
+                    if ((nextUnitOnPathController.IsThisPlayerUnit()) && (nextUnitOnPathController.ReturnHiddenHp() <= 0))
+                    {
+                        positions.Add(i - ii);
+                        PathWay[i - ii].unitMain = thisUnit;
+                        PathWay[i - ii + 1].unitMain = null;
+                        continue;
+                    }
+                    break;
+                }
+
+            }
+
+            thisUnitController.SetWaypoints(positions);
+            if (!thisUnitController.ImDoingSomething())
+            {
+                thisUnitController.MoveAction();
+
+            }
+
+        }
+    }
+
+    private void ComputerUnitCastleAction()
     {
         if (ComputerCastle.jednostka != null)
         {
@@ -393,6 +636,10 @@ public class PatchControler : MonoBehaviour
 
                 if (nextUnitOnPathController.IsThisPlayerUnit())
                 {
+                    if (i > thisUnitAttackReach)
+                    {
+                        break;
+                    }
                     if (nextUnitOnPathController.ReturnHp() - thisUnitController.ReturnDamage() <= 0)
                     {
                         position.Add(pathLenght - i);

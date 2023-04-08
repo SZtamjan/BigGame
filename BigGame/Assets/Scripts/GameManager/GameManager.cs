@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
 
         gameObject.GetComponent<PathGenerator>().PatchGenerator();
-        gameObject.GetComponent<PatchControler>().StartPath();
+        PatchControler.Instance.StartPath();
 
         GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 

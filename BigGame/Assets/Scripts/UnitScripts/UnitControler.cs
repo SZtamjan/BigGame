@@ -13,6 +13,7 @@ public class UnitControler : MonoBehaviour
 
     [Header("Statystyki tylko do odczytu")]
     [SerializeField] private int hp;
+    private int hidenHP;
     [SerializeField] private int damage;
     [SerializeField] private int movmentDistance;
     [SerializeField] private int attackReach;
@@ -21,8 +22,15 @@ public class UnitControler : MonoBehaviour
 
     [SerializeField] private bool isAttacking = false;
     [SerializeField] private bool isMovving = false;
+    [SerializeField] private bool isPojectileFlying = false;
 
+    [Header("Dla jednostek dystansowych")]
+    public ProjectileController projectileToSpawn;
+    public Transform projectileStartingPoint;
 
+    private ProjectileController projectile;
+
+    //-------------------------------------------------------
     private UnitControler targetUnitToAttack;
     private CastleStats targetCastleToAttack;
 
@@ -44,6 +52,7 @@ public class UnitControler : MonoBehaviour
     private void SetStats()
     {
         hp = unitScriptableObjects.hp;
+        hidenHP = hp;
         damage = unitScriptableObjects.damage;
         movmentDistance = unitScriptableObjects.movmentDistance;
         attackReach = unitScriptableObjects.attackReach;
@@ -68,7 +77,10 @@ public class UnitControler : MonoBehaviour
     {
         return hp;
     }
-
+    public int ReturnHiddenHp()
+    {
+        return hidenHP;
+    }
     public int ReturnDamage()
     {
         return damage;
@@ -91,7 +103,7 @@ public class UnitControler : MonoBehaviour
 
     public bool ImDoingSomething()
     {
-        if (isAttacking||isMovving)
+        if (isAttacking || isMovving || isPojectileFlying)
         {
             return true;
         }
@@ -107,10 +119,20 @@ public class UnitControler : MonoBehaviour
         if (hp <= 0)
         {
             animator.SetBool("death", true);
-            Destroy(gameObject, 8f);
         }
         PlayHurt();
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
+
+
+    }
+
+    public void HiddenDamageTaken(int obtained)
+    {
+        hidenHP -= obtained;
+        if (hidenHP <= 0)
+        {
+            Destroy(gameObject, 8f);
+        }
     }
 
     public void DestroyMe()
@@ -143,17 +165,16 @@ public class UnitControler : MonoBehaviour
     #region Attack method
     public void SetTargetToAttack(UnitControler targetUnit)
     {
-        targetUnitToAttack = targetUnit;
         isAttacking = true;
+        targetUnitToAttack = targetUnit;
         PlayAttack();
 
     }
     public void SetTargetToAttack(CastleStats targetUnit)
     {
-        targetCastleToAttack = targetUnit;
         isAttacking = true;
+        targetCastleToAttack = targetUnit;
         PlayAttack();
-
     }
 
     public void AttackTarget()
@@ -176,6 +197,45 @@ public class UnitControler : MonoBehaviour
 
     }
 
+
+    public void RangeAttack()
+    {
+        isPojectileFlying = true;
+
+        projectile = Instantiate(projectileToSpawn, projectileStartingPoint.position, projectileStartingPoint.rotation, gameObject.transform.parent);
+        Vector3 target = GetTargetToShoot();
+        projectile.SetTaget(target);
+        projectile.StartFlying();
+        StartCoroutine(IsProjectileFlying());
+    }
+
+    private Vector3 GetTargetToShoot()
+    {
+        if (targetUnitToAttack != null)
+        {
+            Vector3 target = targetUnitToAttack.transform.position;
+            target.y += 0.319f;
+            return target;
+        }
+        if (targetCastleToAttack != null)
+        {
+            return targetCastleToAttack.transform.position;
+        }
+        return transform.position;
+    }
+
+    private IEnumerator IsProjectileFlying()
+    {
+        while (projectile != null)
+        {
+            yield return null;
+        }
+
+        isPojectileFlying = false;
+        AttackTarget();
+        yield return null;
+    }
+
     #endregion
 
 
@@ -191,7 +251,7 @@ public class UnitControler : MonoBehaviour
         if (!isMovving)
         {
             isMovving = true;
-            StartCoroutine(MovingAction());           
+            StartCoroutine(MovingAction());
         }
 
     }
@@ -207,7 +267,7 @@ public class UnitControler : MonoBehaviour
         {
             direction = -1;
         }
-        
+
         bool wasThereWalk = false;
 
 
@@ -215,6 +275,7 @@ public class UnitControler : MonoBehaviour
 
         while ((wayPoints?.Count ?? 0) > 0)
         {
+
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
                 if (PatchControler.PathWay[wayPoints.First()].wantingUnit == null)
@@ -244,6 +305,12 @@ public class UnitControler : MonoBehaviour
                     PatchControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
                 }
 
+            }
+
+            if (isAttacking)
+            {
+                yield return new WaitForEndOfFrame();
+                continue;
             }
 
             if (!isAttacking)
