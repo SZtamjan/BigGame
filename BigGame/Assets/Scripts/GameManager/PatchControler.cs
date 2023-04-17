@@ -23,12 +23,13 @@ public class PatchControler : MonoBehaviour
 
     public int pathLenght;
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
     }
     public void StartNewPathWay()
     {
+        PathWay = null;
         PathWay = new List<Droga>();
     }
     public void StartPath()

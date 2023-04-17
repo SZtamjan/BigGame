@@ -10,11 +10,14 @@ public class Economy : MonoBehaviour
     private int cash;
 
     public static Economy Instance;
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         cash = playerCashSO.playerCash;
-        Instance = this;
+        
         UIUpdate();
     }
 
