@@ -114,6 +114,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void EvilKoniecTury()
+    {
+        StartCoroutine(EnemyMove());
+    }
+
     private void GameStateVictory()
     {
         ShowVictoryScreen();

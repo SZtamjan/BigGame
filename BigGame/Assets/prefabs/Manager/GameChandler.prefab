@@ -548,7 +548,7 @@ MonoBehaviour:
   state: 0
   hexGrid: {fileID: 1292401085693881687}
   playerTurn: 1
-  devMode: 0
+  devMode: 1
   turnDisplay: {fileID: 4644443948765878707}
   endScreen: {fileID: 5691771631318994144}
   turnButton: {fileID: 5068909889161450537}
@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7203101441182389883}
+    - target: {fileID: 5210955961014139619, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerTurnEnd
+      objectReference: {fileID: 0}
     - target: {fileID: 5432969980136831270, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -826,6 +830,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7203101441182389883}
+    - target: {fileID: 5846824504073830949, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EvilKoniecTury
+      objectReference: {fileID: 0}
     - target: {fileID: 5874027241718563863, guid: fe5ba016053c0104d9b363fd372be624, type: 3}
       propertyPath: m_RootOrder
       value: 15
