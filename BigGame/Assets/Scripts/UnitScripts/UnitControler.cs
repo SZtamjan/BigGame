@@ -13,7 +13,7 @@ public class UnitControler : MonoBehaviour
 
     [Header("Statystyki tylko do odczytu")]
     [SerializeField] private int hp;
-    private int hidenHP;
+    [SerializeField] private int hidenHP;
     [SerializeField] private int damage;
     [SerializeField] private int movmentDistance;
     [SerializeField] private int attackReach;
@@ -152,6 +152,7 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayHurt()
     {
+
         animator.SetTrigger("hurt");
     }
     public void PlayIdle()
