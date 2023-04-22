@@ -217,6 +217,10 @@ public class PatchControler : MonoBehaviour
                 {
                     continue;
                 }
+                if (PathWay[i].unitMain.GetComponent<UnitControler>().ReturnHiddenHp() <= 0)
+                {
+                    continue;
+                }
                 UnitAttack(thisUnitController, PathWay[i].unitMain.GetComponent<UnitControler>());
 
                 break;
@@ -446,6 +450,10 @@ public class PatchControler : MonoBehaviour
                     continue;
                 }
                 if (!PathWay[pathLenght - i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    continue;
+                }
+                if (PathWay[pathLenght - i].unitMain.GetComponent<UnitControler>().ReturnHiddenHp() <= 0)
                 {
                     continue;
                 }
