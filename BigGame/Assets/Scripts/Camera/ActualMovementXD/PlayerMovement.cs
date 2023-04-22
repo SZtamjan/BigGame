@@ -1,9 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Transform orientation;
+
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
@@ -16,19 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("RMB Movement")]
     public float movementSpeed = 50.0f;
-
-    [Header("tmp limiters")]
-    public float keySpeed = 20f; // pr�dko�� przesuwania kamery WSADem
-    public float mouseSpeed = 1f;// pr�dko�� przesuwania kamery myszk�
-    public float minX = -5f; // minimalna pozycja kamery w osi X
-    public float maxX = 5f; // maksymalna pozycja kamery w osi X
-    public float minZ = -5f; // minimalna pozycja kamery w osi Z
-    public float maxZ = 5f; // maksymalna pozycja kamery w osi Z
-    public float fixedY = 3f; // warto�� sta�a pozycji kamery w osi Y
-
-
-    private bool isDragging = false; // flaga informuj�ca, czy u�ytkownik przesuwa kamer�
-    private Vector3 lastMousePosition; // pozycja myszy podczas ostatniego klatkowania
+    public bool collided = false;
 
     float horizontalInput;
     float verticalInput;
@@ -45,35 +35,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Poruszanie się myszką
-        if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+        //ground check
+        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 5f + 5f, whatIsGround);
+
+        //RMB Movement
+        if (Input.GetMouseButton(1) && !collided)
         {
-            lastMousePosition = Input.mousePosition;
-            isDragging = true;
+            float horizontalMovement = Input.GetAxis("Mouse X") * -movementSpeed * Time.deltaTime;
+            float verticalMovement = Input.GetAxis("Mouse Y") * -movementSpeed * Time.deltaTime;
+            transform.Translate(horizontalMovement, 0, verticalMovement, Space.World);
         }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            isDragging = false;
-        }
-
-        if (isDragging)
-        {
-            // Obliczanie wektora przesunięcia kamery
-            Vector3 delta = Input.mousePosition - lastMousePosition;
-            Vector3 cameraMovement = new Vector3(delta.x, 0, delta.y) * Time.deltaTime * -mouseSpeed;
-
-            // Aktualizowanie pozycji kamery
-            transform.position += cameraMovement;
-
-            // Ograniczanie pozycji kamery do okre�lonego zakresu
-            float x = Mathf.Clamp(transform.position.x, -5, 5);
-            float z = Mathf.Clamp(transform.position.z, -5, 5);
-            transform.position = new Vector3(x, transform.position.y, z);
-
-            lastMousePosition = Input.mousePosition;
-        }
-
-        //Poruszanie się WSAD
+        collided = false;
         //handle drag
         if (grounded)
             rb.drag = groundDrag;
@@ -84,21 +56,14 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
     }
 
+    public void JustCollided()
+    {
+        collided = true;
+    }
+
     private void FixedUpdate()
     {
         MovePlayer();
-    }
-
-    private void MovePlayer()
-    {
-        moveDirection.z = verticalInput; 
-        moveDirection.x = horizontalInput;
-
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
-        float x = Mathf.Clamp(transform.position.x, -5, 5);
-        float z = Mathf.Clamp(transform.position.z, -5, 5);
-        transform.position = new Vector3(x, transform.position.y, z);
     }
 
     private void MyInput()
@@ -106,6 +71,14 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
+
+    private void MovePlayer()
+    {
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
