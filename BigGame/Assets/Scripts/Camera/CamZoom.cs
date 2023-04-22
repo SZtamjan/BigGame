@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CamZoom : MonoBehaviour
-{    
-   
-    public float zoomSpeed = 2.0f;
-    public float zoomMin = 1.0f;
-    public float zoomMax = 20.0f;
+{
+    public float zoomSpeed = 15.0f;
+    public float zoomMin = 60.0f;
+    public float zoomMax = 90.0f;
 
     private float currentZoom = 0.0f;
 
@@ -31,5 +30,4 @@ public class CamZoom : MonoBehaviour
         // Set the camera's field of view based on the currentZoom value
         Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, currentZoom, Time.deltaTime * zoomSpeed);
     }
-
 }
