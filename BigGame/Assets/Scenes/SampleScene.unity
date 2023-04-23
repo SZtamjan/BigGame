@@ -1666,6 +1666,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 802093275963208360, guid: 89081469f1c321840b21eecb0ae09375, type: 3}
   m_PrefabInstance: {fileID: 528607930}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &100619303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1689261708297632901, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+  m_PrefabInstance: {fileID: 383679694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &101076571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2955404031258080917, guid: 9f397eee1775f304b9c3527c115a1598, type: 3}
@@ -2746,6 +2751,14 @@ PrefabInstance:
       propertyPath: limitRight
       value: 
       objectReference: {fileID: 162550779}
+    - target: {fileID: 183664704268003775, guid: ada5adaf22da5544bbdb56135f456b72, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183664704268003775, guid: ada5adaf22da5544bbdb56135f456b72, type: 3}
+      propertyPath: m_Cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada5adaf22da5544bbdb56135f456b72, type: 3}
 --- !u!4 &213573071 stripped
@@ -5853,10 +5866,10 @@ PrefabInstance:
     - target: {fileID: 3563802291678898581, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2022562270}
     - target: {fileID: 3855912310655575659, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_Volume
-      value: 0.531
+      value: 0.172
       objectReference: {fileID: 0}
     - target: {fileID: 4340605472721432590, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: StartHex
@@ -5870,6 +5883,14 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1166559255}
+    - target: {fileID: 6208023557719749059, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208023557719749059, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.046618998
+      objectReference: {fileID: 0}
     - target: {fileID: 6314240023449163152, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5897,6 +5918,10 @@ PrefabInstance:
     - target: {fileID: 7203101441182389883, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: devMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710399677712394223, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 66.29999
       objectReference: {fileID: 0}
     - target: {fileID: 8742569726464788414, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_RootOrder
@@ -6949,6 +6974,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
   m_PrefabInstance: {fileID: 463215693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &466817298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4265240243564638209, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+  m_PrefabInstance: {fileID: 383679694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &467269443
 PrefabInstance:
@@ -23770,7 +23800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpbar: {fileID: 2119003930}
+  hpbar: {fileID: 466817298}
   defenceArmaments: []
   isMyCastle: 1
 --- !u!4 &1806354788 stripped
@@ -23782,11 +23812,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3616170078862256307, guid: 43c963d0acd22b445ac6eceb8e596992, type: 3}
   m_PrefabInstance: {fileID: 1098081965}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1815273611 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1689261708297632901, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-  m_PrefabInstance: {fileID: 383679694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1817478290
 PrefabInstance:
@@ -25676,7 +25701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpbar: {fileID: 1815273611}
+  hpbar: {fileID: 100619303}
   defenceArmaments: []
   isMyCastle: 0
 --- !u!4 &1996571196 stripped
@@ -25936,6 +25961,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3616170078862256307, guid: 43c963d0acd22b445ac6eceb8e596992, type: 3}
   m_PrefabInstance: {fileID: 1453631848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &2022562270 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 183664704268003770, guid: ada5adaf22da5544bbdb56135f456b72, type: 3}
+  m_PrefabInstance: {fileID: 209860582}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2025421113 stripped
 Transform:
@@ -27471,11 +27501,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3616170078862256307, guid: 43c963d0acd22b445ac6eceb8e596992, type: 3}
   m_PrefabInstance: {fileID: 1242952545}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2119003930 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4265240243564638209, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-  m_PrefabInstance: {fileID: 383679694}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2121007354 stripped
 Transform:
