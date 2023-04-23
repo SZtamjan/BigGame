@@ -1,24 +1,28 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Transform orientation;
-
-    [Header("Movement")]
-    public float moveSpeed;
-    public float groundDrag;
-
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded = true;
 
 
-    [Header("RMB Movement")]
-    public float movementSpeed = 50.0f;
-    public bool collided = false;
+    [Header("Settings")]
+    public float keySpeed = 6f; // predkosc przesuwania kamery WSADem
+    public float groundDrag; // Tarcie - jak szybko sie zatrzyma
+    public float mouseSpeed = 1f;// predkosc przesuwania kamery myszka
+    public float camHeight = 3f; // warto�� sta�a pozycji kamery w osi Y
+
+    [Header("Limiters")]
+    public GameObject limitLeft;
+    public GameObject limitRight;
+    private float minX; // minimalna pozycja kamery w osi X
+    private float maxX; // maksymalna pozycja kamery w osi X
+    public float minZ; // minimalna pozycja kamery w osi Z
+    public float maxZ; // maksymalna pozycja kamery w osi Z
+
+
+    private bool isDragging = false; // flaga informujaca, czy uzytkownik przesuwa kamera
+    private Vector3 lastMousePosition; // pozycja myszy podczas ostatniego klatkowania
 
     float horizontalInput;
     float verticalInput;
@@ -30,35 +34,44 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        rb.drag = groundDrag;
+        SetLimits();
     }
 
     private void Update()
     {
-        //ground check
-        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 5f + 5f, whatIsGround);
-
-        //RMB Movement
-        if (Input.GetMouseButton(1) && !collided)
+        // Poruszanie się myszką
+        if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
         {
-            float horizontalMovement = Input.GetAxis("Mouse X") * -movementSpeed * Time.deltaTime;
-            float verticalMovement = Input.GetAxis("Mouse Y") * -movementSpeed * Time.deltaTime;
-            transform.Translate(horizontalMovement, 0, verticalMovement, Space.World);
+            lastMousePosition = Input.mousePosition;
+            isDragging = true;
         }
-        collided = false;
-        //handle drag
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
+        else if (Input.GetMouseButtonUp(1))
+        {
+            isDragging = false;
+        }
+
+        if (isDragging)
+        {
+            // Obliczanie wektora przesunięcia kamery
+            Vector3 delta = Input.mousePosition - lastMousePosition;
+            Vector3 cameraMovement = new Vector3(delta.x, 0, delta.y) * Time.deltaTime * -mouseSpeed;
+
+            // Aktualizowanie pozycji kamery
+            transform.position += cameraMovement;
+
+            // Ograniczanie pozycji kamery do okre�lonego zakresu
+            float x = Mathf.Clamp(transform.position.x, minX, maxX);
+            float z = Mathf.Clamp(transform.position.z, minZ, maxZ);
+            transform.position = new Vector3(x, camHeight, z);
+
+            lastMousePosition = Input.mousePosition;
+        }
+
+        //Poruszanie się WSAD
 
         MyInput();
         SpeedControl();
-    }
-
-    public void JustCollided()
-    {
-        collided = true;
     }
 
     private void FixedUpdate()
@@ -66,28 +79,39 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
     }
 
+    private void MovePlayer()
+    {
+        moveDirection.z = verticalInput; 
+        moveDirection.x = horizontalInput;
+
+        rb.AddForce(moveDirection.normalized * keySpeed * 10f, ForceMode.Force);
+
+        float x = Mathf.Clamp(transform.position.x, minX, maxX);
+        float z = Mathf.Clamp(transform.position.z, minZ, maxZ);
+        transform.position = new Vector3(x, camHeight, z);
+    }
+
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
-
-    private void MovePlayer()
-    {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-    }
-
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         //limit velocity if needed
-        if (flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > keySpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * keySpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
+    
+    private void SetLimits()
+    {
+        minX = limitLeft.transform.position.x;
+        maxX = limitRight.transform.position.x;
+    }
+
 }
