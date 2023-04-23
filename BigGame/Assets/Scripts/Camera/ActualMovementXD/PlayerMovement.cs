@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
-    public float groundDrag;
-
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded = true;
 
 
-    [Header("RMB Movement")]
-    public float movementSpeed = 50.0f;
+    [Header("Settings")]
+    public float keySpeed = 6f; // predkosc przesuwania kamery WSADem
+    public float groundDrag; // Tarcie - jak szybko sie zatrzyma
+    public float mouseSpeed = 1f;// predkosc przesuwania kamery myszka
+    public float camHeight = 3f; // warto�� sta�a pozycji kamery w osi Y
 
-    [Header("tmp limiters")]
-    public float keySpeed = 20f; // pr�dko�� przesuwania kamery WSADem
-    public float mouseSpeed = 1f;// pr�dko�� przesuwania kamery myszk�
-    public float minX = -5f; // minimalna pozycja kamery w osi X
-    public float maxX = 5f; // maksymalna pozycja kamery w osi X
-    public float minZ = -5f; // minimalna pozycja kamery w osi Z
-    public float maxZ = 5f; // maksymalna pozycja kamery w osi Z
-    public float fixedY = 3f; // warto�� sta�a pozycji kamery w osi Y
+    [Header("Limiters")]
+    public GameObject limitLeft;
+    public GameObject limitRight;
+    private float minX; // minimalna pozycja kamery w osi X
+    private float maxX; // maksymalna pozycja kamery w osi X
+    public float minZ; // minimalna pozycja kamery w osi Z
+    public float maxZ; // maksymalna pozycja kamery w osi Z
 
 
-    private bool isDragging = false; // flaga informuj�ca, czy u�ytkownik przesuwa kamer�
+    private bool isDragging = false; // flaga informujaca, czy uzytkownik przesuwa kamera
     private Vector3 lastMousePosition; // pozycja myszy podczas ostatniego klatkowania
 
     float horizontalInput;
@@ -40,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        rb.drag = groundDrag;
+        SetLimits();
     }
 
     private void Update()
@@ -66,19 +61,14 @@ public class PlayerMovement : MonoBehaviour
             transform.position += cameraMovement;
 
             // Ograniczanie pozycji kamery do okre�lonego zakresu
-            float x = Mathf.Clamp(transform.position.x, -5, 5);
-            float z = Mathf.Clamp(transform.position.z, -5, 5);
-            transform.position = new Vector3(x, transform.position.y, z);
+            float x = Mathf.Clamp(transform.position.x, minX, maxX);
+            float z = Mathf.Clamp(transform.position.z, minZ, maxZ);
+            transform.position = new Vector3(x, camHeight, z);
 
             lastMousePosition = Input.mousePosition;
         }
 
         //Poruszanie się WSAD
-        //handle drag
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
 
         MyInput();
         SpeedControl();
@@ -94,11 +84,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.z = verticalInput; 
         moveDirection.x = horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * keySpeed * 10f, ForceMode.Force);
 
-        float x = Mathf.Clamp(transform.position.x, -5, 5);
-        float z = Mathf.Clamp(transform.position.z, -5, 5);
-        transform.position = new Vector3(x, transform.position.y, z);
+        float x = Mathf.Clamp(transform.position.x, minX, maxX);
+        float z = Mathf.Clamp(transform.position.z, minZ, maxZ);
+        transform.position = new Vector3(x, camHeight, z);
     }
 
     private void MyInput()
@@ -111,10 +101,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         //limit velocity if needed
-        if (flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > keySpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * keySpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
+    
+    private void SetLimits()
+    {
+        minX = limitLeft.transform.position.x;
+        maxX = limitRight.transform.position.x;
+    }
+
 }
