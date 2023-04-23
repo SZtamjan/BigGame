@@ -43,6 +43,7 @@ public class Building : MonoBehaviour
 
     IEnumerator WhereToBuild(GameObject stucture,GameObject card)
     {
+        ChangeMenu.instance.Hide();
         while (isBuilding)
         {
             if (Input.GetMouseButtonDown(0))
@@ -56,7 +57,7 @@ public class Building : MonoBehaviour
                     Debug.Log(hitObject.name);
                     isBuilding=false;
                     Build(hitObject, stucture);
-                    Destroy(card);
+                    //Destroy(card);
                 }
                 else
                 {
@@ -65,6 +66,7 @@ public class Building : MonoBehaviour
             }
             yield return null;
         }
+        ChangeMenu.instance.UnHide();
 
         yield return null;
     }

@@ -299,7 +299,7 @@ RectTransform:
   m_GameObject: {fileID: 3300507794562354695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.26, y: 0.25, z: 0.68421054}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7407860752085903938}
@@ -419,8 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 0}
-  card: {fileID: 0}
+  stats: {fileID: 0}
   name: {fileID: 1550548595729448499}
   desc: {fileID: 1437680117}
   cost: {fileID: 1942851797}

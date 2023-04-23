@@ -30,7 +30,7 @@ public class CastleStats : MonoBehaviour
         return hp;
     }
 
-    public void addDefenceArmaments(CastleArmaments arnaments)
+    public void AddDefenceArmaments(CastleArmaments arnaments)
     {
         defenceArmaments.Add(arnaments);
     }
