@@ -20,31 +20,22 @@ public class ChangeMenu : MonoBehaviour
         BuildButton.SetActive(false);
     }
 
-    public void ChangeMenuCards()
+    public void ShowBuilding()
     {
-        if (build)
+        if (!build)
         {
-            UnitsButton.SetActive(true);
-            BuildButton.SetActive(false);
-            build = false;
-        }
-        else
-        {
-            UnitsButton.SetActive(false);
             BuildButton.SetActive(true);
             build = true;
         }
+        else
+        {
+            BuildButton.SetActive(false);
+            build = false;
+        }
+        
     }
 
-    public void Hide () 
-    {
-        UnitsButton.SetActive(false);
-        BuildButton.SetActive(false);
-    }
+    
 
-    public void UnHide()
-    {
-        UnitsButton.SetActive(false);
-        BuildButton.SetActive(true);
-    }
+    
 }

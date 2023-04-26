@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (!devMode)
         {
-            if (turnCounter % coIleTurAiSpawn == 1)
+            if ((turnCounter+1) % coIleTurAiSpawn == 0)
             {
                 GetComponent<SpawnerScript>().SpawnEnemyUnit();
                 yield return new WaitForSeconds(1f);
@@ -216,6 +216,7 @@ public class GameManager : MonoBehaviour
     {
         if (CanPlayerMove())
         {
+            
             DisableTurnButton();
             GetComponent<PatchControler>().PlayerUnitPhase();
             StartCoroutine(Endturn(true));
