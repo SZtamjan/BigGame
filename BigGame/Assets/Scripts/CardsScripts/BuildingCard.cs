@@ -1,14 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildingCard : MonoBehaviour
 {
-    public GameObject stucture;
+
+    [SerializeField] private TextMeshProUGUI _butonText;
+    [SerializeField] private TextMeshProUGUI _toolTipTex;
+
+    [SerializeField] private BuildingsScriptableObjects infoSource;
+    [SerializeField] private GameObject _stucture;
+    [SerializeField] private int _cost;
+    [SerializeField] private string _name;
+    [SerializeField] private string _description;
+    [SerializeField] private int _moneyGain;
+
+
+    
+    
     public void StartBulding()
     {
         ChangeMenu.instance.ShowBuilding();
-        GameManager.gameManager.GetComponent<Building>().StartBuilding(stucture, gameObject);
+        Building.Instance.StartBuilding(infoSource);
     }
+
+    void OnMouseEnter()
+    {
+
+        _toolTipTex.gameObject.SetActive(true);
+    }
+
+    void OnMouseExit()
+    {
+        _toolTipTex.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        _stucture = infoSource.Budynek;
+        _cost = infoSource.cost;
+        _name = infoSource.name;
+        _moneyGain = infoSource.moneyGain;
+        _description = infoSource.desc;
+        _butonText.text = $"Buduj {_name}";
+        _toolTipTex.text = $"kosztuje {_cost}, a daje {_moneyGain},\n{_description}";
+
+        _toolTipTex.gameObject.SetActive(false);
+    }
+
+
 }

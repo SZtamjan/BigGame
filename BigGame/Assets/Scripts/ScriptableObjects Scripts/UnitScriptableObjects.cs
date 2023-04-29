@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "UnitScriptableObjects", menuName = "UnitScriptableObjects/UnitStats")]
+[CreateAssetMenu(fileName = "ScriptableObjects", menuName = "ScriptableObjects/UnitStats")]
 public class UnitScriptableObjects : ScriptableObject
 {
     //Prefabs

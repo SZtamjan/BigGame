@@ -3,32 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using static GameManager;
 
 public class Building : MonoBehaviour
 {
+    public static Building Instance;
     Camera cam;
     public LayerMask mask;
     public bool isBuilding = false;
-    //private GameObject card;
-    public GameObject parent;
 
+    public GameObject parent;
     private GameObject halfTransparent;
 
+    [SerializeField] private List<GameObject> Budynki; // to jest przysz³oœæ do zapisywanie gry
+    public List<BuildingsStats> buildingsStats; // a to jest lista z której mo¿na pytaæ budynki co robiæ
+
+    public Animator animator;
+
+    private void Awake()
+    {
+        Instance = this;
+
+
+    }
     void Start()
     {
+        Budynki = new List<GameObject>();
         cam = Camera.main;
+
     }
 
-    public void StartBuilding(GameObject stucture, GameObject _card)
+    public void StartBuilding(BuildingsScriptableObjects statsy)
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         {
             if (!isBuilding)
             {
                 isBuilding = true;
-                StartCoroutine(WhereToBuild(stucture, _card));
+                StartCoroutine(WhereToBuild(statsy));
             }
             else
             {
@@ -37,25 +51,30 @@ public class Building : MonoBehaviour
 
         }
     }
-    public void Build(GameObject position, GameObject stucture)
+    public void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
         Destroy(position);
-        GameObject building = Instantiate(stucture, posi.position, posi.rotation);
+        GameObject building = Instantiate(statsy.Budynek, posi.position, posi.rotation);
         building.transform.SetParent(parent.transform, true);
+        building.AddComponent<BuildingsStats>();
+        var buldingStast = building.GetComponent<BuildingsStats>();
+        buldingStast.putStats(statsy);
+        Budynki.Add(building);
+        buildingsStats.Add(buldingStast);
     }
 
 
-    IEnumerator WhereToBuild(GameObject stucture, GameObject card)
+    IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
-        halfTransparent = Instantiate(stucture, new Vector3(0f, -10f, 0f), transform.rotation);
-
+        halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), transform.rotation);
+        animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
         renderer.shadowCastingMode = ShadowCastingMode.Off;
 
         foreach (Material mat in materials)
-        {           
+        {
             mat.SetFloat("_Dissolve", 0.5f);
         }
         while (isBuilding)
@@ -64,10 +83,19 @@ public class Building : MonoBehaviour
             RaycastHit raycastHit1;
             if (Physics.Raycast(ray1, out raycastHit1, 100, mask))
             {
-                GameObject hit1 = raycastHit1.collider.gameObject;
-                Vector3 place = hit1.transform.position;
-                place.y += 0.01f;
-                halfTransparent.transform.position = place;
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
+
+                }
+                else
+                {
+                    GameObject hit1 = raycastHit1.collider.gameObject;
+                    Vector3 place = hit1.transform.position;
+                    place.y += 0.01f;
+                    halfTransparent.transform.position = place;
+                }
+
             }
             else
             {
@@ -80,11 +108,16 @@ public class Building : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, mask))
                 {
-                    GameObject hitObject = hit.collider.gameObject;
-                    Debug.Log(hitObject.name);
+                    if (!EventSystem.current.IsPointerOverGameObject())
+                    {
+                        GameObject hitObject = hit.collider.gameObject;
+                        Debug.Log(hitObject.name);
+                        
+                        Build(hitObject, statsy);
+                    }
+
                     isBuilding = false;
-                    Build(hitObject, stucture);
-                    //Destroy(card);
+
                 }
                 else
                 {
@@ -93,6 +126,7 @@ public class Building : MonoBehaviour
             }
             yield return null;
         }
+        animator.SetFloat("speed", 0);
         Destroy(halfTransparent);
 
         yield return null;

@@ -49,13 +49,13 @@ public class SpawnUnitCard : MonoBehaviour
         desc.text = stats.desc;
         cost.text = stats.cost.ToString();
     }
-    public void MouseEnter()
+    void OnMouseEnter()
     {
         isMovingUp = true;
         Vector2 targetPosition = StartPos + Vector2.up * 120f;
         StartCoroutine(MoveMe(targetPosition, true));
     }
-    public void MouseExit()
+    void OnMouseExit()
     {
         isMovingUp = false;
         Vector2 targetPosition = StartPos;
