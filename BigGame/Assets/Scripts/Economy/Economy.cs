@@ -60,4 +60,6 @@ public class Economy : MonoBehaviour
         cash += playerCashSO.cashCastleOnTurn;
         UIUpdate();
     }
+
+    
 }

@@ -112,7 +112,8 @@ public class Building : MonoBehaviour
                     {
                         GameObject hitObject = hit.collider.gameObject;
                         Debug.Log(hitObject.name);
-                        
+
+                        Economy.Instance.Purchase(statsy.cost);
                         Build(hitObject, statsy);
                     }
 
@@ -121,6 +122,8 @@ public class Building : MonoBehaviour
                 }
                 else
                 {
+                    //Je¿eli jest obiekt to przestañ budowaæ
+                    EconomyConditions.Instance.ThereIsABuilding();
                     isBuilding = false;
                 }
             }
