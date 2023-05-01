@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7169303467669018669}
   - component: {fileID: 6715102114465249303}
   - component: {fileID: 8505609601156832533}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1571883994457763758}
   - component: {fileID: 2740456192467297191}
   - component: {fileID: 4753795198023060626}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 1764608137538969019}
   - component: {fileID: 3254379962322368102}
   - component: {fileID: 9093188720156709020}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HPCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3254379962322368102
 MonoBehaviour:
   m_ObjectHideFlags: 0
