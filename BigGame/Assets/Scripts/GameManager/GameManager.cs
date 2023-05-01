@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     {
         turnCounter = 1;
         UpdateGameState(GameState.Start);
-
     }
 
     // Update is called once per frame
@@ -308,7 +307,6 @@ public class GameManager : MonoBehaviour
         string asd = turnCounter.ToString();
         turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {asd}";
     }
-
 
     public enum GameState
     {
