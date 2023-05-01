@@ -397,7 +397,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5694986529172688510}
         m_TargetAssemblyTypeName: SpawnUnitCard, Assembly-CSharp
-        m_MethodName: SpawnUnit
+        m_MethodName: InitBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -419,8 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 0}
-  card: {fileID: 0}
+  stats: {fileID: 0}
   name: {fileID: 1550548595729448499}
   desc: {fileID: 1437680117}
   cost: {fileID: 1942851797}

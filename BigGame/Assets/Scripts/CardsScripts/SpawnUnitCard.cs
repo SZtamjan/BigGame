@@ -16,13 +16,46 @@ public class SpawnUnitCard : MonoBehaviour
     {
         GetCardStats();
     }
-    public void SpawnUnit()
+    public void InitBuy()
+    {
+        bool hexIsEmpty = CheckIfHexEmpty();
+        if (hexIsEmpty)
+        {
+            bool CanIBuy = Economy.Instance.CanIBuy(stats.cost);
+            if (CanIBuy)
+            {
+                Economy.Instance.Purchase(stats.cost);
+                GameManager.gameManager.GetComponent<SpawnerScript>().SpawnMyUnit(stats);
+            }
+            else
+            {
+                DoSomething(); //Tu mo¿na zrobiæ funckje która na œrodku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS"
+            }
+
+            bool canIPurchase = Economy.Instance.Purchase(stats.cost); //Wywo³ywaæ spawn jednostek z Economy, lub zrobiæ skrypt Buyer i tam sprawdzaæ wszystko i spawnowaæ jednostki
+            if (canIPurchase) GameManager.gameManager.GetComponent<SpawnerScript>().SpawnMyUnit(stats);
+        }
+        else
+        {
+            DoSomething(); //Tu mo¿na zrobiæ funckje która na œrodku ekranu pokazuje tekst "HEX IS OCCUPIED"
+        }
+    }
+
+    private bool CheckIfHexEmpty()
     {
         if (PatchControler.Instance.PlayerCastle.jednostka == null)
         {
-            bool canIPurchase = Economy.Instance.Purchase(stats.cost);
-            if (canIPurchase) GameManager.gameManager.GetComponent<SpawnerScript>().SpawnMyUnit(stats);
+            return true;
         }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void DoSomething()
+    {
+
     }
 
     public void GetCardStats()
