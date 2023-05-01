@@ -17,34 +17,30 @@ public class ChangeMenu : MonoBehaviour
     private void Start()
     {
         UnitsButton.SetActive(true);
-        BuildButton.SetActive(false);
+        BuildButton.SetActive(true);
     }
 
-    public void ChangeMenuCards()
+    public void ShowBuilding()
     {
-        if (build)
+        var buttons = BuildButton.GetComponent<CanvasGroup>();
+        if (!build)
         {
-            UnitsButton.SetActive(true);
-            BuildButton.SetActive(false);
-            build = false;
+            buttons.alpha = 1.0f;
+            buttons.interactable = true;
+            buttons.blocksRaycasts = true;
+            build = true;
         }
         else
         {
-            UnitsButton.SetActive(false);
-            BuildButton.SetActive(true);
-            build = true;
+            buttons.alpha = 0f;
+            buttons.interactable = false;
+            buttons.blocksRaycasts = false;
+            build = false;
         }
+        
     }
 
-    public void Hide () 
-    {
-        UnitsButton.SetActive(false);
-        BuildButton.SetActive(false);
-    }
+    
 
-    public void UnHide()
-    {
-        UnitsButton.SetActive(false);
-        BuildButton.SetActive(true);
-    }
+    
 }

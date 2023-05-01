@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
   m_Name: SkeletonWarriorStat
   m_EditorClassIdentifier: 
+  unit: {fileID: 4575258820587949288, guid: a5c655d29151f55449032bbac1fc1422, type: 3}
   hp: 3
   damage: 2
   movmentDistance: 1
   attackReach: 1
   playersUnit: 0
+  moveSpeed: 0.5
+  cost: 5
+  name: Karta wpierdolu
+  desc: "To naprawd\u0119 karta wpierdolu"
+  artwork: {fileID: 0}
