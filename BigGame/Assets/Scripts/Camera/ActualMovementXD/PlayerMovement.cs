@@ -41,8 +41,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.drag = groundDrag;
-        SetLimits();
         SetLimiters();
+        SetLimits();
     }
 
     private void Update()
@@ -123,6 +123,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetLimiters()
     {
+        if (limitLeft == null)
+        {
+            limitLeft = PatchControler.Instance.PlayerCastle.castle;
+        }
+        
+        if (limitRight == null)
+        {
+            limitRight = PatchControler.Instance.ComputerCastle.castle;
+        }
         //Left Limiter
         Vector3 limiterLeftPos = new Vector3(limitLeft.transform.position.x-fixedPos,camHeight,(minZ + maxZ) / 2f);
         limiterLeft.transform.position = limiterLeftPos;
