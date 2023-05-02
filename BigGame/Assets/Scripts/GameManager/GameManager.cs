@@ -105,17 +105,23 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void PlayerTurnEnd()
+    {
+        if (CanPlayerMove())
+        {
+
+            DisableTurnButton();
+            GetComponent<PatchControler>().PlayerUnitPhase();
+            StartCoroutine(Endturn(true));
+        }
+    }
+
     private void GameStateEnemyTurn()
     {
         playerTurn = false;
         turnCounter++;
         StartCoroutine(EnemyMove());
 
-    }
-
-    public void EvilKoniecTury()
-    {
-        StartCoroutine(EnemyMove());
     }
 
     private void GameStateVictory()
@@ -211,16 +217,7 @@ public class GameManager : MonoBehaviour
         return !playerTurn;
     }
 
-    public void PlayerTurnEnd()
-    {
-        if (CanPlayerMove())
-        {
-            
-            DisableTurnButton();
-            GetComponent<PatchControler>().PlayerUnitPhase();
-            StartCoroutine(Endturn(true));
-        }
-    }
+    
 
     private IEnumerator Endturn(bool playerUnit)
     {
@@ -229,10 +226,7 @@ public class GameManager : MonoBehaviour
         while (wait)
         {
             
-            if (!playerUnit)
-            {
-
-            }
+            
             for (int i = 0; i <= PathWay.Count() - 1; i++)
             {
 

@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static CastleClass;
+using static UnityEngine.GraphicsBuffer;
 using Random = System.Random;
 
 public class SpawnerScript : MonoBehaviour
 {
     public GameObject EvilGigaPrefab;
     public static SpawnerScript instance;
-    [SerializeField] private List<UnitScriptableObjects> WhatEnemyCanSpawn;
+    [SerializeField] public List<UnitScriptableObjects> WhatEnemyCanSpawn;
+
 
     private void Awake()
     {
-        instance=this;
+        instance = this;
     }
-    
+
 
     public void SpawnMyUnit(UnitScriptableObjects card)
     {
@@ -42,10 +44,9 @@ public class SpawnerScript : MonoBehaviour
     }
 
 
-    public void SpawnEnemyUnit()
+    public void SpawnEnemyUnit(int number = -1)
     {
-        int number = GetRandomInt(WhatEnemyCanSpawn.Count);
-
+        number = (number < 0) ? GetRandomInt(WhatEnemyCanSpawn.Count) : number;
         var gdzie = GetComponent<PatchControler>().ComputerCastle;
         if (gdzie.jednostka == null)
         {
@@ -62,6 +63,8 @@ public class SpawnerScript : MonoBehaviour
         }
 
     }
+
+
 
     private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota, GameObject spawn)
     {
