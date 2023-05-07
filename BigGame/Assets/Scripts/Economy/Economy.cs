@@ -7,7 +7,7 @@ public class Economy : MonoBehaviour
 {
     public TextMeshProUGUI moneyUI;
     public PlayerCash playerCashSO;
-    private int cash;
+    public int cash;
 
     public static Economy Instance;
     private void Awake()
