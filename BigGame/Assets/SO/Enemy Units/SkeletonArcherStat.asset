@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
+  m_Name: SkeletonArcherStat
+  m_EditorClassIdentifier: 
+  unit: {fileID: 6365645490413146944, guid: 9568811cecf90964cafb850f591f35d8, type: 3}
+  hp: 3
+  damage: 1
+  movmentDistance: 1
+  attackReach: 3
+  playersUnit: 0
+  moveSpeed: 0.5
+  cost: 5
+  name: Skeleton Archer
+  desc: "To naprawd\u0119 karta wpierdolu"
+  artwork: {fileID: 0}

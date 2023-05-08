@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -28,15 +28,25 @@ public class SpawnUnitCard : MonoBehaviour
         StartPos = rectTransform.anchoredPosition;
 
     }
-    public void SpawnUnit()
+    public void InitBuy()
     {
-        if (GameManager.instance.playerTurn && PatchControler.Instance.PlayerCastle.jednostka == null)
+        bool hexIsEmpty = EconomyConditions.Instance.CheckIfHexEmpty();
+        if (hexIsEmpty)
         {
-            bool canIPurchase = Economy.Instance.Purchase(stats.cost);
-            if (canIPurchase)
+            bool CanIBuy = Economy.Instance.CanIBuy(stats.cost);
+            if (CanIBuy)
             {
-                SpawnerScript.instance.SpawnMyUnit(stats);
+                Economy.Instance.Purchase(stats.cost);
+                GameManager.gameManager.GetComponent<SpawnerScript>().SpawnMyUnit(stats);
             }
+            else
+            {
+                EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS"
+            }
+        }
+        else
+        {
+            EconomyConditions.Instance.ThereIsAUnit(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "HEX IS OCCUPIED"
         }
     }
 

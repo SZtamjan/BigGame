@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30
+  m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -312,7 +312,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 626, y: 1004}
+  m_SizeDelta: {x: 650, y: 1100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6431623604314351246
 CanvasRenderer:
@@ -398,7 +398,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5694986529172688510}
         m_TargetAssemblyTypeName: SpawnUnitCard, Assembly-CSharp
-        m_MethodName: SpawnUnit
+        m_MethodName: InitBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

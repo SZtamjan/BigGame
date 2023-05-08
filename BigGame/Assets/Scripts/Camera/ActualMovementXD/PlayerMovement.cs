@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSpeed = 1f;// predkosc przesuwania kamery myszka
     public float camHeight = 3f; // warto�� sta�a pozycji kamery w osi Y
 
-    [Header("Limiters")]
+    [Header("Math Limiters")]
     public GameObject limitLeft;
     public GameObject limitRight;
     private float minX; // minimalna pozycja kamery w osi X
@@ -20,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
     public float minZ; // minimalna pozycja kamery w osi Z
     public float maxZ; // maksymalna pozycja kamery w osi Z
 
+    [Header("Hitbox Limiters")]
+    [SerializeField] private GameObject limiterLeft;
+    [SerializeField] private GameObject limiterRight;
+    [SerializeField] private GameObject limiterFront;
+    [SerializeField] private GameObject limiterBack;
+    [SerializeField] private float fixedPos = 0.01f;
 
     private bool isDragging = false; // flaga informujaca, czy uzytkownik przesuwa kamera
     private Vector3 lastMousePosition; // pozycja myszy podczas ostatniego klatkowania
@@ -35,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.drag = groundDrag;
+        SetLimiters();
         SetLimits();
     }
 
@@ -114,4 +121,32 @@ public class PlayerMovement : MonoBehaviour
         maxX = limitRight.transform.position.x;
     }
 
+    private void SetLimiters()
+    {
+        if (limitLeft == null)
+        {
+            limitLeft = PatchControler.Instance.PlayerCastle.castle;
+        }
+        
+        if (limitRight == null)
+        {
+            limitRight = PatchControler.Instance.ComputerCastle.castle;
+        }
+        //Left Limiter
+        Vector3 limiterLeftPos = new Vector3(limitLeft.transform.position.x-fixedPos,camHeight,(minZ + maxZ) / 2f);
+        limiterLeft.transform.position = limiterLeftPos;
+        
+        //Right Limiter
+        Vector3 limiterRightPos = new Vector3(limitRight.transform.position.x+fixedPos,camHeight,limiterLeftPos.z);
+        limiterRight.transform.position = limiterRightPos;
+        
+        //Front Limiter
+        Vector3 limiterFrontPos = new Vector3((limitLeft.transform.position.x + limitRight.transform.position.x) / 2f,
+            camHeight, maxZ+fixedPos);
+        limiterFront.transform.position = limiterFrontPos;
+        
+        //Back Limiter
+        Vector3 limiterBackPos = new Vector3(limiterFrontPos.x,camHeight,minZ-fixedPos);
+        limiterBack.transform.position = limiterBackPos;
+    }
 }
