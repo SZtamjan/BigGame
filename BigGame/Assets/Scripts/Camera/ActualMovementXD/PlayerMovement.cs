@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,9 +42,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.drag = groundDrag;
+        GetLimitersColliders();
         SetLimiters();
         SetLimits();
     }
+
+    
 
     private void Update()
     {
@@ -114,7 +118,16 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
-    
+
+    private void GetLimitersColliders()
+    {
+        List<GameObject> limiters= Limiters.Instance.GetLimiters();
+        limiterLeft = limiters[0];
+        limiterRight = limiters[1];
+        limiterFront = limiters[2];
+        limiterBack = limiters[3];
+    }
+
     private void SetLimits()
     {
         minX = limitLeft.transform.position.x;

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeMenu : MonoBehaviour
+public class ShowBuildingMenu : MonoBehaviour
 {
     [SerializeField] private GameObject UnitsButton;
     [SerializeField] private GameObject BuildButton;
     private bool build = false;
-    public static ChangeMenu instance;
+    public static ShowBuildingMenu instance;
 
     private void Awake()
     {
@@ -17,24 +17,20 @@ public class ChangeMenu : MonoBehaviour
     private void Start()
     {
         UnitsButton.SetActive(true);
-        BuildButton.SetActive(true);
+        BuildButton.SetActive(false);
     }
 
     public void ShowBuilding()
     {
-        var buttons = BuildButton.GetComponent<CanvasGroup>();
+        
         if (!build)
         {
-            buttons.alpha = 1.0f;
-            buttons.interactable = true;
-            buttons.blocksRaycasts = true;
+            BuildButton.SetActive(true);
             build = true;
         }
         else
         {
-            buttons.alpha = 0f;
-            buttons.interactable = false;
-            buttons.blocksRaycasts = false;
+            BuildButton.SetActive(false);
             build = false;
         }
         

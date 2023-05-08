@@ -20,7 +20,7 @@ public class Building : MonoBehaviour
     [SerializeField] private List<GameObject> Budynki; // to jest przysz³oœæ do zapisywanie gry
     public List<BuildingsStats> buildingsStats; // a to jest lista z której mo¿na pytaæ budynki co robiæ
 
-    public Animator animator;
+    //public Animator animator;
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class Building : MonoBehaviour
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), transform.rotation);
-        animator.SetFloat("speed", 1);
+        //animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
         renderer.shadowCastingMode = ShadowCastingMode.Off;
@@ -129,7 +129,7 @@ public class Building : MonoBehaviour
             }
             yield return null;
         }
-        animator.SetFloat("speed", 0);
+        //animator.SetFloat("speed", 0);
         Destroy(halfTransparent);
 
         yield return null;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,9 +36,11 @@ public class BuildingCard : MonoBehaviour
     
     public void StartBulding()
     {
-        ChangeMenu.instance.ShowBuilding();
+        ShowBuildingMenu.instance.ShowBuilding();
         Building.Instance.StartBuilding(infoSource);
     }
+
+    
 
     void OnMouseEnter()
     {
@@ -50,6 +53,10 @@ public class BuildingCard : MonoBehaviour
         _toolTipTex.gameObject.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        _toolTipTex.gameObject.SetActive(false);
+    }
     private void Start()
     {
         _stucture = infoSource.Budynek;
