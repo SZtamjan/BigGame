@@ -10,9 +10,9 @@ using static DrogaClass;
 using static GameManager;
 using static UnityEngine.GraphicsBuffer;
 
-public class PatchControler : MonoBehaviour
+public class PathControler : MonoBehaviour
 {
-    public static PatchControler Instance;
+    public static PathControler Instance;
 
     [Header("Starting ")]
     public Castle PlayerCastle;

@@ -64,11 +64,11 @@ public class UnitControler : MonoBehaviour
 
         if (playersUnit)
         {
-            EnemyCastle = GameManager.gameManager.GetComponent<PatchControler>().ComputerCastle.castle;
+            EnemyCastle = GameManager.gameManager.GetComponent<PathControler>().ComputerCastle.castle;
         }
         else
         {
-            EnemyCastle = GameManager.gameManager.GetComponent<PatchControler>().PlayerCastle.castle;
+            EnemyCastle = GameManager.gameManager.GetComponent<PathControler>().PlayerCastle.castle;
         }
     }
 
@@ -279,31 +279,31 @@ public class UnitControler : MonoBehaviour
 
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
-                if (PatchControler.PathWay[wayPoints.First()].wantingUnit == null)
+                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null)
                 {
-                    PatchControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
+                    PathControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
 
-                    PatchControler.PathWay[wayPoints.First() - direction].wantingUnit = null;
+                    PathControler.PathWay[wayPoints.First() - direction].wantingUnit = null;
                     dupa = false;
 
                 }
 
             }
-            else if (dupa && wayPoints.First() < PatchControler.PathWay.Count() - 1 && !playersUnit)
+            else if (dupa && wayPoints.First() < PathControler.PathWay.Count() - 1 && !playersUnit)
             {
-                if (PatchControler.PathWay[wayPoints.First()].wantingUnit == null)
+                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null)
                 {
-                    PatchControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
+                    PathControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
 
-                    PatchControler.PathWay[wayPoints.First() - direction].wantingUnit = null;
+                    PathControler.PathWay[wayPoints.First() - direction].wantingUnit = null;
                     dupa = false;
                 }
             }
             else
             {
-                if (PatchControler.PathWay[wayPoints.First()].wantingUnit == null)
+                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null)
                 {
-                    PatchControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
+                    PathControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
                 }
 
             }
@@ -316,23 +316,23 @@ public class UnitControler : MonoBehaviour
 
             if (!isAttacking)
             {
-                if (PatchControler.PathWay[wayPoints.First()].wantingUnit == null || PatchControler.PathWay[wayPoints.First()].wantingUnit == gameObject)
+                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null || PathControler.PathWay[wayPoints.First()].wantingUnit == gameObject)
                 {
                     if ((wayPoints?.Count ?? 0) > 0 && !wasThereWalk)
                     {
                         PlayWalk();
                         wasThereWalk = true;
                     }
-                    transform.position = Vector3.MoveTowards(transform.position, PatchControler.PathWay[wayPoints.First()].coordinations, Time.deltaTime * speed);
+                    transform.position = Vector3.MoveTowards(transform.position, PathControler.PathWay[wayPoints.First()].coordinations, Time.deltaTime * speed);
 
-                    if (Vector3.Distance(transform.position, PatchControler.PathWay[wayPoints.First()].coordinations) < 0.2f)
+                    if (Vector3.Distance(transform.position, PathControler.PathWay[wayPoints.First()].coordinations) < 0.2f)
                     {
                         Vector3 lookAt;
                         if (playersUnit)
                         {
-                            if (!(wayPoints[0] + direction > PatchControler.PathWay.Count() - 1))
+                            if (!(wayPoints[0] + direction > PathControler.PathWay.Count() - 1))
                             {
-                                lookAt = PatchControler.PathWay[wayPoints.First() + direction].coordinations;
+                                lookAt = PathControler.PathWay[wayPoints.First() + direction].coordinations;
                             }
                             else
                             {
@@ -343,7 +343,7 @@ public class UnitControler : MonoBehaviour
                         {
                             if ((wayPoints[0] + direction > 0))
                             {
-                                lookAt = PatchControler.PathWay[wayPoints.First() + direction].coordinations;
+                                lookAt = PathControler.PathWay[wayPoints.First() + direction].coordinations;
                             }
                             else
                             {
@@ -355,7 +355,7 @@ public class UnitControler : MonoBehaviour
                     }
 
 
-                    if (Vector3.Distance(transform.position, PatchControler.PathWay[wayPoints.First()].coordinations) < 0.02f)
+                    if (Vector3.Distance(transform.position, PathControler.PathWay[wayPoints.First()].coordinations) < 0.02f)
                     {
 
                         dupa = true;

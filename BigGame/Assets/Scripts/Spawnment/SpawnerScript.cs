@@ -24,7 +24,7 @@ public class SpawnerScript : MonoBehaviour
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         {
-            var gdzie = GetComponent<PatchControler>().PlayerCastle;
+            var gdzie = GetComponent<PathControler>().PlayerCastle;
             if (gdzie.jednostka == null)
             {
                 float x = gdzie.castle.transform.position.x;
@@ -47,7 +47,7 @@ public class SpawnerScript : MonoBehaviour
     public void SpawnEnemyUnit(int number = -1)
     {
         number = (number < 0) ? GetRandomInt(WhatEnemyCanSpawn.Count) : number;
-        var gdzie = GetComponent<PatchControler>().ComputerCastle;
+        var gdzie = GetComponent<PathControler>().ComputerCastle;
         if (gdzie.jednostka == null)
         {
             float x = gdzie.castle.transform.position.x;

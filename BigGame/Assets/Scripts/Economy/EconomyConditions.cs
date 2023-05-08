@@ -28,7 +28,7 @@ public class EconomyConditions : MonoBehaviour
 
     public bool CheckIfHexEmpty()
     {
-        if (PatchControler.Instance.PlayerCastle.jednostka == null)
+        if (PathControler.Instance.PlayerCastle.jednostka == null)
         {
             return true;
         }

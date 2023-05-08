@@ -5,7 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static PatchControler;
+using static PathControler;
 
 public class GameManager : MonoBehaviour
 {
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
     private void StartingFunction()
     {
         endScreen.SetActive(false);
-        PatchControler.Instance.StartNewPathWay();
+        PathControler.Instance.StartNewPathWay();
         GameManager.instance.UpdateGameState(GameState.MapGeneration);
 
     }
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
 
         gameObject.GetComponent<PathGenerator>().PatchGenerator();
-        PatchControler.Instance.StartPath();
+        PathControler.Instance.StartPath();
 
         GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         {
 
             DisableTurnButton();
-            GetComponent<PatchControler>().PlayerUnitPhase();
+            GetComponent<PathControler>().PlayerUnitPhase();
             StartCoroutine(Endturn(true));
         }
     }
@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour
                 GetComponent<SpawnerScript>().SpawnEnemyUnit();
                 yield return new WaitForSeconds(1f);
             }
-            GetComponent<PatchControler>().ComputerUnitPhaze();
+            GetComponent<PathControler>().ComputerUnitPhaze();
             yield return new WaitForSeconds(0.3f);
             GameManager.instance.StartCoroutine(Endturn(false));
 
@@ -253,11 +253,11 @@ public class GameManager : MonoBehaviour
             GameObject UnitInCastle;
             if (playerUnit)
             {
-                UnitInCastle = PatchControler.Instance.PlayerCastle.jednostka;
+                UnitInCastle = PathControler.Instance.PlayerCastle.jednostka;
             }
             else
             {
-                UnitInCastle = PatchControler.Instance.ComputerCastle.jednostka;
+                UnitInCastle = PathControler.Instance.ComputerCastle.jednostka;
             }
             if (UnitInCastle != null)
             {

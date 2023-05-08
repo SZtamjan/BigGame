@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(PatchControler))]
+[CustomEditor(typeof(PathControler))]
 public class PathControllerInspector : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        PatchControler patchControler = (PatchControler)target;
+        PathControler patchControler = (PathControler)target;
 
         bool isPlaying = EditorApplication.isPlaying;
 

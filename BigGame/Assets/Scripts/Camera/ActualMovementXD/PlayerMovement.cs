@@ -138,12 +138,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (limitLeft == null)
         {
-            limitLeft = PatchControler.Instance.PlayerCastle.castle;
+            limitLeft = PathControler.Instance.PlayerCastle.castle;
         }
         
         if (limitRight == null)
         {
-            limitRight = PatchControler.Instance.ComputerCastle.castle;
+            limitRight = PathControler.Instance.ComputerCastle.castle;
         }
         //Left Limiter
         Vector3 limiterLeftPos = new Vector3(limitLeft.transform.position.x-fixedPos,camHeight,(minZ + maxZ) / 2f);
