@@ -31,7 +31,7 @@ public class SceneHandler : MonoBehaviour
 
     private void PlaySonk()
     {
-        AudioManager.instance.PlayIdleSong();
+        StartCoroutine(AudioManager.instance.GetComponent<AudioManager>().CheckForSongOver());
     }
 
     private void ChangeScreen()

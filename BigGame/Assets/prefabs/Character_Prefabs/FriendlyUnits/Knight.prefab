@@ -795,6 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5262224467928460434}
   - component: {fileID: 7417945024203126914}
+  - component: {fileID: 45487630934109095}
   - component: {fileID: 2313084954825176907}
   m_Layer: 0
   m_Name: Knight
@@ -837,10 +838,29 @@ MonoBehaviour:
   unitScriptableObjects: {fileID: 11400000, guid: cac1ebd836d2f974fb1f2cf627c4b03c, type: 2}
   hpbar: {fileID: 8251348025405609166}
   hp: 0
+  hidenHP: 0
   damage: 0
   movmentDistance: 0
   attackReach: 0
   playersUnit: 1
+  speed: 0
+  isAttacking: 0
+  isMovving: 0
+  isPojectileFlying: 0
+  projectileToSpawn: {fileID: 0}
+  projectileStartingPoint: {fileID: 0}
+--- !u!114 &45487630934109095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777472483807655464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1c245306f19e4bb7489db9203ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2313084954825176907
 Animator:
   serializedVersion: 4

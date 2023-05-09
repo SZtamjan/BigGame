@@ -4256,7 +4256,6 @@ MonoBehaviour:
   parent: {fileID: 0}
   Budynki: []
   buildingsStats: []
-  animator: {fileID: 6615120308516309595}
 --- !u!1 &7222803090026633486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4266,6 +4265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5621610218470552438}
+  - component: {fileID: 3016035743527516639}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -4290,6 +4290,22 @@ Transform:
   m_Father: {fileID: 8742569726464788414}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3016035743527516639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222803090026633486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfd78d56cec2c2418d120712d5dd336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicAS: {fileID: 0}
+  sfxAS: {fileID: 0}
+  music: []
+  soundEffectd: []
 --- !u!1 &7258841279799021387
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,6 +4369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2404436010698110514}
+  - component: {fileID: 7134389340105161038}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -4375,6 +4392,102 @@ Transform:
   m_Father: {fileID: 5621610218470552438}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7134389340105161038
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388305050257824341}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 8992749422471132668, guid: ce12cf0b28659e946b1d27ee6aebc4c8, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 4c1ea353a1940e6458c1a38c21b53e87, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7428302527317494464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,7 +4952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6121595576606538699}
-  - component: {fileID: 3855912310655575659}
+  - component: {fileID: 6152267839949593619}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -4862,7 +4975,7 @@ Transform:
   m_Father: {fileID: 5621610218470552438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &3855912310655575659
+--- !u!82 &6152267839949593619
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4872,11 +4985,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7896784327612908389, guid: ce12cf0b28659e946b1d27ee6aebc4c8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: dd539acb7b5439549ae7094773689163, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a7963647f093e0d40963b810818eacca, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.148
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

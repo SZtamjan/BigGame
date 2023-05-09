@@ -1,22 +1,71 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public GameObject music;
+    [Header("Main Obiects")]
+    public AudioSource musicAS;
+    public AudioSource sfxAS;
 
-    public void Awake()
+    private int previousIndex;
+    private bool firstTime = false;
+    public bool debugTmp;
+    
+    [Header("Sounds Lists")]
+    public List<AudioClip> music;
+    public List<AudioClip> soundEffectd;
+
+    void Awake()
     {
         instance = this;
     }
 
-    public void PlayIdleSong()
+
+    public void PlaySFX(int i)
     {
-        music.GetComponent<AudioSource>().Play();
+        sfxAS.clip = soundEffectd[i];
+        sfxAS.Play();
     }
 
+    public IEnumerator CheckForSongOver()
+    {
+        float time = 0;
+        PlayIdleSong();
+        while (true)
+        {
+            time += Time.deltaTime;
+            Debug.Log(time);
+            if(!musicAS.isPlaying) PlayIdleSong();
+            yield return null;
+        }
 
+    }
+    
+    public void PlayIdleSong()
+    {
+        int i = RandomTrack();
+        musicAS.clip = music[i];
+        musicAS.Play();
+    }
+    private int RandomTrack()
+    {
+        int i;
+        do
+        {
+            i = Random.Range(0, music.Count);
+        } while (i == previousIndex);
+        
+        if (!firstTime)
+        {
+            i = 0;
+            firstTime = true;
+        }
+        previousIndex = i;
+        return i;
+    }
 }
