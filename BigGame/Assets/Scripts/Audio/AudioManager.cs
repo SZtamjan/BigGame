@@ -25,6 +25,10 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
+    public void KorutynaCzas()
+    {
+        StartCoroutine(CheckForSongOver());
+    }
 
     public void PlaySFX(int i)
     {
@@ -34,16 +38,12 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator CheckForSongOver()
     {
-        float time = 0;
         PlayIdleSong();
         while (true)
         {
-            time += Time.deltaTime;
-            Debug.Log(time);
             if(!musicAS.isPlaying) PlayIdleSong();
             yield return null;
         }
-
     }
     
     public void PlayIdleSong()
