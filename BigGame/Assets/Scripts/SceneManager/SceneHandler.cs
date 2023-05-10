@@ -24,7 +24,7 @@ public class SceneHandler : MonoBehaviour
         {
             ChangeScreen();
             PlaySonk(); //Totally by accident
-            StartCoroutine(LoadingScreenFadeOut()); //Wygaszanie ekranu ³adowania
+            StartCoroutine(LoadingScreenFadeOut()); //Loading screen fadeout
         }
         counter++;
     }

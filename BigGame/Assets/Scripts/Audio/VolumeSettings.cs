@@ -32,6 +32,15 @@ public class VolumeSettings : MonoBehaviour
             PlayerPrefs.SetFloat("sfx", sfxSlider.value);
         }
 
+        if (PlayerPrefs.HasKey("masterAudio"))
+        {
+            PlayerPrefs.SetFloat("masterAudio", 0f);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("masterAudio", 0f);
+        }
+
         SetMusicVolume();
         SetSFXVolume();
     }

@@ -14,8 +14,7 @@ public class AudioManager : MonoBehaviour
 
     private int previousIndex;
     private bool firstTime = false;
-    public bool debugTmp;
-    
+
     [Header("Sounds Lists")]
     public List<AudioClip> music;
     public List<AudioClip> soundEffectd;
