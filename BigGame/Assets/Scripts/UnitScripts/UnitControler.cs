@@ -101,7 +101,7 @@ public class UnitControler : MonoBehaviour
         return playersUnit;
     }
 
-    public bool ImDoingSomething()
+    public bool AmIDoingSomething()
     {
         if (isAttacking || isMovving || isPojectileFlying)
         {
@@ -307,12 +307,14 @@ public class UnitControler : MonoBehaviour
                 }
 
             }
-
+            
             if (isAttacking)
             {
                 yield return new WaitForEndOfFrame();
                 continue;
             }
+
+            
 
             if (!isAttacking)
             {

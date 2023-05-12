@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
                 {
                     continue;
                 }
-                if (thisUnitController.ImDoingSomething())
+                if (thisUnitController.AmIDoingSomething())
                 {
                     wait = true;
                     break;
@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
             }
             if (UnitInCastle != null)
             {
-                if (UnitInCastle.GetComponent<UnitControler>().ImDoingSomething())
+                if (UnitInCastle.GetComponent<UnitControler>().AmIDoingSomething())
                 {
                     wait = true;
                     continue;

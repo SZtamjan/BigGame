@@ -34,14 +34,14 @@ public class SpawnUnitCard : MonoBehaviour
         if (hexIsEmpty)
         {
             bool CanIBuy = Economy.Instance.CanIBuy(stats.cost);
-            if (CanIBuy)
+            if (CanIBuy && GameManager.instance.CanPlayerMove())
             {
                 Economy.Instance.Purchase(stats.cost);
                 GameManager.gameManager.GetComponent<SpawnerScript>().SpawnMyUnit(stats);
             }
             else
             {
-                EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS"
+                EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS / NOT YOUR TURN"
             }
         }
         else
