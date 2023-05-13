@@ -31,8 +31,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183664704268003713}
-  m_LocalRotation: {x: 0.50000006, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 3, y: 3, z: -3}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -155,6 +155,8 @@ MonoBehaviour:
   camHeight: 3
   limitLeft: {fileID: 0}
   limitRight: {fileID: 0}
+  limitFront: {fileID: 0}
+  limitBack: {fileID: 0}
   minZ: -3.5
   maxZ: 0
   limiterLeft: {fileID: 0}
