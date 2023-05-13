@@ -40,8 +40,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(int i)
     {
-        sfxAS.clip = soundEffectd[i];
-        sfxAS.Play();
+        sfxAS.PlayOneShot(soundEffectd[i]);
     }
 
     public IEnumerator CheckForSongOver()
