@@ -183,8 +183,12 @@ public class PathControler : MonoBehaviour
 
             thisUnitController.SetWaypoints(positions);
 
+            if (!thisUnitController.AmIDoingSomething())
+            {
+                thisUnitController.MoveAction();
 
-            thisUnitController.MoveAction();
+            }
+            
 
         }
     }
@@ -282,7 +286,7 @@ public class PathControler : MonoBehaviour
 
             thisUnitController.SetWaypoints(positions);
 
-            if (!thisUnitController.ImDoingSomething())
+            if (!thisUnitController.AmIDoingSomething())
             {
                 thisUnitController.MoveAction();
 
@@ -416,7 +420,7 @@ public class PathControler : MonoBehaviour
             }
 
             thisUnitController.SetWaypoints(positions);
-            if (!thisUnitController.ImDoingSomething())
+            if (!thisUnitController.AmIDoingSomething())
             {
                 thisUnitController.MoveAction();
 
@@ -508,7 +512,7 @@ public class PathControler : MonoBehaviour
 
             thisUnitController.SetWaypoints(positions);
 
-            if (!thisUnitController.ImDoingSomething())
+            if (!thisUnitController.AmIDoingSomething())
             {
                 thisUnitController.MoveAction();
 

@@ -10842,6 +10842,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1366541108640335842, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366541108640335842, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366541108640335842, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366541108640335842, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1899988503871116748, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -10914,6 +10930,10 @@ PrefabInstance:
       propertyPath: infoSource
       value: 
       objectReference: {fileID: 11400000, guid: 143d8d1624002ad45afc7ae14c08a97e, type: 2}
+    - target: {fileID: 3734489118288297909, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
     - target: {fileID: 3855912310655575659, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1
