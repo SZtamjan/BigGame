@@ -17,9 +17,13 @@ public class PlayerMovement : MonoBehaviour
     public float camHeight = 3f; // warto�� sta�a pozycji kamery w osi Y
 
     [Header("Math Limiters")]
+    [Tooltip("Domyślnie zamek gracza")]
     public GameObject limitLeft;
+    [Tooltip("Domyślnie zamek Enemy")]
     public GameObject limitRight;
+    [Tooltip("Trzeba wybrać samemu hexa")]
     public GameObject limitFront;
+    [Tooltip("Trzeba wybrać samemu hexa")]
     public GameObject limitBack;
     private float minX; // minimalna pozycja kamery w osi X
     private float maxX; // maksymalna pozycja kamery w osi X
