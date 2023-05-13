@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Math Limiters")]
     public GameObject limitLeft;
     public GameObject limitRight;
+    public GameObject limitFront;
+    public GameObject limitBack;
     private float minX; // minimalna pozycja kamery w osi X
     private float maxX; // maksymalna pozycja kamery w osi X
-    public float minZ; // minimalna pozycja kamery w osi Z
-    public float maxZ; // maksymalna pozycja kamery w osi Z
+    private float minZ; // minimalna pozycja kamery w osi Z
+    private float maxZ; // maksymalna pozycja kamery w osi Z
 
     [Header("Hitbox Limiters")]
     [SerializeField] private GameObject limiterLeft;
@@ -42,12 +47,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.drag = groundDrag;
-        GetLimitersColliders();
         SetLimiters();
         SetLimits();
-    }
 
-    
+        SetLimitersSize();
+    }
 
     private void Update()
     {
@@ -118,16 +122,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
-
-    private void GetLimitersColliders()
-    {
-        List<GameObject> limiters= Limiters.Instance.GetLimiters();
-        limiterLeft = limiters[0];
-        limiterRight = limiters[1];
-        limiterFront = limiters[2];
-        limiterBack = limiters[3];
-    }
-
+    
     private void SetLimits()
     {
         minX = limitLeft.transform.position.x;
@@ -136,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetLimiters()
     {
+        minZ = limitBack.transform.position.z;
+        maxZ = limitFront.transform.position.z;
         if (limitLeft == null)
         {
             limitLeft = PathControler.Instance.PlayerCastle.castle;
@@ -146,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
             limitRight = PathControler.Instance.ComputerCastle.castle;
         }
         //Left Limiter
-        Vector3 limiterLeftPos = new Vector3(limitLeft.transform.position.x-fixedPos,camHeight,(minZ + maxZ) / 2f);
+        Vector3 limiterLeftPos = new Vector3(limitLeft.transform.position.x-fixedPos,camHeight,(limitFront.transform.position.z + limitBack.transform.position.z) / 2f);
         limiterLeft.transform.position = limiterLeftPos;
         
         //Right Limiter
@@ -159,7 +156,22 @@ public class PlayerMovement : MonoBehaviour
         limiterFront.transform.position = limiterFrontPos;
         
         //Back Limiter
-        Vector3 limiterBackPos = new Vector3(limiterFrontPos.x,camHeight,minZ-fixedPos);
+        Vector3 limiterBackPos = new Vector3(limiterFrontPos.x,camHeight,limitBack.transform.position.z-fixedPos);
         limiterBack.transform.position = limiterBackPos;
+    }
+
+    private void SetLimitersSize()
+    {
+        float xSize = Math.Abs(limitLeft.transform.position.x - limitRight.transform.position.x);
+        Vector3 newXScale = limiterFront.transform.localScale;
+        newXScale.x = xSize;
+        limiterFront.transform.localScale = newXScale;
+        limiterBack.transform.localScale = newXScale;
+        
+        float zSize = Math.Abs(limitFront.transform.position.z - limitBack.transform.position.z);
+        Vector3 newZScale = limiterLeft.transform.localScale;
+        newZScale.z = zSize;
+        limiterLeft.transform.localScale = newZScale;
+        limiterRight.transform.localScale = newZScale;
     }
 }

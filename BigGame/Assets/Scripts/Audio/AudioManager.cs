@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
@@ -24,8 +25,16 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
+    private void UpdateSoundLevel()
+    {
+        GetComponent<MixerData>().myMixer.SetFloat("masterMixer", Mathf.Log10(PlayerPrefs.GetFloat("masterAudio")) * 20);
+        GetComponent<MixerData>().myMixer.SetFloat("musicMixer", Mathf.Log10(PlayerPrefs.GetFloat("music")) * 20);
+        GetComponent<MixerData>().myMixer.SetFloat("sfxMixer", Mathf.Log10(PlayerPrefs.GetFloat("sfx")) * 20);
+    }
+    
     public void KorutynaCzas()
     {
+        UpdateSoundLevel();
         StartCoroutine(CheckForSongOver());
     }
 
