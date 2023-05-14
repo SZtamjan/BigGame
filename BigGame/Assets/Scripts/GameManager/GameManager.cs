@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviour
     {
         endScreen.SetActive(true);
         endScreen.GetComponent<TextMeshProUGUI>().text = "VICTORY";
+        endScreen.GetComponent<SceneChange>().LoadOnClick();
     }
 
     private IEnumerator EnemyMove()
