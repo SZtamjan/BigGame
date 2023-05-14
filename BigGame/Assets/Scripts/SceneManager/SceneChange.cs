@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneChange : MonoBehaviour
+public partial class SceneChange : MonoBehaviour
 {
     public GameObject loadingScreen;
     public Image loadingBarFill;
@@ -24,10 +24,38 @@ public class SceneChange : MonoBehaviour
         while (!operation.isDone)
         {
             float progressValue = Mathf.Clamp01(operation.progress/0.9f);
-
-            loadingBarFill.fillAmount = progressValue;
+            
+            if(loadingBarFill != null) loadingBarFill.fillAmount = progressValue;
 
             yield return null;
         }
+    }
+}
+
+public partial class SceneChange
+{
+    [SerializeField]public int sceneId;
+    private bool useFixed = false;
+
+    public void LoadOnClick()
+    {
+        StartCoroutine(LoadOnClickCor());
+    }
+    
+    IEnumerator LoadOnClickCor()
+    {
+        bool clicked = false;
+        while (clicked == false)
+        {
+            if (Input.anyKeyDown && useFixed == false)
+            {
+                GetComponent<SceneChange>().LoadScene(sceneId);
+                useFixed = true;
+                clicked = true;
+            }
+            yield return null;
+        }
+
+        yield return null;
     }
 }

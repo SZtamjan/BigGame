@@ -13,4 +13,14 @@ public class SoundEffectPlay : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(3);
     }
+
+    public void Die()
+    {
+        AudioManager.instance.PlaySFX(0);
+    }
+
+    public void Point()
+    {
+        AudioManager.instance.PlaySFX(2);
+    }
 }

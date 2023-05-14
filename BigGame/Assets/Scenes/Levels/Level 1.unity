@@ -25591,8 +25591,8 @@ MonoBehaviour:
   camHeight: 3
   limitLeft: {fileID: 0}
   limitRight: {fileID: 0}
-  minZ: -3
-  maxZ: 10
+  limitFront: {fileID: 0}
+  limitBack: {fileID: 0}
   limiterLeft: {fileID: 628738365}
   limiterRight: {fileID: 716286596}
   limiterFront: {fileID: 2076702763}
@@ -35363,10 +35363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85ea83e6b0691d4a948eb4044c1d832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limiterLeft: {fileID: 628738365}
-  limiterRight: {fileID: 716286596}
-  limiterFront: {fileID: 2076702763}
-  limiterBack: {fileID: 659077181}
 --- !u!4 &1632489808
 Transform:
   m_ObjectHideFlags: 0

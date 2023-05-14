@@ -19,12 +19,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ShowEconomyWarming;
     [SerializeField] private Slider PlayerCastle;
     [SerializeField] private Slider ComputerCastle;
-    // mute tu ma te¿ byæ
+    // mute tu ma teï¿½ byï¿½
 
     private void Awake()
     {
         instance = this;
-        
     }
     private void Start()
     {

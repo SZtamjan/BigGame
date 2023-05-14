@@ -7,7 +7,7 @@ public class QuickMenu : MonoBehaviour
     //Whole MENU
     public GameObject menu;
 
-    public GameObject menuOne;
+    public List<GameObject> menus; 
     //public GameObject menuTwo;
     //public GameObject menuThree;
 
@@ -21,8 +21,8 @@ public class QuickMenu : MonoBehaviour
         if (menu.gameObject.activeSelf)
         {
             menu.SetActive(false);
-            menuOne.SetActive(true);
-            //Reszte menu daæ false
+            menus[0].SetActive(true);
+            //Reszte menu daï¿½ false
         }
         else
         {
@@ -31,10 +31,19 @@ public class QuickMenu : MonoBehaviour
 
     }
 
+    public void ExitConfirm()
+    {
+        menus[1].SetActive(true);
+    }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ExitNo()
+    {
+        menus[1].SetActive(false);
     }
 
 }

@@ -772,6 +772,7 @@ GameObject:
   - component: {fileID: 1855632698255544515}
   - component: {fileID: 1975082690230779762}
   - component: {fileID: 5101652385394339629}
+  - component: {fileID: 4186644555009908583}
   m_Layer: 0
   m_Name: peasant_with_pitchfork
   m_TagString: Untagged
@@ -812,11 +813,17 @@ MonoBehaviour:
   unitScriptableObjects: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
   hpbar: {fileID: 5747741489843528367}
   hp: 1
+  hidenHP: 0
   damage: 1
   movmentDistance: 1
   attackReach: 1
   playersUnit: 1
+  speed: 0
   isAttacking: 0
+  isMovving: 0
+  isPojectileFlying: 0
+  projectileToSpawn: {fileID: 0}
+  projectileStartingPoint: {fileID: 0}
 --- !u!95 &5101652385394339629
 Animator:
   serializedVersion: 4
@@ -837,6 +844,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4186644555009908583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336259257979325049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1c245306f19e4bb7489db9203ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368010652967342704
 GameObject:
   m_ObjectHideFlags: 0
