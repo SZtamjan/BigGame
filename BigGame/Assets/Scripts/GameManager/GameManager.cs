@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject turnDisplay;
     public GameObject endScreen;
     public GameObject turnButton;
-    public int coIleTurAiSpawn = 5;
+    
 
 
     public static event Action<GameState> OnGameStateChange;
@@ -172,13 +172,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (!devMode)
         {
-            if ((turnCounter+1) % coIleTurAiSpawn == 0)
-            {
-                GetComponent<SpawnerScript>().SpawnEnemyUnit();
-                yield return new WaitForSeconds(1f);
-            }
+
+            SpawnerScript.instance.EnemyCheckSpawn();
+
+            yield return new WaitForSeconds(0.3f);
             GetComponent<PathControler>().ComputerUnitPhaze();
             yield return new WaitForSeconds(0.3f);
+
+
             GameManager.instance.StartCoroutine(Endturn(false));
 
         }

@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using static EnemySpawnClass;
 
 [CustomEditor(typeof(SpawnerScript))]
 public class SpawnerScriptInspector : Editor
@@ -19,25 +20,29 @@ public class SpawnerScriptInspector : Editor
         int buttonCount = 0;
 
 
-        if (GUILayout.Button($"Spawn Random"))
-        {
-            SpawnerScript.SpawnEnemyUnit();
-        }
-        GUILayout.BeginHorizontal(); 
+        GUILayout.BeginHorizontal();
 
-        for (int i = 0; i < SpawnerScript.WhatEnemyCanSpawn.Count(); i++)
+        int x = SpawnerScript.WhatEnemyCanSpawn.Count();
+        for (int i = 0; i < x; i++)
         {
             if (buttonCount == buttonsInRow)
             {
-                GUILayout.EndHorizontal(); 
-                GUILayout.BeginHorizontal(); 
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
                 buttonCount = 0;
+            }            
+            if (SpawnerScript.WhatEnemyCanSpawn[i].unitToSpawn!=null)
+            {
+                if (GUILayout.Button($"{SpawnerScript.WhatEnemyCanSpawn[i].unitToSpawn.name}"))
+                {
+                    SpawnerScript.SpawnEnemyUnit(i);
+                }
+            }
+            else
+            {
+                GUILayout.Button("error/Nan");
             }
 
-            if (GUILayout.Button($"{SpawnerScript.WhatEnemyCanSpawn[i].name}"))
-            {
-                SpawnerScript.SpawnEnemyUnit(i);
-            }
 
             buttonCount++;
         }

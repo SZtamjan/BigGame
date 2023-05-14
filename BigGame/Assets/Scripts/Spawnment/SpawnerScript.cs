@@ -6,13 +6,18 @@ using UnityEngine;
 using static CastleClass;
 using static UnityEngine.GraphicsBuffer;
 using Random = System.Random;
+using static EnemySpawnClass;
+using static UnityEditor.Progress;
 
 public class SpawnerScript : MonoBehaviour
 {
     public GameObject EvilGigaPrefab;
-    public static SpawnerScript instance;
-    [SerializeField] public List<UnitScriptableObjects> WhatEnemyCanSpawn;
 
+    public static SpawnerScript instance;
+
+    //[SerializeField] public List<UnitScriptableObjects> WhatEnemyCanSpawn;
+
+    [SerializeField] public List<EnemySpawn> WhatEnemyCanSpawn;
 
     private void Awake()
     {
@@ -44,9 +49,8 @@ public class SpawnerScript : MonoBehaviour
     }
 
 
-    public void SpawnEnemyUnit(int number = -1)
-    {
-        number = (number < 0) ? GetRandomInt(WhatEnemyCanSpawn.Count) : number;
+    public void SpawnEnemyUnit(int number)
+    {        
         var gdzie = GetComponent<PathControler>().ComputerCastle;
         if (gdzie.jednostka == null)
         {
@@ -54,7 +58,7 @@ public class SpawnerScript : MonoBehaviour
             float y = 0.5f;
             float z = gdzie.castle.transform.position.z;
 
-            GameObject putToList = SpawnObjectAtLocation(x, y, z, -90, WhatEnemyCanSpawn[number].unit);
+            GameObject putToList = SpawnObjectAtLocation(x, y, z, -90, WhatEnemyCanSpawn[number].unitToSpawn.unit);
             PutToList(putToList, gdzie);
         }
         else
@@ -64,6 +68,21 @@ public class SpawnerScript : MonoBehaviour
 
     }
 
+    public void EnemyCheckSpawn()
+    {
+        for (int i = 0; i < WhatEnemyCanSpawn.Count(); i++)
+        {
+            if (WhatEnemyCanSpawn[i].unitToSpawn==null)
+            {
+                continue;
+            }
+            if (GameManager.turnCounter % (WhatEnemyCanSpawn[i].turnCount+1) == 0)
+            {
+                SpawnEnemyUnit(i); break;
+            }
+        }
+
+    }
 
 
     private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota, GameObject spawn)
@@ -88,4 +107,6 @@ public class SpawnerScript : MonoBehaviour
         Random rnd = new Random();
         return rnd.Next(max);
     }
+
+
 }

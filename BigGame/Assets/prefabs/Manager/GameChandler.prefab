@@ -6275,7 +6275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7203101441182389877}
   - component: {fileID: 7203101441182389883}
-  - component: {fileID: 7203101441182389876}
+  - component: {fileID: 7282041662631441623}
   - component: {fileID: 7203101441182389875}
   - component: {fileID: 4340605472721432590}
   - component: {fileID: 4554065881492852005}
@@ -6324,8 +6324,7 @@ MonoBehaviour:
   turnDisplay: {fileID: 4644443948765878707}
   endScreen: {fileID: 5691771631318994144}
   turnButton: {fileID: 5068909889161450537}
-  coIleTurAiSpawn: 5
---- !u!114 &7203101441182389876
+--- !u!114 &7282041662631441623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6337,8 +6336,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196076795195b334faa5e602f32f3a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EvilGigaPrefab: {fileID: 6365645490413146944, guid: 9568811cecf90964cafb850f591f35d8, type: 3}
-  WhatEnemyCanSpawn: []
+  EvilGigaPrefab: {fileID: 0}
+  WhatEnemyCanSpawn:
+  - unitToSpawn: {fileID: 11400000, guid: 77fde5fe0387fe74c8f0069d668e2202, type: 2}
+    turnCount: 4
+  - unitToSpawn: {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
+    turnCount: 5
 --- !u!114 &7203101441182389875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6358,7 +6361,6 @@ MonoBehaviour:
     castle: {fileID: 0}
     jednostka: {fileID: 0}
   pathwayDebug: []
-  TestowaDroga: []
   pathLenght: 0
 --- !u!114 &4340605472721432590
 MonoBehaviour:
