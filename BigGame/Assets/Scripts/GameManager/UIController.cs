@@ -10,6 +10,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject QuickMenu;
     [SerializeField] private GameObject DeckCarkd;
+    [SerializeField] private GameObject BuildingsCards;
+    [SerializeField] private bool BuildingsCardShowing = false;
 
     [SerializeField] private TextMeshProUGUI ShowFunds;
     [SerializeField] private TextMeshProUGUI ShowTurn;
@@ -24,4 +26,30 @@ public class UIController : MonoBehaviour
         instance = this;
         
     }
+    private void Start()
+    {
+        BuildingsCards.SetActive(false);
+        BuildingsCardShowing = false;
+    }
+
+    public void ChangeBuildingCardsShow()
+    {
+        if (!BuildingsCardShowing)
+        {
+            BuildingsCards.SetActive(true);            
+            BuildingsCardShowing = true;            
+        }
+        else
+        {
+            BuildingsCards.SetActive(false);
+            BuildingsCardShowing = false;
+        }
+    }
+    public void ChangeBuildingCardsShow(bool state)
+    {        
+            BuildingsCards.SetActive(state);
+            BuildingsCardShowing = state;
+                
+    }
+
 }

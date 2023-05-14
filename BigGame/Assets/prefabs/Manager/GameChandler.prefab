@@ -1478,8 +1478,6 @@ GameObject:
   - component: {fileID: 4573989935627466084}
   - component: {fileID: 2899717775849170897}
   - component: {fileID: 5001590374918494318}
-  - component: {fileID: 1122309757183905355}
-  - component: {fileID: 2935427227867513363}
   m_Layer: 5
   m_Name: Change Building Menu
   m_TagString: Untagged
@@ -1590,9 +1588,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1122309757183905355}
-        m_TargetAssemblyTypeName: ShowBuildingMenu, Assembly-CSharp
-        m_MethodName: ShowBuilding
+      - m_Target: {fileID: 2156102804749624550}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ChangeBuildingCardsShow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1602,40 +1600,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1122309757183905355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2390348363550573245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecb3e2bc7acc524b89cb5ce134dfe0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitsButton: {fileID: 2085325301498563253}
-  BuildButton: {fileID: 2390348363550573245}
---- !u!95 &2935427227867513363
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2390348363550573245}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ee38454de54e64b40a5a7559436e79ee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2422766562430391756
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,6 +4297,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   hexGrid: {fileID: 1292401085693881687}
   playerTurn: 1
   devMode: 0
@@ -4373,6 +4340,7 @@ MonoBehaviour:
     castle: {fileID: 0}
     jednostka: {fileID: 0}
   pathwayDebug: []
+  TestowaDroga: []
   pathLenght: 0
 --- !u!114 &4340605472721432590
 MonoBehaviour:
@@ -4388,6 +4356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexGrid: {fileID: 1292401085693881680}
   StartHex: {fileID: 0}
+  radius: 0.9
 --- !u!114 &4554065881492852005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5356,6 +5325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuickMenu: {fileID: 1171805825351489595}
   DeckCarkd: {fileID: 2085325301498563253}
+  BuildingsCards: {fileID: 2223126336449076495}
+  BuildingsCardShowing: 0
   ShowFunds: {fileID: 3114544725325097337}
   ShowTurn: {fileID: 1431783133987355162}
   ShowEndDisplay: {fileID: 1384128240235283646}

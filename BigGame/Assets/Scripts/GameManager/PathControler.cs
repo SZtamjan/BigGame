@@ -21,6 +21,8 @@ public class PathControler : MonoBehaviour
     public static List<Droga> PathWay = new List<Droga>();
     public List<Droga> pathwayDebug = new List<Droga>();
 
+    public List<Droga> TestowaDroga = new List<Droga>();
+
     public int pathLenght;
 
     private void Awake()
@@ -34,8 +36,11 @@ public class PathControler : MonoBehaviour
     }
     public void StartPath()
     {
+        PathWay = PathGenerator.Instance.GetNewDroga();
         pathwayDebug = PathWay;
         pathLenght = PathWay.Count - 1;
+
+        
     }
 
 

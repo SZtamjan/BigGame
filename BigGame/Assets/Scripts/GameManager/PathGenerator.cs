@@ -9,69 +9,80 @@ using static DrogaClass;
 public class PathGenerator : MonoBehaviour
 {
     [SerializeField]
+
+    public static PathGenerator Instance;
+
     public HexGrid hexGrid;
     public GameObject StartHex;
     private Vector3 offsets = offSet;
+    [SerializeField] private float radius = 1;
 
-    public void PatchGenerator()
+    private void Awake()
     {
-        List<Vector3Int> controlLista = new();
+        Instance = this;
+    }
 
-        Vector3Int cordy = StartHex.GetComponent<HexCoordinates>().GetHexCoords();
-        Droga testDroga = new Droga() { coordinations = TrueCoorde(cordy), unitMain = null };
-        PathWay.Add(testDroga);
-        controlLista.Add(cordy);
-
-        List<Vector3Int> neighbours = new();
-        bool warunek = true;
-        int loopBreaker = 0;
-        do
+    public List<Droga> GetNewDroga()
+    {
+        bool isThereNextTile = true;
+        List<Droga> toReturn = new List<Droga>();
+        List<GameObject> controlLista = new List<GameObject>();
+        GameObject start = shotColliders(PathControler.Instance.PlayerCastle.castle.transform.position).First();
+        Vector3 startcordy = start.transform.position;
+        startcordy.y += 0.13f;
+        toReturn.Add(new Droga { coordinations = startcordy, unitMain = null, wantingUnit = null });
+        controlLista.Add(start);
+        int control = 0;
+        List<GameObject> hits = new();
+        while (isThereNextTile)
         {
-            neighbours = hexGrid.GetNeighborsFor(controlLista.Last());
-            foreach (var item in neighbours)
+            hits = shotColliders(controlLista.Last().transform.position);
+            foreach (var item in hits)
             {
+
                 if (!controlLista.Contains(item))
                 {
                     controlLista.Add(item);
-                    PathWay.Add(new Droga { coordinations = TrueCoorde(item), unitMain = null });
-
+                    Vector3 cordy = item.transform.position;
+                    cordy.y += 0.13f;
+                    toReturn.Add(new Droga { coordinations = cordy, unitMain = null, wantingUnit = null });
+                    continue;
                 }
 
 
-            }
-            if ((controlLista.Count > 2) && neighbours.Count == 1)
-            {
-                warunek = false;
 
             }
-            loopBreaker++;
-            if (loopBreaker > 1000)
-            {
-                Debug.Log("coœ posz³o nie tak \n generowanie drogi siê zepsu³o");
-                warunek = false;
-            }
-        } while (warunek);
 
+            if (hits.Count < 2 || control > 100)
+            {
+                isThereNextTile = false;
+            }
+
+
+
+            control++;
+
+        }
+        return toReturn;
 
     }
 
-    Vector3 TrueCoorde(Vector3 wektor)
+    private List<GameObject> shotColliders(Vector3 center)
     {
-        if (wektor.z % 2 == 0)
+        List<GameObject> toReturn = new List<GameObject>();
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius, GameManager.instance.layerMask);
+        foreach (var item in hitColliders)
         {
-            wektor.x *= offsets.x;
+            toReturn.Add(item.gameObject);
         }
-        else
-        {
-            wektor.x = (wektor.x * offsets.x) - (offsets.x / 2);
 
-        }
-        wektor.y = 0.13f;
-        wektor.z *= offsets.z;
-        return wektor;
 
+
+        return toReturn;
 
     }
+
+   
 
 }
 

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public static GameObject gameManager;
     public GameState state;
 
+    public LayerMask layerMask;
+
     [Header("Starting Hex Grid Function")]
     public GameObject hexGrid;
 
@@ -86,9 +88,7 @@ public class GameManager : MonoBehaviour
 
     private void GenerateHexGrid()
     {
-        hexGrid.GetComponent<HexGrid>().GenerateHexGrid();
-
-        gameObject.GetComponent<PathGenerator>().PatchGenerator();
+        
         PathControler.Instance.StartPath();
 
         GameManager.instance.UpdateGameState(GameState.PlayerTurn);
