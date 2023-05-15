@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         turnCounter = 1;
+        GetComponent<SaveSystemTrigger>().SaveLevel();
         UpdateGameState(GameState.Start);
     }
 
