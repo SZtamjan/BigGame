@@ -10,6 +10,7 @@ public class ProtipHandler : MonoBehaviour
     public ProtipText textsSO;
     public GameObject tipTextDisplay;
     public bool isGameplay;
+    private int tipNO;
 
     private void OnEnable()
     {
@@ -18,16 +19,19 @@ public class ProtipHandler : MonoBehaviour
 
     private void GetAndDisplayTip()
     {
-        int index = Random.Range(0, textsSO.proTips.Count);
         if (!isGameplay)
         {
-            tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[index].ToString();
-            PlayerPrefs.SetFloat("tipIndex", index);
+            tipNO = Random.Range(0, textsSO.proTips.Count);
+            MenuManager.instance.gameObject.GetComponent<SaveSystemTrigger>().SaveTipNO(tipNO);
+            tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[tipNO].ToString();
+            
+            PlayerPrefs.SetFloat("tipIndex", tipNO);
         }
         else
         {
             Debug.Log("jestem w grze");
-            tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[Convert.ToInt32(PlayerPrefs.GetFloat("tipIndex"))].ToString();
+            int a = SaveSystemTrigger.instance.LoadTip();
+            tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[a].ToString();
         }
     }
 }

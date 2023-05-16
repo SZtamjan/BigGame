@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,25 @@ public partial class SceneChange : MonoBehaviour
 {
     public GameObject loadingScreen;
     public Image loadingBarFill;
-
+    public int nextScene;
+    public GameObject loadingScreenNew;
+    
     public void LoadScene(int sceneId)
     {
         StartCoroutine(LoadSceneAsync(sceneId));
     }
 
+    public void LoadMenu()
+    {
+        
+        StartCoroutine(LoadSceneAsync(0));
+    }
+    
+    public void LoadNextScene()
+    {
+        StartCoroutine(LoadSceneAsync());
+    }
+    
     IEnumerator LoadSceneAsync(int sceneId)
     {
         loadingScreen.SetActive(true);
@@ -30,6 +44,24 @@ public partial class SceneChange : MonoBehaviour
             yield return null;
         }
     }
+    
+    IEnumerator LoadSceneAsync()
+    {
+        Instantiate(loadingScreenNew);
+
+        nextScene = SceneManager.GetActiveScene().buildIndex+1;
+        AsyncOperation operation = SceneManager.LoadSceneAsync(nextScene);
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress/0.9f);
+            
+            if(loadingBarFill != null) loadingBarFill.fillAmount = progressValue;
+
+            yield return null;
+        }
+    }
+    
 }
 
 public partial class SceneChange
@@ -49,7 +81,7 @@ public partial class SceneChange
         {
             if (Input.anyKeyDown && useFixed == false)
             {
-                GetComponent<SceneChange>().LoadScene(sceneId);
+                LoadNextScene();
                 useFixed = true;
                 clicked = true;
             }

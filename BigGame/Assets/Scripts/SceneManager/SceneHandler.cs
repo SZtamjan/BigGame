@@ -8,10 +8,10 @@ public class SceneHandler : MonoBehaviour
 {
     [Header("Screens")]
     [SerializeField] private GameObject handler;
-    [SerializeField] private GameObject loadingScreenOne;
-    [SerializeField] private GameObject loadingScreenTwo;
+    [SerializeField] private TextMeshProUGUI txt;
+    [SerializeField] private GameObject press;
 
-    private int counter = 0;
+    private bool onlyOne = false;
 
     void Update()
     {
@@ -20,13 +20,14 @@ public class SceneHandler : MonoBehaviour
 
     public void AnyButton()
     {
-        if (counter<1)
+        if (onlyOne == false)
         {
-            ChangeScreen();
             PlaySonk(); //Totally by accident
+            txt.text = "Wygraj aby wygraæ!";
             StartCoroutine(LoadingScreenFadeOut()); //Loading screen fadeout
+            press.SetActive(false);
         }
-        counter++;
+        onlyOne = true;
     }
 
     private void PlaySonk()
@@ -34,16 +35,11 @@ public class SceneHandler : MonoBehaviour
         AudioManager.instance.GetComponent<AudioManager>().KorutynaCzas();
     }
 
-    private void ChangeScreen()
-    {
-        loadingScreenOne.SetActive(!true);
-        loadingScreenTwo.SetActive(true);
-    }
 
     IEnumerator LoadingScreenFadeOut()
     {
-        Color imageColor = loadingScreenTwo.GetComponent<Image>().color;
-        Color textColor = loadingScreenTwo.GetComponentInChildren<TextMeshProUGUI>().color;
+        Color imageColor = handler.GetComponent<Image>().color;
+        Color textColor = handler.GetComponentInChildren<TextMeshProUGUI>().color;
 
         float startAlpha = imageColor.a;
         float targetAlpha = 0f;
@@ -59,8 +55,8 @@ public class SceneHandler : MonoBehaviour
             imageColor.a = newAlpha;
             textColor.a = newAlpha;
 
-            loadingScreenTwo.GetComponentInChildren<TextMeshProUGUI>().color = textColor;
-            loadingScreenTwo.GetComponent<Image>().color = imageColor;
+            handler.GetComponentInChildren<TextMeshProUGUI>().color = textColor;
+            handler.GetComponent<Image>().color = imageColor;
             yield return null;
             elapsedTime += Time.deltaTime;
         }
