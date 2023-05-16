@@ -7,7 +7,6 @@ using static CastleClass;
 using static UnityEngine.GraphicsBuffer;
 using Random = System.Random;
 using static EnemySpawnClass;
-using static UnityEditor.Progress;
 
 public class SpawnerScript : MonoBehaviour
 {
@@ -42,7 +41,7 @@ public class SpawnerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("Miejsce zajête");
+                Debug.Log("Miejsce zajï¿½te");
             }
 
         }
@@ -63,7 +62,7 @@ public class SpawnerScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Miejsce zajête");
+            Debug.Log("Miejsce zajï¿½te");
         }
 
     }

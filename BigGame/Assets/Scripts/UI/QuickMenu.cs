@@ -6,7 +6,8 @@ public class QuickMenu : MonoBehaviour
 {
     //Whole MENU
     public GameObject menu;
-
+    public GameObject menuBacker;
+    
     public List<GameObject> menus; 
     //public GameObject menuTwo;
     //public GameObject menuThree;
@@ -16,6 +17,12 @@ public class QuickMenu : MonoBehaviour
         menu.SetActive(false);
     }
 
+    public void GoToMenu()
+    {
+        menuBacker.SetActive(true);
+        menuBacker.GetComponent<SceneChange>().LoadMenu();
+    }
+    
     public void ChangeVis()
     {
         if (menu.gameObject.activeSelf)
