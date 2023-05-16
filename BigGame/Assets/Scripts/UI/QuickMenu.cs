@@ -22,7 +22,8 @@ public class QuickMenu : MonoBehaviour
         {
             menu.SetActive(false);
             menus[0].SetActive(true);
-            //Reszte menu da� false
+            menus[1].SetActive(false);
+            menus[2].SetActive(false);
         }
         else
         {
@@ -31,19 +32,24 @@ public class QuickMenu : MonoBehaviour
 
     }
 
-    public void ExitConfirm()
+    public void HideSettings()
     {
-        menus[1].SetActive(true);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
-    public void ExitNo()
-    {
+        menus[0].SetActive(true);
         menus[1].SetActive(false);
     }
 
+    public void ExitConfirm()
+    {
+        menus[2].SetActive(true);
+    }
+    public void ExitExitConfirm()
+    {
+        menus[2].SetActive(false);
+    }
+
+    public void ShowSettings()
+    {
+        menus[0].SetActive(false);
+        menus[1].SetActive(true);
+    }
 }

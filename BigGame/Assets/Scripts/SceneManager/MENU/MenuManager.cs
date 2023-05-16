@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager instance;
     [SerializeField] private GameObject exitWindow;
     [SerializeField] private GameObject settings;
     [SerializeField] private GameObject audioSettings;
@@ -14,8 +15,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Image sfx;
     [SerializeField] private Sprite sex;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
+        
         RandomEaster();
     }
 
