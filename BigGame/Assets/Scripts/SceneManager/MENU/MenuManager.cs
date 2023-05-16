@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,6 +11,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject settings;
     [SerializeField] private GameObject audioSettings;
     [SerializeField] private GameObject menu;
+    [SerializeField] private Image sfx;
+    [SerializeField] private Sprite sex;
+
+    private void Start()
+    {
+        RandomEaster();
+    }
 
     #region Menu
     public void ShowMenu()
@@ -53,8 +63,16 @@ public class MenuManager : MonoBehaviour
 
     #endregion
 
+    #region jajoWielkanocne
 
-    
+    public void RandomEaster()
+    {
+        int rnd = Random.Range(0, 500);
+        if (rnd == 250)
+        {
+            sfx.sprite = sex;
+        }
+    }
 
-
+    #endregion
 }

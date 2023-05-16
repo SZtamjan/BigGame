@@ -40,7 +40,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(int i)
     {
-        sfxAS.PlayOneShot(soundEffectd[i]);
+        try
+        {
+            sfxAS.PlayOneShot(soundEffectd[i]);
+        }catch (ArgumentOutOfRangeException)
+        {
+            Debug.Log("Indeks jest poza zasięgiem listy.");
+        }
     }
 
     public IEnumerator CheckForSongOver()
