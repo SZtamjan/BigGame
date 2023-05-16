@@ -7677,7 +7677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1437580496}
-  menuOne: {fileID: 1669376010}
+  menus: []
 --- !u!114 &583586301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19972,6 +19972,7 @@ GameObject:
   - component: {fileID: 1730141800}
   - component: {fileID: 1730141799}
   - component: {fileID: 1730141798}
+  - component: {fileID: 1730141804}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20039,6 +20040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexGrid: {fileID: 1963391953}
   StartHex: {fileID: 0}
+  radius: 1
 --- !u!114 &1730141801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20058,6 +20060,7 @@ MonoBehaviour:
     castle: {fileID: 0}
     jednostka: {fileID: 0}
   pathwayDebug: []
+  TestowaDroga: []
   pathLenght: 0
 --- !u!114 &1730141802
 MonoBehaviour:
@@ -20088,6 +20091,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   hexGrid: {fileID: 1963391952}
   playerTurn: 1
   devMode: 0
@@ -20095,6 +20101,19 @@ MonoBehaviour:
   endScreen: {fileID: 1082350988}
   turnButton: {fileID: 967980156}
   coIleTurAiSpawn: 3
+--- !u!114 &1730141804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730141796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36985a01e8bdbef43ba091119b2b657e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
 --- !u!1001 &1732047771
 PrefabInstance:
   m_ObjectHideFlags: 0

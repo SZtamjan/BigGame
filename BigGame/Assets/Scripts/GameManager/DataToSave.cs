@@ -10,7 +10,5 @@ public class DataToSave
     {
         level = lvlMethod.level;
         //kolejne zmienne
-        
-        Debug.Log("DataToSave: " + level);
     }
 }

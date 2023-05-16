@@ -12,7 +12,7 @@ public class SaveSystemTrigger : MonoBehaviour
     {
         level = SceneManager.GetActiveScene().buildIndex;
         //kolejne zmienne
-        Debug.Log("SaveSystemTrigger: " + level);
+        
         SaveSystem.SaveLevel(this);
     }
 
@@ -22,6 +22,7 @@ public class SaveSystemTrigger : MonoBehaviour
 
         level = data.level;
         //kolejne zmienne
+        Debug.Log("Load: " + level);
         
         return level;
     }

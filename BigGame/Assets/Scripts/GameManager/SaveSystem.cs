@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public static class SaveSystem
 {
@@ -18,7 +17,7 @@ public static class SaveSystem
         formatter.Serialize(stream,data);
         stream.Close();
     }
-
+    
     public static DataToSave LoadLevel()
     {
         if (File.Exists(path))
