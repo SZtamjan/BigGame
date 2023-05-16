@@ -23312,7 +23312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2035136527747617246, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2143178867098553661, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: stats
@@ -23658,6 +23658,14 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1129245082}
+    - target: {fileID: 7258841279799021387, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282041662631441623, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: WhatEnemyCanSpawn.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7282041662631441623, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: WhatEnemyCanSpawn.Array.data[2].turnCount
       value: 5
@@ -23822,5 +23830,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5021514409948675430, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}

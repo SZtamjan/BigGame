@@ -39,7 +39,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         turnCounter = 1;
-        GetComponent<SaveSystemTrigger>().SaveLevel();
+        SaveSystemTrigger saveLevelScript = GetComponent<SaveSystemTrigger>();
+        if (saveLevelScript!=null)
+        {
+            saveLevelScript.SaveLevel();
+        }
         UpdateGameState(GameState.Start);
     }
 
@@ -56,6 +60,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.MapGeneration:
                 GenerateHexGrid();
+                CameraSetting();
                 break;
             case GameState.PlayerTurn:
                 GameStatePlayerTurn();
@@ -74,6 +79,11 @@ public class GameManager : MonoBehaviour
         }
 
         OnGameStateChange?.Invoke(newState);
+    }
+
+    private void CameraSetting()
+    {
+        PlayerMovement.instance.CameraSetting();
     }
 
 

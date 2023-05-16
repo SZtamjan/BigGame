@@ -9,6 +9,8 @@ using UnityEngine.Serialization;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public static PlayerMovement instance;
+
 
     [Header("Settings")]
     public float keySpeed = 6f; // predkosc przesuwania kamery WSADem
@@ -47,10 +49,15 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
-    private void Start()
+    private void Awake()
     {
+        instance=this;
         rb = GetComponent<Rigidbody>();
         rb.drag = groundDrag;
+    }
+    public void CameraSetting()
+    {
+        
         SetLimiters();
         SetLimits();
 

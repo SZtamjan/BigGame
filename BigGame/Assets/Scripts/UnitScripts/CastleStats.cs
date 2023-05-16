@@ -23,6 +23,7 @@ public class CastleStats : MonoBehaviour
     {
         hpbar.GetComponent<HpCastleShow>().SetMaxHealth(hp);
         defenceArmaments = new List<CastleArmaments>();
+        
     }
 
     public int ReturnHp()
