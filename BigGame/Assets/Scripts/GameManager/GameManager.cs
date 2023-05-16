@@ -234,12 +234,13 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Endturn(bool playerUnit)
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.3f);
         bool wait = true;
         while (wait)
         {
-            
-            
+            wait=false;
+
+
             for (int i = 0; i <= PathWay.Count() - 1; i++)
             {
 
@@ -260,7 +261,7 @@ public class GameManager : MonoBehaviour
                     wait = true;
                     break;
                 }
-                wait = false;
+                
             }
 
             GameObject UnitInCastle;
@@ -272,6 +273,7 @@ public class GameManager : MonoBehaviour
             {
                 UnitInCastle = PathControler.Instance.ComputerCastle.jednostka;
             }
+
             if (UnitInCastle != null)
             {
                 if (UnitInCastle.GetComponent<UnitControler>().AmIDoingSomething())
@@ -292,7 +294,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    continue;
+                    break; 
                 }
             }
 
