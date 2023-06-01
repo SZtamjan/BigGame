@@ -10,7 +10,7 @@ public class BoatMovment : MonoBehaviour
     public float speed = 0.1f; // Prêdkoœæ poruszania siê obiektu
     public float rotationSpeed = 1f;
     private Vector3 center; // Œrodek okrêgu
-    private float angle = 0f; // K¹t wokó³ okrêgu
+    //private float angle = 0f; // K¹t wokó³ okrêgu
     private Vector3 targetPosition; // Aktualna pozycja docelowa
 
     private void Start()
