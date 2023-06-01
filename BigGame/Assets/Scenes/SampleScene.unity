@@ -10501,6 +10501,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 552845520188257237, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 552845520188257237, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
@@ -10664,10 +10668,6 @@ PrefabInstance:
       propertyPath: infoSource
       value: 
       objectReference: {fileID: 11400000, guid: 143d8d1624002ad45afc7ae14c08a97e, type: 2}
-    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-      propertyPath: PlayerCards.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
     - target: {fileID: 3734489118288297909, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: stats
       value: 
