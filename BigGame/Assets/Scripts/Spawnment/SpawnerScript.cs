@@ -4,17 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static CastleClass;
-using static UnityEngine.GraphicsBuffer;
 using Random = System.Random;
 using static EnemySpawnClass;
 
 public class SpawnerScript : MonoBehaviour
 {
-    public GameObject EvilGigaPrefab;
-
     public static SpawnerScript instance;
-
-    //[SerializeField] public List<UnitScriptableObjects> WhatEnemyCanSpawn;
+    
 
     [SerializeField] public List<EnemySpawn> WhatEnemyCanSpawn;
 

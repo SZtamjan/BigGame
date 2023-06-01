@@ -12,8 +12,6 @@ public class CastleStats : MonoBehaviour
     [SerializeField]
     int hp = 100;
 
-    public GameObject hpbar;
-
     public List<CastleArmaments> defenceArmaments;
 
     public bool isMyCastle = true;
@@ -21,7 +19,7 @@ public class CastleStats : MonoBehaviour
 
     private void Start()
     {
-        hpbar.GetComponent<HpCastleShow>().SetMaxHealth(hp);
+        UIController.instance.CastleHpSetMaxHealth(hp, isMyCastle);
         defenceArmaments = new List<CastleArmaments>();
         
     }
@@ -45,15 +43,15 @@ public class CastleStats : MonoBehaviour
             Debug.Log("KoniecGry");
             if (!isMyCastle)
             {
-                GameManager.instance.UpdateGameState(GameState.Victory);
+                instance.UpdateGameState(GameState.Victory);
             }
             else
             {
-                GameManager.instance.UpdateGameState(GameState.Lose);
+                instance.UpdateGameState(GameState.Lose);
             }
         }
 
-        hpbar.GetComponent<HpCastleShow>().SetHealth(hp);
+        UIController.instance.CastleHpSetHealth(hp, isMyCastle);
 
     }
 

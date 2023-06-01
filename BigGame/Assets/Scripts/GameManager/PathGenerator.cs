@@ -12,9 +12,7 @@ public class PathGenerator : MonoBehaviour
 
     public static PathGenerator Instance;
 
-    public HexGrid hexGrid;
-    public GameObject StartHex;
-    private Vector3 offsets = offSet;
+    
     [SerializeField] private float radius = 1;
 
     private void Awake()

@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    public AudioMixer myMixer;
+
     [Header("Main Obiects")]
     public AudioSource musicAS;
     public AudioSource sfxAS;
@@ -27,11 +29,11 @@ public class AudioManager : MonoBehaviour
 
     private void UpdateSoundLevel()
     {
-        GetComponent<MixerData>().myMixer.SetFloat("masterMixer", Mathf.Log10(PlayerPrefs.GetFloat("masterAudio")) * 20);
-        GetComponent<MixerData>().myMixer.SetFloat("musicMixer", Mathf.Log10(PlayerPrefs.GetFloat("music")) * 20);
-        GetComponent<MixerData>().myMixer.SetFloat("sfxMixer", Mathf.Log10(PlayerPrefs.GetFloat("sfx")) * 20);
+        myMixer.SetFloat("masterMixer", Mathf.Log10(PlayerPrefs.GetFloat("masterAudio")) * 20);
+        myMixer.SetFloat("musicMixer", Mathf.Log10(PlayerPrefs.GetFloat("music")) * 20);
+        myMixer.SetFloat("sfxMixer", Mathf.Log10(PlayerPrefs.GetFloat("sfx")) * 20);
     }
-    
+
     public void KorutynaCzas()
     {
         UpdateSoundLevel();
@@ -43,7 +45,8 @@ public class AudioManager : MonoBehaviour
         try
         {
             sfxAS.PlayOneShot(soundEffectd[i]);
-        }catch (ArgumentOutOfRangeException)
+        }
+        catch (ArgumentOutOfRangeException)
         {
             Debug.Log("Indeks jest poza zasięgiem listy.");
         }
@@ -54,11 +57,11 @@ public class AudioManager : MonoBehaviour
         PlayIdleSong();
         while (true)
         {
-            if(!musicAS.isPlaying) PlayIdleSong();
+            if (!musicAS.isPlaying) PlayIdleSong();
             yield return null;
         }
     }
-    
+
     public void PlayIdleSong()
     {
         int i = RandomTrack();
@@ -72,7 +75,7 @@ public class AudioManager : MonoBehaviour
         {
             i = Random.Range(0, music.Count);
         } while (i == previousIndex);
-        
+
         if (!firstTime)
         {
             i = 0;

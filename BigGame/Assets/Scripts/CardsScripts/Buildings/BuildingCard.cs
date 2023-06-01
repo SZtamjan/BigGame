@@ -12,7 +12,6 @@ public class BuildingCard : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _butonText;
     [SerializeField] private TextMeshProUGUI _toolTipTex;
-
     [SerializeField] private BuildingsScriptableObjects infoSource;
     [SerializeField] private GameObject _stucture;
     [SerializeField] private int _cost;
@@ -36,7 +35,7 @@ public class BuildingCard : MonoBehaviour
     
     public void StartBulding()
     {
-        UIController.instance.ChangeBuildingCardsShow(false);
+        UIController.instance.BuildingCardsChangeShow(false);
         Building.Instance.StartBuilding(infoSource);
     }
 

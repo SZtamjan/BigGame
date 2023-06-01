@@ -22,13 +22,17 @@ public class GameManager : MonoBehaviour
     public bool playerTurn = true;
     public bool devMode = false;
     public static int turnCounter = 1;
-    public GameObject turnDisplay;
-    public GameObject endScreen;
-    public GameObject turnButton;
+    
+
+   
+   
     
 
 
     public static event Action<GameState> OnGameStateChange;
+
+    private bool GameEnded = false;
+
 
     private void Awake()
     {
@@ -52,6 +56,14 @@ public class GameManager : MonoBehaviour
 
     public void UpdateGameState(GameState newState)
     {
+        if (!GameEnded)
+        {
+            state = newState;
+        }
+        else
+        {
+            state = GameState.GameEnd;
+        }
         state = newState;
         switch (newState)
         {
@@ -61,6 +73,7 @@ public class GameManager : MonoBehaviour
             case GameState.MapGeneration:
                 GenerateHexGrid();
                 CameraSetting();
+                CardStart();
                 break;
             case GameState.PlayerTurn:
                 GameStatePlayerTurn();
@@ -81,6 +94,11 @@ public class GameManager : MonoBehaviour
         OnGameStateChange?.Invoke(newState);
     }
 
+    private void CardStart()
+    {
+        CardManager.instance.StartSpawnCards();
+    }
+
     private void CameraSetting()
     {
         PlayerMovement.instance.CameraSetting();
@@ -91,7 +109,7 @@ public class GameManager : MonoBehaviour
 
     private void StartingFunction()
     {
-        endScreen.SetActive(false);
+       
         PathControler.Instance.StartNewPathWay();
         GameManager.instance.UpdateGameState(GameState.MapGeneration);
 
@@ -108,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
-        ActivateTurnButton();
+        UIController.instance.TurnButtonActivate();
         Economy.Instance.CashOnTurn();
         UpdateTurnShower();
         playerTurn = true;
@@ -121,7 +139,7 @@ public class GameManager : MonoBehaviour
         if (CanPlayerMove())
         {
 
-            DisableTurnButton();
+            UIController.instance.TurnButtonDisable();
             GetComponent<PathControler>().PlayerUnitPhase();
             StartCoroutine(Endturn(true));
         }
@@ -149,33 +167,20 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    void DisableTurnButton()
-    {
-        turnButton.GetComponent<Button>().interactable = false;
-    }
-
-    void ActivateTurnButton()
-    {
-        turnButton.GetComponent<Button>().interactable = true;
-    }
-
 
     private void StopGame()
     {
-        DisableTurnButton();
+        UIController.instance.TurnButtonDisable();
     }
 
     private void ShowLoseScreen()
     {
-        endScreen.SetActive(true);
-        endScreen.GetComponent<TextMeshProUGUI>().text = "DEFEAT";
+        UIController.instance.ShowEndDisplayActivate("DEFEAT",false);       
     }
 
     private void ShowVictoryScreen()
     {
-        endScreen.SetActive(true);
-        endScreen.GetComponent<TextMeshProUGUI>().text = "VICTORY";
-        endScreen.GetComponent<SceneChange>().LoadOnClick();
+        UIController.instance.ShowEndDisplayActivate("VICTORY", true);        
     }
 
     private IEnumerator EnemyMove()
@@ -314,8 +319,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTurnShower()
     {
-        string asd = turnCounter.ToString();
-        turnDisplay.GetComponent<TextMeshProUGUI>().text = $"TURN: {asd}";
+        string turn = turnCounter.ToString();
+        UIController.instance.ShowTurnChangeNumber(turn);        
     }
 
     public enum GameState
@@ -325,7 +330,8 @@ public class GameManager : MonoBehaviour
         PlayerTurn,
         EnemyTurn,
         Victory,
-        Lose
+        Lose,
+        GameEnd
 
     }
 

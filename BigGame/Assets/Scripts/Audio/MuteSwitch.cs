@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.Audio;
 using Image = UnityEngine.UI.Image;
 
 public class MuteSwitch : MonoBehaviour
@@ -10,8 +11,6 @@ public class MuteSwitch : MonoBehaviour
     public Sprite isOn;
     public Sprite isOff;
     public GameObject mixer;
-
-    private float currentVol;
     private void Start()
     {
         SwitchMute();
@@ -35,12 +34,12 @@ public class MuteSwitch : MonoBehaviour
     
     private void Mute()
     {
-        mixer.GetComponent<MixerData>().myMixer.SetFloat("masterMixer", -80);
+        mixer.GetComponent<AudioManager>().myMixer.SetFloat("masterMixer", -80);
     }
 
     private void Unmute()
     {
-        mixer.GetComponent<MixerData>().myMixer.SetFloat("masterMixer", PlayerPrefs.GetFloat("masterAudio"));
+        mixer.GetComponent<AudioManager>().myMixer.SetFloat("masterMixer", PlayerPrefs.GetFloat("masterAudio"));
     }
     
 }

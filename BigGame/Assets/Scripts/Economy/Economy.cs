@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
-    public TextMeshProUGUI moneyUI;
     public PlayerCash playerCashSO;
     public int cash;
 
@@ -23,7 +22,7 @@ public class Economy : MonoBehaviour
 
     private void UIUpdate()
     {
-        moneyUI.text = cash.ToString();
+        UIController.instance.EconomyUpdateCash(cash);
     }
 
     public bool CanIBuy(int spend)

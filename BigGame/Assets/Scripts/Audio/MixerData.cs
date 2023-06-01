@@ -5,5 +5,5 @@ using UnityEngine.Audio;
 
 public class MixerData : MonoBehaviour
 {
-    public AudioMixer myMixer;
+    
 }
