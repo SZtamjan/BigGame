@@ -61,6 +61,6 @@ public class SceneHandler : MonoBehaviour
             elapsedTime += Time.deltaTime;
         }
 
-        if (imageColor.a == 0) Destroy(handler);
+        if (imageColor.a == 0) handler.SetActive(false);
     }
 }
