@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        _WhereToSpawnCard = UIController.instance.HereCardsAre();
+        _WhereToSpawnCard = UIController.Instance.HereCardsAre();
     }
 
     public void StartSpawnCards()
@@ -39,9 +40,24 @@ public class CardManager : MonoBehaviour
         {
             GameObject thisCard = Instantiate(cardPrefab,_WhereToSpawnCard.transform);
             thisCard.GetComponent<SpawnUnitCard>().stats = item;
+            //CardInHand.Insert(0, thisCard);
             CardInHand.Add(thisCard);
         }
-        UIController.instance.ArrangeCards();
+        UIController.Instance.ArrangeCards();
+    }
+
+    public void LimitCard()
+    {
+       int CardCount = CardInHand.Count;
+        if (CardCount>5)
+        {
+            Debug.Log("ultra wybuchy");
+            Debug.Log(CardInHand.First().GetComponent<SpawnUnitCard>().stats.name);
+            Destroy(CardInHand.First());
+            CardInHand.RemoveAt(0);
+            UIController.Instance.ArrangeCards();
+            
+        }
     }
 
 

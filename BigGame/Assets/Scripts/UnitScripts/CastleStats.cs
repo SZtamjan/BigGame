@@ -19,7 +19,7 @@ public class CastleStats : MonoBehaviour
 
     private void Start()
     {
-        UIController.instance.CastleHpSetMaxHealth(hp, isMyCastle);
+        UIController.Instance.CastleHpSetMaxHealth(hp, isMyCastle);
         defenceArmaments = new List<CastleArmaments>();
         
     }
@@ -51,7 +51,7 @@ public class CastleStats : MonoBehaviour
             }
         }
 
-        UIController.instance.CastleHpSetHealth(hp, isMyCastle);
+        UIController.Instance.CastleHpSetHealth(hp, isMyCastle);
 
     }
 

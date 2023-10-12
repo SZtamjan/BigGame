@@ -35,7 +35,7 @@ public class BuildingCard : MonoBehaviour
     
     public void StartBulding()
     {
-        UIController.instance.BuildingCardsChangeShow(false);
+        UIController.Instance.BuildingCardsChangeShow(false);
         Building.Instance.StartBuilding(infoSource);
     }
 

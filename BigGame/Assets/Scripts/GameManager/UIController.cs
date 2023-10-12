@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public static UIController instance;
+    public static UIController Instance;
     [Header("Menus")]
     [SerializeField] private GameObject QuickMenu;
     [SerializeField] private List<GameObject> menus;
@@ -48,7 +48,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     private void Start()
     {
@@ -94,7 +94,7 @@ public class UIController : MonoBehaviour
         foreach (var item in CardManager.instance.CardInHand)
         {
             i++;
-            float posX = i * (_DeckCardsWith / x);
+            float posX = (x - i) * (_DeckCardsWith / x);
             item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 0, 0);
         }
     }

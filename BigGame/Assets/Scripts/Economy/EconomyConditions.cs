@@ -40,19 +40,19 @@ public class EconomyConditions : MonoBehaviour
     public void NotEnoughCash()
     {
         
-        UIController.instance.WarmingShowWarming("Not Enough Cash!1!11!");
+        UIController.Instance.WarmingShowWarming("Not Enough Cash!1!11!");
         Debug.Log("Not enough cash");
     }
 
     public void ThereIsABuilding()
     {
-        UIController.instance.WarmingShowWarming("Obiekt tu jest!1!11!");
+        UIController.Instance.WarmingShowWarming("Obiekt tu jest!1!11!");
         Debug.Log("Obiekt tu jest");
     }
 
     public void ThereIsAUnit()
     {
-        UIController.instance.WarmingShowWarming("Jednostka tu jest!1!11!");
+        UIController.Instance.WarmingShowWarming("Jednostka tu jest!1!11!");
         Debug.Log("Jednostka tu jest");
     }
 

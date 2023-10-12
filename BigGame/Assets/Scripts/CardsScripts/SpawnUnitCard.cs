@@ -64,6 +64,8 @@ public class SpawnUnitCard : MonoBehaviour
         isMovingUp = true;
         Vector2 targetPosition = StartPos + Vector2.up * 120f;
         StartCoroutine(MoveMe(targetPosition, true));
+        transform.SetAsLastSibling();
+
     }
     void OnMouseExit()
     {

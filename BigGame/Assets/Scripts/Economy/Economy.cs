@@ -22,7 +22,7 @@ public class Economy : MonoBehaviour
 
     private void UIUpdate()
     {
-        UIController.instance.EconomyUpdateCash(cash);
+        UIController.Instance.EconomyUpdateCash(cash);
     }
 
     public bool CanIBuy(int spend)

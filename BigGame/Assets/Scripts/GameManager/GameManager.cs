@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
     private void CardStart()
     {
         CardManager.instance.StartSpawnCards();
+        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+
     }
 
     private void CameraSetting()
@@ -120,13 +122,13 @@ public class GameManager : MonoBehaviour
         
         PathControler.Instance.StartPath();
 
-        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
     private void GameStatePlayerTurn()
     {
-        UIController.instance.TurnButtonActivate();
+        CardManager.instance.LimitCard();
+        UIController.Instance.TurnButtonActivate();
         Economy.Instance.CashOnTurn();
         UpdateTurnShower();
         playerTurn = true;
@@ -139,7 +141,7 @@ public class GameManager : MonoBehaviour
         if (CanPlayerMove())
         {
 
-            UIController.instance.TurnButtonDisable();
+            UIController.Instance.TurnButtonDisable();
             GetComponent<PathControler>().PlayerUnitPhase();
             StartCoroutine(Endturn(true));
         }
@@ -170,17 +172,17 @@ public class GameManager : MonoBehaviour
 
     private void StopGame()
     {
-        UIController.instance.TurnButtonDisable();
+        UIController.Instance.TurnButtonDisable();
     }
 
     private void ShowLoseScreen()
     {
-        UIController.instance.ShowEndDisplayActivate("DEFEAT",false);       
+        UIController.Instance.ShowEndDisplayActivate("DEFEAT",false);       
     }
 
     private void ShowVictoryScreen()
     {
-        UIController.instance.ShowEndDisplayActivate("VICTORY", true);        
+        UIController.Instance.ShowEndDisplayActivate("VICTORY", true);        
     }
 
     private IEnumerator EnemyMove()
@@ -320,7 +322,7 @@ public class GameManager : MonoBehaviour
     public void UpdateTurnShower()
     {
         string turn = turnCounter.ToString();
-        UIController.instance.ShowTurnChangeNumber(turn);        
+        UIController.Instance.ShowTurnChangeNumber(turn);        
     }
 
     public enum GameState
