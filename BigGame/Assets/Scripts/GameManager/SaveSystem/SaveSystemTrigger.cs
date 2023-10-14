@@ -44,7 +44,7 @@ public class SaveSystemTrigger : MonoBehaviour
 
     public int LoadTip()
     {
-        tipData data = SaveSystem.LoadTip(); //Tutaj returnuje nulla :(
+        tipData data = SaveSystem.LoadTip();
 
         tipNo = data.tipNo;
         //kolejne zmienne

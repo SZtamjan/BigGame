@@ -12,7 +12,7 @@ public class ProtipHandler : MonoBehaviour
     public bool isGameplay;
     private int tipNO;
 
-    private void OnEnable()
+    private void Start()
     {
         GetAndDisplayTip();
     }
