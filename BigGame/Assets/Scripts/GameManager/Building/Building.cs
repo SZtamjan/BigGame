@@ -13,12 +13,13 @@ public class Building : MonoBehaviour
     Camera cam;
     public LayerMask mask;
     public bool isBuilding = false;
+    public GameEvent isBuildingEvent;
 
     public GameObject parent;
     private GameObject halfTransparent;
 
-    [SerializeField] private List<GameObject> Budynki; // to jest przysz³oœæ do zapisywanie gry
-    public List<BuildingsStats> buildingsStats; // a to jest lista z której mo¿na pytaæ budynki co robiæ
+    [SerializeField] private List<GameObject> Budynki; // to jest przyszï¿½oï¿½ï¿½ do zapisywanie gry
+    public List<BuildingsStats> buildingsStats; // a to jest lista z ktï¿½rej moï¿½na pytaï¿½ budynki co robiï¿½
 
     //public Animator animator;
 
@@ -42,6 +43,7 @@ public class Building : MonoBehaviour
             if (!isBuilding)
             {
                 isBuilding = true;
+                isBuildingEvent.Raise();
                 StartCoroutine(WhereToBuild(statsy));
             }
             else
@@ -117,14 +119,14 @@ public class Building : MonoBehaviour
                         Build(hitObject, statsy);
                     }
 
-                    isBuilding = false;
+                    EndBuilding();
 
                 }
                 else
                 {
-                    //Je¿eli jest obiekt to przestañ budowaæ
+                    //Jeï¿½eli jest obiekt to przestaï¿½ budowaï¿½
                     EconomyConditions.Instance.ThereIsABuilding();
-                    isBuilding = false;
+                    EndBuilding();
                 }
             }
             yield return null;
@@ -135,5 +137,10 @@ public class Building : MonoBehaviour
         yield return null;
     }
 
+    private void EndBuilding()
+    {
+        isBuildingEvent.Raise();
+        isBuilding = false;
+    }
 
 }

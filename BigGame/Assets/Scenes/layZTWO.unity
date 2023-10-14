@@ -4949,6 +4949,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1055676393}
     m_Modifications:
+    - target: {fileID: 2478135775466935260, guid: 43c963d0acd22b445ac6eceb8e596992, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3616170078862256307, guid: 43c963d0acd22b445ac6eceb8e596992, type: 3}
       propertyPath: m_RootOrder
       value: 89
@@ -28516,6 +28520,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8217580619755710967, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217580619755710967, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1153951461}
@@ -34306,12 +34314,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8432403115703289220, guid: e946feaf76f42c542aa5d3926a8ace78, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8648560618473700364, guid: e946feaf76f42c542aa5d3926a8ace78, type: 3}
       propertyPath: m_Name
       value: postprocess
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e946feaf76f42c542aa5d3926a8ace78, type: 3}
+--- !u!1 &1497934386250079795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8648560618473700364, guid: e946feaf76f42c542aa5d3926a8ace78, type: 3}
+  m_PrefabInstance: {fileID: 1497934386250079794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1497934386250079796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497934386250079795}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 2edf01811741a084a9f75106decba93c, type: 2}
 --- !u!1001 &8022995470192037098
 PrefabInstance:
   m_ObjectHideFlags: 0

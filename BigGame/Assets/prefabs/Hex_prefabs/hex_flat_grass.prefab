@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2266662293827453063}
   - component: {fileID: 4075821508453954637}
   - component: {fileID: -4097541097768682066}
+  - component: {fileID: 8671053697731806188}
+  - component: {fileID: 490187204275793012}
   m_Layer: 8
   m_Name: hex_flat_grass
   m_TagString: Untagged
@@ -98,3 +100,43 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8562928185355181518, guid: 20e19425ae500e04e8a9118caff08ed1, type: 3}
+--- !u!114 &8671053697731806188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562766308121040280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d25df566272634d8773d7c4769d49a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &490187204275793012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562766308121040280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ed5b117a68997754abb2561b815305ae, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8671053697731806188}
+        m_TargetAssemblyTypeName: ChangeGlow, Assembly-CSharp
+        m_MethodName: ChangeBloom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
