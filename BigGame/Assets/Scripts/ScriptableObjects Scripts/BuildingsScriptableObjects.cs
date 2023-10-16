@@ -19,4 +19,7 @@ public class BuildingsScriptableObjects : ScriptableObject
     public string desc = "+5 do hajsu na ture";
     [SerializeField]
     public int moneyGain = 0;
+    [SerializeField]
+    public UnitScriptableObjects UnitAdd;
+    
 }

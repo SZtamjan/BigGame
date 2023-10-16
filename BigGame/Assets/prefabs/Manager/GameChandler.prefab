@@ -49,6 +49,8 @@ MonoBehaviour:
   PlayerCards:
   - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
   testo: []
+  CardToDraw:
+  - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
 --- !u!1 &291595189176695698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4663,6 +4665,7 @@ GameObject:
   - component: {fileID: 4554065881492852005}
   - component: {fileID: 6043076754733567083}
   - component: {fileID: 5021514409948675430}
+  - component: {fileID: 1300827555777958087}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4799,6 +4802,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   tipNo: 0
+--- !u!114 &1300827555777958087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203101441182389874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e076c43568ebafa4cabd1d6f3c2a2e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7222803090026633486
 GameObject:
   m_ObjectHideFlags: 0
