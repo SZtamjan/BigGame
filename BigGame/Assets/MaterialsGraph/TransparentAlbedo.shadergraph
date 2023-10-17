@@ -16,7 +16,11 @@
             "m_Id": "07027cd24027495d9ee5dd63c5e502e6"
         }
     ],
-    "m_Keywords": [],
+    "m_Keywords": [
+        {
+            "m_Id": "319a32babdbc4e6c8d62d7273b27f3df"
+        }
+    ],
     "m_Dropdowns": [],
     "m_CategoryData": [
         {
@@ -569,6 +573,46 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.ShaderKeyword",
+    "m_ObjectId": "319a32babdbc4e6c8d62d7273b27f3df",
+    "m_Guid": {
+        "m_GuidSerialized": "996539ef-8368-4bdd-a1e6-62c6242ad2ae"
+    },
+    "m_Name": "EMISSION",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "EMISSION",
+    "m_DefaultReferenceName": "_EMISSION",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_KeywordType": 1,
+    "m_KeywordDefinition": 0,
+    "m_KeywordScope": 0,
+    "m_KeywordStages": 63,
+    "m_Entries": [
+        {
+            "id": 1,
+            "displayName": "A",
+            "referenceName": "A"
+        },
+        {
+            "id": 2,
+            "displayName": "B",
+            "referenceName": "B"
+        },
+        {
+            "id": 3,
+            "displayName": "C",
+            "referenceName": "C"
+        }
+    ],
+    "m_Value": 0,
+    "m_IsEditable": true
 }
 
 {
@@ -1307,6 +1351,9 @@
         },
         {
             "m_Id": "da21e9e7bb204164bbd6058d42795f6a"
+        },
+        {
+            "m_Id": "319a32babdbc4e6c8d62d7273b27f3df"
         }
     ]
 }

@@ -5,6 +5,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using static GameManager;
 
 public class Building : MonoBehaviour
@@ -21,13 +22,16 @@ public class Building : MonoBehaviour
     [SerializeField] private List<GameObject> Budynki; // to jest przysz�o�� do zapisywanie gry
     public List<BuildingsStats> buildingsStats; // a to jest lista z kt�rej mo�na pyta� budynki co robi�
 
+    [Header("Gray Color")]
+    [ColorUsage(true, true)] public Color notPlaceableColor; //gray
+    [ColorUsage(true, true)] public Color placeableColor; //green
+    public GameEvent isBuildingEventTwo;
+    
     //public Animator animator;
 
     private void Awake()
     {
         Instance = this;
-
-
     }
     void Start()
     {
@@ -44,6 +48,7 @@ public class Building : MonoBehaviour
             {
                 isBuilding = true;
                 isBuildingEvent.Raise();
+                isBuildingEventTwo.Raise();
                 StartCoroutine(WhereToBuild(statsy));
             }
             else
@@ -119,6 +124,7 @@ public class Building : MonoBehaviour
                         Build(hitObject, statsy);
                     }
 
+                    yield return new WaitForEndOfFrame();
                     EndBuilding();
 
                 }
@@ -126,9 +132,12 @@ public class Building : MonoBehaviour
                 {
                     //Je�eli jest obiekt to przesta� budowa�
                     EconomyConditions.Instance.ThereIsABuilding();
+                    
+                    yield return new WaitForEndOfFrame();
                     EndBuilding();
                 }
             }
+            
             yield return null;
         }
         //animator.SetFloat("speed", 0);
@@ -139,8 +148,10 @@ public class Building : MonoBehaviour
 
     private void EndBuilding()
     {
-        isBuildingEvent.Raise();
         isBuilding = false;
+        isBuildingEventTwo.Raise();
+        isBuildingEvent.Raise();
+        
     }
 
 }
