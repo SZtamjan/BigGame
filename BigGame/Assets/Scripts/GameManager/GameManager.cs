@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
                 StartingFunction();
                 break;
             case GameState.MapGeneration:
-                GenerateHexGrid();
+                
                 CameraSetting();
                 CardStart();
                 break;
@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     private void CameraSetting()
     {
-        PlayerMovement.instance.CameraSetting();
+       // PlayerMovement.instance.CameraSetting();
     }
 
 
@@ -111,19 +111,21 @@ public class GameManager : MonoBehaviour
 
     private void StartingFunction()
     {
-
-        PathControler.Instance.StartNewPathWay();
-        GameManager.instance.UpdateGameState(GameState.MapGeneration);
+        StartCoroutine(StartingFuctiom());
+        //PathControler.Instance.StartNewPathWay();
+       // GameManager.instance.UpdateGameState(GameState.MapGeneration);
 
     }
 
-    private void GenerateHexGrid()
+    private IEnumerator StartingFuctiom() 
     {
-
-        PathControler.Instance.StartPath();
-
-
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        //PathControler.Instance.StartNewPathWay();
+        GameManager.instance.UpdateGameState(GameState.MapGeneration);
     }
+
 
     private void GameStatePlayerTurn()
     {
@@ -245,7 +247,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    private IEnumerator Endturn(bool playerUnit)
+    private IEnumerator Endturn(bool playerUnit) // do przerobienia to jest XDD
     {
         yield return new WaitForSeconds(0.3f);
         bool wait = true;

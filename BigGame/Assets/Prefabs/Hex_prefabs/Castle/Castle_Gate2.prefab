@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 4080436444886741204}
   - component: {fileID: 1085161655031512945}
   - component: {fileID: 2948647809787087803}
+  - component: {fileID: -4664047723142522066}
   m_Layer: 0
   m_Name: Castle_Gate2
   m_TagString: Untagged
@@ -423,6 +424,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-4664047723142522066
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741171873182411374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.86602515, y: 0.00000015646219, z: 1}
+  m_Center: {x: 0, y: 0.125, z: -0.000000014901161}
 --- !u!1 &4459882862345788517
 GameObject:
   m_ObjectHideFlags: 0

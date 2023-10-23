@@ -5,7 +5,7 @@ using UnityEngine;
 public class CastleClass : MonoBehaviour
 {
     [System.Serializable]
-    public class Castle
+    public class Castleee
     {
         public GameObject castle;
         public GameObject jednostka = null;
