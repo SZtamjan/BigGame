@@ -15,6 +15,11 @@ public class Castle : MonoBehaviour
 
     private void Awake()
     {
+       GetGates();
+    }
+
+    public void GetGates()
+    {
         Collider[] colliders = Physics.OverlapSphere(transform.position, searchRadius);
         foreach (Collider collider in colliders)
         {
@@ -22,6 +27,14 @@ public class Castle : MonoBehaviour
             {
                 gates.Add(collider.GetComponent<Gate>());
             }
+        }
+    }
+
+    public void SetGates()
+    {
+        foreach (Gate gate in gates)
+        {
+            gate.SetIfplayerOrNot(isPlayerSide);
         }
     }
     private void Start()

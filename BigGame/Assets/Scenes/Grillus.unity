@@ -1380,7 +1380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSide: 0
   paths: []
-  searchRadius: 1
+  searchRadius: 0.8
+  _secondGastle: {fileID: 2038993155}
 --- !u!1001 &65101597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1519,7 +1520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSide: 0
   paths: []
-  searchRadius: 1
+  searchRadius: 0.8
+  _secondGastle: {fileID: 0}
 --- !u!1001 &70326336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4610,7 +4612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSide: 0
   paths: []
-  searchRadius: 1
+  searchRadius: 0.8
+  _secondGastle: {fileID: 0}
 --- !u!4 &368879499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
@@ -10221,7 +10224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSide: 0
   paths: []
-  searchRadius: 1
+  searchRadius: 0.8
+  _secondGastle: {fileID: 0}
 --- !u!1 &918551962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4db64bc6ff9cb43429c8977f7956a691, type: 3}
@@ -14076,7 +14080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSide: 0
   paths: []
-  searchRadius: 1
+  searchRadius: 0.8
+  _secondGastle: {fileID: 0}
 --- !u!4 &1301927371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2955404031258080917, guid: 9f397eee1775f304b9c3527c115a1598, type: 3}
@@ -21763,7 +21768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSide: 0
   paths: []
-  searchRadius: 1
+  searchRadius: 0.8
+  _secondGastle: {fileID: 62202743}
 --- !u!1001 &2048989921
 PrefabInstance:
   m_ObjectHideFlags: 0
