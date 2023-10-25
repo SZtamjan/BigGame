@@ -6,16 +6,20 @@ using UnityEngine;
 public class Castle : MonoBehaviour
 {
 
-    public string targetTag = "Gate";
+    [Tag] public string targetTag = "Gate";
     public float searchRadius = 5f;
 
     public List<Gate> gates = new List<Gate>();
 
     [SerializeField] private bool isPlayerSide = false;
 
-    private void Awake()
+    
+
+    public void GatesInitialization()
     {
-       GetGates();
+        GetGates();
+        SetGates();
+        SetPaths();
     }
 
     public void GetGates()
@@ -32,9 +36,20 @@ public class Castle : MonoBehaviour
 
     public void SetGates()
     {
+
         foreach (Gate gate in gates)
         {
             gate.SetIfplayerOrNot(isPlayerSide);
+            gate.SetMyCastle(this);
+
+        }
+    }
+
+    public void SetPaths()
+    {
+        foreach (var gate in gates)
+        {
+            gate.GeneratePath();
         }
     }
     private void Start()

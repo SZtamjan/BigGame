@@ -1381,7 +1381,9 @@ MonoBehaviour:
   isPlayerSide: 0
   paths: []
   searchRadius: 0.8
-  _secondGastle: {fileID: 2038993155}
+  newTag: 
+  _secondGastle: {fileID: 0}
+  _MyCastle: {fileID: 0}
 --- !u!1001 &65101597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1521,7 +1523,9 @@ MonoBehaviour:
   isPlayerSide: 0
   paths: []
   searchRadius: 0.8
+  newTag: 
   _secondGastle: {fileID: 0}
+  _MyCastle: {fileID: 0}
 --- !u!1001 &70326336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4534,7 +4538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7410874
+      value: -1.72
       objectReference: {fileID: 0}
     - target: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4613,7 +4617,9 @@ MonoBehaviour:
   isPlayerSide: 0
   paths: []
   searchRadius: 0.8
+  newTag: 
   _secondGastle: {fileID: 0}
+  _MyCastle: {fileID: 0}
 --- !u!4 &368879499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
@@ -10223,9 +10229,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerSide: 0
-  paths: []
+  paths:
+  - position: {x: -3.5424242, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: -2.6071124, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: -1.7410874, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: -0.87506247, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: -0.009037495, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 0.8569875, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 1.7230124, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 2.5890374, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 3.4550624, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 4.3210874, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 5.1871123, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 6.0531373, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 6.9191623, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 7.7851872, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
+  - position: {x: 8.581925, y: 0, z: 0}
+    unitMain: {fileID: 0}
+    unitWanting: {fileID: 0}
   searchRadius: 0.8
-  _secondGastle: {fileID: 0}
+  newTag: 
+  _secondGastle: {fileID: 362857570}
+  _MyCastle: {fileID: 0}
 --- !u!1 &918551962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4db64bc6ff9cb43429c8977f7956a691, type: 3}
@@ -14081,7 +14134,9 @@ MonoBehaviour:
   isPlayerSide: 0
   paths: []
   searchRadius: 0.8
+  newTag: 
   _secondGastle: {fileID: 0}
+  _MyCastle: {fileID: 0}
 --- !u!4 &1301927371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2955404031258080917, guid: 9f397eee1775f304b9c3527c115a1598, type: 3}
@@ -21769,7 +21824,9 @@ MonoBehaviour:
   isPlayerSide: 0
   paths: []
   searchRadius: 0.8
-  _secondGastle: {fileID: 62202743}
+  newTag: 
+  _secondGastle: {fileID: 0}
+  _MyCastle: {fileID: 0}
 --- !u!1001 &2048989921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22306,7 +22363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.3391623
+      value: -4.337
       objectReference: {fileID: 0}
     - target: {fileID: 5806433175975722589, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23041,6 +23098,30 @@ PrefabInstance:
       propertyPath: m_Value
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1621313835609234244, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: tags.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621313835609234244, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: tags.Array.data[0]
+      value: Path1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621313835609234244, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: tags.Array.data[1]
+      value: Path2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621313835609234244, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: tags.Array.data[2]
+      value: Path3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621313835609234244, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: tags.Array.data[3]
+      value: Path4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621313835609234244, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: tags.Array.data[4]
+      value: Path5
+      objectReference: {fileID: 0}
     - target: {fileID: 1839852809270075918, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -23088,6 +23169,14 @@ PrefabInstance:
     - target: {fileID: 2183442187371251790, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: mainCamera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183442187371251791, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183442187371251791, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2238672543534633021, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: stucture

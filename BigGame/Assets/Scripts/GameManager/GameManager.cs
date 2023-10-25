@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
                 StartingFunction();
                 break;
             case GameState.MapGeneration:
-                
+                CreatePaths();
                 CameraSetting();
                 CardStart();
                 break;
@@ -126,6 +126,10 @@ public class GameManager : MonoBehaviour
         GameManager.instance.UpdateGameState(GameState.MapGeneration);
     }
 
+    private void CreatePaths()
+    {
+        CastlesController.Instance.GatesInitialization();
+    }
 
     private void GameStatePlayerTurn()
     {

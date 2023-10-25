@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using static PathClass;
 [SelectionBase]
 public class Gate : MonoBehaviour
@@ -11,29 +12,32 @@ public class Gate : MonoBehaviour
     [SerializeField] private bool isPlayerSide = false;
 
     public List<Path> paths = new List<Path>();
-    [SerializeField][Tooltip("dobrze dzia³a 1.3")] private float searchRadius = 0.8f;
+    [SerializeField][Tooltip("dobrze dzia³a 0.8")] private float searchRadius = 0.8f;
+
+    [Tag] public string newTag;
+    [SerializeField] private Gate _secondGastle;
+    [SerializeField] private Castle _MyCastle;
 
 
-    [SerializeField]
-    private Gate _secondGastle;
-    private bool _end = true;
+
     [Button]
     public void GeneratePath()
     {
+        newTag = CastlesController.Instance.ReturnNextFreeTag();
+        gameObject.tag = newTag;
         paths = new List<Path> { new Path { position = transform.position } };
         _secondGastle = NewPath().GetComponent<Gate>();
-
-        paths.Add(new Path { position = _secondGastle.transform.position});
+        _secondGastle.tag = newTag;
+        paths.Add(new Path { position = _secondGastle.transform.position });
 
         _secondGastle.SetSecoundGate(this);
         _secondGastle.SetPath(paths);
 
     }
 
-    public void SetSecoundGate(Gate gate)
-    {
-        _secondGastle = gate;
-    }
+
+    #region path creation
+   
     public void SetPath(List<Path> path)
     {
         paths = path;
@@ -43,6 +47,15 @@ public class Gate : MonoBehaviour
         isPlayerSide = isPlayer;
     }
 
+    public void SetSecoundGate(Gate gate)
+    {
+        _secondGastle = gate;
+    }
+
+    public void SetMyCastle(Castle castle)
+    {
+        _MyCastle = castle;
+    }
 
     public GameObject NewPath()
     {
@@ -71,9 +84,10 @@ public class Gate : MonoBehaviour
 
         foreach (var item in ControlList)
         {
+            item.tag = newTag;
             paths.Add(new Path { position = item.transform.position });
         }
-
+        
         toReturn = GetHits(ControlList.Last().transform.position, "Gate").Last();
 
 
@@ -116,5 +130,5 @@ public class Gate : MonoBehaviour
         return sourceList;
     }
 
-
+    #endregion
 }
