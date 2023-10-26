@@ -5,7 +5,6 @@ using UnityEngine;
 public class ChangeGray : MonoBehaviour
 {
     private bool isOn = false;
-    public bool xd = false;
 
     Renderer renderer;
     Material[] materials;
@@ -29,7 +28,15 @@ public class ChangeGray : MonoBehaviour
         {
             foreach (Material mat in materials)
             {
-                mat.DisableKeyword("_EMISSION");
+                if (Building.Instance.isColor)
+                {
+                    mat.SetColor("_BaseColor",Color.white);
+                }
+                else
+                {
+                    mat.DisableKeyword("_EMISSION");
+                }
+                
             }
             isOn = false;
         }
@@ -37,14 +44,14 @@ public class ChangeGray : MonoBehaviour
         {
             foreach (Material mat in materials)
             {
-
-                if (xd == true)
+                if (Building.Instance.isColor)
                 {
-                    Debug.Log("xd");
-                    
+                    mat.SetColor("_BaseColor",Building.Instance.regularNotPlaceableColor);
                 }
-                mat.EnableKeyword("_EMISSION");
-                
+                else
+                {
+                    mat.EnableKeyword("_EMISSION");
+                }
             }
             isOn = true;
         }

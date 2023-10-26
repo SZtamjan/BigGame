@@ -14,7 +14,7 @@ public class BuildingsStats : MonoBehaviour
 
     public int returnMoneyGain()
     {
-        // tu w ramach potrzeb mo¿na dopisaæ jakieœ warunki na generowanie pienia¿ków
+        // tu w ramach potrzeb moÅ¼na dopisaÄ‡ jakieÅ› warunki na generowanie pieniaÅ¼kÃ³w
 
         return moneyGenerate;
 

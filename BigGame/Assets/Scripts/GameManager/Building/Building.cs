@@ -19,13 +19,21 @@ public class Building : MonoBehaviour
     public GameObject parent;
     private GameObject halfTransparent;
 
-    [SerializeField] private List<GameObject> Budynki; // to jest przysz�o�� do zapisywanie gry
-    public List<BuildingsStats> buildingsStats; // a to jest lista z kt�rej mo�na pyta� budynki co robi�
+    [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
+    public List<BuildingsStats> buildingsStats; // It stores what building does
 
-    [Header("Gray Color")]
-    [ColorUsage(true, true)] public Color notPlaceableColor; //gray
-    [ColorUsage(true, true)] public Color placeableColor; //green
+    [Header(" ")]
+    [Header("Building")]
+    public bool isColor = false;
     public GameEvent isBuildingEventTwo;
+    
+    [Header("Building Colors")]
+    [ColorUsage(true, true)] public Color regularPlaceableColor; //green
+    [ColorUsage(true, true)] public Color regularNotPlaceableColor; //gray
+    
+    [Header("Building Bloom")]
+    [ColorUsage(true, true)] public Color placeableColor; //green
+    [ColorUsage(true, true)] public Color notPlaceableColor; //gray
     
     //public Animator animator;
 
@@ -35,7 +43,7 @@ public class Building : MonoBehaviour
     }
     void Start()
     {
-        Budynki = new List<GameObject>();
+        budynki = new List<GameObject>();
         cam = Camera.main;
 
     }
@@ -47,8 +55,10 @@ public class Building : MonoBehaviour
             if (!isBuilding)
             {
                 isBuilding = true;
+                
                 isBuildingEvent.Raise();
                 isBuildingEventTwo.Raise();
+                
                 StartCoroutine(WhereToBuild(statsy));
             }
             else
@@ -67,7 +77,7 @@ public class Building : MonoBehaviour
         building.AddComponent<BuildingsStats>();
         var buldingStast = building.GetComponent<BuildingsStats>();
         buldingStast.putStats(statsy);
-        Budynki.Add(building);
+        budynki.Add(building);
         buildingsStats.Add(buldingStast);
     }
 
@@ -120,8 +130,8 @@ public class Building : MonoBehaviour
                         GameObject hitObject = hit.collider.gameObject;
                         Debug.Log(hitObject.name);
 
-                        Economy.Instance.Purchase(statsy.cost);
-                        Build(hitObject, statsy);
+                        Economy.Instance.Purchase(statsy.cost); //Probably fucked - it should store bool
+                        Build(hitObject, statsy); //It should be in if statement, expression above
                     }
 
                     yield return new WaitForEndOfFrame();
@@ -149,9 +159,9 @@ public class Building : MonoBehaviour
     private void EndBuilding()
     {
         isBuilding = false;
+        
         isBuildingEventTwo.Raise();
         isBuildingEvent.Raise();
-        
     }
 
 }

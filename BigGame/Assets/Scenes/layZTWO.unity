@@ -18229,6 +18229,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5691771631318994144, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5767759602173642687, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -18278,12 +18282,16 @@ PrefabInstance:
       value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: isColor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: placeableColor.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: placeableColor.g
-      value: 0.09411765
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: placeableColor.r
@@ -18303,7 +18311,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: notPlaceableColor.r
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: regularPlaceableColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: regularPlaceableColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: regularPlaceableColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: regularNotPlaceableColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: regularNotPlaceableColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: regularNotPlaceableColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6314240023449163152, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.x

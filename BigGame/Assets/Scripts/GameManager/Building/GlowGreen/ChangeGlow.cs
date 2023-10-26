@@ -28,7 +28,15 @@ public class ChangeGlow : MonoBehaviour
         {
             foreach (Material mat in materials)
             {
-                mat.DisableKeyword("_EMISSION");
+                if (Building.Instance.isColor)
+                {
+                    mat.SetColor("_BaseColor",Color.white);
+                }
+                else
+                {
+                    mat.DisableKeyword("_EMISSION");
+                }
+                
             }
             isOn = false;
         }
@@ -36,7 +44,14 @@ public class ChangeGlow : MonoBehaviour
         {
             foreach (Material mat in materials)
             {
-                mat.EnableKeyword("_EMISSION");
+                if (Building.Instance.isColor)
+                {
+                    mat.SetColor("_BaseColor",Building.Instance.regularPlaceableColor);
+                }
+                else
+                {
+                    mat.EnableKeyword("_EMISSION");
+                }
             }
             isOn = true;
         }
