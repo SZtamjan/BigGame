@@ -18302,6 +18302,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: limits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: budynki.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: isBuildingEventTwo
       value: 
       objectReference: {fileID: 11400000, guid: 50faecd50f96c3141a416849835f77f3, type: 2}
@@ -18317,6 +18325,10 @@ PrefabInstance:
       propertyPath: notPlaceableColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: limits.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 05f1bc85577416542a043757bf25f33e, type: 2}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: regularPlaceableColor.b
       value: 1
@@ -18437,7 +18449,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8750475592430194154, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
 --- !u!20 &1153951461 stripped
 Camera:

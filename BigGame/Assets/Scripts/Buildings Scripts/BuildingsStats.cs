@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingsStats : MonoBehaviour
 {
     [SerializeField] private int moneyGenerate = 0;
-    [SerializeField] private WhichBudynek thisBudynekIs;
+    public WhichBudynek thisBudynekIs;
 
     public void putStats(BuildingsScriptableObjects stats)
     {

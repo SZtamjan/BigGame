@@ -4784,8 +4784,16 @@ MonoBehaviour:
   isBuilding: 0
   isBuildingEvent: {fileID: 11400000, guid: ed5b117a68997754abb2561b815305ae, type: 2}
   parent: {fileID: 0}
-  Budynki: []
+  limitBudynkow: 5
+  budynki: []
   buildingsStats: []
+  limits: []
+  isColor: 0
+  isBuildingEventTwo: {fileID: 0}
+  regularPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
+  regularNotPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
+  placeableColor: {r: 0, g: 0, b: 0, a: 0}
+  notPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5021514409948675430
 MonoBehaviour:
   m_ObjectHideFlags: 0

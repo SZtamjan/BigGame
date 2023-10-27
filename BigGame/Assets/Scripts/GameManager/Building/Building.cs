@@ -22,6 +22,8 @@ public class Building : MonoBehaviour
     [SerializeField] private int limitBudynkow = 5; 
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
     public List<BuildingsStats> buildingsStats; // It stores what building does
+    [SerializeField] private List<BuildingLimits> limits;
+
 
     [Header(" ")]
     [Header("Building")]
@@ -48,14 +50,47 @@ public class Building : MonoBehaviour
         cam = Camera.main;
 
     }
+    
+    private bool IsBuildingLimitAchieved(WhichBudynek _whichBudynek)
+    {
+        bool isLimitAchieved = false;
+        
+        //Checking if there is a limit for the building
+        foreach (var bildink in limits)
+        {
+            if (bildink.jakiBudynek == _whichBudynek)
+            {
+                //Checking if limit for the building is achieved
+                int iloscPostawionych = 0;
+
+                foreach (var buildink in buildingsStats) //I'm iterating through placed buildings to count the amount of them
+                {
+                    if (bildink.jakiBudynek == buildink.thisBudynekIs)
+                    {
+                        iloscPostawionych++;
+                    }
+                }
+
+                if (bildink.maxIlosc <= iloscPostawionych)
+                {
+                    isLimitAchieved = true;
+                }
+                else
+                {
+                    isLimitAchieved = false;
+                }
+            }
+        }
+
+        return isLimitAchieved;
+    }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         {
             //Here i want to check if i didnt achieve the limit
-            
-            if (parent.transform.childCount !> limitBudynkow || IsBuildingLimitAchieved())
+            if (parent.transform.childCount !> limitBudynkow || IsBuildingLimitAchieved(statsy.whichBudynek))
             {
                 //Tell what if limit is achieved
                 Debug.Log("Limit is achieved");
@@ -174,9 +209,6 @@ public class Building : MonoBehaviour
         isBuildingEvent.Raise();
     }
 
-    private bool IsBuildingLimitAchieved()
-    {
-        return false;
-    }
+    
 
 }

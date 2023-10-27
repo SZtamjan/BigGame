@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "ProTips", menuName = "ProTips")]
+[CreateAssetMenu(fileName = "ProTips", menuName = "ScriptableObjects/ProTips")]
 
 public class ProtipText : ScriptableObject
 {

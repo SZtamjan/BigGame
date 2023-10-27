@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerCash", menuName = "UnitScriptableObjects/PlayerCash")]
+[CreateAssetMenu(fileName = "PlayerCash", menuName = "ScriptableObjects/PlayerCash")]
 public class PlayerCash : ScriptableObject
 {
     //Prefabs
