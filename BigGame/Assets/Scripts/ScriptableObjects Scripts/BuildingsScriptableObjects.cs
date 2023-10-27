@@ -7,7 +7,7 @@ public class BuildingsScriptableObjects : ScriptableObject
     //Prefabs
     [Header("Budynek ")]
     public GameObject Budynek;
-
+    public WhichBudynek whichBudynek;
     
     //Card Stats
     [Header("Statystyki ")]
@@ -19,4 +19,11 @@ public class BuildingsScriptableObjects : ScriptableObject
     public string desc = "+5 do hajsu na ture";
     [SerializeField]
     public int moneyGain = 0;
+}
+
+public enum WhichBudynek
+{
+    koszary,
+    tawerna,
+    jakisTrzeci
 }

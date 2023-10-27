@@ -19,6 +19,7 @@ public class Building : MonoBehaviour
     public GameObject parent;
     private GameObject halfTransparent;
 
+    [SerializeField] private int limitBudynkow = 5; 
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
     public List<BuildingsStats> buildingsStats; // It stores what building does
 
@@ -52,20 +53,29 @@ public class Building : MonoBehaviour
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         {
-            if (!isBuilding)
+            //Here i want to check if i didnt achieve the limit
+            
+            if (parent.transform.childCount !> limitBudynkow || IsBuildingLimitAchieved())
             {
-                isBuilding = true;
-                
-                isBuildingEvent.Raise();
-                isBuildingEventTwo.Raise();
-                
-                StartCoroutine(WhereToBuild(statsy));
+                //Tell what if limit is achieved
+                Debug.Log("Limit is achieved");
             }
             else
             {
-                isBuilding = false;
+                if (!isBuilding)
+                {
+                    isBuilding = true;
+                
+                    isBuildingEvent.Raise();
+                    isBuildingEventTwo.Raise();
+                
+                    StartCoroutine(WhereToBuild(statsy));
+                }
+                else
+                {
+                    isBuilding = false;
+                }
             }
-
         }
     }
     public void Build(GameObject position, BuildingsScriptableObjects statsy)
@@ -162,6 +172,11 @@ public class Building : MonoBehaviour
         
         isBuildingEventTwo.Raise();
         isBuildingEvent.Raise();
+    }
+
+    private bool IsBuildingLimitAchieved()
+    {
+        return false;
     }
 
 }
