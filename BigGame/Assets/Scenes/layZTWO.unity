@@ -18326,9 +18326,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: buildingLimitInTotal
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: limits.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 05f1bc85577416542a043757bf25f33e, type: 2}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: limits.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f8d5a87426c9a3c45ab1293984ac3c7f, type: 2}
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: regularPlaceableColor.b
       value: 1
@@ -18353,6 +18361,14 @@ PrefabInstance:
       propertyPath: regularNotPlaceableColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: specificBuildingLimitList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: specificBuildingLimitList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 114d48e3c6103854bb31b33deb368fcb, type: 2}
     - target: {fileID: 6314240023449163152, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

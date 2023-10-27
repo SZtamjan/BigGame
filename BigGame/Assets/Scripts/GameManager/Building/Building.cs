@@ -18,15 +18,18 @@ public class Building : MonoBehaviour
 
     public GameObject parent;
     private GameObject halfTransparent;
-
-    [SerializeField] private int limitBudynkow = 5; 
+    
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
     public List<BuildingsStats> buildingsStats; // It stores what building does
-    [SerializeField] private List<BuildingLimits> limits;
+    
+    [Header(" ")]
+    [Header("Limit Buildings")]
+    [SerializeField] private int buildingLimitInTotal = 5;
+    [SerializeField] private List<BuildingLimits> specificBuildingLimitList;
 
 
     [Header(" ")]
-    [Header("Building")]
+    [Header("Build Buildings")]
     public bool isColor = false;
     public GameEvent isBuildingEventTwo;
     
@@ -56,7 +59,7 @@ public class Building : MonoBehaviour
         bool isLimitAchieved = false;
         
         //Checking if there is a limit for the building
-        foreach (var bildink in limits)
+        foreach (var bildink in specificBuildingLimitList)
         {
             if (bildink.jakiBudynek == _whichBudynek)
             {
@@ -90,7 +93,7 @@ public class Building : MonoBehaviour
         if (GetComponent<GameManager>().CanPlayerMove())
         {
             //Here i want to check if i didnt achieve the limit
-            if (parent.transform.childCount !> limitBudynkow || IsBuildingLimitAchieved(statsy.whichBudynek))
+            if (parent.transform.childCount !>= buildingLimitInTotal || IsBuildingLimitAchieved(statsy.whichBudynek))
             {
                 //Tell what if limit is achieved
                 Debug.Log("Limit is achieved");
