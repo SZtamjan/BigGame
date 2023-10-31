@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour
     public bool playerTurn = true;
     public bool devMode = false;
     public static int turnCounter = 1;
-    
 
-   
-   
-    
+
+
+
+
 
 
     public static event Action<GameState> OnGameStateChange;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         turnCounter = 1;
         SaveSystemTrigger saveLevelScript = GetComponent<SaveSystemTrigger>();
-        if (saveLevelScript!=null)
+        if (saveLevelScript != null)
         {
             saveLevelScript.SaveLevel();
         }
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
                 StartingFunction();
                 break;
             case GameState.MapGeneration:
-                GenerateHexGrid();
+                CreatePaths();
                 CameraSetting();
                 CardStart();
                 break;
@@ -96,14 +96,14 @@ public class GameManager : MonoBehaviour
 
     private void CardStart()
     {
-        CardManager.instance.StartSpawnCards();
+        CardManager.instance.SpawnStartCards();
         GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
     private void CameraSetting()
     {
-        PlayerMovement.instance.CameraSetting();
+       // PlayerMovement.instance.CameraSetting();
     }
 
 
@@ -111,23 +111,34 @@ public class GameManager : MonoBehaviour
 
     private void StartingFunction()
     {
-       
-        PathControler.Instance.StartNewPathWay();
-        GameManager.instance.UpdateGameState(GameState.MapGeneration);
+        StartCoroutine(StartingFuctiom());
+        //PathControler.Instance.StartNewPathWay();
+       // GameManager.instance.UpdateGameState(GameState.MapGeneration);
 
     }
 
-    private void GenerateHexGrid()
+    private IEnumerator StartingFuctiom() 
     {
-        
-        PathControler.Instance.StartPath();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        //PathControler.Instance.StartNewPathWay();
+        GameManager.instance.UpdateGameState(GameState.MapGeneration);
+    }
 
-
+    private void CreatePaths()
+    {
+        CastlesController.Instance.GatesInitialization();
     }
 
     private void GameStatePlayerTurn()
     {
-        CardManager.instance.LimitCard();
+        EventManager.Instance.BuldingsActions();
+        if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
+        {
+            CardManager.instance.GetNewRenka();
+        }
+
         UIController.Instance.TurnButtonActivate();
         Economy.Instance.CashOnTurn();
         UpdateTurnShower();
@@ -143,6 +154,7 @@ public class GameManager : MonoBehaviour
 
             UIController.Instance.TurnButtonDisable();
             GetComponent<PathControler>().PlayerUnitPhase();
+            CardManager.instance.WyjebReke();
             StartCoroutine(Endturn(true));
         }
     }
@@ -177,12 +189,12 @@ public class GameManager : MonoBehaviour
 
     private void ShowLoseScreen()
     {
-        UIController.Instance.ShowEndDisplayActivate("DEFEAT",false);       
+        UIController.Instance.ShowEndDisplayActivate("DEFEAT", false);
     }
 
     private void ShowVictoryScreen()
     {
-        UIController.Instance.ShowEndDisplayActivate("VICTORY", true);        
+        UIController.Instance.ShowEndDisplayActivate("VICTORY", true);
     }
 
     private IEnumerator EnemyMove()
@@ -237,15 +249,15 @@ public class GameManager : MonoBehaviour
         return !playerTurn;
     }
 
-    
 
-    private IEnumerator Endturn(bool playerUnit)
+
+    private IEnumerator Endturn(bool playerUnit) // do przerobienia to jest XDD
     {
         yield return new WaitForSeconds(0.3f);
         bool wait = true;
         while (wait)
         {
-            wait=false;
+            wait = false;
 
 
             for (int i = 0; i <= PathWay.Count() - 1; i++)
@@ -268,7 +280,7 @@ public class GameManager : MonoBehaviour
                     wait = true;
                     break;
                 }
-                
+
             }
 
             GameObject UnitInCastle;
@@ -301,11 +313,11 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    break; 
+                    break;
                 }
             }
 
-            
+
         }
 
         if (playerUnit)
@@ -322,7 +334,7 @@ public class GameManager : MonoBehaviour
     public void UpdateTurnShower()
     {
         string turn = turnCounter.ToString();
-        UIController.Instance.ShowTurnChangeNumber(turn);        
+        UIController.Instance.ShowTurnChangeNumber(turn);
     }
 
     public enum GameState

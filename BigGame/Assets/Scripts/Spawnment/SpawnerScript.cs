@@ -90,7 +90,7 @@ public class SpawnerScript : MonoBehaviour
         return newObject;
 
     }
-    public void PutToList(GameObject unit, Castle miejsce)
+    public void PutToList(GameObject unit, Castleee miejsce)
     {
         miejsce.jednostka = unit;
     }

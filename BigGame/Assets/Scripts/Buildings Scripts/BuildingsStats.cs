@@ -6,11 +6,29 @@ public class BuildingsStats : MonoBehaviour
 {
     [SerializeField] private int moneyGenerate = 0;
     public WhichBudynek thisBudynekIs;
+    [SerializeField] private UnitScriptableObjects unitAdd;
+
+    private void OnEnable()
+    {
+        EventManager.BuildingAction += BuildingDoingSomething;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.BuildingAction -= BuildingDoingSomething;
+    }
+
 
     public void putStats(BuildingsScriptableObjects stats)
     {
         moneyGenerate = stats.moneyGain;
         thisBudynekIs = stats.whichBudynek;
+        unitAdd = stats.UnitAdd;
+        if (unitAdd != null)
+        {
+            CardManager.instance.CardToDraw.Add(unitAdd);
+            unitAdd = null;
+        }
     }
 
     public int returnMoneyGain()
@@ -20,6 +38,14 @@ public class BuildingsStats : MonoBehaviour
         return moneyGenerate;
 
     }
+
+    void BuildingDoingSomething()
+    {
+        Economy.Instance.cash += returnMoneyGain();
+
+    }
+
+
 
 
 }

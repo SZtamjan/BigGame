@@ -15,8 +15,8 @@ public class PathControler : MonoBehaviour
     public static PathControler Instance;
 
     [Header("Starting ")]
-    public Castle PlayerCastle;
-    public Castle ComputerCastle;
+    public Castleee PlayerCastle;
+    public Castleee ComputerCastle;
 
     public static List<Droga> PathWay = new List<Droga>();
     public List<Droga> pathwayDebug = new List<Droga>();
