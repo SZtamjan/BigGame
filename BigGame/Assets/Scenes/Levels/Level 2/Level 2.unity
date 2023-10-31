@@ -1255,11 +1255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &175752891 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1689261708297632901, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-  m_PrefabInstance: {fileID: 1781347419}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &185932330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3856,11 +3851,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0b4e243ed341f84086019413949cfe1, type: 3}
---- !u!1 &576271954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4265240243564638209, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-  m_PrefabInstance: {fileID: 1781347419}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &584347515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 802093275963208360, guid: 89081469f1c321840b21eecb0ae09375, type: 3}
@@ -4752,7 +4742,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 20
-  hpbar: {fileID: 175752891}
   defenceArmaments: []
   isMyCastle: 0
 --- !u!1001 &730181092
@@ -5512,7 +5501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpbar: {fileID: 576271954}
   defenceArmaments: []
   isMyCastle: 1
 --- !u!4 &858911352 stripped
@@ -10790,6 +10778,18 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1490081143}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: buildingLimitInTotal
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: specificBuildingLimitList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: specificBuildingLimitList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 114d48e3c6103854bb31b33deb368fcb, type: 2}
     - target: {fileID: 6314240023449163152, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

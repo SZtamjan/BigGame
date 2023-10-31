@@ -27,7 +27,6 @@ public class Building : MonoBehaviour
     [SerializeField] private int buildingLimitInTotal = 5;
     [SerializeField] private List<BuildingLimits> specificBuildingLimitList;
 
-
     [Header(" ")]
     [Header("Build Buildings")]
     public bool isColor = false;
@@ -52,40 +51,6 @@ public class Building : MonoBehaviour
         budynki = new List<GameObject>();
         cam = Camera.main;
 
-    }
-    
-    private bool IsBuildingLimitAchieved(WhichBudynek _whichBudynek)
-    {
-        bool isLimitAchieved = false;
-        
-        //Checking if there is a limit for the building
-        foreach (var bildink in specificBuildingLimitList)
-        {
-            if (bildink.jakiBudynek == _whichBudynek)
-            {
-                //Checking if limit for the building is achieved
-                int iloscPostawionych = 0;
-
-                foreach (var buildink in buildingsStats) //I'm iterating through placed buildings to count the amount of them
-                {
-                    if (bildink.jakiBudynek == buildink.thisBudynekIs)
-                    {
-                        iloscPostawionych++;
-                    }
-                }
-
-                if (bildink.maxIlosc <= iloscPostawionych)
-                {
-                    isLimitAchieved = true;
-                }
-                else
-                {
-                    isLimitAchieved = false;
-                }
-            }
-        }
-
-        return isLimitAchieved;
     }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
@@ -128,7 +93,6 @@ public class Building : MonoBehaviour
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
     }
-
 
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
@@ -212,6 +176,37 @@ public class Building : MonoBehaviour
         isBuildingEvent.Raise();
     }
 
-    
+    private bool IsBuildingLimitAchieved(WhichBudynek _whichBudynek)
+    {
+        bool isLimitAchieved = false;
+        
+        //Checking if there is a limit for the building
+        foreach (var bildink in specificBuildingLimitList)
+        {
+            if (bildink.jakiBudynek == _whichBudynek)
+            {
+                //Checking if limit for the building is achieved
+                int iloscPostawionych = 0;
 
+                foreach (var buildink in buildingsStats) //I'm iterating through placed buildings to count the amount of them
+                {
+                    if (bildink.jakiBudynek == buildink.thisBudynekIs)
+                    {
+                        iloscPostawionych++;
+                    }
+                }
+
+                if (bildink.maxIlosc <= iloscPostawionych)
+                {
+                    isLimitAchieved = true;
+                }
+                else
+                {
+                    isLimitAchieved = false;
+                }
+            }
+        }
+
+        return isLimitAchieved;
+    }
 }
