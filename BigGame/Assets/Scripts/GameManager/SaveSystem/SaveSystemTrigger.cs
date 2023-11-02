@@ -34,23 +34,4 @@ public class SaveSystemTrigger : MonoBehaviour
         
         return level;
     }
-
-    public void SaveTipNO(int dwa)
-    {
-        tipNo = dwa;
-        Debug.Log("tip number: " + tipNo);
-        SaveSystem.SaveTipNOSS(this);
-    }
-
-    public int LoadTip()
-    {
-        tipData data = SaveSystem.LoadTip();
-
-        tipNo = data.tipNo;
-        //kolejne zmienne
-        Debug.Log("Loaded tip: " + tipNo);
-        
-        return tipNo;
-    }
-    
 }

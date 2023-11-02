@@ -1563,6 +1563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01567c53695fe1b4887812210923fcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCastle: {fileID: 0}
+  enemyCastle: {fileID: 0}
+  tags: []
 --- !u!1 &2530115829848271857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4837,7 +4840,7 @@ MonoBehaviour:
   buildingLimitInTotal: 5
   specificBuildingLimitList: []
   isColor: 0
-  isBuildingEventTwo: {fileID: 0}
+  isBuildingEventTwo: {fileID: 11400000, guid: 50faecd50f96c3141a416849835f77f3, type: 2}
   regularPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
   regularNotPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
   placeableColor: {r: 0, g: 0, b: 0, a: 0}

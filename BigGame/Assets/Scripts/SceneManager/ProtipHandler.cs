@@ -22,15 +22,13 @@ public class ProtipHandler : MonoBehaviour
         if (!isGameplay)
         {
             tipNO = Random.Range(0, textsSO.proTips.Count);
-            MenuManager.instance.gameObject.GetComponent<SaveSystemTrigger>().SaveTipNO(tipNO);
-            tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[tipNO].ToString();
-            
             PlayerPrefs.SetFloat("tipIndex", tipNO);
+            tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[tipNO].ToString();
         }
         else
         {
             Debug.Log("jestem w grze");
-            int a = SaveSystemTrigger.instance.LoadTip();
+            int a = (int)PlayerPrefs.GetFloat("tipIndex");
             tipTextDisplay.GetComponent<TextMeshProUGUI>().text = textsSO.proTips[a].ToString();
         }
     }

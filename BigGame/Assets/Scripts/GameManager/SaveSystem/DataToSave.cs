@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 public class DataToSave
 {
     public int level;
-    //kolejne zmienne
+    
     public DataToSave(SaveSystemTrigger lvlMethod)
     {
         level = lvlMethod.level;
-        //kolejne zmienne
     }
 }

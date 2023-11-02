@@ -23,12 +23,6 @@ public class GameManager : MonoBehaviour
     public bool devMode = false;
     public static int turnCounter = 1;
 
-
-
-
-
-
-
     public static event Action<GameState> OnGameStateChange;
 
     private bool GameEnded = false;

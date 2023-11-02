@@ -4,11 +4,12 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public static class SaveSystem
+public class SaveSystem : MonoBehaviour
 {
     private static string levelPath = Application.persistentDataPath + "/level.xd";
     private static string tipPath = Application.persistentDataPath + "/tip.pog";
-    
+    public GameData gameData;
+
     public static void SaveLevel(SaveSystemTrigger levelSave)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -38,34 +39,4 @@ public static class SaveSystem
             return null;
         }
     }
-    
-    public static void SaveTipNOSS(SaveSystemTrigger tipSave)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(tipPath, FileMode.Create);
-        Debug.Log("tip number: " + tipSave.tipNo);
-        tipData data = new tipData(tipSave);
-        
-        formatter.Serialize(stream,data);
-        stream.Close();
-    }
-    public static tipData LoadTip()
-    {
-        if (File.Exists(tipPath))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(tipPath, FileMode.Open);
-            
-            tipData data = formatter.Deserialize(stream) as tipData;
-
-            stream.Close();
-            return data;
-        }
-        else
-        {
-            Debug.LogError("Save file not found in " + tipPath);
-            return null; 
-        }
-    }
-    
 }
