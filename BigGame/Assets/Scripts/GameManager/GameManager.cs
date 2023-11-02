@@ -38,11 +38,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         turnCounter = 1;
-        
-        SaveSystem saveScript = GetComponent<SaveSystem>();
-        saveScript.gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        saveScript.SaveLevel();
-        
+
+        SaveProgress();
         UpdateGameState(GameState.Start);
     }
 
@@ -321,6 +318,13 @@ public class GameManager : MonoBehaviour
     {
         string turn = turnCounter.ToString();
         UIController.Instance.ShowTurnChangeNumber(turn);
+    }
+
+    private void SaveProgress()
+    {
+        SaveSystem saveScript = GetComponent<SaveSystem>();
+        saveScript.gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        saveScript.SaveLevel();
     }
 
     public enum GameState
