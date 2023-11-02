@@ -52,6 +52,7 @@ public class MenuManager : MonoBehaviour
     }
 
     #endregion
+    
     #region QuitingGame
     public void QuitGame()
     {

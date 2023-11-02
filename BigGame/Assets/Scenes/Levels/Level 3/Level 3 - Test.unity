@@ -161,7 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 30
-  hpbar: {fileID: 216348288}
   defenceArmaments: []
   isMyCastle: 0
 --- !u!1001 &16120613
@@ -669,7 +668,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpbar: {fileID: 1513736871}
   defenceArmaments: []
   isMyCastle: 1
 --- !u!4 &74423277 stripped
@@ -1278,7 +1276,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1920154815}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceeneReset, Assembly-CSharp
         m_MethodName: ResetScene
         m_Mode: 1
@@ -2032,8 +2030,8 @@ MonoBehaviour:
   camHeight: 3
   limitLeft: {fileID: 10773227}
   limitRight: {fileID: 1711968172}
-  minZ: -10
-  maxZ: 10
+  limitFront: {fileID: 0}
+  limitBack: {fileID: 0}
   limiterLeft: {fileID: 1309829836}
   limiterRight: {fileID: 835315106}
   limiterFront: {fileID: 814521667}
@@ -4771,7 +4769,6 @@ Transform:
   - {fileID: 1192576403}
   - {fileID: 1279633662}
   - {fileID: 367894440}
-  - {fileID: 1422272655}
   - {fileID: 1208729}
   - {fileID: 10583897}
   - {fileID: 2132069556}
@@ -4790,17 +4787,18 @@ Transform:
   - {fileID: 1005302771}
   - {fileID: 715735461}
   - {fileID: 1031863969}
-  - {fileID: 1683343064}
   - {fileID: 20061224}
+  - {fileID: 1683343064}
+  - {fileID: 1422272655}
   - {fileID: 2087867441}
   - {fileID: 1871648307}
-  - {fileID: 1961021607}
-  - {fileID: 218792150}
   - {fileID: 162138085}
   - {fileID: 1017284560}
+  - {fileID: 1961021607}
   - {fileID: 1250443785}
   - {fileID: 330154773}
   - {fileID: 1504547334}
+  - {fileID: 218792150}
   - {fileID: 324837383}
   - {fileID: 2063884039}
   - {fileID: 860827829}
@@ -8307,7 +8305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 771319690}
-  menuOne: {fileID: 2126225149}
+  menuBacker: {fileID: 0}
+  menus: []
 --- !u!114 &980702050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12715,11 +12714,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515538715}
   m_CullTransparentMesh: 1
---- !u!1 &1520346628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1107353657489136010, guid: 2c23f9f1ff787304da3553acc92c58f5, type: 3}
-  m_PrefabInstance: {fileID: 876283258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1520346629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 294366631527629616, guid: 2c23f9f1ff787304da3553acc92c58f5, type: 3}
@@ -12780,6 +12774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textsSO: {fileID: 11400000, guid: 231cf53af4e8ebf4cb9171d2462a5845, type: 2}
   tipTextDisplay: {fileID: 685748811}
+  isGameplay: 0
 --- !u!114 &1521849785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13527,8 +13522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 1668638020}
-  loadingScreenOne: {fileID: 1521849782}
-  loadingScreenTwo: {fileID: 2020090422}
+  txt: {fileID: 0}
+  press: {fileID: 0}
 --- !u!4 &1676194660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2943971853679759138, guid: e0b4e243ed341f84086019413949cfe1, type: 3}
@@ -15307,7 +15302,6 @@ GameObject:
   - component: {fileID: 1920154818}
   - component: {fileID: 1920154817}
   - component: {fileID: 1920154816}
-  - component: {fileID: 1920154815}
   - component: {fileID: 1920154814}
   m_Layer: 0
   m_Name: GameManager
@@ -15347,21 +15341,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isBuilding: 0
+  isBuildingEvent: {fileID: 0}
   parent: {fileID: 1439404251}
-  Budynki: []
+  budynki: []
   buildingsStats: []
---- !u!114 &1920154815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920154812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be76c00f8c4b7445b0ededd429e25d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  buildingLimitInTotal: 5
+  specificBuildingLimitList: []
+  isColor: 0
+  isBuildingEventTwo: {fileID: 0}
+  regularPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
+  regularNotPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
+  placeableColor: {r: 0, g: 0, b: 0, a: 0}
+  notPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1920154816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15374,8 +15365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 890d968906b88584c81c8febd4935003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexGrid: {fileID: 1433921016}
-  StartHex: {fileID: 1520346628}
+  radius: 1
 --- !u!114 &1920154817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15408,10 +15398,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196076795195b334faa5e602f32f3a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EvilGigaPrefab: {fileID: 4575258820587949288, guid: a5c655d29151f55449032bbac1fc1422, type: 3}
   WhatEnemyCanSpawn:
-  - {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
-  - {fileID: 11400000, guid: 77fde5fe0387fe74c8f0069d668e2202, type: 2}
+  - unitToSpawn: {fileID: 0}
+    turnCount: 3
+  - unitToSpawn: {fileID: 0}
+    turnCount: 3
 --- !u!114 &1920154819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15425,13 +15416,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   hexGrid: {fileID: 1433921015}
   playerTurn: 1
   devMode: 0
-  turnDisplay: {fileID: 2042190867}
-  endScreen: {fileID: 1841422334}
-  turnButton: {fileID: 361348725}
-  coIleTurAiSpawn: 3
 --- !u!1 &1927497533
 GameObject:
   m_ObjectHideFlags: 0
@@ -15626,7 +15616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6f6957ef3dc61448fbdcd5f569a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyUI: {fileID: 343282681}
   playerCashSO: {fileID: 11400000, guid: 987e0527b431c9744a874bf4a7a6a8a3, type: 2}
   cash: 110
 --- !u!1 &1948081244

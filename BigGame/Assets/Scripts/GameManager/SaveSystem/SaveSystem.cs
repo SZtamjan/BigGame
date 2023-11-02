@@ -4,68 +4,36 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public static class SaveSystem
+public class SaveSystem : MonoBehaviour
 {
-    private static string levelPath = Application.persistentDataPath + "/level.xd";
-    private static string tipPath = Application.persistentDataPath + "/tip.pog";
-    
-    public static void SaveLevel(SaveSystemTrigger levelSave)
+    public GameData gameData;
+
+    public void SaveLevel()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(levelPath, FileMode.Create);
-        Debug.Log("SaveSystem: " + levelSave.level);
-        DataToSave data = new DataToSave(levelSave);
-        
-        formatter.Serialize(stream,data);
+        FileStream stream = new FileStream(SavePaths.levelPath, FileMode.Create);
+        Debug.Log("Level "+ gameData.sceneIndex + " Saved" + SavePaths.levelPath);
+
+        formatter.Serialize(stream,gameData);
         stream.Close();
     }
 
-    public static DataToSave LoadLevel()
+    public GameData LoadLevel()
     {
-        if (File.Exists(levelPath))
+        if (File.Exists(SavePaths.levelPath))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(levelPath, FileMode.Open);
+            FileStream stream = new FileStream(SavePaths.levelPath, FileMode.Open);
+            GameData data = (GameData)formatter.Deserialize(stream);
+            Debug.Log("Wczytano scene " + data.sceneIndex);
             
-            DataToSave data = formatter.Deserialize(stream) as DataToSave;
-
             stream.Close();
             return data;
         }
         else
         {
-            Debug.LogError("Save file not found in " + levelPath);
-            return null;
+            Debug.LogError("Save file not found in " + SavePaths.levelPath);
+            return new GameData();
         }
     }
-    
-    public static void SaveTipNOSS(SaveSystemTrigger tipSave)
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(tipPath, FileMode.Create);
-        Debug.Log("tip number: " + tipSave.tipNo);
-        tipData data = new tipData(tipSave);
-        
-        formatter.Serialize(stream,data);
-        stream.Close();
-    }
-    public static tipData LoadTip()
-    {
-        if (File.Exists(tipPath))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(tipPath, FileMode.Open);
-            
-            tipData data = formatter.Deserialize(stream) as tipData;
-
-            stream.Close();
-            return data;
-        }
-        else
-        {
-            Debug.LogError("Save file not found in " + tipPath);
-            return null; 
-        }
-    }
-    
 }

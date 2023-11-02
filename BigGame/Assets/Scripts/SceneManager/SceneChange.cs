@@ -24,7 +24,6 @@ public partial class SceneChange : MonoBehaviour
 
     public void LoadMenu()
     {
-        
         StartCoroutine(LoadSceneAsync(0));
     }
     
