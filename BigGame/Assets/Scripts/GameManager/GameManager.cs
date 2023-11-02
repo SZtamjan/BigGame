@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static PathControler;
 
@@ -37,11 +38,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         turnCounter = 1;
-        SaveSystemTrigger saveLevelScript = GetComponent<SaveSystemTrigger>();
-        if (saveLevelScript != null)
-        {
-            saveLevelScript.SaveLevel();
-        }
+        
+        SaveSystem saveScript = GetComponent<SaveSystem>();
+        saveScript.gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        saveScript.SaveLevel();
+        
         UpdateGameState(GameState.Start);
     }
 
@@ -202,8 +203,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             GetComponent<PathControler>().ComputerUnitPhaze();
             yield return new WaitForSeconds(0.3f);
-
-
+            
             GameManager.instance.StartCoroutine(Endturn(false));
 
         }
@@ -213,9 +213,6 @@ public class GameManager : MonoBehaviour
             GameManager.instance.UpdateGameState(GameState.PlayerTurn);
         }
     }
-
-
-
 
     public bool CanPlayerMove()
     {
@@ -243,8 +240,6 @@ public class GameManager : MonoBehaviour
         return !playerTurn;
     }
 
-
-
     private IEnumerator Endturn(bool playerUnit) // do przerobienia to jest XDD
     {
         yield return new WaitForSeconds(0.3f);
@@ -252,7 +247,6 @@ public class GameManager : MonoBehaviour
         while (wait)
         {
             wait = false;
-
 
             for (int i = 0; i <= PathWay.Count() - 1; i++)
             {
@@ -274,7 +268,6 @@ public class GameManager : MonoBehaviour
                     wait = true;
                     break;
                 }
-
             }
 
             GameObject UnitInCastle;
@@ -324,7 +317,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void UpdateTurnShower()
     {
         string turn = turnCounter.ToString();
@@ -342,7 +334,4 @@ public class GameManager : MonoBehaviour
         GameEnd
 
     }
-
-
-
 }
