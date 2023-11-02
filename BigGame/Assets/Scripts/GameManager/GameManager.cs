@@ -320,11 +320,17 @@ public class GameManager : MonoBehaviour
         UIController.Instance.ShowTurnChangeNumber(turn);
     }
 
-    private void SaveProgress()
+    public void SaveProgress()
     {
         SaveSystem saveScript = GetComponent<SaveSystem>();
         saveScript.gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
         saveScript.SaveLevel();
+    }
+
+    public void LoadProgress()
+    {
+        GameData gameData = GetComponent<SaveSystem>().LoadLevel();
+        SceneManager.LoadScene(gameData.sceneIndex);
     }
 
     public enum GameState

@@ -24,9 +24,9 @@ public class SaveSystem : MonoBehaviour
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(SavePaths.levelPath, FileMode.Open);
-            
             GameData data = (GameData)formatter.Deserialize(stream);
-
+            Debug.Log("Wczytano scene " + data.sceneIndex);
+            
             stream.Close();
             return data;
         }
