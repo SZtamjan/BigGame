@@ -18,7 +18,7 @@ public class Gate : MonoBehaviour
     [SerializeField] private Gate _secondGastle;
     [SerializeField] private Castle _MyCastle;
 
-
+    // tutaj coœ dodaje ziom
 
     [Button]
     public void GeneratePath()
