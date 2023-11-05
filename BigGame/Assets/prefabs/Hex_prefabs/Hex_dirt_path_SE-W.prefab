@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2911762481396227177}
   - component: {fileID: 5962369196964798470}
   - component: {fileID: -7136103697163973209}
+  - component: {fileID: 6287339577323710677}
+  - component: {fileID: 8415289111929198019}
   m_Layer: 6
   m_Name: Hex_dirt_path_SE-W
   m_TagString: Path
@@ -126,3 +128,43 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8084674185671563864, guid: 4db64bc6ff9cb43429c8977f7956a691, type: 3}
+--- !u!114 &6287339577323710677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620089799906895079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 50faecd50f96c3141a416849835f77f3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8415289111929198019}
+        m_TargetAssemblyTypeName: ChangeGray, Assembly-CSharp
+        m_MethodName: ChangeBloom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8415289111929198019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620089799906895079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76873284c5486064faeafafda661433c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
