@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.BuldingsActions();
         if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
         {
-            CardManager.instance.GetNewRenka();
+            CardManager.instance.GetNewCardToHand();
         }
 
         UIController.Instance.TurnButtonActivate();
@@ -146,7 +146,6 @@ public class GameManager : MonoBehaviour
 
             UIController.Instance.TurnButtonDisable();
             GetComponent<PathControler>().PlayerUnitPhase();
-            CardManager.instance.WyjebReke();
             StartCoroutine(Endturn(true));
         }
     }
