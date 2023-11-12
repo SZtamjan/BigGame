@@ -41,7 +41,7 @@ public class UnitControler : MonoBehaviour
     void Start()
     {
         wayPoints = new List<int>();
-        SetStats();
+        //SetStats();
     }
     public void SetSO(UnitScriptableObjects stats)
     {
@@ -62,14 +62,7 @@ public class UnitControler : MonoBehaviour
         hpbar.GetComponent<HpUnitsShow>().MaxHP(hp);
         animator = GetComponent<Animator>();
 
-        if (playersUnit)
-        {
-            EnemyCastle = GameManager.gameManager.GetComponent<PathControler>().ComputerCastle.castle;
-        }
-        else
-        {
-            EnemyCastle = GameManager.gameManager.GetComponent<PathControler>().PlayerCastle.castle;
-        }
+       
     }
 
     #region return stats

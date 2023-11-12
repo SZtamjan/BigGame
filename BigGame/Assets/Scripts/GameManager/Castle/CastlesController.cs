@@ -14,6 +14,7 @@ public class CastlesController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        tagId = -1;
     }
 
     public string ReturnNextFreeTag()

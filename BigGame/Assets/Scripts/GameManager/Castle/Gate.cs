@@ -11,7 +11,7 @@ public class Gate : MonoBehaviour
 {
     [SerializeField] private bool isPlayerSide = false;
 
-    public List<Path> paths = new List<Path>();
+    public List<Path> path = new List<Path>();
     [SerializeField][Tooltip("dobrze dzia³a 0.8")] private float searchRadius = 0.8f;
 
     [Tag] public string newTag;
@@ -25,13 +25,13 @@ public class Gate : MonoBehaviour
     {
         newTag = CastlesController.Instance.ReturnNextFreeTag();
         gameObject.tag = newTag;
-        paths = new List<Path> { new Path { position = transform.position } };
+        path = new List<Path> { new Path { position = transform.position } };
         _secondGastle = NewPath().GetComponent<Gate>();
         _secondGastle.tag = newTag;
-        paths.Add(new Path { position = _secondGastle.transform.position });
+        path.Add(new Path { position = _secondGastle.transform.position });
 
         _secondGastle.SetSecoundGate(this);
-        _secondGastle.SetPath(paths);
+        _secondGastle.SetPath(path);
 
     }
 
@@ -40,7 +40,7 @@ public class Gate : MonoBehaviour
    
     public void SetPath(List<Path> path)
     {
-        paths = path;
+        this.path = path;
     }
     public void SetIfplayerOrNot(bool isPlayer)
     {
@@ -85,7 +85,7 @@ public class Gate : MonoBehaviour
         foreach (var item in ControlList)
         {
             item.tag = newTag;
-            paths.Add(new Path { position = item.transform.position });
+            path.Add(new Path { position = item.transform.position });
         }
         
         toReturn = GetHits(ControlList.Last().transform.position, "Gate").Last();

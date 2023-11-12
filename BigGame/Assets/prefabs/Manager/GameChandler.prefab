@@ -50,7 +50,7 @@ MonoBehaviour:
   PlayerCards:
   - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
   CardToDraw:
-  - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
+  - {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
 --- !u!1 &291595189176695698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,6 +1563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01567c53695fe1b4887812210923fcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCastle: {fileID: 0}
+  enemyCastle: {fileID: 0}
+  tags: []
 --- !u!1 &2530115829848271857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4705,7 +4708,6 @@ GameObject:
   - component: {fileID: 7203101441182389877}
   - component: {fileID: 7203101441182389883}
   - component: {fileID: 7282041662631441623}
-  - component: {fileID: 7203101441182389875}
   - component: {fileID: 4340605472721432590}
   - component: {fileID: 4554065881492852005}
   - component: {fileID: 6043076754733567083}
@@ -4769,26 +4771,7 @@ MonoBehaviour:
     turnCount: 4
   - unitToSpawn: {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
     turnCount: 5
---- !u!114 &7203101441182389875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7203101441182389874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912622da7b78ca8439b5dc2fa8465cf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCastle:
-    castle: {fileID: 0}
-    jednostka: {fileID: 0}
-  ComputerCastle:
-    castle: {fileID: 0}
-    jednostka: {fileID: 0}
-  pathwayDebug: []
-  pathLenght: 0
+  _SelectedCard: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &4340605472721432590
 MonoBehaviour:
   m_ObjectHideFlags: 0
