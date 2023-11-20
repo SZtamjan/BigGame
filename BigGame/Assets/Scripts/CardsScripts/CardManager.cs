@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CardManager : MonoBehaviour
 {
@@ -16,19 +17,17 @@ public class CardManager : MonoBehaviour
 
     [Tooltip("Karty z jakimi zacznie gracz")]
     public List<UnitScriptableObjects> PlayerCards;
-    
 
-    [Tooltip("Karty z które mo¿na wyci¹gn¹æ")]
-    public List<UnitScriptableObjects> CardToDraw;
+    [Tooltip("Karty mozliwe do wylosowania")]
+    public List<UnitScriptableObjects> CollectionCardsToDraw;
 
-    private List<UnitScriptableObjects> CardsToSpawnInHand;
+    private UnitScriptableObjects pickedCard;
 
 
     private void Awake()
     {
         CardInHand = new List<GameObject>();
         
-
         instance = this;
         if (PlayerCards.Count == 0)
         {
@@ -43,18 +42,39 @@ public class CardManager : MonoBehaviour
 
     public void SpawnStartCards()
     {
-        SpawnCards(PlayerCards);
-    }
-
-    public void SpawnCards(List<UnitScriptableObjects> cardsToSpawn)
-    {
-        foreach (var item in cardsToSpawn)
+        foreach (var item in PlayerCards)
         {
             GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);
             thisCard.GetComponent<SpawnUnitCard>().stats = item;
             //CardInHand.Insert(0, thisCard);
             CardInHand.Add(thisCard);
         }
+
+        UIController.Instance.ArrangeCards();
+    }
+    
+    public void GetNewCardToHand() //It's called every player move
+    {
+        if(CardInHand.Count <= MaxCardInHand)
+        {
+            GetRandomCardFromCollection();
+            SpawnCard(pickedCard);
+        }
+    }
+
+    private void GetRandomCardFromCollection()
+    {
+        int randomNumber = Random.Range(0, CollectionCardsToDraw.Count);
+        pickedCard = CollectionCardsToDraw[randomNumber];
+    }
+
+    private void SpawnCard(UnitScriptableObjects unitCardStats)
+    {
+        GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);
+        thisCard.GetComponent<SpawnUnitCard>().stats = unitCardStats;
+        //CardInHand.Insert(0, thisCard);
+        CardInHand.Add(thisCard);
+
         UIController.Instance.ArrangeCards();
     }
 
@@ -68,38 +88,6 @@ public class CardManager : MonoBehaviour
             Destroy(CardInHand.First());
             CardInHand.RemoveAt(0);
             UIController.Instance.ArrangeCards();
-
         }
     }
-
-    public void WyjebReke()
-    {
-        foreach (var item in CardInHand)
-        {
-            Destroy(item);
-
-        }
-        CardInHand = new List<GameObject>();
-    }
-
-    public void GetNewRenka()
-    {
-        CardsToSpawnInHand = new List<UnitScriptableObjects>();
-        for (int i = 0; i < MaxCardInHand; i++)
-        {
-            AddCard();
-        }
-        SpawnCards(CardsToSpawnInHand);
-
-    }
-
-    public void AddCard()
-    {
-        int randomNumber = Random.Range(0, CardToDraw.Count);
-        CardsToSpawnInHand.Add(CardToDraw[randomNumber]);
-    }
-
-
-
-
 }

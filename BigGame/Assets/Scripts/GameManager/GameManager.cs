@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.BuldingsActions();
         if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
         {
-            CardManager.instance.GetNewRenka();
+            CardManager.instance.GetNewCardToHand();
         }
 
         UIController.Instance.TurnButtonActivate();
@@ -145,12 +145,16 @@ public class GameManager : MonoBehaviour
         {
 
             UIController.Instance.TurnButtonDisable();
+
+            GetComponent<PathControler>().PlayerUnitPhase();
+
             //GetComponent<PathControler>().PlayerUnitPhase(); // do zrobienia
             foreach (var item in CastlesController.Instance.playerCastle.gates)
             {
                 item.PlayerUnitPhase();
             }
-            CardManager.instance.WyjebReke();
+            //CardManager.instance.WyjebReke();
+
             StartCoroutine(Endturn(true));
         }
     }

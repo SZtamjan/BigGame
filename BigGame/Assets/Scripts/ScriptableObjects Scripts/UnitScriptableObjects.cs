@@ -30,7 +30,7 @@ public class UnitScriptableObjects : ScriptableObject
     [SerializeField]
     public new string name = "Karta wpierdolu";
     [SerializeField]
-    public string desc = "To naprawdê karta wpierdolu";
+    public string desc = "To naprawdÄ™ karta wpierdolu";
     [SerializeField]
     public Sprite artwork;
 }
