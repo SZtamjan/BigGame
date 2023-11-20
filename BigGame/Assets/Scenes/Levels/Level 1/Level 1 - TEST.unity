@@ -560,7 +560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
-  hpbar: {fileID: 1430612782}
   defenceArmaments: []
   isMyCastle: 0
 --- !u!1 &15635375
@@ -6934,7 +6933,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2066670519}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceeneReset, Assembly-CSharp
         m_MethodName: ResetScene
         m_Mode: 1
@@ -11041,8 +11040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 722051370}
-  loadingScreenOne: {fileID: 2057974805}
-  loadingScreenTwo: {fileID: 1647732882}
+  txt: {fileID: 0}
+  press: {fileID: 0}
 --- !u!1001 &723755122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11387,7 +11386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 2127707492}
-  menuOne: {fileID: 1225882270}
+  menuBacker: {fileID: 0}
+  menus: []
 --- !u!114 &731573713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17436,7 +17436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  hpbar: {fileID: 403716203}
   defenceArmaments: []
   isMyCastle: 1
 --- !u!23 &1125964432
@@ -22034,7 +22033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6f6957ef3dc61448fbdcd5f569a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyUI: {fileID: 1920594448}
   playerCashSO: {fileID: 11400000, guid: 987e0527b431c9744a874bf4a7a6a8a3, type: 2}
   cash: 110
 --- !u!4 &1438771406 stripped
@@ -32520,7 +32518,6 @@ GameObject:
   - component: {fileID: 2066670522}
   - component: {fileID: 2066670521}
   - component: {fileID: 2066670520}
-  - component: {fileID: 2066670519}
   - component: {fileID: 2066670518}
   m_Layer: 0
   m_Name: GameManager
@@ -32560,21 +32557,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isBuilding: 0
+  isBuildingEvent: {fileID: 0}
   parent: {fileID: 717027489}
-  Budynki: []
+  budynki: []
   buildingsStats: []
---- !u!114 &2066670519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066670516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be76c00f8c4b7445b0ededd429e25d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  buildingLimitInTotal: 5
+  specificBuildingLimitList: []
+  isColor: 0
+  isBuildingEventTwo: {fileID: 0}
+  regularPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
+  regularNotPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
+  placeableColor: {r: 0, g: 0, b: 0, a: 0}
+  notPlaceableColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2066670520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32587,8 +32581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 890d968906b88584c81c8febd4935003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexGrid: {fileID: 1141366741}
-  StartHex: {fileID: 845946407}
+  radius: 1
 --- !u!114 &2066670521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32621,10 +32614,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196076795195b334faa5e602f32f3a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EvilGigaPrefab: {fileID: 4575258820587949288, guid: a5c655d29151f55449032bbac1fc1422, type: 3}
   WhatEnemyCanSpawn:
-  - {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
-  - {fileID: 11400000, guid: 77fde5fe0387fe74c8f0069d668e2202, type: 2}
+  - unitToSpawn: {fileID: 0}
+    turnCount: 3
+  - unitToSpawn: {fileID: 0}
+    turnCount: 3
 --- !u!114 &2066670523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32638,13 +32632,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   hexGrid: {fileID: 1141366740}
   playerTurn: 1
   devMode: 0
-  turnDisplay: {fileID: 358414641}
-  endScreen: {fileID: 202787768}
-  turnButton: {fileID: 704326819}
-  coIleTurAiSpawn: 3
 --- !u!4 &2066691784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2943971853679759138, guid: e0b4e243ed341f84086019413949cfe1, type: 3}

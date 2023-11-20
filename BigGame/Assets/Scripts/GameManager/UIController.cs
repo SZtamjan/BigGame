@@ -293,6 +293,18 @@ public class UIController : MonoBehaviour
 
     #endregion
 
+    #region SaveSystem
 
+    public void SaveCurrentLevel()
+    {
+        GameManager.instance.SaveProgress();
+    }
+
+    public void ReloadScene()
+    {
+        GameManager.instance.LoadProgress();
+    }
+
+    #endregion
 
 }
