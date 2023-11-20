@@ -10,6 +10,7 @@ public class UnitControler : MonoBehaviour
 {
     public UnitScriptableObjects unitScriptableObjects;
     public GameObject hpbar;
+    private Gate _MyGate;
 
     [Header("Statystyki tylko do odczytu")]
     [SerializeField] private int hp;
@@ -33,6 +34,7 @@ public class UnitControler : MonoBehaviour
     //-------------------------------------------------------
     private UnitControler targetUnitToAttack;
     private CastleStats targetCastleToAttack;
+    private Gate targetGateToAttack;
 
     private List<int> wayPoints;
     private GameObject EnemyCastle;
@@ -62,7 +64,12 @@ public class UnitControler : MonoBehaviour
         hpbar.GetComponent<HpUnitsShow>().MaxHP(hp);
         animator = GetComponent<Animator>();
 
-       
+
+    }
+
+    public void setMyGate(Gate myGate)
+    {
+        _MyGate = myGate;
     }
 
     #region return stats
@@ -170,6 +177,12 @@ public class UnitControler : MonoBehaviour
         targetCastleToAttack = targetUnit;
         PlayAttack();
     }
+    public void SetTargetToAttack(Gate targetUnit)
+    {
+        isAttacking = true;
+        targetGateToAttack = targetUnit;
+        PlayAttack();
+    }
 
     public void AttackTarget()
     {
@@ -180,6 +193,10 @@ public class UnitControler : MonoBehaviour
         else if (targetCastleToAttack != null)
         {
             targetCastleToAttack.DamageTaken(damage);
+        }
+        else if (targetCastleToAttack != null)
+        {
+            targetGateToAttack.DamageTaken(damage);
         }
         else
         {
@@ -272,62 +289,62 @@ public class UnitControler : MonoBehaviour
 
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
-                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null)
+                if (_MyGate.path[wayPoints.First()].unitMain == null)
                 {
-                    PathControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
+                    _MyGate.path[wayPoints.First()].unitWanting = this;
 
-                    PathControler.PathWay[wayPoints.First() - direction].wantingUnit = null;
+                    _MyGate.path[wayPoints.First() - direction].unitWanting = null;
                     dupa = false;
 
                 }
 
             }
-            else if (dupa && wayPoints.First() < PathControler.PathWay.Count() - 1 && !playersUnit)
+            else if (dupa && wayPoints.First() < _MyGate.path.Count() - 1 && !playersUnit)
             {
-                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null)
+                if (_MyGate.path[wayPoints.First()].unitWanting == null)
                 {
-                    PathControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
+                    _MyGate.path[wayPoints.First()].unitWanting = this;
 
-                    PathControler.PathWay[wayPoints.First() - direction].wantingUnit = null;
+                    _MyGate.path[wayPoints.First() - direction].unitWanting = null;
                     dupa = false;
                 }
             }
             else
             {
-                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null)
+                if (_MyGate.path[wayPoints.First()].unitWanting == null)
                 {
-                    PathControler.PathWay[wayPoints.First()].wantingUnit = gameObject;
+                    _MyGate.path[wayPoints.First()].unitWanting = this;
                 }
 
             }
-            
+
             if (isAttacking)
             {
                 yield return new WaitForEndOfFrame();
                 continue;
             }
 
-            
+
 
             if (!isAttacking)
             {
-                if (PathControler.PathWay[wayPoints.First()].wantingUnit == null || PathControler.PathWay[wayPoints.First()].wantingUnit == gameObject)
+                if (_MyGate.path[wayPoints.First()].unitWanting == null || _MyGate.path[wayPoints.First()].unitWanting == this)
                 {
                     if ((wayPoints?.Count ?? 0) > 0 && !wasThereWalk)
                     {
                         PlayWalk();
                         wasThereWalk = true;
                     }
-                    transform.position = Vector3.MoveTowards(transform.position, PathControler.PathWay[wayPoints.First()].coordinations, Time.deltaTime * speed);
+                    transform.position = Vector3.MoveTowards(transform.position, _MyGate.path[wayPoints.First()].position, Time.deltaTime * speed);
 
-                    if (Vector3.Distance(transform.position, PathControler.PathWay[wayPoints.First()].coordinations) < 0.2f)
+                    if (Vector3.Distance(transform.position, _MyGate.path[wayPoints.First()].position) < 0.2f)
                     {
                         Vector3 lookAt;
                         if (playersUnit)
                         {
-                            if (!(wayPoints[0] + direction > PathControler.PathWay.Count() - 1))
+                            if (!(wayPoints[0] + direction > _MyGate.path.Count() - 1))
                             {
-                                lookAt = PathControler.PathWay[wayPoints.First() + direction].coordinations;
+                                lookAt = _MyGate.path[wayPoints.First() + direction].position;
                             }
                             else
                             {
@@ -338,7 +355,7 @@ public class UnitControler : MonoBehaviour
                         {
                             if ((wayPoints[0] + direction > 0))
                             {
-                                lookAt = PathControler.PathWay[wayPoints.First() + direction].coordinations;
+                                lookAt = _MyGate.path[wayPoints.First() + direction].position;
                             }
                             else
                             {
@@ -350,7 +367,7 @@ public class UnitControler : MonoBehaviour
                     }
 
 
-                    if (Vector3.Distance(transform.position, PathControler.PathWay[wayPoints.First()].coordinations) < 0.02f)
+                    if (Vector3.Distance(transform.position, _MyGate.path[wayPoints.First()].position) < 0.02f)
                     {
 
                         dupa = true;
@@ -374,5 +391,5 @@ public class UnitControler : MonoBehaviour
     }
 
     #endregion
-    
+
 }

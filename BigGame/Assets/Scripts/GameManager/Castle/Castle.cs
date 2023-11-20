@@ -6,6 +6,7 @@ using UnityEngine;
 public class Castle : MonoBehaviour
 {
 
+
     [Tag] public string targetTag = "Gate";
     public float searchRadius = 5f;
 
@@ -13,8 +14,22 @@ public class Castle : MonoBehaviour
 
     [SerializeField] private bool isPlayerSide = false;
 
-    
+    [SerializeField] private int MaxHp = 100;
+    private int _hp = 100;
 
+    public int HpChange
+    {
+        get
+        {
+            return (int)_hp;
+        }
+        set
+        {
+            _hp = value;
+            UIController.Instance.CastleHpSetHealth(_hp, isPlayerSide);
+        }
+    }
+    #region pathGeneration
     public void GatesInitialization()
     {
         GetGates();
@@ -52,8 +67,16 @@ public class Castle : MonoBehaviour
             gate.GeneratePath();
         }
     }
+
+    #endregion
+
+
+
     private void Start()
     {
+        UIController.Instance.CastleHpSetMaxHealth(MaxHp, isPlayerSide);
+        HpChange = MaxHp;
+
         if (isPlayerSide)
         {
             CastlesController.Instance.playerCastle = this;
@@ -62,6 +85,7 @@ public class Castle : MonoBehaviour
         {
             CastlesController.Instance.enemyCastle = this;
         }
+
 
     }
 

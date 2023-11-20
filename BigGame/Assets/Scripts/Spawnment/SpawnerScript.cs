@@ -91,6 +91,7 @@ public class SpawnerScript : MonoBehaviour
                             Vector3 spawn = thisGatePatch.path[0].position;
                             UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, stats.unit).GetComponent<UnitControler>();
                             newUnit.SetSO(stats);
+                            newUnit.setMyGate(thisGatePatch);
                             thisGatePatch.path[0].unitMain = newUnit;
                             Economy.Instance.Purchase(stats.cost);
                             Destroy(karta);
