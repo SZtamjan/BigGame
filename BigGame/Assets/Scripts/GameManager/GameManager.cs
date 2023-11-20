@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     private void CameraSetting()
     {
-       // PlayerMovement.instance.CameraSetting();
+       PlayerMovement.instance.CameraSetting();
     }
 
 
@@ -145,7 +145,16 @@ public class GameManager : MonoBehaviour
         {
 
             UIController.Instance.TurnButtonDisable();
+
             GetComponent<PathControler>().PlayerUnitPhase();
+
+            //GetComponent<PathControler>().PlayerUnitPhase(); // do zrobienia
+            foreach (var item in CastlesController.Instance.playerCastle.gates)
+            {
+                item.PlayerUnitPhase();
+            }
+            //CardManager.instance.WyjebReke();
+
             StartCoroutine(Endturn(true));
         }
     }
@@ -154,7 +163,9 @@ public class GameManager : MonoBehaviour
     {
         playerTurn = false;
         turnCounter++;
-        StartCoroutine(EnemyMove());
+        Debug.Log("jaka� akcja przeciwnika");
+        //StartCoroutine(EnemyMove());
+        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
@@ -239,69 +250,72 @@ public class GameManager : MonoBehaviour
     private IEnumerator Endturn(bool playerUnit) // do przerobienia to jest XDD
     {
         yield return new WaitForSeconds(0.3f);
-        bool wait = true;
-        while (wait)
-        {
-            wait = false;
-
-            for (int i = 0; i <= PathWay.Count() - 1; i++)
-            {
-
-                yield return new WaitForEndOfFrame();
-                if (PathWay[i].unitMain == null)
-                {
-                    wait = false;
-                    continue;
-                }
-                var thisUnit = PathWay[i].unitMain;
-                var thisUnitController = thisUnit.GetComponent<UnitControler>();
-                if (thisUnitController.IsThisPlayerUnit() != playerUnit)
-                {
-                    continue;
-                }
-                if (thisUnitController.AmIDoingSomething())
-                {
-                    wait = true;
-                    break;
-                }
-            }
-
-            GameObject UnitInCastle;
-            if (playerUnit)
-            {
-                UnitInCastle = PathControler.Instance.PlayerCastle.jednostka;
-            }
-            else
-            {
-                UnitInCastle = PathControler.Instance.ComputerCastle.jednostka;
-            }
-
-            if (UnitInCastle != null)
-            {
-                if (UnitInCastle.GetComponent<UnitControler>().AmIDoingSomething())
-                {
-                    wait = true;
-                    continue;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-            else
-            {
-                if (wait)
-                {
-                    continue;
-                }
-                else
-                {
-                    break;
-                }
-            }
+        
+        //bool wait = true;
+        //while (wait)
+        //{
+        //    wait = false;
 
 
-        }
+        //    for (int i = 0; i <= PathWay.Count() - 1; i++)
+        //    {
+
+        //        yield return new WaitForEndOfFrame();
+        //        if (PathWay[i].unitMain == null)
+        //        {
+        //            wait = false;
+        //            continue;
+        //        }
+        //        var thisUnit = PathWay[i].unitMain;
+        //        var thisUnitController = thisUnit.GetComponent<UnitControler>();
+        //        if (thisUnitController.IsThisPlayerUnit() != playerUnit)
+        //        {
+        //            continue;
+        //        }
+        //        if (thisUnitController.AmIDoingSomething())
+        //        {
+        //            wait = true;
+        //            break;
+        //        }
+
+        //    }
+
+        //    GameObject UnitInCastle;
+        //    if (playerUnit)
+        //    {
+        //        UnitInCastle = PathControler.Instance.PlayerCastle.jednostka;
+        //    }
+        //    else
+        //    {
+        //        UnitInCastle = PathControler.Instance.ComputerCastle.jednostka;
+        //    }
+
+        //    if (UnitInCastle != null)
+        //    {
+        //        if (UnitInCastle.GetComponent<UnitControler>().AmIDoingSomething())
+        //        {
+        //            wait = true;
+        //            continue;
+        //        }
+        //        else
+        //        {
+        //            continue;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (wait)
+        //        {
+        //            continue;
+        //        }
+        //        else
+        //        {
+        //            break;
+        //        }
+        //    }
+
+
+        //}
 
         if (playerUnit)
         {
