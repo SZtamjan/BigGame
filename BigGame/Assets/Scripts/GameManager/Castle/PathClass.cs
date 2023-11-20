@@ -9,7 +9,7 @@ public class PathClass : MonoBehaviour
     public class Path
     {
         public Vector3 position;
-        public GameObject unitMain;
-        public GameObject unitWanting;
+        public UnitControler unitMain;
+        public UnitControler unitWanting;
     }
 }

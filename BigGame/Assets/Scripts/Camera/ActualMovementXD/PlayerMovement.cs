@@ -146,12 +146,12 @@ public class PlayerMovement : MonoBehaviour
         maxZ = limitFront.transform.position.z;
         if (limitLeft == null)
         {
-            limitLeft = PathControler.Instance.PlayerCastle.castle;
+            limitLeft = CastlesController.Instance.playerCastle.gameObject;
         }
         
         if (limitRight == null)
         {
-            limitRight = PathControler.Instance.ComputerCastle.castle;
+            limitRight = CastlesController.Instance.enemyCastle.gameObject;
         }
         //Left Limiter
         Vector3 limiterLeftPos = new Vector3(limitLeft.transform.position.x-fixedPos,camHeight,(limitFront.transform.position.z + limitBack.transform.position.z) / 2f);

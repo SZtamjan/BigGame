@@ -842,6 +842,7 @@ GameObject:
   - component: {fileID: 8685929265583886476}
   - component: {fileID: 6876550144605348934}
   - component: {fileID: 8958371725397866968}
+  - component: {fileID: 1933664986895910509}
   m_Layer: 0
   m_Name: Castle_60_Main
   m_TagString: Untagged
@@ -939,6 +940,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.86602515, y: 0.00000015646219, z: 1}
   m_Center: {x: 0, y: 0.125, z: -0.000000014901161}
+--- !u!114 &1933664986895910509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931043141411358099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7025d927db34246a91f6726f41729d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Gate
+  searchRadius: 5
+  gates: []
+  isPlayerSide: 0
 --- !u!1 &5992564119991594860
 GameObject:
   m_ObjectHideFlags: 0
