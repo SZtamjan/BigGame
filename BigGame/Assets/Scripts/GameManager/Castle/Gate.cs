@@ -121,7 +121,7 @@ public class Gate : MonoBehaviour
     {
         int pathLenght = path.Count - 2;
 
-        for (int i = pathLenght; i >=0; i--)
+        for (int i = pathLenght; i >= 0; i--)
         {
             if (path[i].unitMain == null)
             {
@@ -240,7 +240,9 @@ public class Gate : MonoBehaviour
         foreach (var item in ControlList)
         {
             item.tag = newTag;
-            path.Add(new Path { position = item.transform.position });
+            Path hex = new Path { position = item.transform.position };
+            hex.position.y += 0.13f;
+            path.Add(hex);
         }
 
         toReturn = GetHits(ControlList.Last().transform.position, "Gate").Last();

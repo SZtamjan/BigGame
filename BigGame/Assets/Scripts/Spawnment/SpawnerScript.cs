@@ -95,6 +95,8 @@ public class SpawnerScript : MonoBehaviour
                             thisGatePatch.path[0].unitMain = newUnit;
                             Economy.Instance.Purchase(stats.cost);
                             Destroy(karta);
+                            CardManager.instance.RevomeCard(karta);
+                            UIController.Instance.ArrangeCards();
                         }
 
                         

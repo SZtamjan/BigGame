@@ -19,12 +19,16 @@ public class SpawnUnitCard : MonoBehaviour
     private RectTransform rectTransform;
 
     private Vector2 StartPos;
+    private Coroutine _coroutine;
 
-
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
     private void Start()
     {
         GetCardStats();
-        rectTransform = GetComponent<RectTransform>();
+
         StartPos = rectTransform.anchoredPosition;
 
     }
@@ -32,7 +36,16 @@ public class SpawnUnitCard : MonoBehaviour
     {
         SpawnerScript.instance.SpawnMyUnit(gameObject, stats);
 
-        
+    }
+
+    public void NewStartPos()
+    {
+        StartPos = rectTransform.anchoredPosition;
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+        _coroutine = StartCoroutine(MoveMe(StartPos, false));
     }
 
     public void GetCardStats()
@@ -48,7 +61,11 @@ public class SpawnUnitCard : MonoBehaviour
     {
         isMovingUp = true;
         Vector2 targetPosition = StartPos + Vector2.up * 120f;
-        StartCoroutine(MoveMe(targetPosition, true));
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+        _coroutine = StartCoroutine(MoveMe(targetPosition, true));
         transform.SetAsLastSibling();
 
     }
@@ -56,19 +73,24 @@ public class SpawnUnitCard : MonoBehaviour
     {
         isMovingUp = false;
         Vector2 targetPosition = StartPos;
-        StartCoroutine(MoveMe(targetPosition, false));
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+        _coroutine = StartCoroutine(MoveMe(targetPosition, false));
     }
 
 
 
     private IEnumerator MoveMe(Vector2 targetPosition, bool up)
     {
-        while (up == isMovingUp)
+        while (true)
         {
 
             rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, targetPosition, Time.deltaTime * 5);
             if (Vector2.Distance(rectTransform.anchoredPosition, targetPosition) == 0f)
             {
+                _coroutine = null;
                 break;
             }
             yield return null;

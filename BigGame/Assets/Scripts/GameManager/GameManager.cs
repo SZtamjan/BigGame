@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
 
             UIController.Instance.TurnButtonDisable();
 
-            GetComponent<PathControler>().PlayerUnitPhase();
+            //GetComponent<PathControler>().PlayerUnitPhase();
 
             //GetComponent<PathControler>().PlayerUnitPhase(); // do zrobienia
             foreach (var item in CastlesController.Instance.playerCastle.gates)

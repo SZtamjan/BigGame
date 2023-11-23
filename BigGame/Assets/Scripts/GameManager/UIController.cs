@@ -89,6 +89,7 @@ public class UIController : MonoBehaviour
 
     public void ArrangeCards()
     {
+        CardManager.instance.CardInHand.RemoveAll(item=>item==null);
         int i = 0;
         int x = CardManager.instance.CardInHand.Count()+1;
         foreach (var item in CardManager.instance.CardInHand)
@@ -96,6 +97,7 @@ public class UIController : MonoBehaviour
             i++;
             float posX = (x - i) * (_DeckCardsWith / x);
             item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 0, 0);
+            item.GetComponent<SpawnUnitCard>().NewStartPos();
         }
     }
 

@@ -55,7 +55,7 @@ public class CardManager : MonoBehaviour
     
     public void GetNewCardToHand() //It's called every player move
     {
-        if(CardInHand.Count <= MaxCardInHand)
+        if(CardInHand.Count < MaxCardInHand)
         {
             GetRandomCardFromCollection();
             SpawnCard(pickedCard);
@@ -89,5 +89,10 @@ public class CardManager : MonoBehaviour
             CardInHand.RemoveAt(0);
             UIController.Instance.ArrangeCards();
         }
+    }
+
+    public void RevomeCard(GameObject card)
+    {
+        CardInHand.Remove(card);
     }
 }
