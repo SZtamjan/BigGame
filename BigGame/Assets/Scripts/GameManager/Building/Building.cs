@@ -15,6 +15,7 @@ public class Building : MonoBehaviour
     public LayerMask mask;
     public bool isBuilding = false;
     public GameEvent isBuildingEvent;
+    public GameEvent justBuild;
 
     public GameObject parent;
     private GameObject halfTransparent;
@@ -92,6 +93,7 @@ public class Building : MonoBehaviour
         buldingStast.putStats(statsy);
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
+        justBuild.Raise();
     }
 
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)

@@ -21,9 +21,6 @@ public class CardManager : MonoBehaviour
     [Tooltip("Karty mozliwe do wylosowania")]
     public List<UnitScriptableObjects> CollectionCardsToDraw;
 
-    private UnitScriptableObjects pickedCard;
-
-
     private void Awake()
     {
         CardInHand = new List<GameObject>();
@@ -57,15 +54,15 @@ public class CardManager : MonoBehaviour
     {
         if(CardInHand.Count < MaxCardInHand)
         {
-            GetRandomCardFromCollection();
-            SpawnCard(pickedCard);
+            SpawnCard(GetRandomCardFromCollection());
         }
     }
 
-    private void GetRandomCardFromCollection()
+    private UnitScriptableObjects GetRandomCardFromCollection()
     {
         int randomNumber = Random.Range(0, CollectionCardsToDraw.Count);
-        pickedCard = CollectionCardsToDraw[randomNumber];
+        UnitScriptableObjects pickedCard = CollectionCardsToDraw[randomNumber];
+        return pickedCard;
     }
 
     private void SpawnCard(UnitScriptableObjects unitCardStats)

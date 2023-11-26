@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using Mono.Cecil;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -10,15 +12,20 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+
     [Header("Menus")]
     [SerializeField] private GameObject QuickMenu;
     [SerializeField] private List<GameObject> menus;
 
     [Header("Cards")]
     [SerializeField] private GameObject DeckCards;
+    [SerializeField] private GameObject CardsToDrawViewer;
     private float _DeckCardsWith;
     [SerializeField] private GameObject BuildingsCards;
     [SerializeField] private bool BuildingsCardShowing = false;
+    [SerializeField] private GameObject[] fakeCards = new GameObject[3]; //peasant, archer, rycerz
+    //Components
+    private CardManager _cardManager;
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
@@ -27,7 +34,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ShowFunds;
     [SerializeField] private TextMeshProUGUI ShowTurn;
     [SerializeField] private TextMeshProUGUI ShowEndDisplay;
-
 
     [Header("Warming settings")]
     [SerializeField] private TextMeshProUGUI ShowEconomyWarming;
@@ -52,12 +58,18 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
+        //Initialize components
+        _cardManager = CardManager.instance;
+        
         BuildingsCards.SetActive(false);
         BuildingsCardShowing = false;
         QuickMenu.SetActive(false);
         ShowEconomyWarming.alpha = 0f;
         ShowEndDisplay.gameObject.SetActive(false);
         _DeckCardsWith = DeckCards.GetComponent<RectTransform>().rect.width;
+
+        
+        SetUpCardsToDraw();
     }
 
 
@@ -101,6 +113,49 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void SwitchActiveCardsToDrawViewer()
+    {
+        if (CardsToDrawViewer.transform.localScale == new Vector3(0, 0, 0))
+        {
+            CardsToDrawViewer.transform.DOScale(new Vector3(1, 1, 1), 0.5f).SetEase(Ease.OutBounce);
+        }
+        else if(CardsToDrawViewer.transform.localScale == new Vector3(1,1,1))
+        {
+            CardsToDrawViewer.transform.DOScale(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.OutBounce);
+        }
+    }
+
+    public void SetUpCardsToDraw()
+    {
+        List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
+        int[] values = new int[3];
+        foreach (var drawableCard in drawableCards)
+        {
+            switch (drawableCard.name)
+            {
+                case "Stachu Jones":
+                    values[0]++;
+                    break;
+                case "Karta Archera":
+                    values[1]++;
+                    break;
+                case "Karta wpierdolu":
+                    values[2]++;
+                    break;
+            }
+        }
+        SetValues(values);
+    }
+
+    private void SetValues(int[] value)
+    {
+        int amountOfCards = fakeCards.Length;
+        for (int i = 0; i < amountOfCards; i++)
+        {
+            Debug.Log(fakeCards[i].GetComponentInChildren<FakeCard>().gameObject.name);
+            fakeCards[i].GetComponentInChildren<FakeCard>().amountOfCards.text = value[i].ToString();
+        }
+    }
 
     #endregion
 
