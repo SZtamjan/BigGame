@@ -15,8 +15,12 @@ public class Castle : MonoBehaviour
     [SerializeField] private bool isPlayerSide = false;
 
     [SerializeField] private int MaxHp = 100;
-    private int _hp = 100;
+    [SerializeField] private int _hp = 100;
 
+    private void Awake()
+    {
+        _hp = MaxHp;
+    }
     public int HpChange
     {
         get
@@ -32,6 +36,7 @@ public class Castle : MonoBehaviour
     #region pathGeneration
     public void GatesInitialization()
     {
+
         GetGates();
         SetGates();
         SetPaths();

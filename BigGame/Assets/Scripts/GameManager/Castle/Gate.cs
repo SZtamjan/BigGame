@@ -21,7 +21,7 @@ public class Gate : MonoBehaviour
 
 
 
-    [Button]
+    
     public void GeneratePath()
     {
         newTag = CastlesController.Instance.ReturnNextFreeTag();
@@ -69,8 +69,8 @@ public class Gate : MonoBehaviour
 
     private void PlayerUnitPathAttack()
     {
-        int pathLenght = path.Count - 1;
-        for (int i = 0; i < pathLenght; i++)
+        int pathLenght = path.Count - 2;
+        for (int i = pathLenght; i >= 0; i--)
         {
             if (path[i].unitMain == null)
             {
@@ -89,7 +89,7 @@ public class Gate : MonoBehaviour
 
             var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
 
-            for (int ii = 0; ii <= thisUnitAttackReach; ii++)
+            for (int ii = 1; ii <= thisUnitAttackReach; ii++)
             {
                 if (i + ii > pathLenght)
                 {
@@ -190,6 +190,133 @@ public class Gate : MonoBehaviour
 
     #endregion
 
+    #region ENEMY Units Actions
+
+    [Button]
+    private void testEnemyMovment()
+    {
+        foreach (var item in CastlesController.Instance.enemyCastle.gates)
+        {
+            item.EnemyUnitPhase();
+        }
+    }
+    public void EnemyUnitPhase()
+    {
+        EnemyUnitPathAttack();
+        EnemyUnitPathMove();
+    }
+    private void EnemyUnitPathAttack()
+    {
+        int pathLenght = path.Count - 1;
+        for (int i = 1; i <= pathLenght; i++)
+        {
+            if (path[i].unitMain == null)
+            {
+                continue;
+            }
+            if (path[i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+            {
+                continue;
+            }
+            var thisUnit = path[i].unitMain;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+            var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
+
+            for (int ii = 1; ii <= thisUnitAttackReach; ii++)
+            {
+                if (i-ii<1)
+                {
+                    UnitAttack(thisUnitController, _secondGate.GetComponent<Gate>());
+
+                    break;
+                }
+                if (path[i - ii].unitMain == null)
+                {
+                    continue;
+                }
+                if (!path[i - ii].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+                {
+                    continue;
+                }
+                if (path[i - ii].unitMain.GetComponent<UnitControler>().ReturnHiddenHp() <= 0)
+                {
+                    continue;
+                }
+                UnitAttack(thisUnitController, path[i - ii].unitMain.GetComponent<UnitControler>());
+
+            }
+        }
+    }
+
+    private void EnemyUnitPathMove()
+    {
+        int pathLenght = path.Count - 1;
+        for (int i = 1; i <= pathLenght; i++)
+        {
+            if (path[i].unitMain == null)
+            {
+                continue;
+            }
+            if (path[i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
+            {
+                continue;
+            }
+            var thisUnit = path[i].unitMain;
+            var thisUnitController = thisUnit.GetComponent<UnitControler>();
+            if (thisUnitController.ReturnHiddenHp() <= 0)
+            {
+                continue;
+            }
+
+            var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
+            List<int> positions = new List<int>();
+            path[i].unitMain = thisUnit;
+
+            for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
+            {
+                if (i - ii < 1)
+                {
+                    break;
+                }
+                if (path[i - ii].unitMain == null)
+                {
+                    positions.Add(i - ii);
+                    path[i - ii].unitMain = thisUnit;
+                    path[i - ii + 1].unitMain = null;
+                    continue;
+
+                }
+
+                if (path[i - ii].unitMain != null)
+                {
+                    var nextUnitOnPathController = path[i - ii].unitMain.GetComponent<UnitControler>();
+                    if (nextUnitOnPathController.IsThisPlayerUnit() && (nextUnitOnPathController.ReturnHiddenHp() <= 0))
+                    {
+                        positions.Add(i - ii);
+                        path[i - ii].unitMain = thisUnit;
+                        path[i - ii + 1].unitMain = null;
+                        continue;
+                    }
+                    break;
+                }
+            }
+
+            thisUnitController.SetWaypoints(positions);
+            if (!thisUnitController.AmIDoingSomething())
+            {
+                thisUnitController.MoveAction();
+
+            }
+
+        }
+    }
+
+    #endregion
+
 
     #region path creation
 
@@ -205,6 +332,7 @@ public class Gate : MonoBehaviour
     public void SetSecoundGate(Gate gate)
     {
         _secondGate = gate;
+        
     }
 
     public void SetMyCastle(Castle castle)

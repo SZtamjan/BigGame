@@ -194,7 +194,7 @@ public class UnitControler : MonoBehaviour
         {
             targetCastleToAttack.DamageTaken(damage);
         }
-        else if (targetCastleToAttack != null)
+        else if (targetGateToAttack != null)
         {
             targetGateToAttack.DamageTaken(damage);
         }
@@ -353,7 +353,7 @@ public class UnitControler : MonoBehaviour
                         }
                         else
                         {
-                            if ((wayPoints[0] + direction > 0))
+                            if ((wayPoints[0] + direction > -1))
                             {
                                 lookAt = _MyGate.path[wayPoints.First() + direction].position;
                             }

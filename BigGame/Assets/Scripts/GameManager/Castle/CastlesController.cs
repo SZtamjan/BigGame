@@ -29,7 +29,10 @@ public class CastlesController : MonoBehaviour
 
     public void GatesInitialization()
     {
+        enemyCastle.GetGates();
+        enemyCastle.SetGates();
         playerCastle.GatesInitialization();
+        
     }
 
 }
