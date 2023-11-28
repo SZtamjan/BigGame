@@ -65,6 +65,12 @@ public class CardManager : MonoBehaviour
         return pickedCard;
     }
 
+    public void AddCardToDrawableCollection(UnitScriptableObjects newDrawable)
+    {
+        CollectionCardsToDraw.Add(newDrawable);
+        UIController.Instance.AddCardToDrawableViewer(newDrawable);
+    }
+
     private void SpawnCard(UnitScriptableObjects unitCardStats)
     {
         GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);

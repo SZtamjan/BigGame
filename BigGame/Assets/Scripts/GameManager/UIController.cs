@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -19,11 +21,13 @@ public class UIController : MonoBehaviour
 
     [Header("Cards")]
     [SerializeField] private GameObject DeckCards;
+    [SerializeField] private GameObject FakeCard;
     [SerializeField] private GameObject CardsToDrawViewer;
+    [SerializeField] private Image CardsToDrawViewerBackground;
     private float _DeckCardsWith;
     [SerializeField] private GameObject BuildingsCards;
     [SerializeField] private bool BuildingsCardShowing = false;
-    [SerializeField] private GameObject[] fakeCards = new GameObject[3]; //peasant, archer, rycerz
+    [SerializeField] private List<UnitScriptableObjects> DrawableCards = new List<UnitScriptableObjects>();
     //Components
     private CardManager _cardManager;
 
@@ -69,7 +73,8 @@ public class UIController : MonoBehaviour
         _DeckCardsWith = DeckCards.GetComponent<RectTransform>().rect.width;
 
         
-        SetUpCardsToDraw();
+        //SetUpCardsToDraw();
+        SpawnCardsInDrawableViewer();
     }
 
 
@@ -112,50 +117,115 @@ public class UIController : MonoBehaviour
             item.GetComponent<SpawnUnitCard>().NewStartPos();
         }
     }
-
+    
     public void SwitchActiveCardsToDrawViewer()
     {
-        if (CardsToDrawViewer.transform.localScale == new Vector3(0, 0, 0))
+        StartCoroutine(ViewerAnimation());
+    }
+    private IEnumerator ViewerAnimation()
+    {
+        
+        if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == -1000 && CardsToDrawViewerBackground.color.a == 0)
         {
-            CardsToDrawViewer.transform.DOScale(new Vector3(1, 1, 1), 0.5f).SetEase(Ease.OutBounce);
+            //In
+            CardsToDrawViewer.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
+            CardsToDrawViewerBackground.DOFade(.8f, .5f).onPlay = () =>
+            {
+                CardsToDrawViewerBackground.gameObject.SetActive(true);
+            };
         }
-        else if(CardsToDrawViewer.transform.localScale == new Vector3(1,1,1))
+        else if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
         {
-            CardsToDrawViewer.transform.DOScale(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.OutBounce);
+            //Out
+            Tween myTween =  CardsToDrawViewer.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);
+            yield return myTween.WaitForPosition(.3f);
+            CardsToDrawViewerBackground.DOFade(0f, .4f).onComplete = () =>
+            {
+                CardsToDrawViewerBackground.gameObject.SetActive(false);
+            };
         }
     }
 
-    public void SetUpCardsToDraw()
+    private void SpawnCardsInDrawableViewer()
     {
         List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
-        int[] values = new int[3];
-        foreach (var drawableCard in drawableCards)
+        foreach (var newDrawable in drawableCards)
         {
-            switch (drawableCard.name)
-            {
-                case "Stachu Jones":
-                    values[0]++;
-                    break;
-                case "Karta Archera":
-                    values[1]++;
-                    break;
-                case "Karta wpierdolu":
-                    values[2]++;
-                    break;
-            }
+            AddCardToDrawableViewer(newDrawable);
         }
-        SetValues(values);
     }
 
-    private void SetValues(int[] value)
+    public void AddCardToDrawableViewer(UnitScriptableObjects newDrawable)
     {
-        int amountOfCards = fakeCards.Length;
-        for (int i = 0; i < amountOfCards; i++)
-        {
-            Debug.Log(fakeCards[i].GetComponentInChildren<FakeCard>().gameObject.name);
-            fakeCards[i].GetComponentInChildren<FakeCard>().amountOfCards.text = value[i].ToString();
-        }
+        DrawableCards.Add(newDrawable);
+        SpawnFakeCardInViewer(newDrawable);
     }
+
+    private void SpawnFakeCardInViewer(UnitScriptableObjects newDrawable)
+    {
+        for (int i = 0; i < DrawableCards.Count; i++)
+        {
+            if (DrawableCards[i].name == newDrawable.name)
+            {
+                GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
+                currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
+                currCard.transform.SetSiblingIndex(i);
+                break;
+            }
+            
+            if (i == DrawableCards.Count) // TO FIX
+            {
+                GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
+                currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
+                currCard.transform.SetAsLastSibling();
+            }
+        }
+        
+        // foreach (var fakeCard in DrawableCards)
+        // {
+        //     if (fakeCard.GetComponent<FakeCard>().name.text == newDrawable.name)
+        //     {
+        //         
+        //     }
+        //     else
+        //     {
+        //         GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
+        //         currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
+        //     }
+        // }
+        
+    }
+
+    // public void SetUpCardsToDraw()
+    // {
+    //     List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
+    //     int[] values = new int[3];
+    //     foreach (var drawableCard in drawableCards)
+    //     {
+    //         switch (drawableCard.name)
+    //         {
+    //             case "Stachu Jones":
+    //                 values[0]++;
+    //                 break;
+    //             case "Karta Archera":
+    //                 values[1]++;
+    //                 break;
+    //             case "Karta wpierdolu":
+    //                 values[2]++;
+    //                 break;
+    //         }
+    //     }
+    //     SetValues(values);
+    // }
+    //
+    // private void SetValues(int[] value)
+    // {
+    //     int amountOfCards = fakeCards.Length;
+    //     for (int i = 0; i < amountOfCards; i++)
+    //     {
+    //         fakeCards[i].GetComponentInChildren<FakeCard>().amountOfCards.text = value[i].ToString();
+    //     }
+    // }
 
     #endregion
 

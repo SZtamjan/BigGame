@@ -26,7 +26,7 @@ public class BuildingsStats : MonoBehaviour
         unitAdd = stats.UnitAdd;
         if (unitAdd != null)
         {
-            CardManager.instance.CollectionCardsToDraw.Add(unitAdd);
+            CardManager.instance.AddCardToDrawableCollection(unitAdd);
             unitAdd = null;
         }
     }
