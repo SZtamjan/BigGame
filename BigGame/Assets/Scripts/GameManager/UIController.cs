@@ -27,7 +27,7 @@ public class UIController : MonoBehaviour
     private float _DeckCardsWith;
     [SerializeField] private GameObject BuildingsCards;
     [SerializeField] private bool BuildingsCardShowing = false;
-    [SerializeField] private List<UnitScriptableObjects> DrawableCards = new List<UnitScriptableObjects>();
+    [SerializeField] private List<GameObject> DrawableCards = new List<GameObject>();
     //Components
     private CardManager _cardManager;
 
@@ -151,81 +151,40 @@ public class UIController : MonoBehaviour
         List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
         foreach (var newDrawable in drawableCards)
         {
-            AddCardToDrawableViewer(newDrawable);
+            StartCoroutine(AddCardToDrawableViewer(newDrawable));
         }
     }
 
-    public void AddCardToDrawableViewer(UnitScriptableObjects newDrawable)
+    public IEnumerator AddCardToDrawableViewer(UnitScriptableObjects newDrawable)
     {
-        DrawableCards.Add(newDrawable);
-        SpawnFakeCardInViewer(newDrawable);
+        GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
+        currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
+        yield return new WaitForEndOfFrame();
+        
+        SetFakeCardInViewer(currCard);
     }
 
-    private void SpawnFakeCardInViewer(UnitScriptableObjects newDrawable)
+    private void SetFakeCardInViewer(GameObject currDrawable)
     {
-        for (int i = 0; i < DrawableCards.Count; i++)
+        for (int i = 1; i <= CardsToDrawViewer.transform.childCount; i++)
         {
-            if (DrawableCards[i].name == newDrawable.name)
+            if (CardsToDrawViewer.transform.GetChild(i-1).GetComponent<FakeCard>().name == 
+                currDrawable.GetComponent<FakeCard>().name)
             {
-                GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
-                currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
-                currCard.transform.SetSiblingIndex(i);
+                currDrawable.transform.SetSiblingIndex(i-1);
                 break;
             }
-            
-            if (i == DrawableCards.Count) // TO FIX
-            {
-                GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
-                currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
-                currCard.transform.SetAsLastSibling();
-            }
         }
-        
-        // foreach (var fakeCard in DrawableCards)
-        // {
-        //     if (fakeCard.GetComponent<FakeCard>().name.text == newDrawable.name)
-        //     {
-        //         
-        //     }
-        //     else
-        //     {
-        //         GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
-        //         currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
-        //     }
-        // }
-        
     }
 
-    // public void SetUpCardsToDraw()
-    // {
-    //     List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
-    //     int[] values = new int[3];
-    //     foreach (var drawableCard in drawableCards)
-    //     {
-    //         switch (drawableCard.name)
-    //         {
-    //             case "Stachu Jones":
-    //                 values[0]++;
-    //                 break;
-    //             case "Karta Archera":
-    //                 values[1]++;
-    //                 break;
-    //             case "Karta wpierdolu":
-    //                 values[2]++;
-    //                 break;
-    //         }
-    //     }
-    //     SetValues(values);
-    // }
-    //
-    // private void SetValues(int[] value)
-    // {
-    //     int amountOfCards = fakeCards.Length;
-    //     for (int i = 0; i < amountOfCards; i++)
-    //     {
-    //         fakeCards[i].GetComponentInChildren<FakeCard>().amountOfCards.text = value[i].ToString();
-    //     }
-    // }
+    public void RemoveCardFromViewer(GameObject removeThis) // To apply when added building removal
+    {
+        foreach (GameObject card in CardsToDrawViewer.transform)
+        {
+            if(card.GetComponent<FakeCard>().name == removeThis.GetComponent<FakeCard>().name)
+                Destroy(card);
+        }
+    }
 
     #endregion
 

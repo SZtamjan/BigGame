@@ -145,6 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5547531965655507187}
   - component: {fileID: 3416191061797419716}
+  - component: {fileID: 3039963261610966079}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -181,10 +182,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardInHand: []
   cardPrefab: {fileID: 199085340779551909, guid: 3704433d08d7bea42b6faff07a0e9358, type: 3}
-  MaxCardInHand: 2
+  CurrentMaxCardInHand: 2
+  startCardLimit: 2
+  cardsStepLimits:
+  - newLimit: 2
+    ifBiggerThan: 0
+  - newLimit: 3
+    ifBiggerThan: 4
+  - newLimit: 4
+    ifBiggerThan: 8
+  - newLimit: 5
+    ifBiggerThan: 12
   PlayerCards:
   - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
   CollectionCardsToDraw: []
+--- !u!114 &3039963261610966079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133323267710554336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 32ed56cfb568fb346a7f685d8e36e91f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3416191061797419716}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: CheckAndUpdateCardLimit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &291595189176695698
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,14 @@ public class Building : MonoBehaviour
     private GameObject halfTransparent;
     
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
+
+    public List<GameObject> Budynks
+    {
+        get
+        {
+            return budynki;
+        }
+    }
     public List<BuildingsStats> buildingsStats; // It stores what building does
     
     [Header(" ")]

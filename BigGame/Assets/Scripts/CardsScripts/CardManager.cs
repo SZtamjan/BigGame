@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class CardManager : MonoBehaviour
 {
@@ -13,7 +15,10 @@ public class CardManager : MonoBehaviour
     private GameObject _WhereToSpawnCard;
     [SerializeField] private GameObject cardPrefab;
 
-    [SerializeField] private int MaxCardInHand = 2;
+    private int CurrentMaxCardInHand = 2;
+    [Tooltip("This will apply, when there is no buildings on start")]
+    [SerializeField] private int startCardLimit = 2;
+    [SerializeField] private List<LimitStep> cardsStepLimits = new List<LimitStep>();
 
     [Tooltip("Karty z jakimi zacznie gracz")]
     public List<UnitScriptableObjects> PlayerCards;
@@ -35,6 +40,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         _WhereToSpawnCard = UIController.Instance.HereCardsAre();
+        CheckAndUpdateCardLimit();
     }
 
     public void SpawnStartCards()
@@ -52,10 +58,9 @@ public class CardManager : MonoBehaviour
     
     public void GetNewCardToHand() //It's called every player move
     {
-        if(CardInHand.Count < MaxCardInHand)
-        {
-            SpawnCard(GetRandomCardFromCollection());
-        }
+        
+        SpawnCard(GetRandomCardFromCollection());
+        
     }
 
     private UnitScriptableObjects GetRandomCardFromCollection()
@@ -68,11 +73,12 @@ public class CardManager : MonoBehaviour
     public void AddCardToDrawableCollection(UnitScriptableObjects newDrawable)
     {
         CollectionCardsToDraw.Add(newDrawable);
-        UIController.Instance.AddCardToDrawableViewer(newDrawable);
+        StartCoroutine(UIController.Instance.AddCardToDrawableViewer(newDrawable));
     }
 
     private void SpawnCard(UnitScriptableObjects unitCardStats)
     {
+        LimitCardCheck();
         GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);
         thisCard.GetComponent<SpawnUnitCard>().stats = unitCardStats;
         //CardInHand.Insert(0, thisCard);
@@ -81,10 +87,9 @@ public class CardManager : MonoBehaviour
         UIController.Instance.ArrangeCards();
     }
 
-    public void LimitCard()
+    private void LimitCardCheck()
     {
-        int CardCount = CardInHand.Count;
-        if (CardCount > MaxCardInHand)
+        if (CardInHand.Count >= CurrentMaxCardInHand)
         {
             Debug.Log("ultra wybuchy");
             Debug.Log(CardInHand.First().GetComponent<SpawnUnitCard>().stats.name);
@@ -94,8 +99,33 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public void CheckAndUpdateCardLimit()
+    {
+        int budynks = Building.Instance.Budynks.Count;
+        if (budynks == 0)
+        {
+            CurrentMaxCardInHand = startCardLimit;
+        }
+        else
+        {
+            for (int i = 1; i <= cardsStepLimits.Count; i++)
+            {
+                if (budynks > cardsStepLimits[i - 1].ifBiggerThan && budynks < cardsStepLimits[i].ifBiggerThan)
+                {
+                    CurrentMaxCardInHand = cardsStepLimits[i - 1].newLimit;
+                }
+            }
+        }
+    }
+    
     public void RevomeCard(GameObject card)
     {
         CardInHand.Remove(card);
     }
+}
+[Serializable]
+public struct LimitStep
+{
+    public int newLimit;
+    public int ifBiggerThan;
 }
