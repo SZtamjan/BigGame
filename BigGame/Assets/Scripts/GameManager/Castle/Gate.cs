@@ -312,6 +312,8 @@ public class Gate : MonoBehaviour
 
             }
 
+
+
         }
     }
 

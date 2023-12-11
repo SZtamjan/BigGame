@@ -250,7 +250,28 @@ public class GameManager : MonoBehaviour
     private IEnumerator Endturn(bool playerUnit) // do przerobienia to jest XDD
     {
         yield return new WaitForSeconds(0.3f);
-        
+
+        bool wait = true;
+        while (wait)
+        {
+            wait = false;
+            foreach (var item in CastlesController.Instance.playerCastle.gates)
+            {
+                if (wait)
+                {
+                    continue;
+                }
+                if (ImDoingSomethingOneThisPatch(item))
+                {
+                    wait = true;
+                    continue;
+                }
+               
+            }
+            yield return new WaitForFixedUpdate();
+
+        }
+
         //bool wait = true;
         //while (wait)
         //{
@@ -325,6 +346,25 @@ public class GameManager : MonoBehaviour
         {
             GameManager.instance.UpdateGameState(GameState.PlayerTurn);
         }
+    }
+
+    private bool ImDoingSomethingOneThisPatch(Gate gate)
+    {
+        foreach (var item in gate.path)
+        {
+            if (item.unitMain==null)
+            {
+                continue;
+            }
+            var thisUnit = item.unitMain.GetComponent<UnitControler>();
+            if (thisUnit.AmIDoingSomething())
+            {
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
     public void UpdateTurnShower()
