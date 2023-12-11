@@ -15,6 +15,7 @@ public class BuildingsStats : MonoBehaviour
 
     private void OnDisable()
     {
+        CardManager.instance.RemoveCardToDrawableCollection(unitAdd);
         EventManager.BuildingAction -= BuildingDoingSomething;
     }
 
@@ -27,7 +28,6 @@ public class BuildingsStats : MonoBehaviour
         if (unitAdd != null)
         {
             CardManager.instance.AddCardToDrawableCollection(unitAdd);
-            unitAdd = null;
         }
     }
 

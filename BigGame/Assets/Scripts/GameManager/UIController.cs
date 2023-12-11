@@ -155,6 +155,21 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public IEnumerator RemoveCardToDrawableViewer(UnitScriptableObjects newDrawable)
+    {
+        for (int i = 1; i <= CardsToDrawViewer.transform.childCount; i++)
+        {
+            yield return null;
+            if (CardsToDrawViewer.transform.GetChild(i).GetComponent<FakeCard>().name == newDrawable.name)
+            {
+                Destroy(CardsToDrawViewer.transform.GetChild(i).gameObject);
+                break;
+            }
+        }
+
+        yield return null;
+    }
+
     public IEnumerator AddCardToDrawableViewer(UnitScriptableObjects newDrawable)
     {
         GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);

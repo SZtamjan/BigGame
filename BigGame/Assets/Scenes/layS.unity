@@ -2485,6 +2485,10 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1729358045}
+    - target: {fileID: 8217580619755710967, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
+      propertyPath: m_Cameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9157821068772790396, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -9539,50 +9543,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
---- !u!1 &834609984 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 133323267710554336, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-  m_PrefabInstance: {fileID: 8742569728081012483}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &834609986 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-  m_PrefabInstance: {fileID: 8742569728081012483}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834609984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5797968feccf541abda625ba4ce98c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &834609987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 834609984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 32ed56cfb568fb346a7f685d8e36e91f, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 834609986}
-        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: CheckAndUpdateCardLimit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &838159625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23390,6 +23350,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: cardsStepLimits.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: cardsInHandLimits.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -23431,6 +23395,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: cardsInHandStepLimits.Array.data[3]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: cardsStepLimits.Array.data[4].newLimit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: cardsStepLimits.Array.data[0].ifBiggerThan
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: cardsStepLimits.Array.data[4].ifBiggerThan
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3694557094851591057, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
@@ -23581,6 +23557,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4432579125369010673, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4594694614371333042, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -23728,6 +23708,10 @@ PrefabInstance:
     - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: regularNotPlaceableColor.r
       value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043076754733567083, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: specificBuildingLimitList.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6179976239271874694, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_LocalPosition.y

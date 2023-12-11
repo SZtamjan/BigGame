@@ -76,6 +76,12 @@ public class CardManager : MonoBehaviour
         StartCoroutine(UIController.Instance.AddCardToDrawableViewer(newDrawable));
     }
 
+    public void RemoveCardToDrawableCollection(UnitScriptableObjects newDrawable)
+    {
+        CollectionCardsToDraw.Remove(newDrawable);
+        StartCoroutine(UIController.Instance.RemoveCardToDrawableViewer(newDrawable));
+    }
+
     private void SpawnCard(UnitScriptableObjects unitCardStats)
     {
         LimitCardCheck();
@@ -120,8 +126,10 @@ public class CardManager : MonoBehaviour
     
     public void RevomeCard(GameObject card)
     {
+        //giga wybuchy
         CardInHand.Remove(card);
     }
+    
 }
 [Serializable]
 public struct LimitStep
