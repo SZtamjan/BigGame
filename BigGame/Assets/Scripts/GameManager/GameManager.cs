@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private bool GameEnded = false;
 
+    public List<UnitScriptableObjects> TestDoSpawn;
 
     private void Awake()
     {
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     private void CameraSetting()
     {
-       PlayerMovement.instance.CameraSetting();
+        PlayerMovement.instance.CameraSetting();
     }
 
 
@@ -105,11 +106,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(StartingFuctiom());
         //PathControler.Instance.StartNewPathWay();
-       // GameManager.instance.UpdateGameState(GameState.MapGeneration);
+        // GameManager.instance.UpdateGameState(GameState.MapGeneration);
 
     }
 
-    private IEnumerator StartingFuctiom() 
+    private IEnumerator StartingFuctiom()
     {
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
@@ -164,7 +165,7 @@ public class GameManager : MonoBehaviour
         playerTurn = false;
         turnCounter++;
         Debug.Log("jaka� akcja przeciwnika");
-        //StartCoroutine(EnemyMove());
+        StartCoroutine(EnemyMove());
         GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
@@ -202,15 +203,20 @@ public class GameManager : MonoBehaviour
     private IEnumerator EnemyMove()
     {
         yield return new WaitForEndOfFrame();
+        TestDoSpawn = new();
+        for (int i = 0; i < CastlesController.Instance.enemyCastle.gates.Count; i++)
+        {
+            TestDoSpawn.Add(SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter-1));
+        }
         if (!devMode)
         {
 
             SpawnerScript.instance.EnemyCheckSpawn();
 
             yield return new WaitForSeconds(0.3f);
-            GetComponent<PathControler>().ComputerUnitPhaze();
+            //GetComponent<PathControler>().ComputerUnitPhaze();
             yield return new WaitForSeconds(0.3f);
-            
+
             GameManager.instance.StartCoroutine(Endturn(false));
 
         }
@@ -250,7 +256,23 @@ public class GameManager : MonoBehaviour
     private IEnumerator Endturn(bool playerUnit) // do przerobienia to jest XDD
     {
         yield return new WaitForSeconds(0.3f);
-        
+
+        bool wait = true;
+        while (wait)
+        {
+            wait = false;
+            foreach (var item in CastlesController.Instance.playerCastle.gates)
+            {
+                if (ImDoingSomethingOneThisPatch(item))
+                {
+                    wait = true;
+                    break;
+                }
+            }
+            yield return new WaitForFixedUpdate();
+
+        }
+
         //bool wait = true;
         //while (wait)
         //{
@@ -325,6 +347,25 @@ public class GameManager : MonoBehaviour
         {
             GameManager.instance.UpdateGameState(GameState.PlayerTurn);
         }
+    }
+
+    private bool ImDoingSomethingOneThisPatch(Gate gate)
+    {
+        foreach (var item in gate.path)
+        {
+            if (item.unitMain == null)
+            {
+                continue;
+            }
+            var thisUnit = item.unitMain.GetComponent<UnitControler>();
+            if (thisUnit.AmIDoingSomething())
+            {
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
     public void UpdateTurnShower()
