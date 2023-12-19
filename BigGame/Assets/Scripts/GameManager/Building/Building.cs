@@ -15,11 +15,20 @@ public class Building : MonoBehaviour
     public LayerMask mask;
     public bool isBuilding = false;
     public GameEvent isBuildingEvent;
+    public GameEvent justBuild;
 
     public GameObject parent;
     private GameObject halfTransparent;
     
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
+
+    public List<GameObject> Budynks
+    {
+        get
+        {
+            return budynki;
+        }
+    }
     public List<BuildingsStats> buildingsStats; // It stores what building does
     
     [Header(" ")]
@@ -92,6 +101,7 @@ public class Building : MonoBehaviour
         buldingStast.putStats(statsy);
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
+        justBuild.Raise();
     }
 
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)

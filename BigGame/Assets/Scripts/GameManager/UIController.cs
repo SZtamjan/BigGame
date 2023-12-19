@@ -1,24 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using Mono.Cecil;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+
     [Header("Menus")]
     [SerializeField] private GameObject QuickMenu;
     [SerializeField] private List<GameObject> menus;
 
     [Header("Cards")]
     [SerializeField] private GameObject DeckCards;
+    [SerializeField] private GameObject FakeCard;
+    [SerializeField] private GameObject CardsToDrawViewer;
+    [SerializeField] private Image CardsToDrawViewerBackground;
     private float _DeckCardsWith;
     [SerializeField] private GameObject BuildingsCards;
     [SerializeField] private bool BuildingsCardShowing = false;
+    [SerializeField] private List<GameObject> DrawableCards = new List<GameObject>();
+    //Components
+    private CardManager _cardManager;
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
@@ -27,7 +38,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ShowFunds;
     [SerializeField] private TextMeshProUGUI ShowTurn;
     [SerializeField] private TextMeshProUGUI ShowEndDisplay;
-
 
     [Header("Warming settings")]
     [SerializeField] private TextMeshProUGUI ShowEconomyWarming;
@@ -52,12 +62,19 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
+        //Initialize components
+        _cardManager = CardManager.instance;
+        
         BuildingsCards.SetActive(false);
         BuildingsCardShowing = false;
         QuickMenu.SetActive(false);
         ShowEconomyWarming.alpha = 0f;
         ShowEndDisplay.gameObject.SetActive(false);
         _DeckCardsWith = DeckCards.GetComponent<RectTransform>().rect.width;
+
+        
+        //SetUpCardsToDraw();
+        SpawnCardsInDrawableViewer();
     }
 
 
@@ -100,7 +117,89 @@ public class UIController : MonoBehaviour
             item.GetComponent<SpawnUnitCard>().NewStartPos();
         }
     }
+    
+    public void SwitchActiveCardsToDrawViewer()
+    {
+        StartCoroutine(ViewerAnimation());
+    }
+    private IEnumerator ViewerAnimation()
+    {
+        
+        if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == -1000 && CardsToDrawViewerBackground.color.a == 0)
+        {
+            //In
+            CardsToDrawViewer.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
+            CardsToDrawViewerBackground.DOFade(.8f, .5f).onPlay = () =>
+            {
+                CardsToDrawViewerBackground.gameObject.SetActive(true);
+            };
+        }
+        else if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
+        {
+            //Out
+            Tween myTween =  CardsToDrawViewer.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);
+            yield return myTween.WaitForPosition(.3f);
+            CardsToDrawViewerBackground.DOFade(0f, .4f).onComplete = () =>
+            {
+                CardsToDrawViewerBackground.gameObject.SetActive(false);
+            };
+        }
+    }
 
+    private void SpawnCardsInDrawableViewer()
+    {
+        List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
+        foreach (var newDrawable in drawableCards)
+        {
+            StartCoroutine(AddCardToDrawableViewer(newDrawable));
+        }
+    }
+
+    public IEnumerator RemoveCardToDrawableViewer(UnitScriptableObjects newDrawable)
+    {
+        for (int i = 1; i <= CardsToDrawViewer.transform.childCount; i++)
+        {
+            yield return null;
+            if (CardsToDrawViewer.transform.GetChild(i).GetComponent<FakeCard>().name == newDrawable.name)
+            {
+                Destroy(CardsToDrawViewer.transform.GetChild(i).gameObject);
+                break;
+            }
+        }
+
+        yield return null;
+    }
+
+    public IEnumerator AddCardToDrawableViewer(UnitScriptableObjects newDrawable)
+    {
+        GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
+        currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);
+        yield return new WaitForEndOfFrame();
+        
+        SetFakeCardInViewer(currCard);
+    }
+
+    private void SetFakeCardInViewer(GameObject currDrawable)
+    {
+        for (int i = 1; i <= CardsToDrawViewer.transform.childCount; i++)
+        {
+            if (CardsToDrawViewer.transform.GetChild(i-1).GetComponent<FakeCard>().name == 
+                currDrawable.GetComponent<FakeCard>().name)
+            {
+                currDrawable.transform.SetSiblingIndex(i-1);
+                break;
+            }
+        }
+    }
+
+    public void RemoveCardFromViewer(GameObject removeThis) // To apply when added building removal
+    {
+        foreach (GameObject card in CardsToDrawViewer.transform)
+        {
+            if(card.GetComponent<FakeCard>().name == removeThis.GetComponent<FakeCard>().name)
+                Destroy(card);
+        }
+    }
 
     #endregion
 

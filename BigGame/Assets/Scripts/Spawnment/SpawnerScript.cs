@@ -14,6 +14,7 @@ public class SpawnerScript : MonoBehaviour
 {
     public static SpawnerScript instance;
     private Coroutine _SpawnerCoroutine;
+    public bool playerRemovedCard = false;
 
     [SerializeField] public SpawmentListScriptableObject WhatEnemyCanSpawn;
 
@@ -73,6 +74,14 @@ public class SpawnerScript : MonoBehaviour
 
                 RaycastHit hit;
 
+                if (playerRemovedCard == false)
+                {
+                    playerRemovedCard = true;
+                    Destroy(karta);
+                    CardManager.instance.RevomeCard(karta);
+                    UIController.Instance.ArrangeCards();
+                    break;
+                }
 
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -80,6 +89,8 @@ public class SpawnerScript : MonoBehaviour
                     {
                         Debug.Log("Hit object with tag: " + hit.collider.tag);
 
+                        
+                        
                         Gate thisGatePatch = GetPath(hit.collider.tag);
                         if (thisGatePatch == null)
                         {
@@ -143,7 +154,10 @@ public class SpawnerScript : MonoBehaviour
         return true;
     }
 
-
+    public void SetRemoved(bool value)
+    {
+        playerRemovedCard = value;
+    }
 
     public void SpawnEnemyUnit(int number)
     {
