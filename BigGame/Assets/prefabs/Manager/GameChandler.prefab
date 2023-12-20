@@ -5598,6 +5598,7 @@ MonoBehaviour:
   hexGrid: {fileID: 1292401085693881687}
   playerTurn: 1
   devMode: 0
+  TestDoSpawn: []
 --- !u!114 &7282041662631441623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5611,11 +5612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRemovedCard: 0
-  WhatEnemyCanSpawn:
-  - unitToSpawn: {fileID: 11400000, guid: 77fde5fe0387fe74c8f0069d668e2202, type: 2}
-    turnCount: 4
-  - unitToSpawn: {fileID: 11400000, guid: 90b8a28284d5b4a4295e086575030293, type: 2}
-    turnCount: 5
+  WhatEnemyCanSpawn: {fileID: 0}
   _SelectedCard: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &4340605472721432590
 MonoBehaviour:
@@ -6782,6 +6779,7 @@ MonoBehaviour:
   DeckCards: {fileID: 2085325301498563253}
   FakeCard: {fileID: 199085340779551909, guid: 8a12b97bc671a304dad952ea9a4ef118, type: 3}
   CardsToDrawViewer: {fileID: 5919397952562385472}
+  CardsToDrawViewerScroller: {fileID: 1187460774908490220}
   CardsToDrawViewerBackground: {fileID: 7855355296050562663}
   BuildingsCards: {fileID: 2223126336449076495}
   BuildingsCardShowing: 0
@@ -7776,6 +7774,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2713488898283971328}
     m_Modifications:
+    - target: {fileID: 4541620707542193243, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6879541717985909427, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7860,6 +7862,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6918224572161545958, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7665322591425160789, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
       propertyPath: m_Name
       value: Fake Cards Viewer
@@ -7869,6 +7875,11 @@ PrefabInstance:
 --- !u!224 &619834064576562455 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6879541717985909427, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
+  m_PrefabInstance: {fileID: 6332937876623466404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1187460774908490220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5159339817370349128, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
   m_PrefabInstance: {fileID: 6332937876623466404}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5919397952562385472 stripped

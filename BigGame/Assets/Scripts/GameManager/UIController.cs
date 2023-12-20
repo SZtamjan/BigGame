@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject DeckCards;
     [SerializeField] private GameObject FakeCard;
     [SerializeField] private GameObject CardsToDrawViewer;
+    [SerializeField] private GameObject CardsToDrawViewerScroller;
     [SerializeField] private Image CardsToDrawViewerBackground;
     private float _DeckCardsWith;
     [SerializeField] private GameObject BuildingsCards;
@@ -125,19 +126,19 @@ public class UIController : MonoBehaviour
     private IEnumerator ViewerAnimation()
     {
         
-        if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == -1000 && CardsToDrawViewerBackground.color.a == 0)
+        if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == -1000 && CardsToDrawViewerBackground.color.a == 0)
         {
             //In
-            CardsToDrawViewer.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
             CardsToDrawViewerBackground.DOFade(.8f, .5f).onPlay = () =>
             {
                 CardsToDrawViewerBackground.gameObject.SetActive(true);
             };
         }
-        else if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
+        else if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
         {
             //Out
-            Tween myTween =  CardsToDrawViewer.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);
+            Tween myTween =  CardsToDrawViewerScroller.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);
             yield return myTween.WaitForPosition(.3f);
             CardsToDrawViewerBackground.DOFade(0f, .4f).onComplete = () =>
             {
