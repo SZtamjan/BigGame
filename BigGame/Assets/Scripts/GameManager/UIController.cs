@@ -31,6 +31,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private List<GameObject> DrawableCards = new List<GameObject>();
     //Components
     private CardManager _cardManager;
+    private PlayerMovement _playerMovement;
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
@@ -65,7 +66,8 @@ public class UIController : MonoBehaviour
     {
         //Initialize components
         _cardManager = CardManager.instance;
-        
+        _playerMovement = PlayerMovement.instance;
+
         BuildingsCards.SetActive(false);
         BuildingsCardShowing = false;
         QuickMenu.SetActive(false);
@@ -122,7 +124,14 @@ public class UIController : MonoBehaviour
     public void SwitchActiveCardsToDrawViewer()
     {
         StartCoroutine(ViewerAnimation());
+        ChangeZoomLock();
     }
+
+    private void ChangeZoomLock()
+    {
+        _playerMovement.GetComponent<CamZoom>().ChangeZoomLock();
+    }
+    
     private IEnumerator ViewerAnimation()
     {
         
