@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         turnCounter++;
         Debug.Log("jaka� akcja przeciwnika");
         StartCoroutine(EnemyMove());
-        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+        //GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
@@ -273,72 +273,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForFixedUpdate();
 
         }
-
-        //bool wait = true;
-        //while (wait)
-        //{
-        //    wait = false;
-
-
-        //    for (int i = 0; i <= PathWay.Count() - 1; i++)
-        //    {
-
-        //        yield return new WaitForEndOfFrame();
-        //        if (PathWay[i].unitMain == null)
-        //        {
-        //            wait = false;
-        //            continue;
-        //        }
-        //        var thisUnit = PathWay[i].unitMain;
-        //        var thisUnitController = thisUnit.GetComponent<UnitControler>();
-        //        if (thisUnitController.IsThisPlayerUnit() != playerUnit)
-        //        {
-        //            continue;
-        //        }
-        //        if (thisUnitController.AmIDoingSomething())
-        //        {
-        //            wait = true;
-        //            break;
-        //        }
-
-        //    }
-
-        //    GameObject UnitInCastle;
-        //    if (playerUnit)
-        //    {
-        //        UnitInCastle = PathControler.Instance.PlayerCastle.jednostka;
-        //    }
-        //    else
-        //    {
-        //        UnitInCastle = PathControler.Instance.ComputerCastle.jednostka;
-        //    }
-
-        //    if (UnitInCastle != null)
-        //    {
-        //        if (UnitInCastle.GetComponent<UnitControler>().AmIDoingSomething())
-        //        {
-        //            wait = true;
-        //            continue;
-        //        }
-        //        else
-        //        {
-        //            continue;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (wait)
-        //        {
-        //            continue;
-        //        }
-        //        else
-        //        {
-        //            break;
-        //        }
-        //    }
-
-
-        //}
 
         if (playerUnit)
         {
