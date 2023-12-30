@@ -132,12 +132,15 @@ public class UIController : MonoBehaviour
         _playerMovement.GetComponent<CamZoom>().ChangeZoomLock();
     }
     
+    //It teleports to -2000 to prevent deck-cards being unclickable
     private IEnumerator ViewerAnimation()
     {
         
-        if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == -1000 && CardsToDrawViewerBackground.color.a == 0)
+        if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == -2000 && CardsToDrawViewerBackground.color.a == 0)
         {
             //In
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(-1000f, .0f);
+            
             CardsToDrawViewerScroller.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
             CardsToDrawViewerBackground.DOFade(.8f, .5f).onPlay = () =>
             {
@@ -153,6 +156,11 @@ public class UIController : MonoBehaviour
             {
                 CardsToDrawViewerBackground.gameObject.SetActive(false);
             };
+            
+            yield return myTween.WaitForPosition(.8f);
+            myTween.Kill();
+            
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(-2000f, .0f);
         }
     }
 

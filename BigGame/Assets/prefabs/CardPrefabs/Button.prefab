@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4897058387237834934}
   - component: {fileID: 3649232834842051057}
   m_Layer: 5
-  m_Name: ToolTip
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6820154143913741308}
   - component: {fileID: 6552775901859472904}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BUDUJ TARTAK
+  m_text: Budynek
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -282,8 +282,9 @@ GameObject:
   - component: {fileID: 7397041500099515017}
   - component: {fileID: 7509551791567262858}
   - component: {fileID: 6251869494824402804}
-  - component: {fileID: 6418843867685168944}
+  - component: {fileID: 954340515378605114}
   - component: {fileID: 849973417715716337}
+  - component: {fileID: 6423808194834241583}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -375,7 +376,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -395,9 +396,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6418843867685168944}
-        m_TargetAssemblyTypeName: BuildingCard, Assembly-CSharp
-        m_MethodName: InitBuyBuilding
+      - m_Target: {fileID: 954340515378605114}
+        m_TargetAssemblyTypeName: BuildingCardGenTwo, Assembly-CSharp
+        m_MethodName: SendInfoToRightPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -407,7 +408,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6418843867685168944
+--- !u!114 &954340515378605114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,12 +417,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9041470783989313721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df1a80a3380fc44f883716dd4be27a5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe2e74201a1c72141a2c94499047a4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _butonText: {fileID: 6552775901859472904}
-  _toolTipTex: {fileID: 3649232834842051057}
-  infoSource: {fileID: 11400000, guid: b298834813e725e4ca2cb0841dd8543b, type: 2}
+  _buttonText: {fileID: 6552775901859472904}
+  _buttonDescription: {fileID: 3649232834842051057}
+  infoSource: {fileID: 0}
+  buildingSelectedEvent: {fileID: 11400000, guid: 75570f3ef2a8798489c6db963d6bdd40, type: 2}
+  colorWhenSelected: {r: 0.28350618, g: 0.7924528, b: 0.25717336, a: 1}
   _stucture: {fileID: 0}
   _cost: 0
   _name: 
@@ -453,3 +456,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 200, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &6423808194834241583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041470783989313721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 75570f3ef2a8798489c6db963d6bdd40, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 954340515378605114}
+        m_TargetAssemblyTypeName: BuildingCardGenTwo, Assembly-CSharp
+        m_MethodName: UnselectCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

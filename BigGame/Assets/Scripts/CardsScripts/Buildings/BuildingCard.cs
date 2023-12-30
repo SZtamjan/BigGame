@@ -9,10 +9,11 @@ using UnityEngine.UI;
 
 public class BuildingCard : MonoBehaviour
 {
-
     [SerializeField] private TextMeshProUGUI _butonText;
     [SerializeField] private TextMeshProUGUI _toolTipTex;
     [SerializeField] private BuildingsScriptableObjects infoSource;
+    
+    [Header("Shown only for debug purpose")]
     [SerializeField] private GameObject _stucture;
     [SerializeField] private int _cost;
     [SerializeField] private string _name;
@@ -20,7 +21,7 @@ public class BuildingCard : MonoBehaviour
     [SerializeField] private int _moneyGain;
 
 
-    public void InitBuyBuilding()
+    public void InitBuyBuilding() //This is on button click
     {
         bool CanIBuy = Economy.Instance.CanIBuy(infoSource.cost);
         if(CanIBuy)
@@ -39,17 +40,14 @@ public class BuildingCard : MonoBehaviour
         Building.Instance.StartBuilding(infoSource);
     }
 
-    
-
     void OnMouseEnter()
     {
-
-        _toolTipTex.gameObject.SetActive(true);
+        //_toolTipTex.gameObject.SetActive(true);
     }
 
     void OnMouseExit()
     {
-        _toolTipTex.gameObject.SetActive(false);
+        //_toolTipTex.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -68,6 +66,4 @@ public class BuildingCard : MonoBehaviour
 
         _toolTipTex.gameObject.SetActive(false);
     }
-
-
 }
