@@ -8,6 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Spawment/Units")]
 public class SpawnUnitsScriptableObject : ScriptableObject
 {
+    [Tooltip("Co siê ma szance zespawniæ")]
     [SerializeField] private List<UnitScriptableObjects> Units;
 
     [SerializeField] public SelectMetchod Method;

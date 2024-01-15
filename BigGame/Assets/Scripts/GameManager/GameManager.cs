@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.GameEnd;
         }
-        state = newState;
+        //state = newState;
         switch (newState)
         {
             case GameState.Start:
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         turnCounter++;
         Debug.Log("jaka� akcja przeciwnika");
         StartCoroutine(EnemyMove());
-        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+        //GameManager.instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
@@ -207,15 +207,28 @@ public class GameManager : MonoBehaviour
         TestDoSpawn = new();
         for (int i = 0; i < CastlesController.Instance.enemyCastle.gates.Count; i++)
         {
-            TestDoSpawn.Add(SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter-1));
+            //TestDoSpawn.Add(SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1));
+            var unitToSpawn = SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1);
+            if (unitToSpawn==null)
+            {
+                continue;
+            }
+            SpawnerScript.instance.SpawnEnemyUnit(CastlesController.Instance.enemyCastle.gates[i], unitToSpawn);
+
         }
         if (!devMode)
         {
 
-            SpawnerScript.instance.EnemyCheckSpawn();
+            //SpawnerScript.instance.EnemyCheckSpawn();
 
             yield return new WaitForSeconds(0.3f);
-            //GetComponent<PathControler>().ComputerUnitPhaze();
+            //GetComponent<PathControler>().ComputerUnitPhaze(); stara metoda
+
+            foreach (var item in CastlesController.Instance.playerCastle.gates)
+            {
+                item.EnemyUnitPhase();
+            }
+
             yield return new WaitForSeconds(0.3f);
 
             GameManager.instance.StartCoroutine(Endturn(false));
@@ -267,6 +280,7 @@ public class GameManager : MonoBehaviour
                 if (ImDoingSomethingOneThisPatch(item))
                 {
                     wait = true;
+                    yield return new WaitForSeconds(0.5f);
                     break;
                 }
             }
