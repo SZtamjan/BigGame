@@ -10,7 +10,6 @@ public partial class SceneChange : MonoBehaviour
     public static SceneChange instance;
     public GameObject loadingScreen;
     public Image loadingBarFill;
-    public int nextScene;
     public GameObject loadingScreenNew;
 
     private void Awake()
@@ -53,7 +52,7 @@ public partial class SceneChange : MonoBehaviour
     {
         Instantiate(loadingScreenNew);
 
-        nextScene = SceneManager.GetActiveScene().buildIndex+1;
+        int nextScene = SceneManager.GetActiveScene().buildIndex+1;
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextScene);
 
         while (!operation.isDone)

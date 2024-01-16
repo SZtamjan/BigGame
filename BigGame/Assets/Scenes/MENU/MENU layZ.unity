@@ -1852,7 +1852,6 @@ GameObject:
   m_Component:
   - component: {fileID: 628727349}
   - component: {fileID: 628727350}
-  - component: {fileID: 628727353}
   - component: {fileID: 628727352}
   - component: {fileID: 628727351}
   - component: {fileID: 628727354}
@@ -1912,7 +1911,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 1497298423}
   loadingBarFill: {fileID: 1840132195}
   nextScene: 0
-  loadingScreenNew: {fileID: 0}
+  loadingScreenNew: {fileID: 178695401956077107, guid: 75049fab31c0b0f4cb18d1974046b99a, type: 3}
   sceneId: 0
 --- !u!114 &628727352
 MonoBehaviour:
@@ -1926,20 +1925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a9ce02ce072ae4b867580325769063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &628727353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628727347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36985a01e8bdbef43ba091119b2b657e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  tipNo: 0
 --- !u!114 &628727354
 MonoBehaviour:
   m_ObjectHideFlags: 0
