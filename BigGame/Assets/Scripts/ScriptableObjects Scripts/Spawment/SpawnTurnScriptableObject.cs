@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Spawment/Turn")]
 public class SpawnTurnScriptableObject : ScriptableObject
 {
-    [Tooltip("numer tury")]
+    [Tooltip("Co GATE bêdzie spawnowaæ w danej turze")]
     [SerializeField] private List<SpawnUnitsScriptableObject> ListForUnits;
 
     public UnitScriptableObjects SelectUnitAndTurn(int turn)
@@ -14,12 +14,17 @@ public class SpawnTurnScriptableObject : ScriptableObject
         {
             return null;
         }
+       
         if (turn > ListForUnits.Count)
         {
             while (turn > ListForUnits.Count)
             {
                 turn -= ListForUnits.Count;
             }
+        }
+        if (ListForUnits[turn - 1] == null)
+        {
+            return null;
         }
         return ListForUnits[turn-1].SelectUnit();
     }

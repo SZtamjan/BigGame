@@ -54,6 +54,7 @@ public class SpawnerScript : MonoBehaviour
         if (_SpawnerCoroutine != null)
         {
             StopCoroutine(_SpawnerCoroutine);
+            _SpawnerCoroutine=null;
             karta.GetComponent<Image>().color = _DefaultCardColor;
         }
         else
@@ -80,13 +81,14 @@ public class SpawnerScript : MonoBehaviour
                     {
                         Debug.Log("Hit object with tag: " + hit.collider.tag);
 
-                        
-                        
+
+
                         Gate thisGatePatch = GetPath(hit.collider.tag);
                         if (thisGatePatch == null)
                         {
                             break;
                         }
+
                         if (CanSpawn(thisGatePatch, stats))
                         {
                             Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
@@ -101,7 +103,7 @@ public class SpawnerScript : MonoBehaviour
                             UIController.Instance.ArrangeCards();
                         }
 
-                        
+
                     }
                     break;
 
@@ -150,16 +152,24 @@ public class SpawnerScript : MonoBehaviour
         playerRemovedCard = value;
     }
 
-    public void SpawnEnemyUnit(int number)
+    public void SpawnEnemyUnit(Gate gate, UnitScriptableObjects stats)
     {
-        
+        if (EnemyCheckSpawn(gate))
+        {
+            Vector3 rotation = gate.path.Last().position - gate.path[gate.path.Count - 2].position;
+            Vector3 spawn = gate.path.Last().position;
+            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y - 90f, stats.unit).GetComponent<UnitControler>();
+            newUnit.SetSO(stats);
+            newUnit.setMyGate(gate);
+            gate.path.Last().unitMain = newUnit;
+
+        }
 
     }
 
-    public void EnemyCheckSpawn()
+    public bool EnemyCheckSpawn(Gate gate)
     {
-        
-
+        return gate.path.Last().unitMain == null ? true : false;
     }
 
 
