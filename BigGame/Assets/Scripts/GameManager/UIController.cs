@@ -125,7 +125,7 @@ public class UIController : MonoBehaviour
         {
             i++;
             float posX = (x - i) * (_DeckCardsWith / x);
-            item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 0, 0);
+            item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 88f, 0);
             item.GetComponent<SpawnUnitCard>().NewStartPos();
         }
     }
