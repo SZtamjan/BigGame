@@ -26,7 +26,7 @@ public class BuildingsScriptableObjects : ScriptableObject
 
 public enum WhichBudynek
 {
-    koszary,
-    tawerna,
-    jakisTrzeci
+    archerBarrack,
+    knightBarrack,
+    peasantBarrack
 }

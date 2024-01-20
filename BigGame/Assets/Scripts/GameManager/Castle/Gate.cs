@@ -13,7 +13,7 @@ public class Gate : MonoBehaviour
     [SerializeField] private bool isPlayerSide = false;
 
     public List<Path> path = new List<Path>();
-    [SerializeField][Tooltip("dobrze dzia≥a 0.8")] private float searchRadius = 0.8f;
+    [SerializeField][Tooltip("dobrze dzia≈Ça 0.8")] private float searchRadius = 0.8f;
 
     [Tag] public string newTag;
     [SerializeField] private Gate _secondGate;

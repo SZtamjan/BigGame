@@ -59,6 +59,7 @@ public class SpawnerScript : MonoBehaviour
         }
         else
         {
+            UIController.Instance.SwitchTrashcanActive();
             _SpawnerCoroutine = StartCoroutine(SelectPathToSpawn(karta, stats));
         }
     }
@@ -115,6 +116,7 @@ public class SpawnerScript : MonoBehaviour
 
         }
         karta.GetComponent<Image>().color = _DefaultCardColor;
+        UIController.Instance.SwitchTrashcanActive();
         _SpawnerCoroutine = null;
         yield return null;
     }

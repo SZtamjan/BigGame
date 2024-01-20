@@ -85,5 +85,10 @@ public class BuildMenuManager : MonoBehaviour
         UIController.Instance.BuildingCardsChangeShow(false);
         Building.Instance.StartBuilding(_buildingInfo);
     }
+
+    public void StartDemoBuilding()
+    {
+        DestroyBuilding.Instance.StartDestroying();
+    }
     
 }
