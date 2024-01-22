@@ -24,6 +24,7 @@ public class UnitControler : MonoBehaviour
     [SerializeField] private bool isAttacking = false;
     [SerializeField] private bool isMovving = false;
     [SerializeField] private bool isPojectileFlying = false;
+    private bool _iMDying = false;
 
     [Header("Dla jednostek dystansowych")]
     public ProjectileController projectileToSpawn;
@@ -103,7 +104,7 @@ public class UnitControler : MonoBehaviour
 
     public bool AmIDoingSomething()
     {
-        if (isAttacking || isMovving || isPojectileFlying)
+        if (isAttacking || isMovving || isPojectileFlying || _iMDying)
         {
             return true;
         }
@@ -119,8 +120,9 @@ public class UnitControler : MonoBehaviour
         if (hp <= 0)
         {
             animator.SetBool("death", true);
+            _iMDying = true;
         }
-        PlayHurt();
+        PlayHurt();       
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
 
 
@@ -144,11 +146,13 @@ public class UnitControler : MonoBehaviour
 
     public void PlayWalk()
     {
-        animator.SetTrigger("walk");
+        if (!_iMDying)
+            animator.SetTrigger("walk");
     }
     public void PlayAttack()
     {
-        animator.SetTrigger("attack");
+        if (!_iMDying)
+            animator.SetTrigger("attack");
     }
     public void PlayHurt()
     {
@@ -157,7 +161,8 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayIdle()
     {
-        animator.SetTrigger("idle");
+        if (!_iMDying)
+            animator.SetTrigger("idle");
     }
 
     #endregion
@@ -232,6 +237,12 @@ public class UnitControler : MonoBehaviour
         {
             return targetCastleToAttack.transform.position;
         }
+        if (targetGateToAttack != null)
+        {
+            return targetGateToAttack.transform.position;
+        }
+
+
         return transform.position;
     }
 
@@ -287,6 +298,8 @@ public class UnitControler : MonoBehaviour
         while ((wayPoints?.Count ?? 0) > 0)
         {
 
+            
+
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
                 if (_MyGate.path[wayPoints.First()].unitMain == null)
@@ -318,12 +331,12 @@ public class UnitControler : MonoBehaviour
 
             }
 
+
             if (isAttacking)
             {
                 yield return new WaitForEndOfFrame();
                 continue;
             }
-
 
 
             if (!isAttacking)

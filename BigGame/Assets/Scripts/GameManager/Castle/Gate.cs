@@ -93,7 +93,7 @@ public class Gate : MonoBehaviour
             {
                 if (i + ii > pathLenght)
                 {
-                    UnitAttack(thisUnitController, _secondGate.GetComponent<Gate>());
+                    UnitAttack(thisUnitController, this);
 
                     break;
                 }
@@ -143,6 +143,7 @@ public class Gate : MonoBehaviour
             var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
             List<int> positions = new List<int>();
             path[i].unitMain = thisUnit;
+
             for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
             {
                 if (i + ii > pathLenght)
@@ -226,11 +227,11 @@ public class Gate : MonoBehaviour
             }
             var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
 
-            for (int ii = 1; ii <= thisUnitAttackReach; ii++)
+            for (int ii = 0; ii <= thisUnitAttackReach; ii++)
             {
                 if (i-ii<1)
                 {
-                    UnitAttack(thisUnitController, _secondGate.GetComponent<Gate>());
+                    UnitAttack(thisUnitController, this);
 
                     break;
                 }
@@ -247,7 +248,7 @@ public class Gate : MonoBehaviour
                     continue;
                 }
                 UnitAttack(thisUnitController, path[i - ii].unitMain.GetComponent<UnitControler>());
-
+                break;
             }
         }
     }
@@ -265,8 +266,10 @@ public class Gate : MonoBehaviour
             {
                 continue;
             }
+
             var thisUnit = path[i].unitMain;
             var thisUnitController = thisUnit.GetComponent<UnitControler>();
+
             if (thisUnitController.ReturnHiddenHp() <= 0)
             {
                 continue;
@@ -306,6 +309,7 @@ public class Gate : MonoBehaviour
             }
 
             thisUnitController.SetWaypoints(positions);
+
             if (!thisUnitController.AmIDoingSomething())
             {
                 thisUnitController.MoveAction();

@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         gameManager = gameObject;
         instance = this;
+
+        
     }
 
     void Start()
