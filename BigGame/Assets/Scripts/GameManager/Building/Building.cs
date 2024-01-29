@@ -21,7 +21,8 @@ public class Building : MonoBehaviour
     private GameObject halfTransparent;
     
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
-
+    public List<BuildingsStats> buildingsStats; // It stores what building does
+    
     public List<GameObject> Budynks
     {
         get
@@ -29,7 +30,6 @@ public class Building : MonoBehaviour
             return budynki;
         }
     }
-    public List<BuildingsStats> buildingsStats; // It stores what building does
     
     [Header(" ")]
     [Header("Limit Buildings")]
@@ -244,6 +244,7 @@ public class Building : MonoBehaviour
     {
         budynki.Remove(demolishedBuilding);
         buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
+        Destroy(demolishedBuilding);
     }
     
 }

@@ -65,14 +65,11 @@ public class DestroyBuilding : MonoBehaviour
                         //Save clicked Building
                         GameObject hitBuilding = raycastHit.collider.gameObject;
                         
-                        //Remove buffs
-                        //Building.Instance.RemoveBuilding(hitBuilding);
-                        
                         //Place previous ground
                         hitBuilding.GetComponent<BuildingsStats>().terrainTypeThatWasThere.SetActive(true);
                         
-                        //Destroy building
-                        Destroy(hitBuilding);
+                        //Remove buffs and destroy
+                        Building.Instance.RemoveBuilding(hitBuilding);
                     }
                 }
                 waitForInputCor = null;

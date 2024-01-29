@@ -35,7 +35,6 @@ public class SpawnUnitCard : MonoBehaviour
     public void InitBuy()
     {
         SpawnerScript.instance.SpawnMyUnit(gameObject, stats);
-
     }
 
     public void NewStartPos()

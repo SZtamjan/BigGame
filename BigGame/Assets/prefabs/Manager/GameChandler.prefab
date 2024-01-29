@@ -4209,7 +4209,7 @@ GameObject:
   - component: {fileID: 1538908697392241386}
   m_Layer: 5
   m_Name: Trashcan
-  m_TagString: Untagged
+  m_TagString: Trashcan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4317,17 +4317,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7282041662631441623}
-        m_TargetAssemblyTypeName: SpawnerScript, Assembly-CSharp
-        m_MethodName: SetRemoved
-        m_Mode: 6
+      - m_Target: {fileID: 3416191061797419716}
+        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
+        m_MethodName: RemoveSelectedCard
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4345800888419419925
 GameObject:
@@ -7117,6 +7117,7 @@ MonoBehaviour:
   playerRemovedCard: 0
   WhatEnemyCanSpawn: {fileID: 0}
   _SelectedCard: {r: 0.3126739, g: 1, b: 0.11792451, a: 1}
+  _selectedCard: {fileID: 0}
 --- !u!114 &4340605472721432590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9713,6 +9714,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1748787639598444349, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4300447492961778802, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -9723,7 +9728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4541620707542193243, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.07088725
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 6879541717985909427, guid: 2f6f5d9e25c6e554baf17d857e7dd3e3, type: 3}
       propertyPath: m_Pivot.x

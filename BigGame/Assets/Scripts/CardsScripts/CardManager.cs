@@ -10,6 +10,10 @@ using Random = UnityEngine.Random;
 public class CardManager : MonoBehaviour
 {
     public static CardManager instance;
+    
+    //Components
+    private SpawnerScript _spawnerScript;
+    
     public List<GameObject> CardInHand;
 
     private GameObject _WhereToSpawnCard;
@@ -29,7 +33,6 @@ public class CardManager : MonoBehaviour
     private void Awake()
     {
         CardInHand = new List<GameObject>();
-        
         instance = this;
         if (PlayerCards.Count == 0)
         {
@@ -39,6 +42,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
+        _spawnerScript = SpawnerScript.instance;
         _WhereToSpawnCard = UIController.Instance.HereCardsAre();
         CheckAndUpdateCardLimit();
     }
@@ -122,6 +126,14 @@ public class CardManager : MonoBehaviour
                 }
             }
         }
+    }
+    
+    public void RemoveSelectedCard()
+    {
+        GameObject selectedCard = _spawnerScript.SelectedCardProp;
+        if (selectedCard != null) Destroy(selectedCard);
+        if (selectedCard != null) RevomeCard(selectedCard);
+        UIController.Instance.ArrangeCards();
     }
     
     public void RevomeCard(GameObject card)

@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
-        GetComponent<SpawnerScript>().SetRemoved(false);
+        GetComponent<SpawnerScript>().SetRemoved(false); // ?????????????????????
         EventManager.Instance.BuldingsActions();
         if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
         {
