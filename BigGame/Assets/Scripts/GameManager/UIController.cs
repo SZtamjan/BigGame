@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject DeckCards;
     [SerializeField] private GameObject FakeCard;
     [SerializeField] private GameObject CardsToDrawViewer;
+    [SerializeField] private GameObject CardsToDrawViewerScroller;
     [SerializeField] private Image CardsToDrawViewerBackground;
     private float _DeckCardsWith;
     [SerializeField] private GameObject BuildingsCards;
@@ -30,6 +31,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private List<GameObject> DrawableCards = new List<GameObject>();
     //Components
     private CardManager _cardManager;
+    private PlayerMovement _playerMovement;
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
@@ -64,7 +66,8 @@ public class UIController : MonoBehaviour
     {
         //Initialize components
         _cardManager = CardManager.instance;
-        
+        _playerMovement = PlayerMovement.instance;
+
         BuildingsCards.SetActive(false);
         BuildingsCardShowing = false;
         QuickMenu.SetActive(false);
@@ -121,28 +124,43 @@ public class UIController : MonoBehaviour
     public void SwitchActiveCardsToDrawViewer()
     {
         StartCoroutine(ViewerAnimation());
+        ChangeZoomLock();
     }
+
+    private void ChangeZoomLock()
+    {
+        _playerMovement.GetComponent<CamZoom>().ChangeZoomLock();
+    }
+    
+    //It teleports to -2000 to prevent deck-cards being unclickable
     private IEnumerator ViewerAnimation()
     {
         
-        if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == -1000 && CardsToDrawViewerBackground.color.a == 0)
+        if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == -2000 && CardsToDrawViewerBackground.color.a == 0)
         {
             //In
-            CardsToDrawViewer.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(-1000f, .0f);
+            
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
             CardsToDrawViewerBackground.DOFade(.8f, .5f).onPlay = () =>
             {
                 CardsToDrawViewerBackground.gameObject.SetActive(true);
             };
         }
-        else if (Math.Round(CardsToDrawViewer.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
+        else if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
         {
             //Out
-            Tween myTween =  CardsToDrawViewer.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);
+            Tween myTween =  CardsToDrawViewerScroller.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);
             yield return myTween.WaitForPosition(.3f);
             CardsToDrawViewerBackground.DOFade(0f, .4f).onComplete = () =>
             {
                 CardsToDrawViewerBackground.gameObject.SetActive(false);
             };
+            
+            yield return myTween.WaitForPosition(.8f);
+            myTween.Kill();
+            
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(-2000f, .0f);
         }
     }
 

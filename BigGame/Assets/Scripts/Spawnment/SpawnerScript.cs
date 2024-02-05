@@ -75,16 +75,6 @@ public class SpawnerScript : MonoBehaviour
 
                 RaycastHit hit;
 
-                if (false) // ten cały if należy usunąc
-                {
-                    
-                    playerRemovedCard = true;
-                    Destroy(karta);
-                    CardManager.instance.RevomeCard(karta);
-                    UIController.Instance.ArrangeCards();
-                   
-                }
-
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (!EventSystem.current.IsPointerOverGameObject())

@@ -10,6 +10,13 @@ public class CamZoom : MonoBehaviour
 
     private float currentZoom = 0.0f;
 
+    private bool inMenu = false;
+
+    public void ChangeZoomLock()
+    {
+        inMenu = inMenu == false;
+    }
+
     private void Start()
     {
         currentZoom = Camera.main.fieldOfView;
@@ -19,7 +26,7 @@ public class CamZoom : MonoBehaviour
     {
         float scrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scrollWheelInput != 0)
+        if (scrollWheelInput != 0 && !inMenu)
         {
             currentZoom -= scrollWheelInput * zoomSpeed;
 
