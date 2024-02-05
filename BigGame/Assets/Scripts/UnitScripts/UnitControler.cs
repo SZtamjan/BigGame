@@ -302,7 +302,7 @@ public class UnitControler : MonoBehaviour
 
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
-                if (_MyGate.path[wayPoints.First()].unitMain == null)
+                if (_MyGate.path[wayPoints.First()].unitWanting == null)
                 {
                     _MyGate.path[wayPoints.First()].unitWanting = this;
 
