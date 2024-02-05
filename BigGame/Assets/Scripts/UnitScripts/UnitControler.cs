@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static DrogaClass;
 
 public class UnitControler : MonoBehaviour
 {
@@ -24,6 +21,8 @@ public class UnitControler : MonoBehaviour
     [SerializeField] private bool isAttacking = false;
     [SerializeField] private bool isMovving = false;
     [SerializeField] private bool isPojectileFlying = false;
+
+    [SerializeField] private int IdleAnimationsNumber = 1;
     private bool _iMDying = false;
 
     [Header("Dla jednostek dystansowych")]
@@ -45,6 +44,7 @@ public class UnitControler : MonoBehaviour
     {
         wayPoints = new List<int>();
         //SetStats();
+        animator = GetComponent<Animator>();
     }
     public void SetSO(UnitScriptableObjects stats)
     {
@@ -122,7 +122,7 @@ public class UnitControler : MonoBehaviour
             animator.SetBool("death", true);
             _iMDying = true;
         }
-        PlayHurt();       
+        PlayHurt();
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
 
 
@@ -163,6 +163,25 @@ public class UnitControler : MonoBehaviour
     {
         if (!_iMDying)
             animator.SetTrigger("idle");
+    }
+
+    public void PlayRandomIdle()
+    {
+        if (IdleAnimationsNumber < 1)
+        {
+            Debug.Log("coœ posz³o nie tak z iloœci¹ animacji");
+        }
+        else
+        {
+            int randomAnimation = Random.Range(0, IdleAnimationsNumber) + 1;
+
+            Debug.Log("dupa");
+
+            animator.SetInteger("idle_n", randomAnimation);
+
+        }
+
+        PlayIdle();
     }
 
     #endregion
@@ -298,7 +317,7 @@ public class UnitControler : MonoBehaviour
         while ((wayPoints?.Count ?? 0) > 0)
         {
 
-            
+
 
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
