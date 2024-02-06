@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static DrogaClass;
 
 public class UnitControler : MonoBehaviour
 {
@@ -25,6 +22,9 @@ public class UnitControler : MonoBehaviour
     [SerializeField] private bool isMovving = false;
     [SerializeField] private bool isPojectileFlying = false;
 
+    [SerializeField] private int IdleAnimationsNumber = 1;
+    private bool _iMDying = false;
+
     [Header("Dla jednostek dystansowych")]
     public ProjectileController projectileToSpawn;
     public Transform projectileStartingPoint;
@@ -44,6 +44,7 @@ public class UnitControler : MonoBehaviour
     {
         wayPoints = new List<int>();
         //SetStats();
+        animator = GetComponent<Animator>();
     }
     public void SetSO(UnitScriptableObjects stats)
     {
@@ -103,7 +104,7 @@ public class UnitControler : MonoBehaviour
 
     public bool AmIDoingSomething()
     {
-        if (isAttacking || isMovving || isPojectileFlying)
+        if (isAttacking || isMovving || isPojectileFlying || _iMDying)
         {
             return true;
         }
@@ -119,6 +120,7 @@ public class UnitControler : MonoBehaviour
         if (hp <= 0)
         {
             animator.SetBool("death", true);
+            _iMDying = true;
         }
         PlayHurt();
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
@@ -144,11 +146,13 @@ public class UnitControler : MonoBehaviour
 
     public void PlayWalk()
     {
-        animator.SetTrigger("walk");
+        if (!_iMDying)
+            animator.SetTrigger("walk");
     }
     public void PlayAttack()
     {
-        animator.SetTrigger("attack");
+        if (!_iMDying)
+            animator.SetTrigger("attack");
     }
     public void PlayHurt()
     {
@@ -157,7 +161,27 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayIdle()
     {
-        animator.SetTrigger("idle");
+        if (!_iMDying)
+            animator.SetTrigger("idle");
+    }
+
+    public void PlayRandomIdle()
+    {
+        if (IdleAnimationsNumber < 1)
+        {
+            Debug.Log("coœ posz³o nie tak z iloœci¹ animacji");
+        }
+        else
+        {
+            int randomAnimation = Random.Range(0, IdleAnimationsNumber) + 1;
+
+            Debug.Log("dupa");
+
+            animator.SetInteger("idle_n", randomAnimation);
+
+        }
+
+        PlayIdle();
     }
 
     #endregion
@@ -232,6 +256,12 @@ public class UnitControler : MonoBehaviour
         {
             return targetCastleToAttack.transform.position;
         }
+        if (targetGateToAttack != null)
+        {
+            return targetGateToAttack.transform.position;
+        }
+
+
         return transform.position;
     }
 
@@ -287,9 +317,11 @@ public class UnitControler : MonoBehaviour
         while ((wayPoints?.Count ?? 0) > 0)
         {
 
+
+
             if (dupa && wayPoints.First() > 0 && playersUnit)
             {
-                if (_MyGate.path[wayPoints.First()].unitMain == null)
+                if (_MyGate.path[wayPoints.First()].unitWanting == null)
                 {
                     _MyGate.path[wayPoints.First()].unitWanting = this;
 
@@ -318,12 +350,12 @@ public class UnitControler : MonoBehaviour
 
             }
 
+
             if (isAttacking)
             {
                 yield return new WaitForEndOfFrame();
                 continue;
             }
-
 
 
             if (!isAttacking)
