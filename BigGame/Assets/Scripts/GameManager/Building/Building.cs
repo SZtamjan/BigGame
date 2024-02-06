@@ -21,7 +21,8 @@ public class Building : MonoBehaviour
     private GameObject halfTransparent;
     
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
-
+    public List<BuildingsStats> buildingsStats; // It stores what building does
+    
     public List<GameObject> Budynks
     {
         get
@@ -29,7 +30,6 @@ public class Building : MonoBehaviour
             return budynki;
         }
     }
-    public List<BuildingsStats> buildingsStats; // It stores what building does
     
     [Header(" ")]
     [Header("Limit Buildings")]
@@ -59,8 +59,9 @@ public class Building : MonoBehaviour
     {
         budynki = new List<GameObject>();
         cam = Camera.main;
-
     }
+    
+    
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
     {
@@ -70,6 +71,7 @@ public class Building : MonoBehaviour
             if (parent.transform.childCount !>= buildingLimitInTotal || IsBuildingLimitAchieved(statsy.whichBudynek))
             {
                 //Tell what if limit is achieved
+                EconomyConditions.Instance.BuildingLimitAchieved();
                 Debug.Log("Limit is achieved");
             }
             else
@@ -89,22 +91,51 @@ public class Building : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            EconomyConditions.Instance.NotUrTurn();
+        }
     }
-    public void Build(GameObject position, BuildingsScriptableObjects statsy)
+    private void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
-        Destroy(position);
         GameObject building = Instantiate(statsy.Budynek, posi.position, posi.rotation);
         building.transform.SetParent(parent.transform, true);
         building.AddComponent<BuildingsStats>();
         var buldingStast = building.GetComponent<BuildingsStats>();
         buldingStast.putStats(statsy);
+        buldingStast.terrainTypeThatWasThere = position;
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
         justBuild.Raise();
+        // Destroy(position);
+        position.SetActive(false);
     }
 
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
+    {
+        InstantiateHalfTransparentBuilding(statsy);
+        
+        while (isBuilding)
+        {
+            MoveOrHideHalfTransparentBuilding();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                CheckConditionsAndBuy(statsy);
+                yield return new WaitForEndOfFrame();
+                EndBuilding();
+            }
+            
+            yield return null;
+        }
+        //animator.SetFloat("speed", 0);
+        Destroy(halfTransparent);
+
+        yield return null;
+    }
+
+    private void InstantiateHalfTransparentBuilding(BuildingsScriptableObjects statsy)
     {
         halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), transform.rotation);
         //animator.SetFloat("speed", 1);
@@ -116,68 +147,57 @@ public class Building : MonoBehaviour
         {
             mat.SetFloat("_Dissolve", 0.5f);
         }
-        while (isBuilding)
-        {
-            Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit raycastHit1;
-            if (Physics.Raycast(ray1, out raycastHit1, 100, mask))
-            {
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
+    }
 
-                }
-                else
-                {
-                    GameObject hit1 = raycastHit1.collider.gameObject;
-                    Vector3 place = hit1.transform.position;
-                    place.y += 0.01f;
-                    halfTransparent.transform.position = place;
-                }
+
+    private void MoveOrHideHalfTransparentBuilding()
+    {
+        Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit raycastHit1;
+        if (Physics.Raycast(ray1, out raycastHit1, 100, mask))
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
 
             }
             else
             {
-                halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
+                GameObject hit1 = raycastHit1.collider.gameObject;
+                Vector3 place = hit1.transform.position;
+                place.y += 0.01f;
+                halfTransparent.transform.position = place;
             }
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 100, mask))
-                {
-                    if (!EventSystem.current.IsPointerOverGameObject())
-                    {
-                        GameObject hitObject = hit.collider.gameObject;
-                        Debug.Log(hitObject.name);
-
-                        Economy.Instance.Purchase(statsy.cost); //Probably fucked - it should store bool
-                        Build(hitObject, statsy); //It should be in if statement, expression above
-                    }
-
-                    yield return new WaitForEndOfFrame();
-                    EndBuilding();
-
-                }
-                else
-                {
-                    //Je�eli jest obiekt to przesta� budowa�
-                    EconomyConditions.Instance.ThereIsABuilding();
-                    
-                    yield return new WaitForEndOfFrame();
-                    EndBuilding();
-                }
-            }
-            
-            yield return null;
         }
-        //animator.SetFloat("speed", 0);
-        Destroy(halfTransparent);
-
-        yield return null;
+        else
+        {
+            halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
+        }
     }
 
+    private void CheckConditionsAndBuy(BuildingsScriptableObjects statsy)
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, mask))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                GameObject hitObject = hit.collider.gameObject;
+                Debug.Log(hitObject.name);
+
+                Economy.Instance.Purchase(statsy.cost); //It's correct, it only charges player for the building
+                Build(hitObject, statsy);
+            }
+        }
+        else
+        {
+            //Je�eli jest obiekt to przesta� budowa�
+            EconomyConditions.Instance.ThereIsABuilding();
+        }
+    }
+    
     private void EndBuilding()
     {
         isBuilding = false;
@@ -219,4 +239,12 @@ public class Building : MonoBehaviour
 
         return isLimitAchieved;
     }
+
+    public void RemoveBuilding(GameObject demolishedBuilding)
+    {
+        budynki.Remove(demolishedBuilding);
+        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
+        Destroy(demolishedBuilding);
+    }
+    
 }

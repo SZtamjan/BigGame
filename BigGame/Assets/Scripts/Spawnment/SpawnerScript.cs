@@ -22,10 +22,17 @@ public class SpawnerScript : MonoBehaviour
     {
         instance = this;
     }
-
+    
     [SerializeField] private Color _SelectedCard;
     private Color _DefaultCardColor = Color.white;
+    public GameObject _selectedCard;
 
+    public GameObject SelectedCardProp
+    {
+        get => _selectedCard;
+        set => _selectedCard = value;
+    }
+    
     //public void SpawnMyUnit(UnitScriptableObjects card) // tu jest stary spawn na jedną drogę
     //{
     //    if (GetComponent<GameManager>().CanPlayerMove())
@@ -59,29 +66,28 @@ public class SpawnerScript : MonoBehaviour
         }
         else
         {
+            UIController.Instance.SwitchTrashcanActive();
             _SpawnerCoroutine = StartCoroutine(SelectPathToSpawn(karta, stats));
         }
     }
 
     private IEnumerator SelectPathToSpawn(GameObject karta, UnitScriptableObjects stats)
     {
+        _selectedCard = karta;
         karta.GetComponent<Image>().color = _SelectedCard;
         while (GameManager.instance.CanPlayerMove())
         {
-
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 RaycastHit hit;
-
+                
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (!EventSystem.current.IsPointerOverGameObject())
                     {
                         Debug.Log("Hit object with tag: " + hit.collider.tag);
-
-
 
                         Gate thisGatePatch = GetPath(hit.collider.tag);
                         if (thisGatePatch == null)
@@ -116,6 +122,11 @@ public class SpawnerScript : MonoBehaviour
         }
         karta.GetComponent<Image>().color = _DefaultCardColor;
         _SpawnerCoroutine = null;
+        yield return new WaitForSeconds(.1f);
+        UIController.Instance.SwitchTrashcanActive();
+        Debug.Log("wyczyszczono selected");
+        _selectedCard = null;
+        
         yield return null;
     }
 

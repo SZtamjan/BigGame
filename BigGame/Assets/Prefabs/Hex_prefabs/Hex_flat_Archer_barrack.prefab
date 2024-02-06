@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6993846864331882723}
   - component: {fileID: 6242263129560207174}
   - component: {fileID: 8161664331749309324}
-  m_Layer: 0
+  - component: {fileID: -8691338025116366126}
+  m_Layer: 11
   m_Name: Hex_flat_Archer_barrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,3 +89,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-8691338025116366126
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657511380786551385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2248205794816054320, guid: cd23c20160691d04fb02eea59c657d7b, type: 3}

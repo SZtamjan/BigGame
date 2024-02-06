@@ -1,0 +1,40 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "KeyBoard",
+            "id": "fe64afd7-a732-4d2f-b349-6c30632491f5",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "27c0d6ad-ee79-4c6b-aede-b2eff11fa6f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5da25bac-3449-489a-a726-c068995812f8",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Default",
+            "bindingGroup": "Default",
+            "devices": []
+        }
+    ]
+}

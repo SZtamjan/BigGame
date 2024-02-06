@@ -7,6 +7,7 @@ public class BuildingsStats : MonoBehaviour
     [SerializeField] private int moneyGenerate = 0;
     public WhichBudynek thisBudynekIs;
     [SerializeField] private UnitScriptableObjects unitAdd;
+    public GameObject terrainTypeThatWasThere;
 
     private void OnEnable()
     {

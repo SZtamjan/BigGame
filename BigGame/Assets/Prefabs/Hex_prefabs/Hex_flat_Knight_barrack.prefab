@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3187032315412590331}
   - component: {fileID: 1987572412322193758}
   - component: {fileID: 4355457881613817236}
-  m_Layer: 0
+  - component: {fileID: 3905657412920888896}
+  m_Layer: 11
   m_Name: Hex_flat_Knight_barrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,3 +89,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3905657412920888896
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842138248718578753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6777205200438349769, guid: 9d120df179e46074da0bc54f19426638, type: 3}

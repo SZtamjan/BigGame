@@ -56,4 +56,16 @@ public class EconomyConditions : MonoBehaviour
         Debug.Log("Jednostka tu jest");
     }
 
+    public void BuildingLimitAchieved()
+    {
+        UIController.Instance.WarmingShowWarming("Limit of buildings achieved!");
+        Debug.Log("Limit of buildings achieved!");
+    }
+
+    public void NotUrTurn()
+    {
+        UIController.Instance.WarmingShowWarming("Wait for your turn!");
+        Debug.Log("Not players turn");
+    }
+    
 }

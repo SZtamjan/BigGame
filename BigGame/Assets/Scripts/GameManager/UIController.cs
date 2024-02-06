@@ -29,7 +29,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject BuildingsCards;
     [SerializeField] private bool BuildingsCardShowing = false;
     [SerializeField] private List<GameObject> DrawableCards = new List<GameObject>();
+    
     //Components
+    [Header("Components")] 
+    [SerializeField] private Camera _camera;
     private CardManager _cardManager;
     private PlayerMovement _playerMovement;
 
@@ -57,6 +60,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private Sprite isOff;
     [SerializeField] private Image _muteButton;
 
+    [Header("Background Mechanics")] 
+    [SerializeField] private GameObject buildingMenu;
+    [SerializeField] private GameObject trashCan;
+
+    //Coroutines
+    private Coroutine warningMessage;
 
     private void Awake()
     {
@@ -116,7 +125,7 @@ public class UIController : MonoBehaviour
         {
             i++;
             float posX = (x - i) * (_DeckCardsWith / x);
-            item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 0, 0);
+            item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 88f, 0);
             item.GetComponent<SpawnUnitCard>().NewStartPos();
         }
     }
@@ -216,6 +225,20 @@ public class UIController : MonoBehaviour
         {
             if(card.GetComponent<FakeCard>().name == removeThis.GetComponent<FakeCard>().name)
                 Destroy(card);
+        }
+    }
+
+    public void SwitchTrashcanActive()
+    {
+        if (buildingMenu.activeSelf)
+        {
+            buildingMenu.SetActive(false);
+            trashCan.SetActive(true);
+        }
+        else
+        {
+            buildingMenu.SetActive(true);
+            trashCan.SetActive(false);
         }
     }
 
@@ -333,12 +356,33 @@ public class UIController : MonoBehaviour
     public void WarmingShowWarming(string message)
     {
         ShowEconomyWarming.text = message;
-        StartCoroutine(WarningLenght());
+        if (warningMessage == null)
+        {
+            warningMessage = StartCoroutine(WarningLenght());
+        }
+        else
+        {
+            StopCoroutine(warningMessage);
+            warningMessage = null;
+            
+            warningMessage = StartCoroutine(WarningLenght());
+        }
     }
 
     IEnumerator WarningLenght()
     {
         float elapsedTime = 0f;
+        
+        Vector2 movePos;
+        Canvas parentCanvas = ShowEconomyWarming.transform.parent.GetComponent<Canvas>();
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            parentCanvas.transform as RectTransform,
+            Input.mousePosition, parentCanvas.worldCamera,
+            out movePos);
+
+        ShowEconomyWarming.transform.position = parentCanvas.transform.TransformPoint(movePos);
+        
         ShowEconomyWarming.alpha = 1;
         _currentAlpha = ShowEconomyWarming.alpha;
 
@@ -353,6 +397,8 @@ public class UIController : MonoBehaviour
 
             elapsedTime += Time.deltaTime;
         }
+
+        warningMessage = null;
     }
     #endregion
 
