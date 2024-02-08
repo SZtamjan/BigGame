@@ -93,7 +93,7 @@ public class Gate : MonoBehaviour
             {
                 if (i + ii > pathLenght)
                 {
-                    UnitAttack(thisUnitController, this);
+                    UnitAttack(thisUnitController, _secondGate);
 
                     break;
                 }
