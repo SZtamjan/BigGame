@@ -175,7 +175,6 @@ public class UnitControler : MonoBehaviour
         {
             int randomAnimation = Random.Range(0, IdleAnimationsNumber) + 1;
 
-            Debug.Log("dupa");
 
             animator.SetInteger("idle_n", randomAnimation);
 
