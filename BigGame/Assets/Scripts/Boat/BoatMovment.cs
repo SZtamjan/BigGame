@@ -34,12 +34,18 @@ public class BoatMovment : MonoBehaviour
 
         // Poruszanie siê obiektu w kierunku docelowym
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
+        if (Vector3.Distance(transform.position, targetPosition) == diameter * 0.8f)
+        {
+            float randomAngle = Random.Range(0f, 60f);
+            transform.Rotate(new Vector3(transform.position.x + randomAngle, 0, 0));
+        }
         // Sprawdzenie, czy obiekt dotar³ do pozycji docelowej
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             SetNewTargetPosition(); // Wybór nowej pozycji docelowej
         }
+
+
     }
 
     private void SetNewTargetPosition()
