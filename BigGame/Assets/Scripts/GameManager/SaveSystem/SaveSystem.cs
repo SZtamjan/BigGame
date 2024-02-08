@@ -32,8 +32,10 @@ public class SaveSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Save file not found in " + SavePaths.levelPath);
-            return new GameData();
+            Debug.LogWarning("Save file not found in " + SavePaths.levelPath);
+            GameData gd = new GameData();
+            gd.sceneIndex = 1;
+            return gd; // returning first scene so it loads first level
         }
     }
 }
