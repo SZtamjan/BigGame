@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 744903063373281284}
   - component: {fileID: 2235006098100618652}
   - component: {fileID: 211933652986605540}
+  - component: {fileID: 1967834921408479401}
   m_Layer: 5
   m_Name: NewLevelLoadingPanel
   m_TagString: Untagged
@@ -111,6 +112,18 @@ MonoBehaviour:
   handler: {fileID: 178695401956077107}
   txt: {fileID: 6139738817894251657}
   press: {fileID: 5276305929792461973}
+--- !u!225 &1967834921408479401
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178695401956077107}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2322883682850089093
 GameObject:
   m_ObjectHideFlags: 0

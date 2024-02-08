@@ -2836,6 +2836,10 @@ PrefabInstance:
       propertyPath: playerCastle
       value: 
       objectReference: {fileID: 1176263035}
+    - target: {fileID: 2035136527747617246, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2156102804749624550, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: _camera
       value: 
@@ -2876,14 +2880,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-      propertyPath: CollectionCardsToDraw.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416191061797419716, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
-      propertyPath: CollectionCardsToDraw.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
     - target: {fileID: 3968250165878787864, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2950,7 +2946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558182063075904511, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00036621094
+      value: 0.00022149086
       objectReference: {fileID: 0}
     - target: {fileID: 7876548295686900340, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -12642,7 +12638,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113876377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e7025d927db34246a91f6726f41729d, type: 3}
   m_Name: 

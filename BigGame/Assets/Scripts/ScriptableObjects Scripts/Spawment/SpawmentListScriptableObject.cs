@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Spawment/List")]
 public class SpawmentListScriptableObject : ScriptableObject
 {
-    [SerializeField][Tooltip("Lista przypisania co GATE ma spawnowaæ")]private List<SpawnTurnScriptableObject> ListForGates; 
+    [SerializeField][Tooltip("Lista przypisania co GATE ma spawnowaÄ‡")]private List<SpawnTurnScriptableObject> ListForGates; 
 
    public UnitScriptableObjects SelectUnitAndTurnAndPath(int path, int turn)
     {
@@ -15,7 +15,7 @@ public class SpawmentListScriptableObject : ScriptableObject
         }
         if (ListForGates[path]==null)
         {
-            Debug.Log("Gate nie ma co spawnowaæ, nie przypisane poprawnie w Spawment/List");
+            Debug.Log("Gate nie ma co spawnowaÄ‡, nie przypisane poprawnie w Spawment/List");
             return null;            
         }
         return ListForGates[path].SelectUnitAndTurn(turn);

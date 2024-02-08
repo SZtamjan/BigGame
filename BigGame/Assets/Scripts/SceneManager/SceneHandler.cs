@@ -46,6 +46,9 @@ public class SceneHandler : MonoBehaviour
 
         float fadeDuration = 4f;
         float elapsedTime = 0f;
+        
+        gameObject.GetComponent<CanvasGroup>().interactable = false;
+        gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
         yield return new WaitForSeconds(1f);
 
