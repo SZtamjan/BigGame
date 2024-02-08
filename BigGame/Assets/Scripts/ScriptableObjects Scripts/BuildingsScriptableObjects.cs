@@ -28,5 +28,7 @@ public enum WhichBudynek
 {
     archerBarrack,
     knightBarrack,
-    peasantBarrack
+    peasantBarrack,
+    Stable
+
 }
