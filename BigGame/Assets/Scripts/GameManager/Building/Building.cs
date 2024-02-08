@@ -99,7 +99,7 @@ public class Building : MonoBehaviour
     private void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
-        GameObject building = Instantiate(statsy.Budynek, posi.position, posi.rotation);
+        GameObject building = Instantiate(statsy.Budynek, posi.position, Quaternion.identity);
         building.transform.SetParent(parent.transform, true);
         building.AddComponent<BuildingsStats>();
         var buldingStast = building.GetComponent<BuildingsStats>();
@@ -137,7 +137,7 @@ public class Building : MonoBehaviour
 
     private void InstantiateHalfTransparentBuilding(BuildingsScriptableObjects statsy)
     {
-        halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), transform.rotation);
+        halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), Quaternion.identity);
         //animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
