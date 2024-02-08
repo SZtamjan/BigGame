@@ -1,7 +1,9 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static SpawnUnitsScriptableObject;
 
 public class UnitControler : MonoBehaviour
 {
@@ -25,12 +27,16 @@ public class UnitControler : MonoBehaviour
     [SerializeField] private int IdleAnimationsNumber = 1;
     private bool _iMDying = false;
 
-    [Header("Dla jednostek dystansowych")]
+    [SerializeField] private bool _RangedUnit=false;
+
+    [ShowIf("_RangedUnit")][Header("Dla jednostek dystansowych")]
     public ProjectileController projectileToSpawn;
-    public Transform projectileStartingPoint;
+    [ShowIf("_RangedUnit")] public Transform projectileStartingPoint;
 
     private ProjectileController projectile;
 
+    [SerializeField] private bool _mountedUnit = false;
+    [SerializeField] private Animator _SecondAnimator;
     //-------------------------------------------------------
     private UnitControler targetUnitToAttack;
     private CastleStats targetCastleToAttack;
@@ -40,11 +46,17 @@ public class UnitControler : MonoBehaviour
     private GameObject EnemyCastle;
 
     private Animator animator;
+
+
     void Start()
     {
         wayPoints = new List<int>();
         //SetStats();
         animator = GetComponent<Animator>();
+        if (_mountedUnit && _SecondAnimator == null)
+        {
+            Debug.Log("Coœ nie tak z mountem");
+        }
     }
     public void SetSO(UnitScriptableObjects stats)
     {
@@ -121,6 +133,10 @@ public class UnitControler : MonoBehaviour
         {
             animator.SetBool("death", true);
             _iMDying = true;
+            if (_mountedUnit)
+            {
+                _SecondAnimator.SetBool("death", true);
+            }
         }
         PlayHurt();
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
@@ -147,22 +163,47 @@ public class UnitControler : MonoBehaviour
     public void PlayWalk()
     {
         if (!_iMDying)
+        {
             animator.SetTrigger("walk");
+            if (_mountedUnit)
+            {
+                _SecondAnimator.SetTrigger("walk");
+            }
+        }
+           
     }
     public void PlayAttack()
     {
         if (!_iMDying)
+        {
             animator.SetTrigger("attack");
+            if (_mountedUnit)
+            {
+                _SecondAnimator.SetTrigger("attack");
+            }
+
+        }
     }
     public void PlayHurt()
     {
 
         animator.SetTrigger("hurt");
+        if (_mountedUnit)
+        {
+            _SecondAnimator.SetTrigger("hurt");
+        }
     }
     public void PlayIdle()
     {
         if (!_iMDying)
+        {
             animator.SetTrigger("idle");
+            if (_mountedUnit)
+            {
+                _SecondAnimator.SetTrigger("idle");
+            }
+        }
+           
     }
 
     public void PlayRandomIdle()
@@ -175,7 +216,6 @@ public class UnitControler : MonoBehaviour
         {
             int randomAnimation = Random.Range(0, IdleAnimationsNumber) + 1;
 
-            Debug.Log("dupa");
 
             animator.SetInteger("idle_n", randomAnimation);
 
