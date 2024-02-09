@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 609e366e302732746a138ff01e4fd0a3
+guid: 924e2f53f01efb0428d77480f6a0cab7
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HEX
+    second: {fileID: 2100000, guid: 5b503deaed5e1fa479bd0bde42c0966a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kamien
+    second: {fileID: 2100000, guid: 6a671200822010b45bf83bc61c5717f7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

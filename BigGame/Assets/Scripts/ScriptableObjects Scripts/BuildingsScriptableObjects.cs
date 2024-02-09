@@ -29,6 +29,7 @@ public enum WhichBudynek
     archerBarrack,
     knightBarrack,
     peasantBarrack,
-    Stable
+    Stable,
+    StoneMine
 
 }
