@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -63}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4897058387237834934
@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 45.57}
+  m_SizeDelta: {x: 200, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6820154143913741308
 CanvasRenderer:
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonText: {fileID: 6552775901859472904}
   _buttonDescription: {fileID: 3649232834842051057}
-  infoSource: {fileID: 11400000, guid: 6e68ba279dc31f946a120449d8d6d472, type: 2}
+  infoSource: {fileID: 11400000, guid: 8ee844a104920e44bb8b64965a27ddbe, type: 2}
   buildingSelectedEvent: {fileID: 11400000, guid: 75570f3ef2a8798489c6db963d6bdd40, type: 2}
   colorWhenSelected: {r: 0.28350618, g: 0.7924528, b: 0.25717336, a: 1}
   _stucture: {fileID: 0}
