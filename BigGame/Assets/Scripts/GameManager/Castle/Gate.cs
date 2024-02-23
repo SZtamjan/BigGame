@@ -89,6 +89,8 @@ public class Gate : MonoBehaviour
 
             var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
 
+
+
             for (int ii = 1; ii <= thisUnitAttackReach; ii++)
             {
                 if (i + ii > pathLenght)
@@ -142,7 +144,9 @@ public class Gate : MonoBehaviour
 
             var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
             List<int> positions = new List<int>();
-            path[i].unitMain = thisUnit;
+            path[i].unitWanting = thisUnit;
+
+
 
             for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
             {
@@ -277,7 +281,7 @@ public class Gate : MonoBehaviour
 
             var thisUnitMoveDistance = thisUnitController.ReturnMovmeDistance();
             List<int> positions = new List<int>();
-            path[i].unitMain = thisUnit;
+            path[i].unitWanting = thisUnit;
 
             for (int ii = 1; ii <= thisUnitMoveDistance; ii++)
             {
@@ -419,6 +423,14 @@ public class Gate : MonoBehaviour
         }
 
         return sourceList;
+    }
+
+    internal void ClearPathFromWanwingUnit()
+    {
+        foreach (var item in path)
+        {
+            item.unitWanting = null;
+        };
     }
 
     #endregion
