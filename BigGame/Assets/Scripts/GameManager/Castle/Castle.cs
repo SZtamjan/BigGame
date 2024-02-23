@@ -94,4 +94,12 @@ public class Castle : MonoBehaviour
 
     }
 
+    public void ClearPathFromWanwingUnit()
+    {
+        foreach (var item in gates)
+        {
+            item.ClearPathFromWanwingUnit();
+        }
+    }
+
 }

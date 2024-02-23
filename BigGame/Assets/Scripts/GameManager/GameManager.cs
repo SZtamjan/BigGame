@@ -290,6 +290,8 @@ public class GameManager : MonoBehaviour
 
         }
 
+        CastlesController.Instance.playerCastle.ClearPathFromWanwingUnit();
+
         if (playerUnit)
         {
             GameManager.instance.UpdateGameState(GameState.EnemyTurn);
