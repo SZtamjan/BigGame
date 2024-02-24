@@ -478,28 +478,42 @@ half4 UniversalFragmentPBR_Extend(InputData inputData, SurfaceData surfaceData, 
     mainLight,
     inputData.normalWS, inputData.viewDirectionWS,
     0, specularHighlightsOff, inputData.positionWS, uv, screenUV, otoonSurface);
-    
 
-    #ifdef _ADDITIONAL_LIGHTS
-        uint pixelLightCount = GetAdditionalLightsCount();
-        for (uint lightIndex = 0u; lightIndex < pixelLightCount; ++lightIndex)
+#if defined(_ADDITIONAL_LIGHTS)
+    uint pixelLightCount = GetAdditionalLightsCount();
+
+    #if USE_FORWARD_PLUS
+    uint meshRenderingLayers = GetMeshRenderingLayer();
+    for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
+    {
+        FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+
+        Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowMask);
+        #ifdef _LIGHT_LAYERS
+        if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+            #endif
         {
-            #if VERSION_LOWER(10, 0)
-                Light light = GetAdditionalLight(lightIndex, inputData.positionWS);
-            #else
-                Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowMask);
-            #endif
-            #if VERSION_GREATER_EQUAL(12, 0)
-                #if defined(_SCREEN_SPACE_OCCLUSION)
-                    light.color *= aoFactor.directAmbientOcclusion;
-                #endif
-            #endif
             color += LightingPhysicallyBased_Extend(brdfData, brdfDataClearCoat,
-            light,
-            inputData.normalWS, inputData.viewDirectionWS,
-            0, specularHighlightsOff, inputData.positionWS, uv, screenUV, otoonSurface);
+             light,
+             inputData.normalWS, inputData.viewDirectionWS,
+             0, specularHighlightsOff, inputData.positionWS, uv, screenUV, otoonSurface);
         }
+    }
     #endif
+
+    LIGHT_LOOP_BEGIN(pixelLightCount)
+        Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowMask);
+    #ifdef _LIGHT_LAYERS
+    if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+        #endif
+    {
+        color += LightingPhysicallyBased_Extend(brdfData, brdfDataClearCoat,
+           light,
+           inputData.normalWS, inputData.viewDirectionWS,
+           0, specularHighlightsOff, inputData.positionWS, uv, screenUV, otoonSurface);
+    }
+    LIGHT_LOOP_END
+#endif
 
     #ifdef _ADDITIONAL_LIGHTS_VERTEX
         color += inputData.vertexLighting * brdfData.diffuse;
@@ -557,22 +571,34 @@ half4 UniversalFragmentToon_Extend(InputData inputData, half3 diffuse, half4 spe
 
     color += LightingToon_Extend(mainLight, albedo, specularGloss, inputData.normalWS, inputData.viewDirectionWS, inputData.positionWS, uv, screenUV, otoonSurface);
 
-    #ifdef _ADDITIONAL_LIGHTS
+    #if defined(_ADDITIONAL_LIGHTS)
         uint pixelLightCount = GetAdditionalLightsCount();
-        for (uint lightIndex = 0u; lightIndex < pixelLightCount; ++lightIndex)
+
+        #if USE_FORWARD_PLUS
+        uint meshRenderingLayers = GetMeshRenderingLayer();
+        for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
         {
-            #if VERSION_LOWER(10, 0)
-                Light light = GetAdditionalLight(lightIndex, inputData.positionWS);
-            #else
-                Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowMask);
-            #endif
-            #if VERSION_GREATER_EQUAL(12, 0)
-                #if defined(_SCREEN_SPACE_OCCLUSION)
-                    light.color *= aoFactor.directAmbientOcclusion;
+            FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+
+            Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowMask);
+            #ifdef _LIGHT_LAYERS
+            if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
                 #endif
+            {
+                 color += LightingToon_Extend(light, albedo, specularGloss, inputData.normalWS, inputData.viewDirectionWS, inputData.positionWS, uv, screenUV, otoonSurface);
+            }
+        }
+        #endif
+
+    LIGHT_LOOP_BEGIN(pixelLightCount)
+        Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowMask);
+        #ifdef _LIGHT_LAYERS
+        if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
             #endif
+        {
             color += LightingToon_Extend(light, albedo, specularGloss, inputData.normalWS, inputData.viewDirectionWS, inputData.positionWS, uv, screenUV, otoonSurface);
         }
+    LIGHT_LOOP_END
     #endif
 
     #ifdef _ADDITIONAL_LIGHTS_VERTEX
