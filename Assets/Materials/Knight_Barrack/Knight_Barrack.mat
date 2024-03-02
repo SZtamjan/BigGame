@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7364073167640651255
+--- !u!114 &-7190792112728767069
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28,9 +28,9 @@ Material:
   - _NORMALMAP
   - _OCCLUSIONMAP
   - _OUTLINE
-  - _RIMLIGHTING_ON
+  - _TOON_SHADING_ON
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2050
@@ -40,12 +40,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BASE_COLOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BUMP_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 0c35c8b2840d6734abe0e5b73d58d8d4, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8dcae60640b25447ae66f97838e178a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 37a43fc5493027d41892ccd264012f8c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8a9d753d75481de4686a6e74b709c51b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -64,8 +72,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
+    - _EMISSION_COLOR_MAP:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 9f1d45ea2ddf33f4c8243908629429e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceShadowMap:
@@ -88,19 +100,35 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _METALNESS_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0c35c8b2840d6734abe0e5b73d58d8d4, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8dcae60640b25447ae66f97838e178a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: cc543b497962b0643a17a46388192f2d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 25960aadf712c114a83b0a0ea00c34e3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: a3ca253192a5fbf44839bcd22dd0f0ed, type: 3}
+        m_Texture: {fileID: 2800000, guid: 75b037247a17fb1439e7218180eb5374, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _REFLECTIONS_COLOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _REFLECTIONS_IOR_MAP:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _REFLECTIONS_ROUGHNESS_MAP:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -113,6 +141,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularClipMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TRANSPARENCY_MAP:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -131,6 +163,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _BASE_COLOR_WEIGHT: 1
+    - _BUMP_MAP_STRENGTH: 0.3
     - _Blend: 0
     - _BrushLowerCut: 0
     - _BrushSize: 0.8
@@ -141,10 +175,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: 0
+    - _DiffuseStep: -1
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
     - _DstBlend: 0
+    - _EMISSION_WEIGHT: 1
     - _EnabledHairSpec: 0
     - _EnvironmentReflections: 1
     - _FaceShadowMapEnabled: 0
@@ -172,6 +207,7 @@ Material:
     - _HatchingEnabled: 0
     - _HatchingRotation: 0
     - _HatchingSmoothness: 0.1
+    - _METALNESS: 0
     - _Metallic: 0
     - _Mode: 0
     - _NoiseScale: 1
@@ -181,17 +217,21 @@ Material:
     - _OutlineMode: 0
     - _OutlineWidth: 12
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
+    - _REFLECTIONS_IOR: 1.52
+    - _REFLECTIONS_ROUGHNESS: 0.5
+    - _REFLECTIONS_WEIGHT: 0.5
     - _ReceiveShadows: 1
-    - _RimEnabled: 1
+    - _RimEnabled: 0
     - _RimLightAlign: -1
     - _RimLightSmoothness: 1
-    - _RimPower: 0.387
+    - _RimPower: 0
     - _SizeFalloff: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
-    - _SpecShadowStrength: 0
+    - _SpecShadowStrength: 1
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 1
     - _SpecularHighlights: 1
@@ -202,15 +242,18 @@ Material:
     - _StencilRef: 0
     - _StepViaRampTexture: 0
     - _Surface: 0
-    - _ToonBlending: 0.146
-    - _ToonEnabled: 0
+    - _TRANSPARENCY: 0
+    - _ToonBlending: 0
+    - _ToonEnabled: 1
     - _UVSec: 0
     - _UseRampColor: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - _BASE_COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
@@ -218,8 +261,9 @@ Material:
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineDistancFade: {r: -91.38298, g: -18.085037, b: 0, a: 0}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 0.13}
+    - _OutlineDistancFade: {r: -66.58035, g: 94.30046, b: 0, a: 0}
+    - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}

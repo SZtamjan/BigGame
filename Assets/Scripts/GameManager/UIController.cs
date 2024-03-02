@@ -405,7 +405,7 @@ public class UIController : MonoBehaviour
     #region ShowTurn
     public void ShowTurnChangeNumber(string number)
     {
-        ShowTurn.text = $"TURN: {number}";
+        ShowTurn.text = $"TURN \n{number}";
     }
 
     #endregion
