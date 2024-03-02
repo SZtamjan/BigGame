@@ -14,6 +14,10 @@ public class UnitControler : MonoBehaviour
     [Header("Statystyki tylko do odczytu")]
     [SerializeField] private int hp;
     [SerializeField] private int hidenHP;
+
+    [SerializeField] private int shield=0;
+    [SerializeField] private int hidenShield=0;
+
     [SerializeField] private int damage;
     [SerializeField] private int movmentDistance;
     [SerializeField] private int attackReach;
@@ -36,6 +40,7 @@ public class UnitControler : MonoBehaviour
     private ProjectileController projectile;
 
     [SerializeField] private bool _mountedUnit = false;
+    [ShowIf("_mountedUnit")]
     [SerializeField] private Animator _SecondAnimator;
     //-------------------------------------------------------
     private UnitControler targetUnitToAttack;
@@ -158,6 +163,8 @@ public class UnitControler : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+
     #region Play Animation
 
     public void PlayWalk()
@@ -195,7 +202,7 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayIdle()
     {
-        if (!_iMDying)
+        if (!_iMDying && !isAttacking)
         {
             animator.SetTrigger("idle");
             if (_mountedUnit)

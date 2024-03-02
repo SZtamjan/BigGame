@@ -63,6 +63,7 @@ public class Gate : MonoBehaviour
     [Button]
     public void PlayerUnitPhase()
     {
+        ClearWaintingPatch();
         PlayerUnitPathAttack();
         PlayerUnitPathWalk();
     }
@@ -207,6 +208,7 @@ public class Gate : MonoBehaviour
     }
     public void EnemyUnitPhase()
     {
+        ClearWaintingPatch();
         EnemyUnitPathAttack();
         EnemyUnitPathMove();
     }
@@ -327,6 +329,13 @@ public class Gate : MonoBehaviour
 
     #endregion
 
+    void ClearWaintingPatch()
+    {
+        foreach (var pole in path )
+        {
+            pole.unitWanting = null;
+        }
+    }
 
     #region path creation
 
