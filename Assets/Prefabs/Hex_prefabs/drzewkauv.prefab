@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1975592911162296775}
   - component: {fileID: 4173437262565444486}
   - component: {fileID: 1699329722966868347}
+  - component: {fileID: 7261250561885960745}
   m_Layer: 0
   m_Name: drzewkauv
   m_TagString: Untagged
@@ -127,3 +128,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76873284c5486064faeafafda661433c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7261250561885960745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29919056458180626}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6cb29072c12e6489606a5afecf3db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 10
+  speed: 1
