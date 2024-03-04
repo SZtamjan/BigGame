@@ -58,6 +58,17 @@ public class Gate : MonoBehaviour
         }
     }
 
+    public void UnitSupport(UnitControler thisUnit, UnitControler targetUnit)
+    {
+        if (targetUnit != null)
+        {
+            thisUnit.SetTargetToSupport(targetUnit);
+            targetUnit.HiddenShieldTaken(thisUnit.ReturnShieldPower());
+        }
+    }
+
+    
+
     #region Player Units Actions
 
     [Button]
@@ -89,6 +100,9 @@ public class Gate : MonoBehaviour
             }
 
             var thisUnitAttackReach = thisUnitController.ReturnAttackReach();
+            var isThisUnitSupport = thisUnitController.IsSupportUnit();
+            var thisUnitShieldPower = thisUnitController.ReturnShieldPower();
+
 
 
 
@@ -106,6 +120,11 @@ public class Gate : MonoBehaviour
                 }
                 if (path[ii + i].unitMain.GetComponent<UnitControler>().IsThisPlayerUnit())
                 {
+                    if (isThisUnitSupport && path[ii + i].unitMain.GetComponent<UnitControler>().ReturnHiddenShield() < thisUnitShieldPower)
+                    {
+                        UnitSupport(thisUnitController, path[ii + i].unitMain.GetComponent<UnitControler>());
+                        break;
+                    }
                     continue;
                 }
                 if (path[ii + i].unitMain.GetComponent<UnitControler>().ReturnHiddenHp() <= 0)
