@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static SpawnUnitsScriptableObject;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UnitControler : MonoBehaviour
 {
@@ -14,9 +15,15 @@ public class UnitControler : MonoBehaviour
     [Header("Statystyki tylko do odczytu")]
     [SerializeField] private int hp;
     [SerializeField] private int hidenHP;
+
+    [SerializeField] private int shield = 0;
+    [SerializeField] private int hidenShield = 0;
+
+
     [SerializeField] private int damage;
-    [SerializeField] private int movmentDistance;
     [SerializeField] private int attackReach;
+
+    [SerializeField] private int movmentDistance;
     [SerializeField] private bool playersUnit;
     [SerializeField] private float speed;
 
@@ -27,16 +34,24 @@ public class UnitControler : MonoBehaviour
     [SerializeField] private int IdleAnimationsNumber = 1;
     private bool _iMDying = false;
 
-    [SerializeField] private bool _RangedUnit=false;
+    [SerializeField] private bool _RangedUnit = false;
 
-    [ShowIf("_RangedUnit")][Header("Dla jednostek dystansowych")]
+    [ShowIf("_RangedUnit")]
+    [Header("Dla jednostek dystansowych")]
     public ProjectileController projectileToSpawn;
     [ShowIf("_RangedUnit")] public Transform projectileStartingPoint;
-
     private ProjectileController projectile;
 
+    [SerializeField] private bool _SupportUnit = false;
+    [ShowIf("_SupportUnit")][SerializeField] private int shieldPower;
+
+
     [SerializeField] private bool _mountedUnit = false;
+    [ShowIf("_mountedUnit")]
     [SerializeField] private Animator _SecondAnimator;
+
+
+
     //-------------------------------------------------------
     private UnitControler targetUnitToAttack;
     private CastleStats targetCastleToAttack;
@@ -94,9 +109,25 @@ public class UnitControler : MonoBehaviour
     {
         return hidenHP;
     }
+
+    public int ReturnShield()
+    {
+        return shield;
+    }
+
+    public int ReturnHiddenShield()
+    {
+        return hidenShield;
+    }
+
     public int ReturnDamage()
     {
         return damage;
+    }
+
+    public int ReturnShieldPower()
+    {
+        return shieldPower;
     }
 
     public int ReturnMovmeDistance()
@@ -114,6 +145,11 @@ public class UnitControler : MonoBehaviour
         return playersUnit;
     }
 
+    public bool IsSupportUnit()
+    {
+        return _SupportUnit;
+    }
+
     public bool AmIDoingSomething()
     {
         if (isAttacking || isMovving || isPojectileFlying || _iMDying)
@@ -127,7 +163,16 @@ public class UnitControler : MonoBehaviour
 
     public void DamageTaken(int obtained)
     {
-        hp -= obtained;
+        if (shield >= obtained)
+        {
+            shield -= obtained;
+
+        }
+        else
+        {
+            shield = 0;
+            hp -= (obtained - shield);
+        }
 
         if (hp <= 0)
         {
@@ -140,23 +185,45 @@ public class UnitControler : MonoBehaviour
         }
         PlayHurt();
         hpbar.GetComponent<HpUnitsShow>().HPUpdate(hp);
+        hpbar.GetComponent<HpUnitsShow>().ShieldUpdate(shield);
 
 
     }
 
     public void HiddenDamageTaken(int obtained)
     {
-        hidenHP -= obtained;
-        if (hidenHP <= 0)
+        if (hidenShield >= obtained)
         {
-            Destroy(gameObject, 8f);
+            hidenShield -= obtained;
         }
+        else
+        {
+            hidenHP -= (obtained - hidenShield);
+            if (hidenHP <= 0)
+            {
+                Destroy(gameObject, 8f);
+            }
+        }
+    }
+
+    public void ShieldTaken(int obtained)
+    {
+        shield = obtained;
+        hpbar.GetComponent<HpUnitsShow>().ShieldUpdate(obtained);
+
+    }
+    public void HiddenShieldTaken(int obtained)
+    {
+        hidenShield = obtained;
+
     }
 
     public void DestroyMe()
     {
         Destroy(gameObject);
     }
+
+
 
     #region Play Animation
 
@@ -170,7 +237,7 @@ public class UnitControler : MonoBehaviour
                 _SecondAnimator.SetTrigger("walk");
             }
         }
-           
+
     }
     public void PlayAttack()
     {
@@ -184,6 +251,19 @@ public class UnitControler : MonoBehaviour
 
         }
     }
+
+    public void PlaySupport()
+    {
+        if (!_iMDying)
+        {
+            animator.SetTrigger("support");
+            if (_mountedUnit)
+            {
+                _SecondAnimator.SetTrigger("support");
+            }
+        }
+
+    }
     public void PlayHurt()
     {
 
@@ -195,7 +275,7 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayIdle()
     {
-        if (!_iMDying)
+        if (!_iMDying && !isAttacking)
         {
             animator.SetTrigger("idle");
             if (_mountedUnit)
@@ -203,7 +283,7 @@ public class UnitControler : MonoBehaviour
                 _SecondAnimator.SetTrigger("idle");
             }
         }
-           
+
     }
 
     public void PlayRandomIdle()
@@ -235,6 +315,15 @@ public class UnitControler : MonoBehaviour
         PlayAttack();
 
     }
+
+    public void SetTargetToSupport(UnitControler targetUnit)
+    {
+        isAttacking = true;
+        targetUnitToAttack = targetUnit;
+        PlaySupport();
+
+    }
+
     public void SetTargetToAttack(CastleStats targetUnit)
     {
         isAttacking = true;
@@ -269,6 +358,15 @@ public class UnitControler : MonoBehaviour
 
         targetUnitToAttack = null;
         targetCastleToAttack = null;
+
+    }
+
+    public void SupportTarget()
+    {
+        if (targetUnitToAttack != null)
+        {
+            targetUnitToAttack.ShieldTaken(shieldPower);
+        }
 
     }
 

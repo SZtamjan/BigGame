@@ -9,13 +9,17 @@ public class HpUnitsShow : MonoBehaviour
     private Image Healthbar;
     private int MaxHealth;
 
+    private Image Shield;
+
     public GameObject hpbar;
+    public GameObject shielBar;
 
     public Transform atCam;
 
     private void Awake()
     {
         Healthbar = hpbar.GetComponent<Image>();
+        Shield = shielBar.GetComponent<Image>();
 
         atCam = Camera.main.transform;
     }
@@ -37,6 +41,17 @@ public class HpUnitsShow : MonoBehaviour
             Invoke("DisableHpBar", 1.5f);
         }
         
+    }
+
+    public void ShieldUpdate(int shield)
+    {
+        if (shield / MaxHealth < 1f)
+        {
+            GetComponent<Canvas>().enabled = true;
+            Shield.fillAmount = 1.0f * shield / MaxHealth;
+        }
+        
+
     }
     public void DisableHpBar()
     {

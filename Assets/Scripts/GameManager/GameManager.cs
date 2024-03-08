@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static PathControler;
 
+[SelectionBase]
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
