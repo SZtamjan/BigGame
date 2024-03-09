@@ -21,16 +21,22 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Witch_Mat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933f24cde1e3f6a41818f56d729421ab, type: 3}
   m_ValidKeywords:
+  - _ENVIRONMENTREFLECTIONS_OFF
+  - _HALFTONESHAPE_DOT
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   - _OCCLUSIONMAP
+  - _OUTLINE
+  - _RIMLIGHTING_ON
+  - _SPECULARHIGHLIGHTS_OFF
+  - _TOON_SHADING_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2050
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
@@ -158,7 +164,7 @@ Material:
     - _DitherThreshold: 1
     - _DstBlend: 0
     - _EnabledHairSpec: 0
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _FaceShadowMapEnabled: 0
     - _FaceShadowMapPow: 0.2
     - _FaceShadowSmoothness: 0.1
@@ -199,7 +205,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 15
+    - _OutlineWidth: 12
     - _OverrideShadowColor: 0
     - _Parallax: 0.005
     - _QueueControl: -1
@@ -207,10 +213,10 @@ Material:
     - _RIMLIGHTING: 0
     - _ReceiveShadows: 1
     - _RimEnabled: 1
-    - _RimLightAlign: -0.039
-    - _RimLightSmoothness: 0.049
+    - _RimLightAlign: -0.285
+    - _RimLightSmoothness: 0.83
     - _RimLightSmootness: 0
-    - _RimPower: 0.08
+    - _RimPower: 0.274
     - _SPECULARHIGHLIGHTS: 0
     - _ShadowPatternSize: 0.3
     - _Shininess: 0
@@ -226,7 +232,7 @@ Material:
     - _SpecSource: 0
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 0.146
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SpecularSize: 0.336
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
@@ -235,7 +241,7 @@ Material:
     - _StepViaRampTexture: 0
     - _Surface: 0
     - _ToonBlending: 1
-    - _ToonEnabled: 0
+    - _ToonEnabled: 1
     - _USERAMPCOLOR: 0
     - _UseClipPattern: 0
     - _UseNormalMap: 0
@@ -254,8 +260,8 @@ Material:
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingScale: {r: 15, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineDistancFade: {r: -13.085106, g: 61.914894, b: 0, a: 0}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 0.084}
+    - _OutlineDistancFade: {r: -17.230183, g: 76.42267, b: 0, a: 0}
+    - _RimColor: {r: 0.2004717, g: 0.49048218, b: 0.8018868, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}

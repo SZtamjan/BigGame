@@ -41,8 +41,8 @@ ModelImporter:
       name: HorceWalkCycle
       takeName: HorceWalkCycle
       internalID: 125605988710075341
-      firstFrame: 0
-      lastFrame: 80
+      firstFrame: -1
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -70,15 +70,15 @@ ModelImporter:
       name: Horce_Idle3
       takeName: Horce_Idle3
       internalID: -3732546099165366281
-      firstFrame: 0
-      lastFrame: 300
+      firstFrame: -1
+      lastFrame: 299
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -99,15 +99,15 @@ ModelImporter:
       name: Horce_Idle2
       takeName: Horce_Idle2
       internalID: -941289959455528966
-      firstFrame: 0
-      lastFrame: 300
+      firstFrame: -1
+      lastFrame: 299
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -128,15 +128,15 @@ ModelImporter:
       name: Horce_Idle1
       takeName: Horce_Idle1
       internalID: 8142337731789791319
-      firstFrame: 0
-      lastFrame: 300
+      firstFrame: -1
+      lastFrame: 299
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -157,8 +157,8 @@ ModelImporter:
       name: Horse_Attack
       takeName: Horse_Attack
       internalID: 5733540931037313733
-      firstFrame: 0
-      lastFrame: 260
+      firstFrame: -1
+      lastFrame: 259
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -186,8 +186,8 @@ ModelImporter:
       name: Horse_Dying
       takeName: Horse_Dying
       internalID: -7354521500172970626
-      firstFrame: 0
-      lastFrame: 180
+      firstFrame: -1
+      lastFrame: 179
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -215,8 +215,37 @@ ModelImporter:
       name: Horse_HitReaction
       takeName: Horse_HitReaction
       internalID: -502032305157204808
-      firstFrame: 0
-      lastFrame: 160
+      firstFrame: -1
+      lastFrame: 159
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Horse_Spawn
+      takeName: Horse_Spawn
+      internalID: 8362276793517177228
+      firstFrame: -1
+      lastFrame: 159
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -259,7 +288,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
+    bakeAxisConversion: 1
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
