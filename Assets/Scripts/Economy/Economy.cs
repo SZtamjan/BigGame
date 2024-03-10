@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Economy : MonoBehaviour
 {
-    public PlayerCash playerCashSO;
-    public int cash;
+    #region Resources
+
+    private ResourcesStruct resources;
+    
+    // public int cash;
+    // public int gold;
+    // public int stone;
+    // public int wood;
+    // public int food;
+
+    #endregion
+    
+    [FormerlySerializedAs("playerCashSO")] public PlayerResources playerResourcesSo;
 
     public static Economy Instance;
     private void Awake()
@@ -15,19 +27,25 @@ public class Economy : MonoBehaviour
     }
     private void Start()
     {
-        cash = playerCashSO.playerCash;
-        
-        UIUpdate();
+        FillResourcesOnStart();
+    }
+
+    private void FillResourcesOnStart()
+    {
+        resources.Gold = playerResourcesSo.gold;
+        resources.Stone = playerResourcesSo.stone;
+        resources.Wood = playerResourcesSo.wood;
+        resources.Food = playerResourcesSo.food;
     }
 
     private void UIUpdate()
     {
-        UIController.Instance.EconomyUpdateCash(cash);
+        UIController.Instance.EconomyUpdateResources(resources);
     }
 
     public bool CanIBuy(int spend)
     {
-        if (spend <= cash)
+        if (spend <= resources.Gold)
         {
             return true;
         }
@@ -43,8 +61,7 @@ public class Economy : MonoBehaviour
         if (tmp)
         {
 
-            cash -= spend;
-            UIUpdate();
+            resources.Gold -= spend;
             return true;
         }
         else
@@ -56,9 +73,12 @@ public class Economy : MonoBehaviour
 
     public void CashOnTurn()
     {
-        cash += playerCashSO.cashCastleOnTurn;
-        UIUpdate();
+        resources.Gold += playerResourcesSo.cashCastleOnTurn;
     }
 
+    public void AddCash(int value)
+    {
+        resources.Gold += value;
+    }
     
 }
