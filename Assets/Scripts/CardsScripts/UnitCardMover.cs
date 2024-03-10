@@ -4,18 +4,10 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
-public class SpawnUnitCard : MonoBehaviour
+public class UnitCardMover : MonoBehaviour
 {
-    public UnitScriptableObjects stats;
-
-    public new TextMeshProUGUI name;
-    public TextMeshProUGUI desc;
-    public TextMeshProUGUI cost;
-
-    private bool isMovingUp;
     private RectTransform rectTransform;
 
     private Vector2 StartPos;
@@ -27,14 +19,7 @@ public class SpawnUnitCard : MonoBehaviour
     }
     private void Start()
     {
-        GetCardStats();
-
         StartPos = rectTransform.anchoredPosition;
-
-    }
-    public void InitBuy()
-    {
-        SpawnerScript.instance.SpawnMyUnit(gameObject, stats);
     }
 
     public void NewStartPos()
@@ -47,18 +32,9 @@ public class SpawnUnitCard : MonoBehaviour
         _coroutine = StartCoroutine(MoveMe(StartPos, false));
     }
 
-    public void GetCardStats()
-    {
-        Sprite cardArtwork = stats.artwork;
-
-        gameObject.GetComponent<Image>().sprite = cardArtwork;
-        name.text = stats.name;
-        desc.text = stats.desc;
-        cost.text = stats.cost.ToString();
-    }
+    
     void OnMouseEnter()
     {
-        isMovingUp = true;
         Vector2 targetPosition = StartPos + Vector2.up * 120f;
         if (_coroutine != null)
         {
@@ -70,7 +46,6 @@ public class SpawnUnitCard : MonoBehaviour
     }
     void OnMouseExit()
     {
-        isMovingUp = false;
         Vector2 targetPosition = StartPos;
         if (_coroutine != null)
         {

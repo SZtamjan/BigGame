@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7965628442887525176}
   - component: {fileID: 4460271859480187104}
   - component: {fileID: 2852370746309655783}
+  - component: {fileID: 1165322373173549035}
+  - component: {fileID: 7283268377541372046}
   - component: {fileID: 1634200325189507003}
   m_Layer: 5
   m_Name: UnitCard2.0
@@ -126,8 +128,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2852370746309655783}
-        m_TargetAssemblyTypeName: SpawnUnitCard, Assembly-CSharp
+      - m_Target: {fileID: 7283268377541372046}
+        m_TargetAssemblyTypeName: BuyUnit, Assembly-CSharp
         m_MethodName: InitBuy
         m_Mode: 1
         m_Arguments:
@@ -150,10 +152,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ca6fc3de187714db763083319ea9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1165322373173549035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199085340779551909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd7a953d2ab09748b1a025d2704c2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   stats: {fileID: 0}
   name: {fileID: 6311231912048174190}
   desc: {fileID: 3443739090212205827}
   cost: {fileID: 8033964745230577645}
+--- !u!114 &7283268377541372046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199085340779551909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad84a2a7d4bd2f24ab89ac0b5bf62a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1634200325189507003
 BoxCollider2D:
   m_ObjectHideFlags: 0

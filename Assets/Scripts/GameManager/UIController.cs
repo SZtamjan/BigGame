@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
+    #region Variables
+
     [Header("Menus")]
     [SerializeField] private GameObject QuickMenu;
     [SerializeField] private List<GameObject> menus;
@@ -38,9 +40,14 @@ public class UIController : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
-
-    [Header("Showing Somethings")]
-    [SerializeField] private TextMeshProUGUI ShowFunds;
+    
+    [Header("Display Resources")]
+    [SerializeField] private TextMeshProUGUI showGold;
+    [SerializeField] private TextMeshProUGUI showStone;
+    [SerializeField] private TextMeshProUGUI showWood;
+    [SerializeField] private TextMeshProUGUI showFood;
+    
+    [Header("Display Other")]
     [SerializeField] private TextMeshProUGUI ShowTurn;
     [SerializeField] private TextMeshProUGUI ShowEndDisplay;
 
@@ -66,7 +73,11 @@ public class UIController : MonoBehaviour
 
     //Coroutines
     private Coroutine warningMessage;
+    
+    #endregion
 
+    #region BaseMethods
+    
     private void Awake()
     {
         Instance = this;
@@ -89,6 +100,7 @@ public class UIController : MonoBehaviour
         SpawnCardsInDrawableViewer();
     }
 
+    #endregion
 
     #region TurnButton 
 
@@ -126,7 +138,7 @@ public class UIController : MonoBehaviour
             i++;
             float posX = (x - i) * (_DeckCardsWith / x);
             item.GetComponent<RectTransform>().anchoredPosition = new Vector3(posX, 88f, 0);
-            item.GetComponent<SpawnUnitCard>().NewStartPos();
+            item.GetComponent<UnitCardMover>().NewStartPos();
         }
     }
     
@@ -301,11 +313,13 @@ public class UIController : MonoBehaviour
 
     #region Economy
 
-    public void EconomyUpdateCash(int cash)
+    public void EconomyUpdateResources(ResourcesStruct resources)
     {
-        ShowFunds.text = cash.ToString();
+        showGold.text = resources.Gold.ToString();
+        showStone.text = resources.Stone.ToString();
+        showWood.text = resources.Wood.ToString();
+        showFood.text = resources.Food.ToString();
     }
-
 
     #endregion
 

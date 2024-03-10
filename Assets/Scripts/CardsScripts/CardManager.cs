@@ -52,7 +52,7 @@ public class CardManager : MonoBehaviour
         foreach (var item in PlayerCards)
         {
             GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);
-            thisCard.GetComponent<SpawnUnitCard>().stats = item;
+            thisCard.GetComponent<UnitCardStats>().FillStats(item);
             //CardInHand.Insert(0, thisCard);
             CardInHand.Add(thisCard);
         }
@@ -90,7 +90,7 @@ public class CardManager : MonoBehaviour
     {
         LimitCardCheck();
         GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);
-        thisCard.GetComponent<SpawnUnitCard>().stats = unitCardStats;
+        thisCard.GetComponent<UnitCardStats>().FillStats(unitCardStats);
         //CardInHand.Insert(0, thisCard);
         CardInHand.Add(thisCard);
 
@@ -102,7 +102,7 @@ public class CardManager : MonoBehaviour
         if (CardInHand.Count >= CurrentMaxCardInHand)
         {
             Debug.Log("ultra wybuchy");
-            Debug.Log(CardInHand.First().GetComponent<SpawnUnitCard>().stats.name);
+            //Debug.Log(CardInHand.First().GetComponent<UnitCardController>().stats.name);
             Destroy(CardInHand.First());
             CardInHand.RemoveAt(0);
             UIController.Instance.ArrangeCards();
