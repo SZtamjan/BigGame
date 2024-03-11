@@ -839,16 +839,24 @@ MonoBehaviour:
   hpbar: {fileID: 8251348025405609166}
   hp: 0
   hidenHP: 0
+  shield: 0
+  hidenShield: 0
   damage: 0
-  movmentDistance: 0
   attackReach: 0
+  movmentDistance: 0
   playersUnit: 1
   speed: 0
   isAttacking: 0
   isMovving: 0
   isPojectileFlying: 0
+  IdleAnimationsNumber: 1
+  _RangedUnit: 0
   projectileToSpawn: {fileID: 0}
   projectileStartingPoint: {fileID: 0}
+  _SupportUnit: 0
+  shieldPower: 0
+  _mountedUnit: 0
+  _SecondAnimator: {fileID: 0}
 --- !u!114 &45487630934109095
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using static SpawnUnitsScriptableObject;
 using static UnityEngine.Rendering.DebugUI;
-
+[SelectionBase]
 public class UnitControler : MonoBehaviour
 {
     public UnitScriptableObjects unitScriptableObjects;
@@ -160,7 +160,11 @@ public class UnitControler : MonoBehaviour
     }
 
     #endregion
-
+    public void SpellDamageTaken(int obtained)
+    {
+        DamageTaken(obtained);
+        HiddenDamageTaken(obtained);
+    }
     public void DamageTaken(int obtained)
     {
         if (shield >= obtained)
@@ -204,6 +208,13 @@ public class UnitControler : MonoBehaviour
                 Destroy(gameObject, 8f);
             }
         }
+    }
+
+    public void SpellShieldTaken(int obtained)
+    {
+        shield += obtained;
+        hpbar.GetComponent<HpUnitsShow>().ShieldUpdate(obtained);
+        hidenShield += obtained;
     }
 
     public void ShieldTaken(int obtained)

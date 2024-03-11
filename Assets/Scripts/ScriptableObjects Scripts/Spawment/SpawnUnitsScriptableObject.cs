@@ -27,7 +27,7 @@ public class SpawnUnitsScriptableObject : ScriptableObject
         {
             case SelectMetchod.RandomNotNull:
                 return Units[Random.Range(0, Units.Count)];
-                break;
+                
             case SelectMetchod.RandomWithNull:
                 if (Random.Range(0f, 1f) > nullPropability)
                 {
@@ -37,10 +37,10 @@ public class SpawnUnitsScriptableObject : ScriptableObject
                 {
                     return null;
                 }
-                break;
+               
             default:
                 return null;
-                break;
+                
 
         }
     }
