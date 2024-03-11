@@ -20,6 +20,6 @@ public class FakeCard : MonoBehaviour
         namee.text = stats.name;
         name = stats.name;
         desc.text = stats.desc;
-        cost.text = stats.cost.ToString();
+        cost.text = stats.resources.Gold.ToString();
     }
 }

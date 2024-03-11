@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Economy.EconomyActions;
 
-public class BuyUnit : MonoBehaviour
+public class BuyUnit : EconomyOperations
 {
+    public ResourcesStruct res;
+    
     public void InitBuy()
     {
-        SpawnerScript.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
+        if (Purchase(GetComponent<UnitCardStats>().Stats.resources))
+        {
+            SpawnerScript.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
+        }
     }
 }

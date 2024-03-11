@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
         }
 
         UIController.Instance.TurnButtonActivate();
-        Economy.Instance.CashOnTurn();
+        EconomyResources.Instance.CashOnTurn();
         UpdateTurnShower();
         playerTurn = true;
 

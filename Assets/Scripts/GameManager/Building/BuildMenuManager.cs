@@ -69,7 +69,7 @@ public class BuildMenuManager : MonoBehaviour
     
     public void InitBuyBuilding()
     {
-        bool CanIBuy = Economy.Instance.CanIBuy(_buildingInfo.cost);
+        bool CanIBuy = EconomyResources.Instance.CanIBuy(_buildingInfo.cost);
         if(CanIBuy)
         {
             StartBulding();

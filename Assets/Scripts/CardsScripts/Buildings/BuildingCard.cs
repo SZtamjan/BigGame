@@ -23,7 +23,7 @@ public class BuildingCard : MonoBehaviour
 
     public void InitBuyBuilding() //This is on button click
     {
-        bool CanIBuy = Economy.Instance.CanIBuy(infoSource.cost);
+        bool CanIBuy = EconomyResources.Instance.CanIBuy(infoSource.cost);
         if(CanIBuy)
         {
             StartBulding();

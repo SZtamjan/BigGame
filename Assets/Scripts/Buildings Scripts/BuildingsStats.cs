@@ -42,7 +42,7 @@ public class BuildingsStats : MonoBehaviour
 
     void BuildingDoingSomething()
     {
-        Economy.Instance.AddCash(returnMoneyGain());
+        EconomyResources.Instance.AddCash(returnMoneyGain());
     }
 
 

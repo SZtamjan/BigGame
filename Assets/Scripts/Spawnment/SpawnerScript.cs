@@ -103,7 +103,7 @@ public class SpawnerScript : MonoBehaviour
                             newUnit.SetSO(stats);
                             newUnit.setMyGate(thisGatePatch);
                             thisGatePatch.path[0].unitMain = newUnit;
-                            Economy.Instance.Purchase(stats.cost);
+                            EconomyResources.Instance.Purchase(stats.resources.Gold);
                             Destroy(karta);
                             CardManager.instance.RevomeCard(karta);
                             UIController.Instance.ArrangeCards();
@@ -150,7 +150,7 @@ public class SpawnerScript : MonoBehaviour
             EconomyConditions.Instance.ThereIsAUnit(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "HEX IS OCCUPIED"
             return false;
         }
-        if (!Economy.Instance.CanIBuy(stats.cost))
+        if (!EconomyResources.Instance.CanIBuy(stats.resources.Gold))
         {
             EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS / NOT YOUR TURN"
         }

@@ -187,7 +187,7 @@ public class Building : MonoBehaviour
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log(hitObject.name);
 
-                Economy.Instance.Purchase(statsy.cost); //It's correct, it only charges player for the building
+                EconomyResources.Instance.Purchase(statsy.cost); //It's correct, it only charges player for the building
                 Build(hitObject, statsy);
             }
         }

@@ -4,11 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Economy : MonoBehaviour
+public class EconomyResources : MonoBehaviour
 {
     #region Resources
 
     private ResourcesStruct resources;
+
+    public ResourcesStruct Resources
+    {
+        get => resources;
+        private set => resources = value;
+    }
     
     // public int cash;
     // public int gold;
@@ -20,7 +26,7 @@ public class Economy : MonoBehaviour
     
     [FormerlySerializedAs("playerCashSO")] public PlayerResources playerResourcesSo;
 
-    public static Economy Instance;
+    public static EconomyResources Instance;
     private void Awake()
     {
         Instance = this;

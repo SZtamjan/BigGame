@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct ResourcesStruct
 {
-    private int gold;
-    private int stone;
-    private int wood;
-    private int food;
+    [SerializeField] private int gold;
+    [SerializeField] private int stone;
+    [SerializeField] private int wood;
+    [SerializeField] private int food;
 
     public int Gold
     {
