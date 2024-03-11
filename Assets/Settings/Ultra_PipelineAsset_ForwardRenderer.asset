@@ -15,9 +15,9 @@ MonoBehaviour:
   m_Active: 1
   mask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 1
   Event: 250
---- !u!114 &-1837519240251253579
+--- !u!114 &-3818155905348029747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Active: 1
   mask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 1
   Event: 250
 --- !u!114 &11400000
 MonoBehaviour:
@@ -50,8 +50,8 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
   m_RendererFeatures:
   - {fileID: 5871599020356039085}
-  - {fileID: -1837519240251253579}
-  m_RendererFeatureMap: ad71da2f331c7c51b5dce090fcd17fe6
+  - {fileID: -3818155905348029747}
+  m_RendererFeatureMap: ad71da2f331c7c51cdb2abfc6e2f03cb
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -70,10 +70,10 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 4294967295
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 4294967295
   m_DefaultStencilState:
     overrideStencilState: 1
     stencilReference: 0
