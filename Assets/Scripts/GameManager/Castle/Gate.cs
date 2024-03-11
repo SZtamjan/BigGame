@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using static PathClass;
 [SelectionBase]
 public class Gate : MonoBehaviour
@@ -20,8 +21,12 @@ public class Gate : MonoBehaviour
     [SerializeField] private Castle _MyCastle;
 
 
+    [SerializeField, Foldout("Przezroczystość")] private Material material;
+    [SerializeField, Foldout("Przezroczystość")] private float time = 2;
+    private Coroutine ditterowanie;
 
-    
+
+
     public void GeneratePath()
     {
         newTag = CastlesController.Instance.ReturnNextFreeTag();
@@ -355,6 +360,8 @@ public class Gate : MonoBehaviour
             pole.unitWanting = null;
         }
     }
+
+   
 
     #region path creation
 

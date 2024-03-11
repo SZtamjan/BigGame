@@ -566,16 +566,24 @@ MonoBehaviour:
   hpbar: {fileID: 5122032593433380760}
   hp: 0
   hidenHP: 0
+  shield: 0
+  hidenShield: 0
   damage: 0
-  movmentDistance: 0
   attackReach: 0
+  movmentDistance: 0
   playersUnit: 0
   speed: 0
   isAttacking: 0
   isMovving: 0
   isPojectileFlying: 0
+  IdleAnimationsNumber: 1
+  _RangedUnit: 0
   projectileToSpawn: {fileID: 3232867717700194360, guid: 10046aa044d08aa4098a734783a741e9, type: 3}
   projectileStartingPoint: {fileID: 1000478203626735187}
+  _SupportUnit: 0
+  shieldPower: 0
+  _mountedUnit: 0
+  _SecondAnimator: {fileID: 0}
 --- !u!114 &5251196494710912599
 MonoBehaviour:
   m_ObjectHideFlags: 0
