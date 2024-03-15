@@ -19,7 +19,11 @@ MonoBehaviour:
   attackReach: 1
   playersUnit: 1
   moveSpeed: 0.5
-  cost: 20
   name: Stachu Jones
   desc: "Trzeba Ci\u0119 ostatecznie rozpierdoli\u0107"
   artwork: {fileID: 21300000, guid: cc2012be6007ccb478bf982bd5f7b869, type: 3}
+  resources:
+    gold: 15
+    stone: 15
+    wood: 15
+    food: 15

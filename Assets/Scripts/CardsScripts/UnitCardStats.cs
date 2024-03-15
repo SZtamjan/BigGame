@@ -34,4 +34,9 @@ public class UnitCardStats : MonoBehaviour
         desc.text = Stats.desc;
         cost.text = Stats.resources.Gold.ToString();
     }
+
+    public TextMeshProUGUI[] ReturnTexts()
+    {
+        return new [] { name, desc, cost };
+    }
 }
