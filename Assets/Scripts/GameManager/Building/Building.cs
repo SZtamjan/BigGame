@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Economy.EconomyActions;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,11 +9,11 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using static GameManager;
 
-public class Building : MonoBehaviour
+public class Building : EconomyOperations
 {
     public static Building Instance;
     Camera cam;
-    public LayerMask mask;
+    [FormerlySerializedAs("mask")] public LayerMask buildingMask;
     public bool isBuilding = false;
     public GameEvent isBuildingEvent;
     public GameEvent justBuild;
@@ -154,7 +155,7 @@ public class Building : MonoBehaviour
     {
         Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit raycastHit1;
-        if (Physics.Raycast(ray1, out raycastHit1, 100, mask))
+        if (Physics.Raycast(ray1, out raycastHit1, 100, buildingMask))
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
@@ -180,15 +181,13 @@ public class Building : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, mask))
+        if (Physics.Raycast(ray, out hit, 100, buildingMask))
         {
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log(hitObject.name);
-
-                EconomyResources.Instance.Purchase(statsy.cost); //It's correct, it only charges player for the building
-                Build(hitObject, statsy);
+                if(Purchase(statsy.resourcesCost)) Build(hitObject, statsy);
             }
         }
         else

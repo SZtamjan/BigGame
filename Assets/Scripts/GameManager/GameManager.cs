@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
-        GetComponent<SpawnerScript>().SetRemoved(false); // ?????????????????????
+        GetComponent<UnitSpawner>().SetRemoved(false); // ?????????????????????
         EventManager.Instance.BuldingsActions();
         if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
         {
@@ -212,12 +212,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < CastlesController.Instance.enemyCastle.gates.Count; i++)
         {
             //TestDoSpawn.Add(SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1));
-            var unitToSpawn = SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1);
+            var unitToSpawn = UnitSpawner.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1);
             if (unitToSpawn==null)
             {
                 continue;
             }
-            SpawnerScript.instance.SpawnEnemyUnit(CastlesController.Instance.enemyCastle.gates[i], unitToSpawn);
+            UnitSpawner.instance.SpawnEnemyUnit(CastlesController.Instance.enemyCastle.gates[i], unitToSpawn);
 
         }
         if (!devMode)

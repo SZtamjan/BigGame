@@ -1,24 +1,27 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "ScriptableObjects/Buildings/BuildingsStats")]
 public class BuildingsScriptableObjects : ScriptableObject
 {
     //Prefabs
-    [Header("Budynek ")]
+    [Header("Budynek")]
     public GameObject Budynek;
     public WhichBudynek whichBudynek;
     
     //Card Stats
-    [Header("Statystyki ")]
-    [SerializeField]
-    public int cost = 5;
+    [Header("Info")]
     [SerializeField]
     public new string name = "domek";
     [SerializeField]
     public string desc = "+5 do hajsu na ture";
+    
+    [Header("Statystyki ")]
     [SerializeField]
-    public int moneyGain = 0;
+    public ResourcesStruct resourcesCost;
+    [SerializeField] 
+    public ResourcesStruct resourcesGainOnTurn;
     [SerializeField]
     public UnitScriptableObjects UnitAdd;
     

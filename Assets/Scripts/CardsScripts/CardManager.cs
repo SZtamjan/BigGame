@@ -12,7 +12,7 @@ public class CardManager : MonoBehaviour
     public static CardManager instance;
     
     //Components
-    private SpawnerScript _spawnerScript;
+    private UnitSpawner _unitSpawner;
     
     public List<GameObject> CardInHand;
 
@@ -42,7 +42,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        _spawnerScript = SpawnerScript.instance;
+        _unitSpawner = UnitSpawner.instance;
         _WhereToSpawnCard = UIController.Instance.HereCardsAre();
         CheckAndUpdateCardLimit();
     }
@@ -130,7 +130,7 @@ public class CardManager : MonoBehaviour
     
     public void RemoveSelectedCard()
     {
-        GameObject selectedCard = _spawnerScript.SelectedCardProp;
+        GameObject selectedCard = _unitSpawner.SelectedCardProp;
         if (selectedCard != null) Destroy(selectedCard);
         if (selectedCard != null) RevomeCard(selectedCard);
         UIController.Instance.ArrangeCards();

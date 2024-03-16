@@ -3,14 +3,14 @@ using UnityEditor;
 using UnityEngine;
 using static EnemySpawnClass;
 
-[CustomEditor(typeof(SpawnerScript))]
+[CustomEditor(typeof(UnitSpawner))]
 public class SpawnerScriptInspector : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        SpawnerScript SpawnerScript = (SpawnerScript)target;
+        UnitSpawner unitSpawner = (UnitSpawner)target;
 
         bool isPlaying = EditorApplication.isPlaying;
 

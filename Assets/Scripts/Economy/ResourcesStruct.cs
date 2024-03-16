@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ResourcesStruct
 {
-    public UnityEvent updatedResources;
+    [HideInInspector] public UnityEvent updatedResources;
     
     [SerializeField] private int gold;
     [SerializeField] private int stone;
@@ -81,7 +81,7 @@ public class ResourcesStruct
     
     
     //Constructors
-    public ResourcesStruct( int gold, int stone, int wood, int food)
+    public ResourcesStruct(int gold, int stone, int wood, int food)
     {
         Gold = gold;
         Stone = stone;

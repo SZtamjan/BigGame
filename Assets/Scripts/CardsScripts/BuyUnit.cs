@@ -11,8 +11,7 @@ public class BuyUnit : EconomyOperations
     {
         if (CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
         {
-            Debug.Log("worked");
-            SpawnerScript.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
+            UnitSpawner.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
         }
     }
 }

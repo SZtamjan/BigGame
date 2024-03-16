@@ -1,19 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Economy.EconomyActions;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BuildMenuManager : MonoBehaviour
+public class BuildMenuManager : EconomyOperations
 {
     public static BuildMenuManager Instance;
     
+    [Header("Display Info About Building")]
     [SerializeField] private Image selectedBuildingImage;
     [SerializeField] private TextMeshProUGUI selectedBuildingTitle;
     [SerializeField] private TextMeshProUGUI selectedBuildingDescription;
+    [SerializeField] private TextMeshProUGUI goldDisplay;
+    [SerializeField] private TextMeshProUGUI stoneDisplay;
+    [SerializeField] private TextMeshProUGUI woodDisplay;
+    [SerializeField] private TextMeshProUGUI foodDisplay;
+    
+    [Header("")]
     [SerializeField] private Button button;
     
     private BuildingsScriptableObjects _buildingInfo;
@@ -65,18 +73,23 @@ public class BuildMenuManager : MonoBehaviour
         //selectedBuildingImage.sprite = info
         selectedBuildingTitle.text = info.name;
         selectedBuildingDescription.text = info.desc;
+
+        goldDisplay.text = info.resourcesCost.Gold.ToString();
+        stoneDisplay.text = info.resourcesCost.Stone.ToString();
+        woodDisplay.text = info.resourcesCost.Wood.ToString();
+        foodDisplay.text = info.resourcesCost.Food.ToString();
     }
     
     public void InitBuyBuilding()
     {
-        bool CanIBuy = EconomyResources.Instance.CanIBuy(_buildingInfo.cost);
-        if(CanIBuy)
+        // bool CanIBuy = EconomyResources.Instance.CanIBuy(_buildingInfo.cost);
+        // if(CanIBuy)
+        // {
+        //     StartBulding();
+        // }
+        if (CheckIfICanIAfford(_buildingInfo.resourcesCost))
         {
             StartBulding();
-        }
-        else
-        {
-            EconomyConditions.Instance.NotEnoughCash();
         }
     }
     
@@ -86,7 +99,7 @@ public class BuildMenuManager : MonoBehaviour
         Building.Instance.StartBuilding(_buildingInfo);
     }
 
-    public void StartDemoBuilding()
+    public void StartDemolition()
     {
         DestroyBuilding.Instance.StartDestroying();
     }
