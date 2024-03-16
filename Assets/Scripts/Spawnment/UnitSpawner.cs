@@ -9,10 +9,11 @@ using static EnemySpawnClass;
 using UnityEngine.UI;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine.EventSystems;
+using Economy.EconomyActions;
 
-public class SpawnerScript : MonoBehaviour
+public class UnitSpawner : EconomyOperations
 {
-    public static SpawnerScript instance;
+    public static UnitSpawner instance;
     private Coroutine _SpawnerCoroutine;
     public bool playerRemovedCard = false;
 
@@ -32,29 +33,6 @@ public class SpawnerScript : MonoBehaviour
         get => _selectedCard;
         set => _selectedCard = value;
     }
-    
-    //public void SpawnMyUnit(UnitScriptableObjects card) // tu jest stary spawn na jedną drogę
-    //{
-    //    if (GetComponent<GameManager>().CanPlayerMove())
-    //    {
-    //        var gdzie = GetComponent<PathControler>().PlayerCastle;
-    //        if (gdzie.jednostka == null)
-    //        {
-    //            float x = gdzie.castle.transform.position.x;
-    //            float y = 0.5f;
-    //            float z = gdzie.castle.transform.position.z;
-
-    //            GameObject spawnedUnit = SpawnObjectAtLocation(x, y, z, 90, card.unit);
-    //            PutToList(spawnedUnit, gdzie);
-    //            spawnedUnit.GetComponent<UnitControler>().SetSO(card);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Miejsce zaj�te");
-    //        }
-
-    //    }
-    //}
 
     public void SpawnMyUnit(GameObject karta, UnitScriptableObjects stats)
     {
@@ -80,40 +58,39 @@ public class SpawnerScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
                 RaycastHit hit;
                 
-                if (Physics.Raycast(ray, out hit))
+                if (!Physics.Raycast(ray, out hit))
                 {
-                    if (!EventSystem.current.IsPointerOverGameObject())
-                    {
-                        Debug.Log("Hit object with tag: " + hit.collider.tag);
-
-                        Gate thisPatchGate = GetPath(hit.collider.tag);
-                        if (thisPatchGate == null)
-                        {
-                            break;
-                        }
-
-                        if (CanSpawn(thisPatchGate, stats))
-                        {
-                            Vector3 rotation = thisPatchGate.path[0].position - thisPatchGate.path[1].position;
-                            Vector3 spawn = thisPatchGate.path[0].position;
-                            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, stats.unit).GetComponent<UnitControler>();
-                            newUnit.SetSO(stats);
-                            newUnit.setMyGate(thisPatchGate);
-                            thisPatchGate.path[0].unitMain = newUnit;
-                            thisPatchGate.SetTransparent(0.5f);
-                            Economy.Instance.Purchase(stats.cost);
-                            Destroy(karta);
-                            CardManager.instance.RevomeCard(karta);
-                            UIController.Instance.ArrangeCards();
-                        }
-
-
-                    }
                     break;
+                }
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    break;
+                }
 
+                Debug.Log("Hit object with tag: " + hit.collider.tag);
+
+                Gate thisGatePatch = GetPath(hit.collider.tag);
+                if (thisGatePatch == null)
+                {
+                    break;
+                }
+
+                if (CheckSpawnConditions(thisGatePatch, stats))
+                {
+                    Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
+                    Vector3 spawn = thisGatePatch.path[0].position;
+                    UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, stats.unit).GetComponent<UnitControler>();
+                    newUnit.SetSO(stats);
+                    newUnit.setMyGate(thisGatePatch);
+                    thisGatePatch.path[0].unitMain = newUnit;
+                    thisPatchGate.SetTransparent(0.5f);
+                    //EconomyResources.Instance.Purchase(stats.resources.Gold);
+                    Destroy(karta);
+                    CardManager.instance.RevomeCard(karta);
+                    UIController.Instance.ArrangeCards();
+                    break;
                 }
 
             }
@@ -144,16 +121,17 @@ public class SpawnerScript : MonoBehaviour
         return null;
     }
 
-    private bool CanSpawn(Gate gate, UnitScriptableObjects stats)
+    private bool CheckSpawnConditions(Gate gate, UnitScriptableObjects stats)
     {
         if (gate.path[0].unitMain != null)
         {
             EconomyConditions.Instance.ThereIsAUnit(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "HEX IS OCCUPIED"
             return false;
         }
-        if (!Economy.Instance.CanIBuy(stats.cost))
+        if (!Purchase(stats.resources))
         {
             EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS / NOT YOUR TURN"
+            return false;
         }
 
         return true;
@@ -174,9 +152,7 @@ public class SpawnerScript : MonoBehaviour
             newUnit.SetSO(stats);
             newUnit.setMyGate(gate);
             gate.path.Last().unitMain = newUnit;
-
         }
-
     }
 
     public bool EnemyCheckSpawn(Gate gate)

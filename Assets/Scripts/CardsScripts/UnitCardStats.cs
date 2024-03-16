@@ -32,6 +32,11 @@ public class UnitCardStats : MonoBehaviour
         gameObject.GetComponent<Image>().sprite = cardArtwork;
         name.text = Stats.name;
         desc.text = Stats.desc;
-        cost.text = Stats.cost.ToString();
+        cost.text = Stats.resources.Gold.ToString();
+    }
+
+    public TextMeshProUGUI[] ReturnTexts()
+    {
+        return new[] { name, desc, cost };
     }
 }

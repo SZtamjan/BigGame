@@ -1,29 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Economy.EconomyActions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class BuildingsStats : MonoBehaviour
+public class BuildingsStats : EconomyOperations
 {
-    [SerializeField] private int moneyGenerate = 0;
+    [SerializeField] private ResourcesStruct resourcesGain; //To be implemented
+    
     public WhichBudynek thisBudynekIs;
     [SerializeField] private UnitScriptableObjects unitAdd;
     public GameObject terrainTypeThatWasThere;
 
+    private BuildingsScriptableObjects thisBuildingStats;
+
     private void OnEnable()
     {
-        EventManager.BuildingAction += BuildingDoingSomething;
+        EventManager.BuildingAction += BuildingActionOnTurn;
     }
 
     private void OnDisable()
     {
-        CardManager.instance.RemoveCardToDrawableCollection(unitAdd);
-        EventManager.BuildingAction -= BuildingDoingSomething;
+        if(unitAdd != null) CardManager.instance.RemoveCardToDrawableCollection(unitAdd);
+        EventManager.BuildingAction -= BuildingActionOnTurn;
     }
 
 
     public void putStats(BuildingsScriptableObjects stats)
     {
-        moneyGenerate = stats.moneyGain;
+        thisBuildingStats = stats;
+        resourcesGain = stats.resourcesGainOnTurn;
         thisBudynekIs = stats.whichBudynek;
         unitAdd = stats.UnitAdd;
         if (unitAdd != null)
@@ -32,17 +38,24 @@ public class BuildingsStats : MonoBehaviour
         }
     }
 
-    public int returnMoneyGain()
+    public ResourcesStruct ReturnResourcesGain()
     {
         // tu w ramach potrzeb można dopisać jakieś warunki na generowanie pieniażków
-
-        return moneyGenerate;
-
+        return resourcesGain;
     }
 
-    void BuildingDoingSomething()
+    public ResourcesStruct ReturnResources()
     {
-        Economy.Instance.AddCash(returnMoneyGain());
+        return thisBuildingStats.resourcesCost;
+    }
+
+    public ResourcesStruct ReturnResourcesSellValue()
+    {
+        return thisBuildingStats.resourcesSell;
+    }
+    void BuildingActionOnTurn()
+    {
+        AddResources(resourcesGain);
     }
 
 

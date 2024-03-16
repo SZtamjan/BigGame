@@ -7,8 +7,6 @@ public class EconomyConditions : MonoBehaviour
 {
     public static EconomyConditions Instance;
 
-    public TextMeshProUGUI warning;
-
     [Header("Warning Text Settings")]
     public float textFullAlpha = 2f;
     public float fadeDuration = 2f;
@@ -18,11 +16,6 @@ public class EconomyConditions : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        warning.alpha = 0f;
     }
 
     public bool CheckIfHexEmpty()
@@ -39,9 +32,14 @@ public class EconomyConditions : MonoBehaviour
 
     public void NotEnoughCash()
     {
-        
         UIController.Instance.WarmingShowWarming("Not Enough Cash!1!11!");
         Debug.Log("Not enough cash");
+    }
+    
+    public void NotEnoughResources()
+    {
+        UIController.Instance.WarmingShowWarming("Not Enough Resources!1!11!");
+        Debug.Log("Not enough resources");
     }
 
     public void ThereIsABuilding()

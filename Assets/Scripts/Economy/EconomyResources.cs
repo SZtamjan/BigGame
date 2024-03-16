@@ -4,11 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Economy : MonoBehaviour
+public class EconomyResources : MonoBehaviour
 {
     #region Resources
 
-    private ResourcesStruct resources;
+    [SerializeField] private ResourcesStruct resources;
+
+    public ResourcesStruct Resources
+    {
+        get => resources;
+        set => resources = value;
+    }
     
     // public int cash;
     // public int gold;
@@ -18,9 +24,9 @@ public class Economy : MonoBehaviour
 
     #endregion
     
-    [FormerlySerializedAs("playerCashSO")] public PlayerResources playerResourcesSo;
+    public PlayerResources playerResourcesSo;
 
-    public static Economy Instance;
+    public static EconomyResources Instance;
     private void Awake()
     {
         Instance = this;
@@ -32,20 +38,21 @@ public class Economy : MonoBehaviour
 
     private void FillResourcesOnStart()
     {
-        resources.Gold = playerResourcesSo.gold;
-        resources.Stone = playerResourcesSo.stone;
-        resources.Wood = playerResourcesSo.wood;
-        resources.Food = playerResourcesSo.food;
+        //Change it to iteration through fields as in EconomyOperations
+        Resources.Gold = playerResourcesSo.gold;
+        Resources.Stone = playerResourcesSo.stone;
+        Resources.Wood = playerResourcesSo.wood;
+        Resources.Food = playerResourcesSo.food;
     }
 
     private void UIUpdate()
     {
-        UIController.Instance.EconomyUpdateResources(resources);
+        UIController.Instance.EconomyUpdateResources(Resources);
     }
 
     public bool CanIBuy(int spend)
     {
-        if (spend <= resources.Gold)
+        if (spend <= Resources.Gold)
         {
             return true;
         }
@@ -61,7 +68,7 @@ public class Economy : MonoBehaviour
         if (tmp)
         {
 
-            resources.Gold -= spend;
+            Resources.Gold -= spend;
             return true;
         }
         else
@@ -73,12 +80,12 @@ public class Economy : MonoBehaviour
 
     public void CashOnTurn()
     {
-        resources.Gold += playerResourcesSo.cashCastleOnTurn;
+        Resources.Gold += playerResourcesSo.cashCastleOnTurn;
     }
 
     public void AddCash(int value)
     {
-        resources.Gold += value;
+        Resources.Gold += value;
     }
     
 }

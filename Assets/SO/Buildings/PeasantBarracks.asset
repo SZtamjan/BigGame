@@ -14,8 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Budynek: {fileID: 4386963024043698237, guid: 25a985ed3d4b9b343b897206305f6ca0, type: 3}
   whichBudynek: 2
-  cost: 5
+  resourcesCost:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 1
+    stone: 2
+    wood: 3
+    food: 4
   name: Tawerna z torunia
   desc: SPIERDALAJ Z MOJEJ ZIEMII
-  moneyGain: 5
+  resourcesGainOnTurn:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 1
+    stone: 2
+    wood: 3
+    food: 4
   UnitAdd: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}

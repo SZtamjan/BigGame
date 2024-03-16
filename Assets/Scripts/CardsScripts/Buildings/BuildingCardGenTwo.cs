@@ -8,9 +8,13 @@ using UnityEngine.UI;
 
 public class BuildingCardGenTwo : MonoBehaviour
 {
+    [Header("Obiekt z budynkiem")]
+    [SerializeField] private BuildingsScriptableObjects infoSource;
+    
+    [Header("Konfiguracja")]
     [SerializeField] private TextMeshProUGUI _buttonText;
     [SerializeField] private TextMeshProUGUI _buttonDescription;
-    [SerializeField] private BuildingsScriptableObjects infoSource;
+    
 
     [SerializeField] private GameEvent buildingSelectedEvent;
     [SerializeField] private Color colorWhenSelected;
@@ -18,12 +22,10 @@ public class BuildingCardGenTwo : MonoBehaviour
 
     [Header("Shown only for debug purpose")]
     [SerializeField] private GameObject _stucture;
-    [SerializeField] private int _cost;
+    [SerializeField] private ResourcesStruct _resources;
+    [SerializeField] private ResourcesStruct _ResourcesGain;
     [SerializeField] private string _name;
     [SerializeField] private string _description;
-    [SerializeField] private int _moneyGain;
-    
-    
     
     //scripts
     private BuildMenuManager _buildMenuManager;
@@ -34,19 +36,19 @@ public class BuildingCardGenTwo : MonoBehaviour
         _buildMenuManager = BuildMenuManager.Instance;
         
         _stucture = infoSource.Budynek;
-        _cost = infoSource.cost;
+        _resources = infoSource.resourcesCost;
         _name = infoSource.name;
-        _moneyGain = infoSource.moneyGain;
+        _ResourcesGain = infoSource.resourcesGainOnTurn;
         _description = infoSource.desc;
         _buttonText.text = $"Buduj {_name}";
-        _buttonDescription.text = $"kosztuje {_cost}, a daje {_moneyGain},\n{_description}";
+        _buttonDescription.text = $"kosztuje {_resources.Gold}, a daje {_ResourcesGain},\n{_description}";
 
         _buttonDescription.gameObject.SetActive(false);
     }
 
     public void SendInfoToRightPanel()
     {
-        buildingSelectedEvent.Raise();
+        buildingSelectedEvent.Raise(); //Co to robi? xd
         SelectCard();
         _buildMenuManager.FillData(infoSource);
     }

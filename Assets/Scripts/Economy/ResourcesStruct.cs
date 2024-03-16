@@ -1,65 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
+using UnityEngine.Events;
 
-public struct ResourcesStruct
+[System.Serializable]
+public class ResourcesStruct
 {
-    private int gold;
-    private int stone;
-    private int wood;
-    private int food;
+    [HideInInspector] public UnityEvent updatedResources;
+    
+    [SerializeField] private int gold;
+    [SerializeField] private int stone;
+    [SerializeField] private int wood;
+    [SerializeField] private int food;
 
     public int Gold
     {
-        set
-        {
-            gold = value;
-            UpdateUI();
-        }
         get
         {
             return gold;
         }
+        set
+        {
+            gold = value;
+            PropertySetter();
+        }
     }
     public int Stone
     {
-        set
-        {
-            stone = value;
-            UpdateUI();
-        }
         get
         {
             return stone;
         }
+        set
+        {
+            stone = value;
+            PropertySetter();
+        }
     }
     public int Wood
     {
-        set
-        {
-            wood = value;
-            UpdateUI();
-        }
         get
         {
             return wood;
         }
+        set
+        {
+            wood = value;
+            PropertySetter();
+        }
     }
     public int Food
     {
-        set
-        {
-            food = value;
-            UpdateUI();
-        }
         get
         {
             return food;
         }
+        set
+        {
+            food = value;
+            PropertySetter();
+        }
     }
 
+    private void PropertySetter()
+    {
+        UpdateUI();
+        InvokeUpdatedResources();
+    }
+    
     private void UpdateUI()
     {
         UIController.Instance.EconomyUpdateResources(this);
+    }
+
+    private void InvokeUpdatedResources()
+    {
+        updatedResources.Invoke();
+    }
+    
+    
+    //Constructors
+    public ResourcesStruct(int gold, int stone, int wood, int food)
+    {
+        Gold = gold;
+        Stone = stone;
+        Wood = wood;
+        Food = food;
     }
 }

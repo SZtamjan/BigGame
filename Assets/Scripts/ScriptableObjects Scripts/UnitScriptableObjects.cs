@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "ScriptableObjects/UnitStats")]
@@ -23,14 +25,18 @@ public class UnitScriptableObjects : ScriptableObject
     [SerializeField]
     public float moveSpeed = 0.5f;
 
-    //Card Stats
+    //Card info
     [Header("Karta ")]
-    [SerializeField]
-    public int cost = 5;
     [SerializeField]
     public new string name = "Karta wpierdolu";
     [SerializeField]
     public string desc = "To naprawdę karta wpierdolu";
     [SerializeField]
     public Sprite artwork;
+    
+    //Cost
+    [Header("Koszt karty")] 
+    [Tooltip("Wartosc 0 nie bedzie brana pod uwage podczas sprawdzania")] 
+    public ResourcesStruct resources;
+    
 }

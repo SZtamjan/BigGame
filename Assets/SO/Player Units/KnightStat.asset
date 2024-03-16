@@ -19,7 +19,11 @@ MonoBehaviour:
   attackReach: 1
   playersUnit: 1
   moveSpeed: 0.5
-  cost: 5
   name: Karta wpierdolu
   desc: To naprawde karta wpierdolu
   artwork: {fileID: 21300000, guid: 4fa3090de53e2224d950b597de62c075, type: 3}
+  resources:
+    gold: 15
+    stone: 15
+    wood: 15
+    food: 15
