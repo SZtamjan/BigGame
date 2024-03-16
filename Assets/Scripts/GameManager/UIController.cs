@@ -199,20 +199,11 @@ public class UIController : MonoBehaviour
         for (int i = 1; i <= CardsToDrawViewer.transform.childCount; i++)
         {
             yield return null;
-            try
+            if (CardsToDrawViewer.transform.GetChild(i).GetComponent<FakeCard>().name == newDrawable.name)
             {
-                if (CardsToDrawViewer.transform.GetChild(i).GetComponent<FakeCard>().name == newDrawable.name)
-                {
-                    Destroy(CardsToDrawViewer.transform.GetChild(i).gameObject);
-                    break;
-                }
+                Destroy(CardsToDrawViewer.transform.GetChild(i).gameObject);
+                break;
             }
-            catch (Exception e)
-            {
-                //wyskakuje jak nie jest przypisana jednostka do budynku
-                Debug.LogError("UNEXPECTED BEHAVIOUR " + e);
-            }
-            
         }
 
         yield return null;

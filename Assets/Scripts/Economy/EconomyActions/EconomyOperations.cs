@@ -20,7 +20,7 @@ namespace Economy.EconomyActions
                 return false;
             }
             
-            CalculateMoney(unitCostStruct);
+            SubtractStruct(unitCostStruct);
             return true;
         }
         
@@ -37,7 +37,7 @@ namespace Economy.EconomyActions
                 return false;
             }
             
-            CalculateMoney(unitCostStruct);
+            SubtractStruct(unitCostStruct);
             return true;
         }
 
@@ -103,7 +103,7 @@ namespace Economy.EconomyActions
 
         #region SubtractMoney
 
-        private void CalculateMoney(ResourcesStruct unitCostStruct)
+        protected void SubtractStruct(ResourcesStruct costStruct)
         {
             PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                           BindingFlags.NonPublic |
@@ -111,10 +111,10 @@ namespace Economy.EconomyActions
             
             foreach (var field in fields)
             {
-                int unitFieldValue = (int)field.GetValue(unitCostStruct);
+                int costValue = (int)field.GetValue(costStruct);
                 int economyResourcesValue = (int)field.GetValue(EconomyResources.Instance.Resources);
 
-                int newValue = economyResourcesValue - unitFieldValue;
+                int newValue = economyResourcesValue - costValue;
 
                 field.SetValue(EconomyResources.Instance.Resources,newValue);
             }

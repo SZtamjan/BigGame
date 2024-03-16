@@ -241,6 +241,7 @@ public class Building : EconomyOperations
 
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
+        AddResources(demolishedBuilding.GetComponent<BuildingsStats>().ReturnResourcesSellValue());
         budynki.Remove(demolishedBuilding);
         buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
         Destroy(demolishedBuilding);

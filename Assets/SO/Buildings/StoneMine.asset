@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Budynek: {fileID: 6839317198674300167, guid: dc503b1a901cded4a871c042afec56a7, type: 3}
   whichBudynek: 4
+  name: Kopalnia Kamienia
+  desc: +5 do hajsu na ture
   resourcesCost:
     updatedResources:
       m_PersistentCalls:
@@ -22,8 +24,6 @@ MonoBehaviour:
     stone: 2
     wood: 3
     food: 4
-  name: Kopalnia Kamienia
-  desc: +5 do hajsu na ture
   resourcesGainOnTurn:
     updatedResources:
       m_PersistentCalls:
@@ -32,4 +32,12 @@ MonoBehaviour:
     stone: 2
     wood: 3
     food: 4
+  resourcesSell:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 3
+    stone: 3
+    wood: 3
+    food: 3
   UnitAdd: {fileID: 0}

@@ -21,7 +21,7 @@ public class BuildingsStats : EconomyOperations
 
     private void OnDisable()
     {
-        CardManager.instance.RemoveCardToDrawableCollection(unitAdd);
+        if(unitAdd != null) CardManager.instance.RemoveCardToDrawableCollection(unitAdd);
         EventManager.BuildingAction -= BuildingActionOnTurn;
     }
 
@@ -49,6 +49,10 @@ public class BuildingsStats : EconomyOperations
         return thisBuildingStats.resourcesCost;
     }
 
+    public ResourcesStruct ReturnResourcesSellValue()
+    {
+        return thisBuildingStats.resourcesSell;
+    }
     void BuildingActionOnTurn()
     {
         AddResources(resourcesGain);

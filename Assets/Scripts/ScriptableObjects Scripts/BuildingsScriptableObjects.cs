@@ -22,6 +22,10 @@ public class BuildingsScriptableObjects : ScriptableObject
     public ResourcesStruct resourcesCost;
     [SerializeField] 
     public ResourcesStruct resourcesGainOnTurn;
+    [SerializeField] 
+    public ResourcesStruct resourcesSell;
+    
+    [Header("Unit")]
     [SerializeField]
     public UnitScriptableObjects UnitAdd;
     
