@@ -46,8 +46,7 @@ public class Gate : MonoBehaviour
 
     private void Start()
     {
-        if (material!=null)
-        {
+        
             int x = 1;
             for (int i = 0; i < GetComponent<MeshRenderer>().materials.Length; i++)
             {
@@ -59,7 +58,7 @@ public class Gate : MonoBehaviour
             }
             
             material= GetComponent<MeshRenderer>().materials[x];
-        }
+       
     }
 
     public void DamageTaken(int damege)
@@ -418,11 +417,11 @@ public class Gate : MonoBehaviour
         while (fadeDuration>time)
         {
             float ditter = Mathf.SmoothStep(startDither, target, time);
-            time += Time.deltaTime;
+            time += Time.deltaTime/fadeDuration;
             material.SetFloat("_DitherThreshold", ditter);
             yield return null;
         }
-
+        material.SetFloat("_DitherThreshold", target);
 
         yield return null;
     }
