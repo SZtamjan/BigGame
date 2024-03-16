@@ -18,7 +18,7 @@ public class AutoDisableCard : EconomyOperations
 
     private void ChangeGray()
     {
-        if (!CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources))
+        if (!CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
         {
             GetComponent<Button>().interactable = false;
 

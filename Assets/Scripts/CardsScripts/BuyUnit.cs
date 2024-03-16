@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -8,14 +9,7 @@ public class BuyUnit : EconomyOperations
 {
     public void InitBuy()
     {
-        //Zakomentowane jest git, po testach tylko to zostawic
-        // if (CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources))
-        // {
-        //     Debug.Log("worked");
-        //     SpawnerScript.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
-        // }
-        
-        if (CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources))
+        if (CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
         {
             Debug.Log("worked");
             SpawnerScript.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);

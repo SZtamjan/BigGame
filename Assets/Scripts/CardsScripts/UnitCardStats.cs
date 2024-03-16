@@ -37,6 +37,6 @@ public class UnitCardStats : MonoBehaviour
 
     public TextMeshProUGUI[] ReturnTexts()
     {
-        return new [] { name, desc, cost };
+        return new[] { name, desc, cost };
     }
 }

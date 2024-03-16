@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -78,4 +79,13 @@ public class ResourcesStruct
         updatedResources.Invoke();
     }
     
+    
+    //Constructors
+    public ResourcesStruct( int gold, int stone, int wood, int food)
+    {
+        Gold = gold;
+        Stone = stone;
+        Wood = wood;
+        Food = food;
+    }
 }
