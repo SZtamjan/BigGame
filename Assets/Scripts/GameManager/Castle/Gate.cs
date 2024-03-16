@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using static PathClass;
+using static UnityEditor.Progress;
+
 [SelectionBase]
 public class Gate : MonoBehaviour
 {
@@ -21,9 +23,12 @@ public class Gate : MonoBehaviour
     [SerializeField] private Castle _MyCastle;
 
 
-    [SerializeField, Foldout("Przezroczystość")] private Material material;
-    [SerializeField, Foldout("Przezroczystość")] private float time = 2;
+    [SerializeField, Foldout("Przezroczystość")] private float fadeDuration = 0.66f;
+    [SerializeField, Foldout("Przezroczystość"), Tooltip("index materiału przeznaczonego do przezroczystości")] private int materialIndex = 1;
+    private Material _material;
+
     private Coroutine ditterowanie;
+
 
 
 
@@ -41,10 +46,19 @@ public class Gate : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        _material = meshRenderer.materials[materialIndex];
+
+    }
+
     public void DamageTaken(int damege)
     {
         _MyCastle.HpChange -= damege;
     }
+
+    #region Unit Attaack
 
     public void UnitAttack(UnitControler thisUnit, UnitControler targetUnit)
     {
@@ -72,7 +86,15 @@ public class Gate : MonoBehaviour
         }
     }
 
-    
+    void ClearWaintingPatch()
+    {
+        foreach (var pole in path)
+        {
+            pole.unitWanting = null;
+        }
+    }
+
+    #endregion
 
     #region Player Units Actions
 
@@ -183,7 +205,7 @@ public class Gate : MonoBehaviour
                 {
                     positions.Add(i + ii);
                     path[i + ii].unitMain = thisUnit;
-                    path[i + ii - 1].unitMain = null;
+                    path[i + ii - 1].unitMain = null;                    
                     continue;
 
                 }
@@ -259,7 +281,7 @@ public class Gate : MonoBehaviour
 
             for (int ii = 0; ii <= thisUnitAttackReach; ii++)
             {
-                if (i-ii<1)
+                if (i - ii < 1)
                 {
                     UnitAttack(thisUnitController, this);
 
@@ -353,15 +375,56 @@ public class Gate : MonoBehaviour
 
     #endregion
 
-    void ClearWaintingPatch()
+    #region przezroczystości
+
+    [Button]
+    public void Test0()
     {
-        foreach (var pole in path )
-        {
-            pole.unitWanting = null;
-        }
+        SetTransparent(0f);
+    }
+    [Button]
+
+    public void Test1()
+    {
+        SetTransparent(1f);
     }
 
-   
+    public void SetTransparent(float transparency)
+    {
+        if (_material != null)
+        {
+            if (ditterowanie != null)
+            {
+                StopCoroutine(ditterowanie);
+            }
+            ditterowanie = StartCoroutine(ChangeDithering(transparency));
+        }
+
+    }
+
+    private IEnumerator ChangeDithering(float target)
+    {
+        float time = 0f;
+        float startDither = _material.GetFloat("_DitherThreshold");
+        while (fadeDuration > time)
+        {
+            float ditter = Mathf.SmoothStep(startDither, target, time);
+            time += Time.deltaTime / fadeDuration;
+            _material.SetFloat("_DitherThreshold", ditter);
+            yield return null;
+        }
+        _material.SetFloat("_DitherThreshold", target);
+
+        yield return null;
+    }
+
+
+
+
+
+    #endregion
+
+
 
     #region path creation
 
@@ -377,7 +440,7 @@ public class Gate : MonoBehaviour
     public void SetSecoundGate(Gate gate)
     {
         _secondGate = gate;
-        
+
     }
 
     public void SetMyCastle(Castle castle)

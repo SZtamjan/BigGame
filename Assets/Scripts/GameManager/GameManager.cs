@@ -207,9 +207,13 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EnemyMove()
     {
+
         yield return new WaitForEndOfFrame();
         TestDoSpawn = new();
-        for (int i = 0; i < CastlesController.Instance.enemyCastle.gates.Count; i++)
+
+        //tu spawn enemy jednostek
+        var enemyGates = CastlesController.Instance.enemyCastle.gates;
+        for (int i = 0; i < enemyGates.Count; i++)
         {
             //TestDoSpawn.Add(SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1));
             var unitToSpawn = SpawnerScript.instance.WhatEnemyCanSpawn.SelectUnitAndTurnAndPath(i, turnCounter - 1);
@@ -217,23 +221,27 @@ public class GameManager : MonoBehaviour
             {
                 continue;
             }
-            SpawnerScript.instance.SpawnEnemyUnit(CastlesController.Instance.enemyCastle.gates[i], unitToSpawn);
-
+            SpawnerScript.instance.SpawnEnemyUnit(enemyGates[i], unitToSpawn);
+            enemyGates[i].SetTransparent(0.5f);
+            yield return new WaitForEndOfFrame();
         }
+        yield return new WaitForSeconds(1f);
+
+        //a tu ich ruch
         if (!devMode)
         {
 
             //SpawnerScript.instance.EnemyCheckSpawn();
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForEndOfFrame();
             //GetComponent<PathControler>().ComputerUnitPhaze(); stara metoda
 
             foreach (var item in CastlesController.Instance.playerCastle.gates)
             {
                 item.EnemyUnitPhase();
             }
+            yield return new WaitForEndOfFrame();
 
-            yield return new WaitForSeconds(0.3f);
 
             GameManager.instance.StartCoroutine(Endturn(false));
 

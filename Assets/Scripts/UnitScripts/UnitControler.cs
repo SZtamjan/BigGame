@@ -286,7 +286,7 @@ public class UnitControler : MonoBehaviour
     }
     public void PlayIdle()
     {
-        if (!_iMDying && !isAttacking)
+        if (!_iMDying && !isAttacking && !isMovving)
         {
             animator.SetTrigger("idle");
             if (_mountedUnit)
@@ -461,44 +461,47 @@ public class UnitControler : MonoBehaviour
         bool wasThereWalk = false;
 
 
-        bool dupa = true;
+        bool reserveNextHex = true;
+
+        bool disableTransparentGate = true;
 
         while ((wayPoints?.Count ?? 0) > 0)
         {
 
-
-
-            if (dupa && wayPoints.First() > 0 && playersUnit)
+            if (reserveNextHex)
             {
-                if (_MyGate.path[wayPoints.First()].unitWanting == null)
+                if (wayPoints.First() > 0 && playersUnit)
                 {
-                    _MyGate.path[wayPoints.First()].unitWanting = this;
+                    if (_MyGate.path[wayPoints.First()].unitWanting == null)
+                    {
+                        _MyGate.path[wayPoints.First()].unitWanting = this;
 
-                    _MyGate.path[wayPoints.First() - direction].unitWanting = null;
-                    dupa = false;
+                        _MyGate.path[wayPoints.First() - direction].unitWanting = null;
+                        reserveNextHex = false;
+
+                    }
 
                 }
-
-            }
-            else if (dupa && wayPoints.First() < _MyGate.path.Count() - 1 && !playersUnit)
-            {
-                if (_MyGate.path[wayPoints.First()].unitWanting == null)
+                else if (wayPoints.First() < _MyGate.path.Count() - 1 && !playersUnit)
                 {
-                    _MyGate.path[wayPoints.First()].unitWanting = this;
+                    if (_MyGate.path[wayPoints.First()].unitWanting == null)
+                    {
+                        _MyGate.path[wayPoints.First()].unitWanting = this;
 
-                    _MyGate.path[wayPoints.First() - direction].unitWanting = null;
-                    dupa = false;
+                        _MyGate.path[wayPoints.First() - direction].unitWanting = null;
+                        reserveNextHex = false;
+                    }
+                }
+                else
+                {
+                    if (_MyGate.path[wayPoints.First()].unitWanting == null)
+                    {
+                        _MyGate.path[wayPoints.First()].unitWanting = this;
+                        reserveNextHex = false;
+                    }
+
                 }
             }
-            else
-            {
-                if (_MyGate.path[wayPoints.First()].unitWanting == null)
-                {
-                    _MyGate.path[wayPoints.First()].unitWanting = this;
-                }
-
-            }
-
 
             if (isAttacking)
             {
@@ -511,6 +514,12 @@ public class UnitControler : MonoBehaviour
             {
                 if (_MyGate.path[wayPoints.First()].unitWanting == null || _MyGate.path[wayPoints.First()].unitWanting == this)
                 {
+                    if (disableTransparentGate && (wayPoints.First() == 1 || wayPoints.First() == _MyGate.path.Count - 2))
+                    {
+                        disableTransparentGate = false;
+                        _MyGate.SetTransparent(1f);
+                    }
+
                     if ((wayPoints?.Count ?? 0) > 0 && !wasThereWalk)
                     {
                         PlayWalk();
@@ -551,7 +560,7 @@ public class UnitControler : MonoBehaviour
                     if (Vector3.Distance(transform.position, _MyGate.path[wayPoints.First()].position) < 0.02f)
                     {
 
-                        dupa = true;
+                        reserveNextHex = true;
                         wayPoints.RemoveAt(0);
 
                     }
@@ -562,12 +571,11 @@ public class UnitControler : MonoBehaviour
 
         }
 
-
+        isMovving = false;
         if (wasThereWalk)
         {
             PlayIdle();
         }
-        isMovving = false;
         yield return null;
     }
 
