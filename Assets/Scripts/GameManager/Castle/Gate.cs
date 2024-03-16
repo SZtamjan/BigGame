@@ -23,8 +23,10 @@ public class Gate : MonoBehaviour
     [SerializeField] private Castle _MyCastle;
 
 
-    [SerializeField, Foldout("Przezroczystość")] private Material material;
-    [SerializeField, Foldout("Przezroczystość")] private float fadeDuration = 2;
+    [SerializeField, Foldout("Przezroczystość")] private float fadeDuration = 0.66f;
+    [SerializeField, Foldout("Przezroczystość"), Tooltip("index materiału przeznaczonego do przezroczystości")] private int materialIndex = 1;
+    private Material _material;
+
     private Coroutine ditterowanie;
 
 
@@ -46,19 +48,9 @@ public class Gate : MonoBehaviour
 
     private void Start()
     {
-        
-            int x = 1;
-            for (int i = 0; i < GetComponent<MeshRenderer>().materials.Length; i++)
-            {
-                if (GetComponent<MeshRenderer>().materials[i] == material)
-                {
-                    x = i;
-                    break;
-                }
-            }
-            
-            material= GetComponent<MeshRenderer>().materials[x];
-       
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        _material = meshRenderer.materials[materialIndex];
+
     }
 
     public void DamageTaken(int damege)
@@ -213,7 +205,7 @@ public class Gate : MonoBehaviour
                 {
                     positions.Add(i + ii);
                     path[i + ii].unitMain = thisUnit;
-                    path[i + ii - 1].unitMain = null;
+                    path[i + ii - 1].unitMain = null;                    
                     continue;
 
                 }
@@ -399,9 +391,9 @@ public class Gate : MonoBehaviour
 
     public void SetTransparent(float transparency)
     {
-        if (material!=null)
+        if (_material != null)
         {
-            if (ditterowanie!=null)
+            if (ditterowanie != null)
             {
                 StopCoroutine(ditterowanie);
             }
@@ -413,15 +405,15 @@ public class Gate : MonoBehaviour
     private IEnumerator ChangeDithering(float target)
     {
         float time = 0f;
-        float startDither = material.GetFloat("_DitherThreshold");
-        while (fadeDuration>time)
+        float startDither = _material.GetFloat("_DitherThreshold");
+        while (fadeDuration > time)
         {
             float ditter = Mathf.SmoothStep(startDither, target, time);
-            time += Time.deltaTime/fadeDuration;
-            material.SetFloat("_DitherThreshold", ditter);
+            time += Time.deltaTime / fadeDuration;
+            _material.SetFloat("_DitherThreshold", ditter);
             yield return null;
         }
-        material.SetFloat("_DitherThreshold", target);
+        _material.SetFloat("_DitherThreshold", target);
 
         yield return null;
     }

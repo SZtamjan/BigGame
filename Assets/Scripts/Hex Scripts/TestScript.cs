@@ -13,6 +13,10 @@ public class TestScript : MonoBehaviour
 
     [Range(0.0f, 1.0f)]
     public float ditter = 1;
+    public Material myMat;
+
+   
+
 
     // Update is called once per frame
     void Update()

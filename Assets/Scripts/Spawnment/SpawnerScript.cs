@@ -89,20 +89,21 @@ public class SpawnerScript : MonoBehaviour
                     {
                         Debug.Log("Hit object with tag: " + hit.collider.tag);
 
-                        Gate thisGatePatch = GetPath(hit.collider.tag);
-                        if (thisGatePatch == null)
+                        Gate thisPatchGate = GetPath(hit.collider.tag);
+                        if (thisPatchGate == null)
                         {
                             break;
                         }
 
-                        if (CanSpawn(thisGatePatch, stats))
+                        if (CanSpawn(thisPatchGate, stats))
                         {
-                            Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
-                            Vector3 spawn = thisGatePatch.path[0].position;
+                            Vector3 rotation = thisPatchGate.path[0].position - thisPatchGate.path[1].position;
+                            Vector3 spawn = thisPatchGate.path[0].position;
                             UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, stats.unit).GetComponent<UnitControler>();
                             newUnit.SetSO(stats);
-                            newUnit.setMyGate(thisGatePatch);
-                            thisGatePatch.path[0].unitMain = newUnit;
+                            newUnit.setMyGate(thisPatchGate);
+                            thisPatchGate.path[0].unitMain = newUnit;
+                            thisPatchGate.SetTransparent(0.5f);
                             Economy.Instance.Purchase(stats.cost);
                             Destroy(karta);
                             CardManager.instance.RevomeCard(karta);
