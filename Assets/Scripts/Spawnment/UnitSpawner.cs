@@ -11,7 +11,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine.EventSystems;
 using Economy.EconomyActions;
 
-public class UnitSpawner : EconomyOperations
+public class UnitSpawner : MonoBehaviour
 {
     public static UnitSpawner instance;
     private Coroutine _SpawnerCoroutine;
@@ -128,7 +128,7 @@ public class UnitSpawner : EconomyOperations
             EconomyConditions.Instance.ThereIsAUnit(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "HEX IS OCCUPIED"
             return false;
         }
-        if (!Purchase(stats.resources))
+        if (!EconomyOperations.Purchase(stats.resources))
         {
             EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS / NOT YOUR TURN"
             return false;

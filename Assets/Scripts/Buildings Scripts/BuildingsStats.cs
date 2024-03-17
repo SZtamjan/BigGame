@@ -4,7 +4,7 @@ using Economy.EconomyActions;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class BuildingsStats : EconomyOperations
+public class BuildingsStats : MonoBehaviour
 {
     [SerializeField] private ResourcesStruct resourcesGain; //To be implemented
     
@@ -55,7 +55,7 @@ public class BuildingsStats : EconomyOperations
     }
     void BuildingActionOnTurn()
     {
-        AddResources(resourcesGain);
+        EconomyOperations.AddResources(resourcesGain);
     }
 
 

@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using static GameManager;
 
-public class Building : EconomyOperations
+public class Building : MonoBehaviour
 {
     public static Building Instance;
     Camera cam;
@@ -187,7 +187,7 @@ public class Building : EconomyOperations
             {
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log(hitObject.name);
-                if(Purchase(statsy.resourcesCost)) Build(hitObject, statsy);
+                if(EconomyOperations.Purchase(statsy.resourcesCost)) Build(hitObject, statsy);
             }
         }
         else
@@ -241,7 +241,7 @@ public class Building : EconomyOperations
 
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
-        AddResources(demolishedBuilding.GetComponent<BuildingsStats>().ReturnResourcesSellValue());
+        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingsStats>().ReturnResourcesSellValue());
         budynki.Remove(demolishedBuilding);
         buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
         Destroy(demolishedBuilding);

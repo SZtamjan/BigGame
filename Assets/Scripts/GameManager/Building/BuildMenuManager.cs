@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BuildMenuManager : EconomyOperations
+public class BuildMenuManager : MonoBehaviour
 {
     public static BuildMenuManager Instance;
     
@@ -87,7 +87,7 @@ public class BuildMenuManager : EconomyOperations
         // {
         //     StartBulding();
         // }
-        if (CheckIfICanIAfford(_buildingInfo.resourcesCost))
+        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.resourcesCost))
         {
             StartBulding();
         }
