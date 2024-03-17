@@ -196,6 +196,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
   CollectionCardsToDraw:
   - {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
+  selectedCardColor: {r: 0.16712561, g: 1, b: 0.08018869, a: 0}
 --- !u!114 &3039963261610966079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3826,6 +3827,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe1ca2dc535fb447b23320a5fca7e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spele: []
+  element: 0
+  playerUnits: 1
+  power: 1
 --- !u!1 &3968250165878787864
 GameObject:
   m_ObjectHideFlags: 0
@@ -8015,7 +8020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRemovedCard: 0
   WhatEnemyCanSpawn: {fileID: 0}
-  _SelectedCard: {r: 0.3126739, g: 1, b: 0.11792451, a: 1}
   _selectedCard: {fileID: 0}
 --- !u!114 &4340605472721432590
 MonoBehaviour:
@@ -8057,7 +8061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bb4f3a769e1bc4397201dcbb697f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask:
+  buildingMask:
     serializedVersion: 2
     m_Bits: 256
   isBuilding: 0

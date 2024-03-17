@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Spells/FireRain")]
 public class SpellFireRain : SpellsScrptableObject
 {
-    public void ShieldFrindlyUnits(bool playerUnit = true, int power = 1)
+    public override void SpellAction(GameObject karta,bool playerUnit = true, int power = 1)
     {
         
         foreach (var gate in CastlesController.Instance.playerCastle.gates)
@@ -28,4 +28,6 @@ public class SpellFireRain : SpellsScrptableObject
 
         }
     }
+
+    
 }

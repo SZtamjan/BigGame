@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine.EventSystems;
 using Economy.EconomyActions;
+using static UnitsStatsClass;
 
 public class UnitSpawner : EconomyOperations
 {
@@ -24,8 +25,8 @@ public class UnitSpawner : EconomyOperations
         instance = this;
     }
     
-    [SerializeField] private Color _SelectedCard;
-    private Color _DefaultCardColor = Color.white;
+    //[SerializeField] private Color _SelectedCard;
+    //private Color _DefaultCardColor = Color.white;
     public GameObject _selectedCard;
 
     public GameObject SelectedCardProp
@@ -34,13 +35,13 @@ public class UnitSpawner : EconomyOperations
         set => _selectedCard = value;
     }
 
-    public void SpawnMyUnit(GameObject karta, UnitScriptableObjects stats)
+    public void SpawnMyUnit(GameObject karta, CardScriptableObject stats)
     {
         if (_SpawnerCoroutine != null)
         {
             StopCoroutine(_SpawnerCoroutine);
             _SpawnerCoroutine=null;
-            karta.GetComponent<Image>().color = _DefaultCardColor;
+            karta.GetComponent<Image>().color = CardManager.instance.defaultCardColor;
         }
         else
         {
@@ -49,10 +50,10 @@ public class UnitSpawner : EconomyOperations
         }
     }
 
-    private IEnumerator SelectPathToSpawn(GameObject karta, UnitScriptableObjects stats)
+    private IEnumerator SelectPathToSpawn(GameObject karta, CardScriptableObject stats)
     {
         _selectedCard = karta;
-        karta.GetComponent<Image>().color = _SelectedCard;
+        karta.GetComponent<Image>().color = CardManager.instance.selectedCardColor;
         while (GameManager.instance.CanPlayerMove())
         {
             if (Input.GetMouseButtonDown(0))
@@ -81,8 +82,10 @@ public class UnitSpawner : EconomyOperations
                 {
                     Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
                     Vector3 spawn = thisGatePatch.path[0].position;
-                    UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, stats.unit).GetComponent<UnitControler>();
-                    newUnit.SetSO(stats);
+                    UnitsStats unitStats = (UnitsStats)stats.GetStats();
+
+                    UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, unitStats.unit).GetComponent<UnitControler>();
+                    newUnit.SetSO(unitStats);
                     newUnit.setMyGate(thisGatePatch);
                     thisGatePatch.path[0].unitMain = newUnit;
                     thisGatePatch.SetTransparent(0.5f);
@@ -98,7 +101,7 @@ public class UnitSpawner : EconomyOperations
 
 
         }
-        karta.GetComponent<Image>().color = _DefaultCardColor;
+        karta.GetComponent<Image>().color = CardManager.instance.defaultCardColor;
         _SpawnerCoroutine = null;
         yield return new WaitForSeconds(.1f);
         UIController.Instance.SwitchTrashcanActive();
@@ -121,7 +124,7 @@ public class UnitSpawner : EconomyOperations
         return null;
     }
 
-    private bool CheckSpawnConditions(Gate gate, UnitScriptableObjects stats)
+    private bool CheckSpawnConditions(Gate gate, CardScriptableObject stats)
     {
         if (gate.path[0].unitMain != null)
         {
@@ -142,14 +145,15 @@ public class UnitSpawner : EconomyOperations
         playerRemovedCard = value;
     }
 
-    public void SpawnEnemyUnit(Gate gate, UnitScriptableObjects stats)
+    public void SpawnEnemyUnit(Gate gate, CardScriptableObject stats)
     {
         if (EnemyCheckSpawn(gate))
         {
             Vector3 rotation = gate.path.Last().position - gate.path[gate.path.Count - 2].position;
             Vector3 spawn = gate.path.Last().position;
-            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y - 90f, stats.unit).GetComponent<UnitControler>();
-            newUnit.SetSO(stats);
+            var unitStats = (UnitsStats)stats.GetStats();
+            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y - 90f, unitStats.unit).GetComponent<UnitControler>();
+            newUnit.SetSO(unitStats);
             newUnit.setMyGate(gate);
             gate.path.Last().unitMain = newUnit;
         }

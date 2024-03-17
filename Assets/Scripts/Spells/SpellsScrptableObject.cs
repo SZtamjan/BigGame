@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Spells/Main")]
-public class SpellsScrptableObject : ScriptableObject
+public abstract class SpellsScrptableObject : ScriptableObject
 {
-    public SpellEvent SpelAction;
+    public abstract void SpellAction(GameObject karta, bool playerUnit = true, int power = 1);
 
 }

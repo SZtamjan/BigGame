@@ -25,10 +25,15 @@ public class CardManager : MonoBehaviour
     [SerializeField] private List<LimitStep> cardsStepLimits = new List<LimitStep>();
 
     [Tooltip("Karty z jakimi zacznie gracz")]
-    public List<UnitScriptableObjects> PlayerCards;
+    public List<CardScriptableObject> PlayerCards;
 
     [Tooltip("Karty mozliwe do wylosowania")]
-    public List<UnitScriptableObjects> CollectionCardsToDraw;
+    public List<CardScriptableObject> CollectionCardsToDraw;
+
+
+    //kolory kart
+    [SerializeField] public Color selectedCardColor;
+    [NonSerialized] public Color defaultCardColor = Color.white;
 
     private void Awake()
     {
@@ -67,26 +72,26 @@ public class CardManager : MonoBehaviour
         
     }
 
-    private UnitScriptableObjects GetRandomCardFromCollection()
+    private CardScriptableObject GetRandomCardFromCollection()
     {
         int randomNumber = Random.Range(0, CollectionCardsToDraw.Count);
-        UnitScriptableObjects pickedCard = CollectionCardsToDraw[randomNumber];
+        CardScriptableObject pickedCard = CollectionCardsToDraw[randomNumber];
         return pickedCard;
     }
 
-    public void AddCardToDrawableCollection(UnitScriptableObjects newDrawable)
+    public void AddCardToDrawableCollection(CardScriptableObject newDrawable)
     {
         CollectionCardsToDraw.Add(newDrawable);
         StartCoroutine(UIController.Instance.AddCardToDrawableViewer(newDrawable));
     }
 
-    public void RemoveCardToDrawableCollection(UnitScriptableObjects newDrawable)
+    public void RemoveCardToDrawableCollection(CardScriptableObject newDrawable)
     {
         CollectionCardsToDraw.Remove(newDrawable);
         StartCoroutine(UIController.Instance.RemoveCardToDrawableViewer(newDrawable));
     }
 
-    private void SpawnCard(UnitScriptableObjects unitCardStats)
+    private void SpawnCard(CardScriptableObject unitCardStats)
     {
         LimitCardCheck();
         GameObject thisCard = Instantiate(cardPrefab, _WhereToSpawnCard.transform);
