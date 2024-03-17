@@ -12,14 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
   m_Name: SkeletonWarriorStat
   m_EditorClassIdentifier: 
+  name: Skeleton Warrior
+  desc: "To naprawd\u0119 karta wpierdolu"
+  artwork: {fileID: 0}
+  playersSide: 0
+  resources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    stone: 0
+    wood: 0
+    food: 0
   unit: {fileID: 4575258820587949288, guid: a5c655d29151f55449032bbac1fc1422, type: 3}
   hp: 3
   damage: 2
   movmentDistance: 1
   attackReach: 1
-  playersUnit: 0
   moveSpeed: 0.5
-  cost: 5
-  name: Skeleton Warrior
-  desc: "To naprawd\u0119 karta wpierdolu"
-  artwork: {fileID: 0}
