@@ -88,7 +88,7 @@ public class UnitSpawner : EconomyOperations
                     newUnit.SetSO(unitStats);
                     newUnit.setMyGate(thisGatePatch);
                     thisGatePatch.path[0].unitMain = newUnit;
-                    thisGatePatch.SetTransparent(0.5f);
+                    thisGatePatch.SetTransparent(GameManager.instance.GateTransparency);
                     //EconomyResources.Instance.Purchase(stats.resources.Gold);
                     Destroy(karta);
                     CardManager.instance.RevomeCard(karta);
