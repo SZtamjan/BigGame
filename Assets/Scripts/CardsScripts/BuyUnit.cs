@@ -7,11 +7,17 @@ using Economy.EconomyActions;
 
 public class BuyUnit : EconomyOperations
 {
+    private UnitCardStats unitCardStats;
+    public void Start()
+    {
+        unitCardStats = GetComponent<UnitCardStats>();
+    }
     public void InitBuy()
     {
-        if (CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
+        if (CheckIfICanIAfford(unitCardStats.Stats.resources,false))
         {
-            UnitSpawner.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
+            //UnitSpawner.instance.SpawnMyUnit(gameObject, unitCardStats.Stats);
+            unitCardStats.Stats.CardAction(gameObject, unitCardStats.Stats);
         }
     }
 }

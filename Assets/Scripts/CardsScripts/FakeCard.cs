@@ -12,7 +12,7 @@ public class FakeCard : MonoBehaviour
 
     public new string name;
 
-    public void SetUpCard(UnitScriptableObjects stats)
+    public void SetUpCard(CardScriptableObject stats)
     {
         Sprite cardArtwork = stats.artwork;
 

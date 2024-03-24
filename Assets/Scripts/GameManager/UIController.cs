@@ -187,14 +187,14 @@ public class UIController : MonoBehaviour
 
     private void SpawnCardsInDrawableViewer()
     {
-        List<UnitScriptableObjects> drawableCards = _cardManager.CollectionCardsToDraw;
+        List<CardScriptableObject> drawableCards = _cardManager.CollectionCardsToDraw;
         foreach (var newDrawable in drawableCards)
         {
             StartCoroutine(AddCardToDrawableViewer(newDrawable));
         }
     }
 
-    public IEnumerator RemoveCardToDrawableViewer(UnitScriptableObjects newDrawable)
+    public IEnumerator RemoveCardToDrawableViewer(CardScriptableObject newDrawable)
     {
         for (int i = 1; i <= CardsToDrawViewer.transform.childCount; i++)
         {
@@ -209,7 +209,7 @@ public class UIController : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator AddCardToDrawableViewer(UnitScriptableObjects newDrawable)
+    public IEnumerator AddCardToDrawableViewer(CardScriptableObject newDrawable)
     {
         GameObject currCard = Instantiate(FakeCard, CardsToDrawViewer.transform);
         currCard.GetComponent<FakeCard>().SetUpCard(newDrawable);

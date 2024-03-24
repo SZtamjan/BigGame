@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class UnitCardStats : MonoBehaviour
 {
-    [SerializeField] private UnitScriptableObjects stats; //Serialized only for debug purpose
-    public UnitScriptableObjects Stats
+    [SerializeField] private CardScriptableObject stats; //Serialized only for debug purpose
+    public CardScriptableObject Stats
     {
         get => stats;
         private set => stats = value;
@@ -18,7 +18,7 @@ public class UnitCardStats : MonoBehaviour
     [SerializeField] private TextMeshProUGUI desc;
     [SerializeField] private TextMeshProUGUI cost;
 
-    public void FillStats(UnitScriptableObjects newStats)
+    public void FillStats(CardScriptableObject newStats)
     {
         Stats = newStats;
         

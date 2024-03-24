@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     public List<UnitScriptableObjects> TestDoSpawn;
 
+    [NonSerialized]
+    public float GateTransparency = 0.33f;
+
     private void Awake()
     {
         gameManager = gameObject;
@@ -222,7 +225,7 @@ public class GameManager : MonoBehaviour
                 continue;
             }
             UnitSpawner.instance.SpawnEnemyUnit(CastlesController.Instance.enemyCastle.gates[i], unitToSpawn);
-            enemyGates[i].SetTransparent(0.5f);
+            enemyGates[i].SetTransparent(GateTransparency);
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(1f);

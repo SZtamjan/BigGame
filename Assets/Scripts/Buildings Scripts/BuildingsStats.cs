@@ -9,7 +9,7 @@ public class BuildingsStats : EconomyOperations
     [SerializeField] private ResourcesStruct resourcesGain; //To be implemented
     
     public WhichBudynek thisBudynekIs;
-    [SerializeField] private UnitScriptableObjects unitAdd;
+    [SerializeField] private CardScriptableObject unitAdd;
     public GameObject terrainTypeThatWasThere;
 
     private BuildingsScriptableObjects thisBuildingStats;

@@ -21,7 +21,7 @@ public class SpellManager : MonoBehaviour
     [Button]
     private void TestShieldAll()
     {
-        spele[element].SpelAction.Invoke(playerUnits, power);
+        spele[element].SpellAction(null,playerUnits, power);;
     }
 
 
@@ -107,7 +107,3 @@ public class SpellManager : MonoBehaviour
 }
 
 
-[System.Serializable]
-public class SpellEvent : UnityEvent<bool, int>
-{
-}

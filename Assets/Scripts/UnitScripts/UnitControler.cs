@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnitsStatsClass;
 using static SpawnUnitsScriptableObject;
 using static UnityEngine.Rendering.DebugUI;
 [SelectionBase]
+
 public class UnitControler : MonoBehaviour
 {
-    public UnitScriptableObjects unitScriptableObjects;
+    public UnitsStats unitStats;
     public GameObject hpbar;
     private Gate _MyGate;
 
@@ -73,21 +75,21 @@ public class UnitControler : MonoBehaviour
             Debug.Log("Coœ nie tak z mountem");
         }
     }
-    public void SetSO(UnitScriptableObjects stats)
+    public void SetSO(UnitsStats stats)
     {
-        unitScriptableObjects = stats;
+        unitStats = stats;
         SetStats();
     }
 
     private void SetStats()
     {
-        hp = unitScriptableObjects.hp;
+        hp = unitStats.hp;
         hidenHP = hp;
-        damage = unitScriptableObjects.damage;
-        movmentDistance = unitScriptableObjects.movmentDistance;
-        attackReach = unitScriptableObjects.attackReach;
-        playersUnit = unitScriptableObjects.playersUnit;
-        speed = unitScriptableObjects.moveSpeed;
+        damage = unitStats.damage;
+        movmentDistance = unitStats.movmentDistance;
+        attackReach = unitStats.attackReach;
+        playersUnit = unitStats.playersSide;
+        speed = unitStats.moveSpeed;
 
         hpbar.GetComponent<HpUnitsShow>().MaxHP(hp);
         animator = GetComponent<Animator>();

@@ -9,24 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
-  m_Name: SkeletonArcherStat
+  m_Script: {fileID: 11500000, guid: 3485cfd3ad7f47348b7397a5cda24927, type: 3}
+  m_Name: OneTileFire
   m_EditorClassIdentifier: 
-  name: Skeleton Archer
-  desc: "To naprawd\u0119 karta wpierdolu"
-  artwork: {fileID: 0}
-  playersSide: 0
+  name: FIRE BOLTO
+  desc: PALI
+  artwork: {fileID: 21300000, guid: b4dda88d506adec4f98172d79cbf108b, type: 3}
+  playersSide: 1
   resources:
     updatedResources:
       m_PersistentCalls:
         m_Calls: []
-    gold: 0
+    gold: 1
     stone: 0
     wood: 0
     food: 0
-  unit: {fileID: 6365645490413146944, guid: 9568811cecf90964cafb850f591f35d8, type: 3}
-  hp: 3
-  damage: 1
-  movmentDistance: 1
-  attackReach: 3
-  moveSpeed: 0.5
+  power: 1
+  playerSide: 1
+  spellsScrptableObject: {fileID: 11400000, guid: 81d8d63a904bba949b0d5a2ac6c72c85, type: 2}
