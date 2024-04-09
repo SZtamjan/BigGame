@@ -66,7 +66,7 @@ public class DestroyBuilding : MonoBehaviour
                         GameObject hitBuilding = raycastHit.collider.gameObject;
                         
                         //Place previous ground
-                        hitBuilding.GetComponent<BuildingsStats>().terrainTypeThatWasThere.SetActive(true);
+                        hitBuilding.GetComponent<BuildingController>().ReturnTerrainTypeThatWasThere.SetActive(true);
                         
                         //Remove buffs and destroy
                         Building.Instance.RemoveBuilding(hitBuilding);

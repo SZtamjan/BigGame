@@ -12,10 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
   m_Name: Stable
   m_EditorClassIdentifier: 
-  Budynek: {fileID: 3701819333172200624, guid: 87e9e93619cf8a94fb4ef718481b9ecc, type: 3}
+  budynekPrefab: {fileID: 0}
   whichBudynek: 3
-  cost: 50
   name: Stajnia Augiasza
   desc: Fabryka koni
-  moneyGain: 0
+  resourcesCost:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    food: 0
+    wood: 0
+    stone: 0
+  upgradeBuildingList:
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    turnOffBuildingForTurns: 0
+  resourcesSell:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    food: 0
+    wood: 0
+    stone: 0
   UnitAdd: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}

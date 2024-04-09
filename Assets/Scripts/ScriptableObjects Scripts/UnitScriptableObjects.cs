@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-
-[CreateAssetMenu(fileName = "ScriptableObjects", menuName = "ScriptableObjects/UnitStats")]
+//[Serializable]
+[CreateAssetMenu(fileName = "UnitSO", menuName = "ScriptableObjects/UnitStats")]
 public class UnitScriptableObjects : ScriptableObject
 {
     //Prefabs

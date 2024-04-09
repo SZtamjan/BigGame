@@ -65,7 +65,7 @@ public class BuildMenuManager : MonoBehaviour
         checkingInProgress = null;
     }
     
-    public void FillData(BuildingsScriptableObjects info)
+    public void FillDataToDisplayOnRightPanel(BuildingsScriptableObjects info)
     {
         _buildingInfo = info;
         
@@ -74,10 +74,11 @@ public class BuildMenuManager : MonoBehaviour
         selectedBuildingTitle.text = info.name;
         selectedBuildingDescription.text = info.desc;
 
-        goldDisplay.text = info.resourcesCost.Gold.ToString();
-        stoneDisplay.text = info.resourcesCost.Stone.ToString();
-        woodDisplay.text = info.resourcesCost.Wood.ToString();
-        foodDisplay.text = info.resourcesCost.Food.ToString();
+        Debug.LogWarning("Zhardkodowane lvl 0");
+        goldDisplay.text = info.buyCost.Gold.ToString();
+        stoneDisplay.text = info.buyCost.Stone.ToString();
+        woodDisplay.text = info.buyCost.Wood.ToString();
+        foodDisplay.text = info.buyCost.Food.ToString();
     }
     
     public void InitBuyBuilding()
@@ -87,7 +88,8 @@ public class BuildMenuManager : MonoBehaviour
         // {
         //     StartBulding();
         // }
-        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.resourcesCost))
+        Debug.LogWarning("Zhardkodowane lvl 0");
+        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buyCost))
         {
             StartBulding();
         }

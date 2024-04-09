@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
+  m_Name: ArcherBarracks
+  m_EditorClassIdentifier: 
+  budynekPrefab: {fileID: 0}
+  whichBudynek: 2
+  name: Archer Barrack
+  desc: Moze wolno strzela, ale celnie
+  buyCost:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 1
+    food: 1
+    wood: 2
+    stone: 3
+  upgradeBuildingList:
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 1
+      food: 1
+      wood: 2
+      stone: 3
+    turnOffBuildingForTurns: 0
+    newUnit: {fileID: 11400000, guid: 0f7be252251b17945bbc0ecde06ded33, type: 2}
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    turnOffBuildingForTurns: 0
+    newUnit: {fileID: 0}
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    turnOffBuildingForTurns: 0
+    newUnit: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    turnOffBuildingForTurns: 0
+    newUnit: {fileID: 11400000, guid: 24d176ce3748b4143bd47d467a04cbb9, type: 2}
+  resourcesSell:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    food: 0
+    wood: 0
+    stone: 0

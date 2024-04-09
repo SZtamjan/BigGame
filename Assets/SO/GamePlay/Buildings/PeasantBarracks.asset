@@ -12,24 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
   m_Name: PeasantBarracks
   m_EditorClassIdentifier: 
-  Budynek: {fileID: 4386963024043698237, guid: 25a985ed3d4b9b343b897206305f6ca0, type: 3}
+  budynekPrefab: {fileID: 0}
   whichBudynek: 2
+  name: Tawerna z torunia
+  desc: SPIERDALAJ Z MOJEJ ZIEMII
   resourcesCost:
     updatedResources:
       m_PersistentCalls:
         m_Calls: []
     gold: 1
-    stone: 2
-    wood: 3
     food: 4
-  name: Tawerna z torunia
-  desc: SPIERDALAJ Z MOJEJ ZIEMII
-  resourcesGainOnTurn:
+    wood: 3
+    stone: 2
+  upgradeBuildingList:
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    turnOffBuildingForTurns: 0
+  resourcesSell:
     updatedResources:
       m_PersistentCalls:
         m_Calls: []
-    gold: 1
-    stone: 2
-    wood: 3
-    food: 4
+    gold: 9
+    food: 9
+    wood: 9
+    stone: 9
   UnitAdd: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}

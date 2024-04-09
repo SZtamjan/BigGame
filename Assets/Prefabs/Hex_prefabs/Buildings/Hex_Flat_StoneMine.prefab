@@ -31,8 +31,7 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3266128829536848327}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,75 +112,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c833d86679f947449acce0aa1bf54bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeUI: {fileID: 3266128829536848326}
---- !u!1001 &2300289695110613075
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6170479514968381373}
-    m_Modifications:
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3656882868039942549, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_Name
-      value: BuildingUpgradeWorldUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314287549181851555, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
---- !u!1 &3266128829536848326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3656882868039942549, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-  m_PrefabInstance: {fileID: 2300289695110613075}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3266128829536848327 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3656882868039942548, guid: 7e6955f187b478a4c8af38383625e2b5, type: 3}
-  m_PrefabInstance: {fileID: 2300289695110613075}
-  m_PrefabAsset: {fileID: 0}

@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
     private GameObject halfTransparent;
     
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
-    public List<BuildingsStats> buildingsStats; // It stores what building does
+    public List<BuildingController> buildingsStats; // It stores what building does
     
     public List<GameObject> Budynks
     {
@@ -61,8 +61,11 @@ public class Building : MonoBehaviour
         budynki = new List<GameObject>();
         cam = Camera.main;
     }
-    
-    
+
+    private void OnDisable()
+    {
+        GetComponent<BuildingInfoDisplayer>().TurnOffWindow();
+    }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
     {
@@ -100,12 +103,12 @@ public class Building : MonoBehaviour
     private void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
-        GameObject building = Instantiate(statsy.Budynek, posi.position, Quaternion.identity);
+        GameObject building = Instantiate(statsy.budynekPrefab, posi.position, Quaternion.identity);
         building.transform.SetParent(parent.transform, true);
-        building.AddComponent<BuildingsStats>();
-        var buldingStast = building.GetComponent<BuildingsStats>();
-        buldingStast.putStats(statsy);
-        buldingStast.terrainTypeThatWasThere = position;
+        building.AddComponent<BuildingController>();
+        var buldingStast = building.GetComponent<BuildingController>();
+        buldingStast.FillNewStatsToThisBuilding(statsy,0);
+        buldingStast.ReturnTerrainTypeThatWasThere = position;
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
         justBuild.Raise();
@@ -116,6 +119,7 @@ public class Building : MonoBehaviour
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         InstantiateHalfTransparentBuilding(statsy);
+        halfTransparent.GetComponent<BuildingInfoDisplayer>().enabled = false;
         
         while (isBuilding)
         {
@@ -138,7 +142,14 @@ public class Building : MonoBehaviour
 
     private void InstantiateHalfTransparentBuilding(BuildingsScriptableObjects statsy)
     {
-        halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), Quaternion.identity);
+        if (statsy.budynekPrefab != null)
+        {
+            halfTransparent = Instantiate(statsy.budynekPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("PODEPNIJ PREFAB BUDYNKU W SO BUDYNKU MOZE, CO?");
+        }
         //animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
@@ -187,7 +198,8 @@ public class Building : MonoBehaviour
             {
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log(hitObject.name);
-                if(EconomyOperations.Purchase(statsy.resourcesCost)) Build(hitObject, statsy);
+                Debug.LogWarning("Zhardkodowane lvl 0");
+                if(EconomyOperations.Purchase(statsy.buyCost)) Build(hitObject, statsy);
             }
         }
         else
@@ -241,9 +253,9 @@ public class Building : MonoBehaviour
 
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
-        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingsStats>().ReturnResourcesSellValue());
+        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingController>().ReturnResourcesSellValue());
         budynki.Remove(demolishedBuilding);
-        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
+        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingController>());
         Destroy(demolishedBuilding);
     }
     

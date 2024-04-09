@@ -131,7 +131,8 @@ public class GameManager : MonoBehaviour
     private void GameStatePlayerTurn()
     {
         GetComponent<UnitSpawner>().SetRemoved(false); // ?????????????????????
-        EventManager.Instance.BuldingsActions();
+        EventManager.Instance.BuldingsActions(); //This is does pretty much the same as the line below, but its separated, because
+        EventManager.Instance.NewPlayerTurnFunc(); //It is more clear what it does
         if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
         {
             CardManager.instance.GetNewCardToHand();

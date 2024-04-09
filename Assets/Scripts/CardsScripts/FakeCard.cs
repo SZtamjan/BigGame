@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FakeCard : MonoBehaviour
 {
-    [SerializeField] private new TextMeshProUGUI namee;
+    [SerializeField] private TextMeshProUGUI namee;
     [SerializeField] private TextMeshProUGUI desc;
     [SerializeField] private TextMeshProUGUI cost;
 

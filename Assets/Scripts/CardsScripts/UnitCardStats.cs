@@ -21,7 +21,6 @@ public class UnitCardStats : MonoBehaviour
     public void FillStats(UnitScriptableObjects newStats)
     {
         Stats = newStats;
-        
         GetCardStats();
     }
     

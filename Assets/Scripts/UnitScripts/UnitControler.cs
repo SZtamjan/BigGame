@@ -33,9 +33,7 @@ public class UnitControler : MonoBehaviour
 
     [SerializeField] private int IdleAnimationsNumber = 1;
     private bool _iMDying = false;
-
-    [SerializeField] private bool _RangedUnit = false;
-
+    
     [ShowIf("_RangedUnit")]
     [Header("Dla jednostek dystansowych")]
     public ProjectileController projectileToSpawn;
@@ -70,7 +68,7 @@ public class UnitControler : MonoBehaviour
         animator = GetComponent<Animator>();
         if (_mountedUnit && _SecondAnimator == null)
         {
-            Debug.Log("Coœ nie tak z mountem");
+            Debug.Log("Coï¿½ nie tak z mountem");
         }
     }
     public void SetSO(UnitScriptableObjects stats)
@@ -301,7 +299,7 @@ public class UnitControler : MonoBehaviour
     {
         if (IdleAnimationsNumber < 1)
         {
-            Debug.Log("coœ posz³o nie tak z iloœci¹ animacji");
+            Debug.Log("coï¿½ poszï¿½o nie tak z iloï¿½ciï¿½ animacji");
         }
         else
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ChangeGlow : MonoBehaviour
 {
     private bool isOn = false;
-    Renderer renderer;
+    private new Renderer renderer;
     Material[] materials;
 
     private void Start()

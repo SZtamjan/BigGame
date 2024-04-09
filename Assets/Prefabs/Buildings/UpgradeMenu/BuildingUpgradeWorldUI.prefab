@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f34606d7e3a82a46862968c0fe3a20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  me: {fileID: 0}
 --- !u!1001 &4471165085745052204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,6 +53,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3656882868039942548}
     m_Modifications:
+    - target: {fileID: 2046823180554023963, guid: 2a01b327219e1114d8848066eeec63a7, type: 3}
+      propertyPath: m_text
+      value: Remove
+      objectReference: {fileID: 0}
     - target: {fileID: 3584970962540609248, guid: 2a01b327219e1114d8848066eeec63a7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -120,6 +123,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3656882868039942548}
     m_Modifications:
+    - target: {fileID: 2046823180554023963, guid: 2a01b327219e1114d8848066eeec63a7, type: 3}
+      propertyPath: m_text
+      value: Upgrade
+      objectReference: {fileID: 0}
     - target: {fileID: 3584970962540609248, guid: 2a01b327219e1114d8848066eeec63a7, type: 3}
       propertyPath: m_RootOrder
       value: 0

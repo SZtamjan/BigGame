@@ -35,10 +35,11 @@ public class BuildingCardGenTwo : MonoBehaviour
         _originalColor = GetComponent<Image>().color;
         _buildMenuManager = BuildMenuManager.Instance;
         
-        _stucture = infoSource.Budynek;
-        _resources = infoSource.resourcesCost;
+        Debug.LogWarning("Zhardkodowane lvl 0");
+        _stucture = infoSource.budynekPrefab;
+        _resources = infoSource.buyCost;
         _name = infoSource.name;
-        _ResourcesGain = infoSource.resourcesGainOnTurn;
+        _ResourcesGain = infoSource.buyCost;
         _description = infoSource.desc;
         _buttonText.text = $"Buduj {_name}";
         _buttonDescription.text = $"kosztuje {_resources.Gold}, a daje {_ResourcesGain},\n{_description}";
@@ -50,7 +51,7 @@ public class BuildingCardGenTwo : MonoBehaviour
     {
         buildingSelectedEvent.Raise(); //Co to robi? xd
         SelectCard();
-        _buildMenuManager.FillData(infoSource);
+        _buildMenuManager.FillDataToDisplayOnRightPanel(infoSource);
     }
 
     private void SelectCard()

@@ -7,6 +7,10 @@ public class EventManager : MonoBehaviour
     public delegate void BuildingActions();
     public static event BuildingActions BuildingAction;
 
+    public delegate void NewPlayerTurnEvent();
+
+    public static event NewPlayerTurnEvent NewPlayerTurn;
+
     public static EventManager Instance;
     private void Awake()
     {
@@ -15,9 +19,11 @@ public class EventManager : MonoBehaviour
 
     public void BuldingsActions()
     {
-        if (BuildingAction!=null)
-        {
-            BuildingAction();
-        }
+        BuildingAction?.Invoke();
+    }
+
+    public void NewPlayerTurnFunc()
+    {
+        NewPlayerTurn?.Invoke();
     }
 }

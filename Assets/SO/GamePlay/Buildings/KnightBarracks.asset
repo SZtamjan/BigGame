@@ -12,10 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
   m_Name: KnightBarracks
   m_EditorClassIdentifier: 
-  Budynek: {fileID: 2842138248718578753, guid: 654183cb44001b54c93a2019f1da5205, type: 3}
+  budynekPrefab: {fileID: 0}
   whichBudynek: 1
-  cost: 5
   name: Malbork
   desc: Ciezkie jest zycie jak sie ma 40 kilo na sobie
-  moneyGain: 5
+  resourcesCost:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    food: 0
+    wood: 0
+    stone: 0
+  upgradeBuildingList:
+  - resourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    turnOffBuildingForTurns: 0
+  resourcesSell:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    food: 0
+    wood: 0
+    stone: 0
   UnitAdd: {fileID: 11400000, guid: cac1ebd836d2f974fb1f2cf627c4b03c, type: 2}

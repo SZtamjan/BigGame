@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
+  m_Name: TestBarack
+  m_EditorClassIdentifier: 
+  budynekPrefab: {fileID: 6839317198674300167, guid: dc503b1a901cded4a871c042afec56a7, type: 3}
+  whichBudynek: 2
+  name: Testowy maniek
+  desc: Skill issue
+  buyCost:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 1
+    food: 1
+    wood: 2
+    stone: 3
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 4493585093827132993, guid: 924e2f53f01efb0428d77480f6a0cab7, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 5b503deaed5e1fa479bd0bde42c0966a, type: 2}
+    - {fileID: 2100000, guid: 6a671200822010b45bf83bc61c5717f7, type: 2}
+    newUnit: {fileID: 0}
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 4493585093827132993, guid: 924e2f53f01efb0428d77480f6a0cab7, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 5b503deaed5e1fa479bd0bde42c0966a, type: 2}
+    - {fileID: 2100000, guid: 6a671200822010b45bf83bc61c5717f7, type: 2}
+    newUnit: {fileID: 0}
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
