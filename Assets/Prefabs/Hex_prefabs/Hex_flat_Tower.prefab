@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7526372678711496658}
   - component: {fileID: 6907632900880121975}
   - component: {fileID: 8662709958922613949}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Hex_flat_Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7149707124358878568}
-  m_Mesh: {fileID: 8988755319056511261, guid: 6ce8a0ce69410f748bb2ecae852633df, type: 3}
+  m_Mesh: {fileID: 8988755319056511261, guid: 507e31a4b967aad4988b193b4b48ebe0, type: 3}
 --- !u!23 &8662709958922613949
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,15 +61,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 45d92c73cb9889645926a1fcc7e0249e, type: 2}
-  - {fileID: 2100000, guid: 7d1923c5456592c40ba982d74545783c, type: 2}
-  - {fileID: 2100000, guid: ddeed53e94421b94ca1d8cc8b6bd8032, type: 2}
-  - {fileID: 2100000, guid: a17d4c8d435ef964fac1ae78e4696fd9, type: 2}
-  - {fileID: 2100000, guid: 1e83c131ed1f5104285f25cd26b509ce, type: 2}
-  - {fileID: 2100000, guid: 5e3cfa50a8eccc0488cf903d8ca2d335, type: 2}
-  - {fileID: 2100000, guid: f6f071f60b5fe634ba084974d7db1d63, type: 2}
-  - {fileID: 2100000, guid: e38cbbea5a9310c4e9db4862f3c63bad, type: 2}
-  - {fileID: 2100000, guid: dced5b9f8011e81499d3f030455d0118, type: 2}
+  - {fileID: 2100000, guid: 94f259ee913e1f8438f481e485af491f, type: 2}
+  - {fileID: 2100000, guid: 48b9d24f9c2fad846b44c79c4a89acf9, type: 2}
+  - {fileID: 2100000, guid: 7f45177318d206d4285f1f72dff3f35e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

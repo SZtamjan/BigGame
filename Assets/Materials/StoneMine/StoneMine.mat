@@ -10,6 +10,7 @@ Material:
   m_Name: StoneMine
   m_Shader: {fileID: 4800000, guid: 933f24cde1e3f6a41818f56d729421ab, type: 3}
   m_ValidKeywords:
+  - _ENVIRONMENTREFLECTIONS_OFF
   - _HALFTONESHAPE_DOT
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
@@ -135,7 +136,7 @@ Material:
     - _DitherThreshold: 1
     - _DstBlend: 0
     - _EnabledHairSpec: 0
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _FaceShadowMapEnabled: 0
     - _FaceShadowMapPow: 0.2
     - _FaceShadowSmoothness: 0.1
@@ -176,7 +177,7 @@ Material:
     - _RimLightSmoothness: 0.362
     - _RimPower: 0.305
     - _SizeFalloff: 0
-    - _Smoothness: 0.03
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecClipMaskScale: 1
     - _SpecShadowStrength: 1
@@ -205,9 +206,9 @@ Material:
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineDistancFade: {r: -65.859886, g: 139.71005, b: 0, a: 0}
+    - _OutlineDistancFade: {r: -11.7347, g: 67.34, b: 0, a: 0}
     - _RimColor: {r: 0.6792453, g: 0.63465375, b: 0.23389105, a: 0.173}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.713}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

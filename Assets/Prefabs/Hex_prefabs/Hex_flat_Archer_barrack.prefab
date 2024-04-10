@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8691338025116366126}
   - component: {fileID: 798099463787276873}
   - component: {fileID: 5926945966339412224}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Hex_flat_Archer_barrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7657511380786551385}
-  m_Mesh: {fileID: 2248205794816054320, guid: cd23c20160691d04fb02eea59c657d7b, type: 3}
+  m_Mesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
 --- !u!23 &8161664331749309324
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,12 +64,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7999046f29068ad43ba5a19193022e1e, type: 2}
-  - {fileID: 2100000, guid: a17d4c8d435ef964fac1ae78e4696fd9, type: 2}
-  - {fileID: 2100000, guid: cd69972a5c5db52478a1154e39e4c758, type: 2}
-  - {fileID: 2100000, guid: e38cbbea5a9310c4e9db4862f3c63bad, type: 2}
-  - {fileID: 2100000, guid: dced5b9f8011e81499d3f030455d0118, type: 2}
-  - {fileID: 2100000, guid: 14b695866ed30ed44b7399c440e5f7bb, type: 2}
+  - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+  - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+  - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
