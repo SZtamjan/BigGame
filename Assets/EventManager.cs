@@ -17,11 +17,6 @@ public class EventManager : MonoBehaviour
         Instance = this;
     }
 
-    public void BuldingsActions()
-    {
-        BuildingAction?.Invoke();
-    }
-
     public void NewPlayerTurnFunc()
     {
         NewPlayerTurn?.Invoke();

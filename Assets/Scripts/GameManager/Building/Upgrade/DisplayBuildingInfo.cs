@@ -20,6 +20,11 @@ public class DisplayBuildingInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI woodDisplay;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI desc;
+
+    public Button UpgradeButton
+    {
+        get => upgradeButton;
+    }
     
     private void Awake()
     {
@@ -29,7 +34,7 @@ public class DisplayBuildingInfo : MonoBehaviour
     private void Start()
     {
         demoButton.onClick.AddListener(RemoveBuilding);
-        //upgradeButton.onClick.AddListener();
+        upgradeButton.onClick.AddListener(UpgradeBuilding);
         
         gameObject.SetActive(false);
     }
@@ -52,8 +57,7 @@ public class DisplayBuildingInfo : MonoBehaviour
         //selectedBuildingImage.sprite = info
         title.text = info.name;
         desc.text = info.desc;
-
-        Debug.LogWarning("Zhardkodowane lvl 0"); //na pewno? xd
+        
         goldDisplay.text = info.buyCost.Gold.ToString();
         stoneDisplay.text = info.buyCost.Stone.ToString();
         woodDisplay.text = info.buyCost.Wood.ToString();
@@ -62,7 +66,13 @@ public class DisplayBuildingInfo : MonoBehaviour
 
     private void RemoveBuilding()
     {
-        Debug.Log("btn dziala");
         Building.Instance.RemoveBuilding(selectedBuilding);
+    }
+
+    private void UpgradeBuilding()
+    {
+        selectedBuilding.GetComponent<BuildingController>().SaveAndChangeStateTo(BuildingStates.StartUpgrade);
+        UpgradeButton.interactable = selectedBuilding.GetComponent<BuildingController>().CurrentState == BuildingStates.Normal;
+        if (selectedBuilding.GetComponent<BuildingController>().BuildingMaxed) UpgradeButton.interactable = false;
     }
 }

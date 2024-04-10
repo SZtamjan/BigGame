@@ -35,7 +35,6 @@ public class BuildingCardGenTwo : MonoBehaviour
         _originalColor = GetComponent<Image>().color;
         _buildMenuManager = BuildMenuManager.Instance;
         
-        Debug.LogWarning("Zhardkodowane lvl 0");
         _stucture = infoSource.budynekPrefab;
         _resources = infoSource.buyCost;
         _name = infoSource.name;

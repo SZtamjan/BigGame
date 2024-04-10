@@ -35,47 +35,93 @@ public class BuildingController : MonoBehaviour
 
     #endregion
 
+    private BuildingStates currentState;
+    
     //Vars
-    private UpdateBuildingStruct newLevelInfo;
+    private UpdateBuildingStruct nextLevelInfo;
     private int currentLevel = 0;
-    private bool disabled = false;
-    //private int disabledForTurns = 0; //byc moze nie bedzie potrzebne, mam w newLevelInfo te zmienna
+    private bool buildingMaxed = false;
+
+    #region Properies
+
+    public BuildingStates CurrentState
+    {
+        get => currentState;
+    }
+    
+    public bool BuildingMaxed
+    {
+        get => buildingMaxed;
+    }
+
+    #endregion
     
     #region Events
 
     private void OnEnable()
     {
-        EventManager.BuildingAction += BuildingActionOnTurn;
         EventManager.NewPlayerTurn += NewTurnTrigger;
     }
 
     private void OnDisable()
     {
         RemoveBuffs();
-        EventManager.BuildingAction -= BuildingActionOnTurn;
         EventManager.NewPlayerTurn -= NewTurnTrigger;
     }
 
     #endregion
 
-    private void ChangeState(BuildingStates newState)
+    private void StateManager(BuildingStates newState)
     {
+        Debug.Log("building in state: " + currentState);
         switch (newState)
         {
+            case BuildingStates.Normal:
+                BuildingActionsOnTurn();
+                break;
             case BuildingStates.StartUpgrade:
-                PrepareUpgrade();
-                //DO NOT UPGRADE HERE ALREADY (or at least dont apply visual effects),
-                //first need to wait for building to be turned back on after upgrade (after few turns)
+                RemoveBuffs();
                 break;
             case BuildingStates.StartDisable:
-                RemoveBuffs();
-                CheckBuildingStatusAndApply();
+                TurnOffBuilding();
                 break;
             case BuildingStates.EndUpgrade:
-                ApplyNewStats();
+                FillNewStatsToThisBuilding(CurrentBuildingInfo,currentLevel+1);
                 break;
         }
     }
+    
+    private void NewTurnTrigger() //Called at the start of every turn
+    {
+        StateManager(currentState);
+    }
+    
+    private void TurnOffBuilding()
+    {
+        if (nextLevelInfo.turnOffBuildingForTurns > 0)
+        {
+            nextLevelInfo.turnOffBuildingForTurns--;
+        }
+        else
+        {
+            SaveAndChangeStateTo(BuildingStates.EndUpgrade);
+        }
+        // newLevelInfo.turnOffBuildingForTurns = upgradeListThisBuilding[currentLevel].turnOffBuildingForTurns;
+        // //New building model
+        // newLevelInfo.newMesh = upgradeListThisBuilding[currentLevel].newMesh;
+        // newLevelInfo.materials = upgradeListThisBuilding[currentLevel].materials;
+        // //New unit model
+        // newLevelInfo.newUnit = upgradeListThisBuilding[currentLevel].newUnit;
+        // //New gain value
+        // newLevelInfo.newResourcesGainOnTurn = upgradeListThisBuilding[currentLevel].newResourcesGainOnTurn;
+        // //New sell value
+        // newLevelInfo.applyNewSell = upgradeListThisBuilding[currentLevel].applyNewSell;
+        // newLevelInfo.newSellValue = upgradeListThisBuilding[currentLevel].newSellValue;
+
+        //StateManager(BuildingStates.StartDisable);
+    }
+
+    
     
     public void FillNewStatsToThisBuilding(BuildingsScriptableObjects stats,int newLevel)
     {
@@ -84,88 +130,44 @@ public class BuildingController : MonoBehaviour
         thisBudynekIs = stats.whichBudynek;
         
         upgradeListThisBuilding = stats.buildingLevelsList;
-        newLevelInfo = stats.buildingLevelsList[newLevel];
+
+        if (stats.buildingLevelsList.Count > newLevel + 1)
+        {
+            nextLevelInfo = stats.buildingLevelsList[newLevel+1];
+        }
+        else
+        {
+            Debug.Log("LEVEL NA BUDYNKU OSIAGNIETO, TRZEBA WYLACZYC PRZYCISK");
+            buildingMaxed = true;
+        }
+        
+        currentLevel = newLevel;
+        Debug.Log("building lvl " + currentLevel);
         
         UpdateModel(); //niepotrzebne bo bedzie prefab budynku i tak
         
-        resourcesCurrentGain = stats.buildingLevelsList[newLevel].newResourcesGainOnTurn;
-        unitAdd = stats.buildingLevelsList[newLevel].newUnit;
+        if (stats.buildingLevelsList[newLevel].newUnit != null)
+        {
+            unitAdd = stats.buildingLevelsList[newLevel].newUnit;
+            CardManager.instance.AddCardToDrawableCollection(unitAdd);
+        }
         
+        resourcesCurrentGain = stats.buildingLevelsList[newLevel].newResourcesGainOnTurn;
+
         Debug.LogWarning("Be careful with applyNewSell checkbox");
         if (stats.buildingLevelsList[newLevel].applyNewSell)
         {
             resourcesCurrentSell = stats.buildingLevelsList[newLevel].newSellValue;
         }
-        
-        if (unitAdd != null)
-        {
-            CardManager.instance.AddCardToDrawableCollection(unitAdd);
-        }
 
-        currentLevel = newLevel;
-    }
-
-    private void NewTurnTrigger()
-    {
-        ChangeState(BuildingStates.StartDisable);
-    }
-
-    private void PrepareUpgrade()
-    {
-        newLevelInfo.turnOffBuildingForTurns = upgradeListThisBuilding[currentLevel].turnOffBuildingForTurns;
-        //New building model
-        newLevelInfo.newMesh = upgradeListThisBuilding[currentLevel].newMesh;
-        newLevelInfo.materials = upgradeListThisBuilding[currentLevel].materials;
-        //New unit model
-        newLevelInfo.newUnit = upgradeListThisBuilding[currentLevel].newUnit;
-        //New gain value
-        newLevelInfo.newResourcesGainOnTurn = upgradeListThisBuilding[currentLevel].newResourcesGainOnTurn;
-        //New sell value
-        newLevelInfo.applyNewSell = upgradeListThisBuilding[currentLevel].applyNewSell;
-        newLevelInfo.newSellValue = upgradeListThisBuilding[currentLevel].newSellValue;
-        
-        
-        ChangeState(BuildingStates.StartDisable);
+        currentState = BuildingStates.Normal;
     }
 
     private void RemoveBuffs()
     {
         if(unitAdd != null) CardManager.instance.RemoveCardToDrawableCollection(unitAdd);
-    }
-    
-    private void CheckBuildingStatusAndApply()
-    {
-        if (newLevelInfo.turnOffBuildingForTurns > 0)
-        {
-            disabled = true;
-            newLevelInfo.turnOffBuildingForTurns--;
-        }
-        else
-        {
-            disabled = false;
-            ApplyNewStats();
-        }
-    }
 
-    private void ApplyNewStats()
-    {
-        //Building
-        UpdateModel(); //Mesh and materials
-        
-        //Unit
-        if (newLevelInfo.newUnit != null)
-        {
-            unitAdd = newLevelInfo.newUnit;
-            CardManager.instance.AddCardToDrawableCollection(unitAdd);
-        }
-        //Jeszcze trzeba dodac zeby w grze sie tez ulepszała a nie w samym budynku
-        
-        //Gain value
-        resourcesCurrentGain = newLevelInfo.newResourcesGainOnTurn;
-        
-        //Sell value
-        if (newLevelInfo.applyNewSell)
-            resourcesCurrentSell = newLevelInfo.newSellValue;
+        SaveAndChangeStateTo(BuildingStates.StartDisable);
     }
 
     private void UpdateModel()
@@ -173,35 +175,24 @@ public class BuildingController : MonoBehaviour
         Debug.Log("BUILDING MODEL CHANGE WIP");
         
         //Mesh
-        GetComponent<MeshFilter>().mesh = newLevelInfo.newMesh;
+        GetComponent<MeshFilter>().mesh = upgradeListThisBuilding[currentLevel].newMesh;
         //Mesh Collider
-        GetComponent<MeshCollider>().sharedMesh = newLevelInfo.newMesh;
+        GetComponent<MeshCollider>().sharedMesh = upgradeListThisBuilding[currentLevel].newMesh;
 
         //Materials
         MeshRenderer mr = GetComponent<MeshRenderer>();
-        mr.materials = newLevelInfo.materials;
+        mr.materials = upgradeListThisBuilding[currentLevel].materials;
+    }
+
+    private void BuildingActionsOnTurn()
+    {
+        EconomyOperations.AddResources(resourcesCurrentGain);
     }
     
-    private void SwitchCardToDrawAvailability(bool condition)
+    public void SaveAndChangeStateTo(BuildingStates newState)
     {
-        // True hides
-        // False shows with current level
-        if (condition)
-        {
-            
-        }
-        else
-        {
-            
-        }
-    }
-    
-    private void BuildingActionOnTurn()
-    {
-        if (!disabled)
-        {
-            EconomyOperations.AddResources(resourcesCurrentGain);
-        }
+        currentState = newState;
+        StateManager(newState);
     }
 
     #region DestroyBuilding
@@ -216,7 +207,7 @@ public class BuildingController : MonoBehaviour
 
 public enum BuildingStates
 {
-    SetUpUnit,
+    Normal,
     StartUpgrade,
     StartDisable,
     EndUpgrade

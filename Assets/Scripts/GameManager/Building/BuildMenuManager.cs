@@ -71,8 +71,7 @@ public class BuildMenuManager : MonoBehaviour
         //selectedBuildingImage.sprite = info
         selectedBuildingTitle.text = info.name;
         selectedBuildingDescription.text = info.desc;
-
-        Debug.LogWarning("Zhardkodowane lvl 0");
+        
         goldDisplay.text = info.buyCost.Gold.ToString();
         stoneDisplay.text = info.buyCost.Stone.ToString();
         woodDisplay.text = info.buyCost.Wood.ToString();
@@ -81,8 +80,7 @@ public class BuildMenuManager : MonoBehaviour
     
     public void InitBuyBuilding()
     {
-        Debug.LogWarning("Zhardkodowane lvl 0");
-        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buyCost))
+        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buyCost)) //tu building info zapewne trzeba zmienic na cene z levela
         {
             StartBulding();
         }

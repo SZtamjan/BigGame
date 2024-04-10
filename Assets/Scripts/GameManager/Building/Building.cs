@@ -198,7 +198,6 @@ public class Building : MonoBehaviour
             {
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log(hitObject.name);
-                Debug.LogWarning("Zhardkodowane lvl 0");
                 if(EconomyOperations.Purchase(statsy.buyCost)) Build(hitObject, statsy);
             }
         }

@@ -76,9 +76,14 @@ public class BuildingInfoSendToDisplayer : MonoBehaviour
 
     private IEnumerator WaitForBuildingSetUpAndLoadDisplayInfo() //Necessary
     {
+        //Fill info
         yield return new WaitUntil(() => TryGetComponent<BuildingController>(out var buildingController));
         yield return new WaitUntil(() => GetComponent<BuildingController>().CurrentBuildingInfo != null);
         displayInfo.FillDataToDisplayOnRightPanel(GetComponent<BuildingController>().CurrentBuildingInfo,gameObject);
+        
+        //Disable upgrade Button
+        if(GetComponent<BuildingController>().BuildingMaxed) displayInfo.UpgradeButton.interactable = false;
+        
         uiInfoDisplayGO.SetActive(true);
         yield return null;
     }
