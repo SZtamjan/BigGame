@@ -18,9 +18,7 @@ public class BuildingsScriptableObjects : ScriptableObject
     [SerializeField]
     public string desc = "+5 do hajsu na ture";
 
-    [Header("Statystyki budynku")] 
-    [SerializeField]
-    public ResourcesStruct buyCost;
+    [Header("Statystyki budynku")]
     [SerializeField]
     public List<UpdateBuildingStruct> buildingLevelsList;
 }

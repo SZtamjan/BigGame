@@ -198,7 +198,7 @@ public class Building : MonoBehaviour
             {
                 GameObject hitObject = hit.collider.gameObject;
                 Debug.Log(hitObject.name);
-                if(EconomyOperations.Purchase(statsy.buyCost)) Build(hitObject, statsy);
+                if(EconomyOperations.Purchase(statsy.buildingLevelsList[0].thisLevelCost)) Build(hitObject, statsy);
             }
         }
         else

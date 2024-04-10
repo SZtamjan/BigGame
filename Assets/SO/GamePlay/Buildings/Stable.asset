@@ -16,16 +16,12 @@ MonoBehaviour:
   whichBudynek: 3
   name: Stajnia Augiasza
   desc: Fabryka koni
-  resourcesCost:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 0
-    food: 0
-    wood: 0
-    stone: 0
-  upgradeBuildingList:
-  - resourcesGainOnTurn:
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 0}
+    materials: []
+    newUnit: {fileID: 0}
+    thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
@@ -33,13 +29,20 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    turnOffBuildingForTurns: 0
-  resourcesSell:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 0
-    food: 0
-    wood: 0
-    stone: 0
-  UnitAdd: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0

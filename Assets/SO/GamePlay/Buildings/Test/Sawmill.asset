@@ -12,10 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
   m_Name: Sawmill
   m_EditorClassIdentifier: 
-  Budynek: {fileID: 6596885124391195437, guid: 2ddbb7dcb05c588479b1c71900f8b19e, type: 3}
+  budynekPrefab: {fileID: 0}
   whichBudynek: 2
-  cost: 3
   name: Tartak
   desc: kroje drewno
-  moneyGain: 3
-  UnitAdd: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 0}
+    materials: []
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0

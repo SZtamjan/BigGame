@@ -12,9 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  Budynek: {fileID: 29919056458180626, guid: 89081469f1c321840b21eecb0ae09375, type: 3}
-  cost: 1
+  budynekPrefab: {fileID: 0}
+  whichBudynek: 0
   name: Las
   desc: Wilki tu so
-  moneyGain: 1
-  UnitAdd: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 0}
+    materials: []
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0

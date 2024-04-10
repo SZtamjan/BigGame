@@ -15,6 +15,9 @@ public class UpdateBuildingStruct
     [Header("Unit SO")]
     public UnitScriptableObjects newUnit;
 
+    [Header("Cost of this level")]
+    public ResourcesStruct thisLevelCost;
+    
     [Header("Gain Value")]
     public ResourcesStruct newResourcesGainOnTurn;
 

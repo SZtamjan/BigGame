@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Economy.EconomyActions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -82,9 +83,38 @@ public class BuildingInfoSendToDisplayer : MonoBehaviour
         displayInfo.FillDataToDisplayOnRightPanel(GetComponent<BuildingController>().CurrentBuildingInfo,gameObject);
         
         //Disable upgrade Button
-        if(GetComponent<BuildingController>().BuildingMaxed) displayInfo.UpgradeButton.interactable = false;
+        CheckConditionsForButtonUpgradeVisibility();
         
         uiInfoDisplayGO.SetActive(true);
         yield return null;
+    }
+
+    public void CheckConditionsForButtonUpgradeVisibility()
+    {
+        BuildingController myBController = GetComponent<BuildingController>();
+        ShowUpgradeButton(true);
+        
+        if (!EconomyOperations.CheckIfICanIAfford(myBController.UpgradeCost))
+        {
+            ShowUpgradeButton(false);
+            return;
+        }
+
+        if (myBController.CurrentState != BuildingStates.Normal)
+        {
+            ShowUpgradeButton(false);
+            return;
+        }
+
+        if (myBController.BuildingMaxed)
+        {
+            ShowUpgradeButton(false);
+            return;
+        }
+    }
+    
+    private void ShowUpgradeButton(bool value)
+    {
+        displayInfo.UpgradeButton.interactable = value;
     }
 }

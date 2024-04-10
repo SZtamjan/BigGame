@@ -16,36 +16,12 @@ MonoBehaviour:
   whichBudynek: 2
   name: Archer Barrack
   desc: Moze wolno strzela, ale celnie
-  buyCost:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 1
-    food: 1
-    wood: 2
-    stone: 3
-  upgradeBuildingList:
-  - resourcesGainOnTurn:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 1
-      food: 1
-      wood: 2
-      stone: 3
-    turnOffBuildingForTurns: 0
-    newUnit: {fileID: 11400000, guid: 0f7be252251b17945bbc0ecde06ded33, type: 2}
-  - resourcesGainOnTurn:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 0
-      food: 0
-      wood: 0
-      stone: 0
-    turnOffBuildingForTurns: 0
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 0}
+    materials: []
     newUnit: {fileID: 0}
-  - resourcesGainOnTurn:
+    thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
@@ -53,9 +29,7 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    turnOffBuildingForTurns: 0
-    newUnit: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
-  - resourcesGainOnTurn:
+    newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
@@ -63,13 +37,12 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    turnOffBuildingForTurns: 0
-    newUnit: {fileID: 11400000, guid: 24d176ce3748b4143bd47d467a04cbb9, type: 2}
-  resourcesSell:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 0
-    food: 0
-    wood: 0
-    stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0

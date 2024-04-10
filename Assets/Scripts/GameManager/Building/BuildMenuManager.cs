@@ -72,15 +72,15 @@ public class BuildMenuManager : MonoBehaviour
         selectedBuildingTitle.text = info.name;
         selectedBuildingDescription.text = info.desc;
         
-        goldDisplay.text = info.buyCost.Gold.ToString();
-        stoneDisplay.text = info.buyCost.Stone.ToString();
-        woodDisplay.text = info.buyCost.Wood.ToString();
-        foodDisplay.text = info.buyCost.Food.ToString();
+        goldDisplay.text = info.buildingLevelsList[0].thisLevelCost.Gold.ToString();
+        stoneDisplay.text = info.buildingLevelsList[0].thisLevelCost.Stone.ToString();
+        woodDisplay.text = info.buildingLevelsList[0].thisLevelCost.Wood.ToString();
+        foodDisplay.text = info.buildingLevelsList[0].thisLevelCost.Food.ToString();
     }
     
     public void InitBuyBuilding()
     {
-        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buyCost)) //tu building info zapewne trzeba zmienic na cene z levela
+        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buildingLevelsList[0].thisLevelCost))
         {
             StartBulding();
         }

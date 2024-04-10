@@ -16,14 +16,6 @@ MonoBehaviour:
   whichBudynek: 2
   name: Testowy maniek
   desc: Skill issue
-  buyCost:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 1
-    food: 2
-    wood: 3
-    stone: 4
   buildingLevelsList:
   - turnOffBuildingForTurns: 0
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
@@ -32,6 +24,14 @@ MonoBehaviour:
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
     newUnit: {fileID: 11400000, guid: cac1ebd836d2f974fb1f2cf627c4b03c, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
@@ -55,6 +55,14 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 5b503deaed5e1fa479bd0bde42c0966a, type: 2}
     - {fileID: 2100000, guid: 6a671200822010b45bf83bc61c5717f7, type: 2}
     newUnit: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
@@ -79,6 +87,14 @@ MonoBehaviour:
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
     newUnit: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:

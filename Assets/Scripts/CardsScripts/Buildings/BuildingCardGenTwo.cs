@@ -36,9 +36,9 @@ public class BuildingCardGenTwo : MonoBehaviour
         _buildMenuManager = BuildMenuManager.Instance;
         
         _stucture = infoSource.budynekPrefab;
-        _resources = infoSource.buyCost;
+        _resources = infoSource.buildingLevelsList[0].thisLevelCost;
         _name = infoSource.name;
-        _ResourcesGain = infoSource.buyCost;
+        _ResourcesGain = infoSource.buildingLevelsList[0].newResourcesGainOnTurn;
         _description = infoSource.desc;
         _buttonText.text = $"Buduj {_name}";
         _buttonDescription.text = $"kosztuje {_resources.Gold}, a daje {_ResourcesGain},\n{_description}";

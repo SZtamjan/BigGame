@@ -21,6 +21,7 @@ public class BuildingController : MonoBehaviour
     
     //General info
     public WhichBudynek thisBudynekIs;
+    private ResourcesStruct resourcesUpgradeCost;
     private ResourcesStruct resourcesCurrentGain;
     private ResourcesStruct resourcesCurrentSell;
     private List<UpdateBuildingStruct> upgradeListThisBuilding;
@@ -41,6 +42,7 @@ public class BuildingController : MonoBehaviour
     private UpdateBuildingStruct nextLevelInfo;
     private int currentLevel = 0;
     private bool buildingMaxed = false;
+    private int turnOffForTurns = 0;
 
     #region Properies
 
@@ -48,12 +50,22 @@ public class BuildingController : MonoBehaviour
     {
         get => currentState;
     }
+
+    public ResourcesStruct UpgradeCost
+    {
+        get => resourcesUpgradeCost;
+    }
     
     public bool BuildingMaxed
     {
         get => buildingMaxed;
     }
 
+    public int CurrentLevel
+    {
+        get => currentLevel;
+    }
+    
     #endregion
     
     #region Events
@@ -87,6 +99,7 @@ public class BuildingController : MonoBehaviour
                 break;
             case BuildingStates.EndUpgrade:
                 FillNewStatsToThisBuilding(CurrentBuildingInfo,currentLevel+1);
+                GetComponent<BuildingInfoSendToDisplayer>().CheckConditionsForButtonUpgradeVisibility();
                 break;
         }
     }
@@ -98,9 +111,9 @@ public class BuildingController : MonoBehaviour
     
     private void TurnOffBuilding()
     {
-        if (nextLevelInfo.turnOffBuildingForTurns > 0)
+        if (turnOffForTurns > 0)
         {
-            nextLevelInfo.turnOffBuildingForTurns--;
+            turnOffForTurns--;
         }
         else
         {
@@ -133,7 +146,9 @@ public class BuildingController : MonoBehaviour
 
         if (stats.buildingLevelsList.Count > newLevel + 1)
         {
+            resourcesUpgradeCost = stats.buildingLevelsList[newLevel+1].thisLevelCost;
             nextLevelInfo = stats.buildingLevelsList[newLevel+1];
+            turnOffForTurns = stats.buildingLevelsList[newLevel+1].turnOffBuildingForTurns;
         }
         else
         {
@@ -159,7 +174,7 @@ public class BuildingController : MonoBehaviour
         {
             resourcesCurrentSell = stats.buildingLevelsList[newLevel].newSellValue;
         }
-
+        
         currentState = BuildingStates.Normal;
     }
 

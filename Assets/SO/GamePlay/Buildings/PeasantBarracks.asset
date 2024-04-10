@@ -16,16 +16,12 @@ MonoBehaviour:
   whichBudynek: 2
   name: Tawerna z torunia
   desc: SPIERDALAJ Z MOJEJ ZIEMII
-  resourcesCost:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 1
-    food: 4
-    wood: 3
-    stone: 2
-  upgradeBuildingList:
-  - resourcesGainOnTurn:
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    newMesh: {fileID: 0}
+    materials: []
+    newUnit: {fileID: 0}
+    thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
@@ -33,13 +29,20 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    turnOffBuildingForTurns: 0
-  resourcesSell:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 9
-    food: 9
-    wood: 9
-    stone: 9
-  UnitAdd: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
