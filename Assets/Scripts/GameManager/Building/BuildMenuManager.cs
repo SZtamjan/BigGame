@@ -81,11 +81,6 @@ public class BuildMenuManager : MonoBehaviour
     
     public void InitBuyBuilding()
     {
-        // bool CanIBuy = EconomyResources.Instance.CanIBuy(_buildingInfo.cost);
-        // if(CanIBuy)
-        // {
-        //     StartBulding();
-        // }
         Debug.LogWarning("Zhardkodowane lvl 0");
         if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buyCost))
         {
@@ -98,10 +93,4 @@ public class BuildMenuManager : MonoBehaviour
         UIController.Instance.BuildingCardsChangeShow(false);
         Building.Instance.StartBuilding(_buildingInfo);
     }
-
-    public void StartDemolition()
-    {
-        DestroyBuilding.Instance.StartDestroying();
-    }
-    
 }

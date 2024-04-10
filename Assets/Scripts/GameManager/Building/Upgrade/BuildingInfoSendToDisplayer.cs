@@ -22,6 +22,11 @@ public class BuildingInfoSendToDisplayer : MonoBehaviour
         //building = gameObject.transform.GetComponentInParent(WhichBudynek);
     }
 
+    private void OnDisable()
+    {
+        if(uiInfoDisplayGO != null) uiInfoDisplayGO.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

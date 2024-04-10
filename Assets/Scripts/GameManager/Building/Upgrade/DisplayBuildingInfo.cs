@@ -63,6 +63,6 @@ public class DisplayBuildingInfo : MonoBehaviour
     private void RemoveBuilding()
     {
         Debug.Log("btn dziala");
-        DestroyBuilding.Instance.StartDestroying();
+        Building.Instance.RemoveBuilding(selectedBuilding);
     }
 }
