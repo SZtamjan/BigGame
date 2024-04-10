@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +10,9 @@ public class DisplayBuildingInfo : MonoBehaviour
     public static DisplayBuildingInfo Instance;
 
     private GameObject selectedBuilding;
-    
+
+    [SerializeField] private Button demoButton;
+    [SerializeField] private Button upgradeButton;
     [SerializeField] private Image buildingImage;
     [SerializeField] private TextMeshProUGUI goldDisplay;
     [SerializeField] private TextMeshProUGUI foodDisplay;
@@ -27,6 +28,9 @@ public class DisplayBuildingInfo : MonoBehaviour
 
     private void Start()
     {
+        demoButton.onClick.AddListener(RemoveBuilding);
+        //upgradeButton.onClick.AddListener();
+        
         gameObject.SetActive(false);
     }
 
@@ -54,5 +58,11 @@ public class DisplayBuildingInfo : MonoBehaviour
         stoneDisplay.text = info.buyCost.Stone.ToString();
         woodDisplay.text = info.buyCost.Wood.ToString();
         foodDisplay.text = info.buyCost.Food.ToString();
+    }
+
+    private void RemoveBuilding()
+    {
+        Debug.Log("btn dziala");
+        DestroyBuilding.Instance.StartDestroying();
     }
 }

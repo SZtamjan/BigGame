@@ -21,9 +21,9 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     gold: 1
-    food: 1
-    wood: 2
-    stone: 3
+    food: 2
+    wood: 3
+    stone: 4
   buildingLevelsList:
   - turnOffBuildingForTurns: 0
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
@@ -40,15 +40,15 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    applyNewSell: 0
+    applyNewSell: 1
     newSellValue:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
-      gold: 0
-      food: 0
-      wood: 0
-      stone: 0
+      gold: 2
+      food: 2
+      wood: 2
+      stone: 2
   - turnOffBuildingForTurns: 0
     newMesh: {fileID: 4493585093827132993, guid: 924e2f53f01efb0428d77480f6a0cab7, type: 3}
     materials:

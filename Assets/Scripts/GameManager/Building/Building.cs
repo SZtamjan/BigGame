@@ -64,7 +64,7 @@ public class Building : MonoBehaviour
 
     private void OnDisable()
     {
-        GetComponent<BuildingInfoDisplayer>().TurnOffWindow();
+        GetComponent<BuildingInfoSendToDisplayer>().TurnOffWindow();
     }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
@@ -119,7 +119,7 @@ public class Building : MonoBehaviour
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         InstantiateHalfTransparentBuilding(statsy);
-        halfTransparent.GetComponent<BuildingInfoDisplayer>().enabled = false;
+        halfTransparent.GetComponent<BuildingInfoSendToDisplayer>().enabled = false; //turn off component so upgrade window will NOT pop up - this is not intended and will glitch out
         
         while (isBuilding)
         {
@@ -254,6 +254,8 @@ public class Building : MonoBehaviour
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
         EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingController>().ReturnResourcesSellValue());
+        //Place previous ground
+        demolishedBuilding.GetComponent<BuildingController>().ReturnTerrainTypeThatWasThere.SetActive(true);
         budynki.Remove(demolishedBuilding);
         buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingController>());
         Destroy(demolishedBuilding);

@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
-public class BuildingInfoDisplayer : MonoBehaviour
+public class BuildingInfoSendToDisplayer : MonoBehaviour
 {
     private Camera cam;
     private GameObject building;
@@ -24,6 +26,8 @@ public class BuildingInfoDisplayer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
