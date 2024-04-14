@@ -33,6 +33,8 @@ public class BuildingsScriptableObjects : ScriptableObject
 
 public enum WhichBudynek
 {
+    // jak to coœ bêdzie dodawane, to trzeba równie¿ dodaæ tag (o takiej samej nazwie) do unity (tagi do gameobjectów (tak jak Layer`y))
+    // przy zmianie nazwy równie¿ tak¿e trzeba zaktualizowaæ
     archerBarrack,
     knightBarrack,
     peasantBarrack,

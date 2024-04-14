@@ -13,9 +13,31 @@ MonoBehaviour:
   m_Name: ArcherBarracks
   m_EditorClassIdentifier: 
   Budynek: {fileID: 7657511380786551385, guid: 9557a385335c8d84ca6447c661f5091d, type: 3}
-  whichBudynek: 2
-  cost: 5
+  whichBudynek: 0
   name: Archer Barrack
   desc: Moze wolno strzela, ale celnie
-  moneyGain: 5
+  resourcesCost:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    stone: 0
+    wood: 0
+    food: 0
+  resourcesGainOnTurn:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    stone: 0
+    wood: 0
+    food: 0
+  resourcesSell:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    stone: 0
+    wood: 0
+    food: 0
   UnitAdd: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}

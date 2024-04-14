@@ -10,7 +10,7 @@ public class EconomyConditions : MonoBehaviour
     [Header("Warning Text Settings")]
     public float textFullAlpha = 2f;
     public float fadeDuration = 2f;
-    
+
 
 
     private void Awake()
@@ -35,7 +35,7 @@ public class EconomyConditions : MonoBehaviour
         UIController.Instance.WarmingShowWarming("Not Enough Cash!1!11!");
         Debug.Log("Not enough cash");
     }
-    
+
     public void NotEnoughResources()
     {
         UIController.Instance.WarmingShowWarming("Not Enough Resources!1!11!");
@@ -46,6 +46,12 @@ public class EconomyConditions : MonoBehaviour
     {
         UIController.Instance.WarmingShowWarming("Obiekt tu jest!1!11!");
         Debug.Log("Obiekt tu jest");
+    }
+
+    public void HereIsNotAPlaceToBuild()
+    {
+        Debug.Log("Tu nie mo¿na budowaæ");
+        UIController.Instance.WarmingShowWarming("Tu nie mo¿na tego budowaæ");
     }
 
     public void ThereIsAUnit()
@@ -65,5 +71,5 @@ public class EconomyConditions : MonoBehaviour
         UIController.Instance.WarmingShowWarming("Wait for your turn!");
         Debug.Log("Not players turn");
     }
-    
+
 }

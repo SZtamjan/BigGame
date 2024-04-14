@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 897882587421255279}
   - component: {fileID: 3139321464299213477}
   - component: {fileID: 4988607385338720839}
-  - component: {fileID: 7592738819097594296}
-  - component: {fileID: 6326346447455095779}
-  m_Layer: 0
+  - component: {fileID: 7770604665653109555}
+  m_Layer: 8
   m_Name: hex_flat_gravel
-  m_TagString: Untagged
+  m_TagString: Gravel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +99,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8562928185355181518, guid: 20e19425ae500e04e8a9118caff08ed1, type: 3}
---- !u!114 &7592738819097594296
+--- !u!114 &7770604665653109555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,34 +108,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3499825007264002928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 50faecd50f96c3141a416849835f77f3, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6326346447455095779}
-        m_TargetAssemblyTypeName: ChangeGray, Assembly-CSharp
-        m_MethodName: ChangeBloom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6326346447455095779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499825007264002928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76873284c5486064faeafafda661433c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
+  colorRules: {fileID: 11400000, guid: e76ef249bcfab764b95aa60f3b62cbf0, type: 2}
