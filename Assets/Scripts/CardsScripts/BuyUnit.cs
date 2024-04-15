@@ -9,9 +9,12 @@ public class BuyUnit : MonoBehaviour
 {
     public void InitBuy()
     {
-        if (EconomyOperations.CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
+        var unitCardStats = GetComponent<UnitCardStats>();
+        if (EconomyOperations.CheckIfICanIAfford(unitCardStats.Stats.resources,false))
         {
-            UnitSpawner.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
+            //UnitSpawner.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
+            
+            unitCardStats.Stats.CardAction(gameObject, unitCardStats.Stats);
         }
     }
 }
