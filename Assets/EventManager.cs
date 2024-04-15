@@ -12,15 +12,20 @@ public class EventManager : MonoBehaviour
     public static event BuildingsColorChange BuildingColorChange;
 
     
+    public delegate void NewPlayerTurnEvent();
+
+    public static event NewPlayerTurnEvent NewPlayerTurn;
+
     public static EventManager Instance;
     private void Awake()
     {
         Instance = this;
     }
 
-    public void BuldingsActions()
+    public void NewPlayerTurnFunc()
     {
         BuildingAction?.Invoke();
+        NewPlayerTurn?.Invoke();
     }
 
     public void BuldingColorChange(WhichBudynek? type)

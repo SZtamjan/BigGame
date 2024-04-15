@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Economy.EconomyActions
 {
-    public class EconomyOperations : MonoBehaviour
+    public static class EconomyOperations
     {
         #region Purchase
 
@@ -12,7 +12,7 @@ namespace Economy.EconomyActions
         ///   <para>Shows notification by default</para>
         /// </summary>
         /// <param name="unitCostStruct">Unit cost to make operations on</param>
-        protected bool Purchase(ResourcesStruct unitCostStruct)
+        public static bool Purchase(ResourcesStruct unitCostStruct)
         {
             if (!CheckIfICanIAfford(unitCostStruct,false))
             {
@@ -29,7 +29,7 @@ namespace Economy.EconomyActions
         /// </summary>
         /// <param name="unitCostStruct">Unit cost to make operations on</param>
         /// <param name="notificationBoolean">Blean to display or not display a notification about insufficient resources</param>
-        protected bool Purchase(ResourcesStruct unitCostStruct,bool notificationBoolean)
+        public static bool Purchase(ResourcesStruct unitCostStruct,bool notificationBoolean)
         {
             if (!CheckIfICanIAfford(unitCostStruct,false))
             {
@@ -50,7 +50,7 @@ namespace Economy.EconomyActions
         ///   <para>Shows notification by default</para>
         /// </summary>
         /// <param name="unitCostStruct">Unit cost to calculate</param>
-        protected bool CheckIfICanIAfford(ResourcesStruct unitCostStruct)
+        public static bool CheckIfICanIAfford(ResourcesStruct unitCostStruct)
         {
             PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                           BindingFlags.NonPublic |
@@ -77,7 +77,7 @@ namespace Economy.EconomyActions
         /// </summary>
         /// <param name="unitCostStruct">Unit cost to calculate</param>
         /// <param name="showNotification">Boolean to display or not display a notification about insufficient resources</param>
-        protected bool CheckIfICanIAfford(ResourcesStruct unitCostStruct, bool showNotification)
+        public static bool CheckIfICanIAfford(ResourcesStruct unitCostStruct, bool showNotification)
         {
             PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                           BindingFlags.NonPublic |
@@ -103,7 +103,7 @@ namespace Economy.EconomyActions
 
         #region SubtractMoney
 
-        protected void SubtractStruct(ResourcesStruct costStruct)
+        public static void SubtractStruct(ResourcesStruct costStruct)
         {
             PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                           BindingFlags.NonPublic |
@@ -128,7 +128,7 @@ namespace Economy.EconomyActions
         ///   <para>Adds resources</para>
         /// </summary>
         /// <param name="newResources">New resources to add</param>
-        protected void AddResources(ResourcesStruct newResources)
+        public static void AddResources(ResourcesStruct newResources)
         {
             PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                           BindingFlags.NonPublic |

@@ -5,19 +5,13 @@ using System.Reflection;
 using UnityEngine;
 using Economy.EconomyActions;
 
-public class BuyUnit : EconomyOperations
+public class BuyUnit : MonoBehaviour
 {
-    private UnitCardStats unitCardStats;
-    public void Start()
-    {
-        unitCardStats = GetComponent<UnitCardStats>();
-    }
     public void InitBuy()
     {
-        if (CheckIfICanIAfford(unitCardStats.Stats.resources,false))
+        if (EconomyOperations.CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
         {
-            //UnitSpawner.instance.SpawnMyUnit(gameObject, unitCardStats.Stats);
-            unitCardStats.Stats.CardAction(gameObject, unitCardStats.Stats);
+            UnitSpawner.instance.SpawnMyUnit(gameObject, GetComponent<UnitCardStats>().Stats);
         }
     }
 }

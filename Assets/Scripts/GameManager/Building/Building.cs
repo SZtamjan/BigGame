@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using static GameManager;
 
-public class Building : EconomyOperations
+public class Building : MonoBehaviour
 {
     public static Building Instance;
     Camera cam;
@@ -22,8 +22,8 @@ public class Building : EconomyOperations
     private GameObject halfTransparent;
 
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
-    public List<BuildingsStats> buildingsStats; // It stores what building does
-
+    public List<BuildingController> buildingsStats; // It stores what building does
+    
     public List<GameObject> Budynks
     {
         get
@@ -62,7 +62,10 @@ public class Building : EconomyOperations
         cam = Camera.main;
     }
 
-
+    private void OnDisable()
+    {
+        GetComponent<BuildingInfoSendToDisplayer>().TurnOffWindow();
+    }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
     {
@@ -103,12 +106,12 @@ public class Building : EconomyOperations
     private void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
-        GameObject building = Instantiate(statsy.Budynek, posi.position, Quaternion.identity);
+        GameObject building = Instantiate(statsy.budynekPrefab, posi.position, Quaternion.identity);
         building.transform.SetParent(parent.transform, true);
-        building.AddComponent<BuildingsStats>();
-        var buldingStast = building.GetComponent<BuildingsStats>();
-        buldingStast.putStats(statsy);
-        buldingStast.terrainTypeThatWasThere = position;
+        building.AddComponent<BuildingController>();
+        var buldingStast = building.GetComponent<BuildingController>();
+        buldingStast.FillNewStatsToThisBuilding(statsy,0);
+        buldingStast.ReturnTerrainTypeThatWasThere = position;
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
         justBuild.Raise();
@@ -119,7 +122,8 @@ public class Building : EconomyOperations
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         InstantiateHalfTransparentBuilding(statsy);
-
+        halfTransparent.GetComponent<BuildingInfoSendToDisplayer>().enabled = false; //turn off component so upgrade window will NOT pop up - this is not intended and will glitch out
+        
         while (isBuilding)
         {
             MoveOrHideHalfTransparentBuilding(statsy.whichBudynek);
@@ -141,7 +145,14 @@ public class Building : EconomyOperations
 
     private void InstantiateHalfTransparentBuilding(BuildingsScriptableObjects statsy)
     {
-        halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), Quaternion.identity);
+        if (statsy.budynekPrefab != null)
+        {
+            halfTransparent = Instantiate(statsy.budynekPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("PODEPNIJ PREFAB BUDYNKU W SO BUDYNKU MOZE, CO?");
+        }
         //animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
@@ -206,7 +217,7 @@ public class Building : EconomyOperations
 
 
                 Debug.Log(hitObject.name);
-                if (Purchase(statsy.resourcesCost)) Build(hitObject, statsy);
+                if(EconomyOperations.Purchase(statsy.buildingLevelsList[0].thisLevelCost)) Build(hitObject, statsy);
             }
         }
         else
@@ -261,9 +272,11 @@ public class Building : EconomyOperations
 
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
-        AddResources(demolishedBuilding.GetComponent<BuildingsStats>().ReturnResourcesSellValue());
+        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingController>().ReturnResourcesSellValue());
+        //Place previous ground
+        demolishedBuilding.GetComponent<BuildingController>().ReturnTerrainTypeThatWasThere.SetActive(true);
         budynki.Remove(demolishedBuilding);
-        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
+        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingController>());
         Destroy(demolishedBuilding);
     }
 

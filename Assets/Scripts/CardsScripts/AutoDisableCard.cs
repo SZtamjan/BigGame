@@ -6,7 +6,7 @@ using Economy.EconomyActions;
 using TMPro;
 using UnityEngine.UI;
 
-public class AutoDisableCard : EconomyOperations
+public class AutoDisableCard : MonoBehaviour
 {
     private void Start()
     {
@@ -18,7 +18,7 @@ public class AutoDisableCard : EconomyOperations
 
     private void ChangeGray()
     {
-        if (!CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
+        if (!EconomyOperations.CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
         {
             GetComponent<Button>().interactable = false;
 
