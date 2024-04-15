@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: TransHex_light_grass
   m_Shader: {fileID: -6465566751694194690, guid: f058e8c2938ee8c41aa854be1b4000f7, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _EMISSION_A
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -43,6 +44,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Dissolve: 0
+    - _EMISSION: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

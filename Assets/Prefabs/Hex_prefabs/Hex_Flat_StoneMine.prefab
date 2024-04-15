@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7065631012021917720}
   - component: {fileID: 5038083987971255506}
   - component: {fileID: 809548355533732682}
+  - component: {fileID: 5270555568653934988}
   m_Layer: 11
   m_Name: Hex_Flat_StoneMine
   m_TagString: Untagged
@@ -99,3 +100,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 924e2f53f01efb0428d77480f6a0cab7, type: 3}
+--- !u!114 &5270555568653934988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839317198674300167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorRules: {fileID: 11400000, guid: e76ef249bcfab764b95aa60f3b62cbf0, type: 2}

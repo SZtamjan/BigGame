@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Economy.EconomyActions;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -32,6 +33,7 @@ public class BuildingsStats : EconomyOperations
         resourcesGain = stats.resourcesGainOnTurn;
         thisBudynekIs = stats.whichBudynek;
         unitAdd = stats.UnitAdd;
+        tag = thisBudynekIs.ToString();
         if (unitAdd != null)
         {
             CardManager.instance.AddCardToDrawableCollection(unitAdd);
