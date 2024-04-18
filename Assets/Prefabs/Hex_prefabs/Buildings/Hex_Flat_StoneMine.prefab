@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5038083987971255506}
   - component: {fileID: 809548355533732682}
   - component: {fileID: 5270555568653934988}
+  - component: {fileID: -6954724472653536359}
   m_Layer: 11
   m_Name: Hex_Flat_StoneMine
   m_TagString: Untagged
@@ -112,4 +113,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorRules: {fileID: 11400000, guid: e76ef249bcfab764b95aa60f3b62cbf0, type: 2}
+  MeError: 0
+  texstura: {fileID: 0}
+--- !u!114 &-6954724472653536359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839317198674300167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c833d86679f947449acce0aa1bf54bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
