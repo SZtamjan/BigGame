@@ -18,6 +18,12 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI food;
     [SerializeField] private TextMeshProUGUI wood;
     [SerializeField] private TextMeshProUGUI stone;
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         MoveObjectWithBuildingInfo();
@@ -26,8 +32,9 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
     private void MoveObjectWithBuildingInfo()
     {
         Vector3 pos = Input.mousePosition;
-        pos.z = parent.position.z;
-        objToMove.position = mainCam.ScreenToWorldPoint(pos);
+        pos.z = 0f;
+        //objToMove.position = mainCam.ScreenToWorldPoint(pos);
+        objToMove.localPosition = new Vector3(pos.x,pos.y,0);
     }
 
     private void OnEnable()
