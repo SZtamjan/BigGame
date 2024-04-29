@@ -7,6 +7,9 @@ using UnityEngine.Serialization;
 
 public class PopUpDisplayBuildingInfo : MonoBehaviour
 {
+    //Components
+    private UIController _uiController;
+    
     [Header("Move window")] 
     [SerializeField] private Camera uiCam;
     [SerializeField] private RectTransform objToMove;
@@ -18,6 +21,11 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI food;
     [SerializeField] private TextMeshProUGUI wood;
     [SerializeField] private TextMeshProUGUI stone;
+
+    private void Awake()
+    {
+        _uiController = UIController.Instance;
+    }
 
     private void Start()
     {
@@ -39,14 +47,17 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
 
     private void OnEnable()
     {
-        FillData(infoScript.SelectedBuilding.GetComponent<BuildingController>().UpgradeCost);
+        BuildingController bCon = infoScript.SelectedBuilding.GetComponent<BuildingController>();
+        FillData(bCon.UpgradeCost, bCon.TurnOffForTurns);
     }
 
-    private void FillData(ResourcesStruct res)
+    private void FillData(ResourcesStruct res, int turnedOffForTurns)
     {
         gold.text = res.Gold.ToString();
         food.text = res.Food.ToString();
         wood.text = res.Wood.ToString();
         stone.text = res.Stone.ToString();
+        
+        _uiController.DisplayForHowLongIsDisabled(turnedOffForTurns.ToString());
     }
 }
