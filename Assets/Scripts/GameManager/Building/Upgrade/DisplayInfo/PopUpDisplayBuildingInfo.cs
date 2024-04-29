@@ -27,11 +27,6 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
         _uiController = UIController.Instance;
     }
 
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
-
     private void Update()
     {
         MoveObjectWithBuildingInfo();
@@ -58,6 +53,6 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
         wood.text = res.Wood.ToString();
         stone.text = res.Stone.ToString();
         
-        _uiController.DisplayForHowLongIsDisabled(turnedOffForTurns.ToString());
+        _uiController.DisplayForHowLongIsDisabled(turnedOffForTurns);
     }
 }

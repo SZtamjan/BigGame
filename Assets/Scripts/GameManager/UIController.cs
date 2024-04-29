@@ -285,9 +285,19 @@ public class UIController : MonoBehaviour
 
     #region Buildings
 
-    public void DisplayForHowLongIsDisabled(string newText)
+    public void DisplayForHowLongIsDisabled(int newText)
     {
-        popUpDisplayDisabledForTurns.text = "Budynek zostanie wyłączony na " + newText + " tur";
+        popUpDisplayDisabledForTurns.text = PluralChecker(newText);
+    }
+
+    private string PluralChecker(int newText)
+    {
+        if (newText == 1)
+        {
+            return "Upgrade time: " + newText + " turn";
+        }
+
+        return "Upgrade time: " + newText + " turns";
     }
 
     #endregion
