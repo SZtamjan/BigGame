@@ -301,6 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195540337265484193}
   - component: {fileID: 2190867622200951752}
+  - component: {fileID: 4617810293077953596}
   m_Layer: 5
   m_Name: PopUp
   m_TagString: Untagged
@@ -324,13 +325,13 @@ RectTransform:
   - {fileID: 2817670050771656538}
   - {fileID: 8394473879203046934}
   m_Father: {fileID: 2713488898283971328}
-  m_RootOrder: 11
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 201.5, y: 79}
+  m_AnchoredPosition: {x: -50.050022, y: 0}
   m_SizeDelta: {x: 503.1, y: 158}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &2190867622200951752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,14 +344,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a266d65055c32254bb7664fcc07c32a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  objToMove: {fileID: 0}
-  parent: {fileID: 0}
+  uiCam: {fileID: 923928548295281678}
+  objToMove: {fileID: 195540337265484193}
+  objectOffset: {x: 0, y: 0}
   infoScript: {fileID: 3966927828619515978}
   gold: {fileID: 7937504605513094892}
   food: {fileID: 2944090339211197799}
   wood: {fileID: 2362369510987468947}
   stone: {fileID: 937863511279316659}
+--- !u!225 &4617810293077953596
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138061690585805690}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &167594920847501580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,7 +1917,7 @@ RectTransform:
   - {fileID: 6098379833560125544}
   - {fileID: 2048865543442507250}
   m_Father: {fileID: 2713488898283971328}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3303,7 +3316,7 @@ RectTransform:
   - {fileID: 4979675144060770716}
   - {fileID: 8856971789124660064}
   m_Father: {fileID: 2713488898283971328}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5024,7 +5037,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2713488898283971328}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11984,7 +11997,7 @@ RectTransform:
   - {fileID: 4874895066544930383}
   - {fileID: 7536402102207272563}
   m_Father: {fileID: 2713488898283971328}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -12647,11 +12660,11 @@ RectTransform:
   - {fileID: 8504799751753632785}
   - {fileID: 8953113446367504708}
   - {fileID: 487438951973450113}
-  - {fileID: 195540337265484193}
   - {fileID: 4008616373308675361}
   - {fileID: 8976303804457666329}
   - {fileID: 6358902119266030029}
   - {fileID: 5437827488808613763}
+  - {fileID: 195540337265484193}
   - {fileID: 8164095449557656313}
   - {fileID: 5429554572489429447}
   m_Father: {fileID: 8742569726464788414}

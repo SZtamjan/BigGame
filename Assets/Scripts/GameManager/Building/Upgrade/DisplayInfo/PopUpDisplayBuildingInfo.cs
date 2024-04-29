@@ -7,10 +7,10 @@ using UnityEngine.Serialization;
 
 public class PopUpDisplayBuildingInfo : MonoBehaviour
 {
-    [Header("Move window")]
-    [SerializeField] private Camera mainCam;
+    [Header("Move window")] 
+    [SerializeField] private Camera uiCam;
     [SerializeField] private RectTransform objToMove;
-    [SerializeField] private RectTransform parent;
+    [SerializeField] private Vector2 objectOffset;
 
     [Header("Stats")] 
     [SerializeField] private DisplayBuildingInfo infoScript; 
@@ -31,10 +31,10 @@ public class PopUpDisplayBuildingInfo : MonoBehaviour
 
     private void MoveObjectWithBuildingInfo()
     {
-        Vector3 pos = Input.mousePosition;
-        pos.z = 0f;
-        //objToMove.position = mainCam.ScreenToWorldPoint(pos);
-        objToMove.localPosition = new Vector3(pos.x,pos.y,0);
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(objToMove.parent as RectTransform, Input.mousePosition, uiCam, out localPoint);
+        localPoint += objectOffset;
+        objToMove.localPosition = localPoint;
     }
 
     private void OnEnable()
