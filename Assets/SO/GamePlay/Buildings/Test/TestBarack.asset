@@ -18,6 +18,9 @@ MonoBehaviour:
   desc: Skill issue
   buildingLevelsList:
   - turnOffBuildingForTurns: 0
+    interactableHexRules:
+      apply: 1
+      range: 1
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
@@ -50,6 +53,9 @@ MonoBehaviour:
       wood: 100
       stone: 100
   - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
     newMesh: {fileID: 4493585093827132993, guid: 924e2f53f01efb0428d77480f6a0cab7, type: 3}
     materials:
     - {fileID: 2100000, guid: 5b503deaed5e1fa479bd0bde42c0966a, type: 2}
@@ -81,6 +87,9 @@ MonoBehaviour:
       wood: 0
       stone: 0
   - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
