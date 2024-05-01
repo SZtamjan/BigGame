@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Economy.EconomyActions;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -236,9 +237,41 @@ public class BuildingController : MonoBehaviour
     {
         foreach (var iHex in _interactableHexes)
         {
-            //WIP
-            Debug.Log("Calculowanie z interactable in progress");
+            ResourcesStruct substractedValue = new ResourcesStruct();
+            
+            PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
+                                                                          BindingFlags.NonPublic |
+                                                                          BindingFlags.Public);
+            foreach (var field in fields)
+            {
+                int fieldValueBeforeCalc = (int)field.GetValue(iHex.HexResources);
+                int fieldMaxGain = (int)field.GetValue(resourcesCurrentMaxGain);
+                field.SetValue(iHex.HexResources,CalculateUnit(fieldMaxGain,fieldValueBeforeCalc));
+
+                int substractedFieldValue = fieldValueBeforeCalc - (int)field.GetValue(iHex.HexResources);
+                field.SetValue(substractedValue,substractedFieldValue);
+            }
+
+            EconomyOperations.AddResources(substractedValue);
         }
+    }
+
+    private int CalculateUnit(int maxGain, int hexUnit)
+    {
+        for (int i = 0; i < maxGain; i++)
+        {
+            if(hexUnit <= 0)
+            {
+                //hex jest juz pusty i mozna cos tutaj wykonac z tej okazji
+                //natomiast uruchomi sie jezeli tylko jeden surowiec dojdzie do zera
+                //jak np jest 20 drewna i 10 jedzenia i gracz bieze 1 co ture z obu, to akcja bedzie wykonana gdy jedzenie dojdzie do zera
+                break;
+            }
+
+            hexUnit--;
+        }
+
+        return hexUnit;
     }
     
     public void SaveAndChangeStateTo(BuildingStates newState)

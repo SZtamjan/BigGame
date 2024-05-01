@@ -91,7 +91,7 @@ namespace Economy.EconomyActions
                 if (economyResourcesValue < unitFieldValue)
                 {
                     if(showNotification) EconomyConditions.Instance.NotEnoughResources();
-                    Debug.Log("Nie stać mnie" + unitCostStruct);
+                    Debug.Log("Nie stać mnie, potrzeba " + field.GetValue(unitCostStruct) + " aby to kupic");
                     return false;
                 }
             }
