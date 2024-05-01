@@ -14,6 +14,10 @@ public class InteractableHex : MonoBehaviour
 
     public ResourcesStruct HexResources
     {
-        get => hexResources;
+        get
+        {
+            return hexResources;//ciekawe czy po return zadziala
+            
+        }
     }
 }
