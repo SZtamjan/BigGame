@@ -46,6 +46,11 @@ public class BuildingController : MonoBehaviour
 
     #region Properies
 
+    public int TurnOffForTurns
+    {
+        get => turnOffForTurns;
+    }
+
     public BuildingStates CurrentState
     {
         get => currentState;

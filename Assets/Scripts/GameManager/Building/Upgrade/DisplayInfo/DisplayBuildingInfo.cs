@@ -11,6 +11,7 @@ public class DisplayBuildingInfo : MonoBehaviour
     public static DisplayBuildingInfo Instance;
 
     private GameObject selectedBuilding;
+    private BuildingsScriptableObjects data;
 
     [SerializeField] private Button demoButton;
     [SerializeField] private Button upgradeButton;
@@ -25,6 +26,12 @@ public class DisplayBuildingInfo : MonoBehaviour
     public Button UpgradeButton
     {
         get => upgradeButton;
+    }
+
+    public GameObject SelectedBuilding
+    {
+        get => selectedBuilding;
+        private set => selectedBuilding = value;
     }
     
     private void Awake()
@@ -60,20 +67,26 @@ public class DisplayBuildingInfo : MonoBehaviour
         title.text = info.name;
         desc.text = info.desc;
 
-        if (info.buildingLevelsList.Count > selectedController.CurrentLevel + 1)
-        {
-            goldDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Gold.ToString();
-            stoneDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Stone.ToString();
-            woodDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Wood.ToString();
-            foodDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Food.ToString();
-        }
-        else
-        {
-            goldDisplay.text = "Maxed";
-            stoneDisplay.text = "Maxed";
-            woodDisplay.text = "Maxed";
-            foodDisplay.text = "Maxed";
-        }
+        goldDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel].newResourcesGainOnTurn.Gold.ToString();
+        stoneDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel].newResourcesGainOnTurn.Stone.ToString();
+        woodDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel].newResourcesGainOnTurn.Wood.ToString();
+        foodDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel].newResourcesGainOnTurn.Food.ToString();
+        
+        // DZIALA/WORKS - Wyswietla na ui info o koszcie nastepnego lvl/Displays cost of upgrade to the next level on UI 
+        // if (info.buildingLevelsList.Count > selectedController.CurrentLevel + 1)
+        // {
+        //     goldDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Gold.ToString();
+        //     stoneDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Stone.ToString();
+        //     woodDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Wood.ToString();
+        //     foodDisplay.text = info.buildingLevelsList[selectedController.CurrentLevel+1].thisLevelCost.Food.ToString();
+        // }
+        // else
+        // {
+        //     goldDisplay.text = "Maxed";
+        //     stoneDisplay.text = "Maxed";
+        //     woodDisplay.text = "Maxed";
+        //     foodDisplay.text = "Maxed";
+        // }
         
     }
 
