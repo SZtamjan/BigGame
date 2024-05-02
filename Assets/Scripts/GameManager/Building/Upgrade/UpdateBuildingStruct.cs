@@ -8,6 +8,9 @@ public class UpdateBuildingStruct
 {
     [Tooltip("Turns off building for X amount of turns")] public int turnOffBuildingForTurns;
     
+    [Header("Interactable Hex Config")]
+    public InteractableHexRules interactableHexRules;
+    
     [Header("Building Model")]
     public Mesh newMesh;
     public Material[] materials;

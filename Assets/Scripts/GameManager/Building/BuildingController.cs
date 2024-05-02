@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Economy.EconomyActions;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -21,18 +22,24 @@ public class BuildingController : MonoBehaviour
     
     //General info
     public WhichBudynek thisBudynekIs;
+    
+    //Upgrade
     private ResourcesStruct resourcesUpgradeCost;
-    private ResourcesStruct resourcesCurrentGain;
+    private ResourcesStruct resourcesCurrentMaxGain;
     private ResourcesStruct resourcesCurrentSell;
     private List<UpdateBuildingStruct> upgradeListThisBuilding;
 
-
+    //previous terrain
     private GameObject terrainTypeThatWasThere;
     public GameObject ReturnTerrainTypeThatWasThere
     {
         get => terrainTypeThatWasThere;
         set => terrainTypeThatWasThere = value;
     }
+    
+    //interactable hexes
+    private List<InteractableHex> _interactableHexes;
+    private InteractableHexRules iRules;
 
     #endregion
 
@@ -139,16 +146,18 @@ public class BuildingController : MonoBehaviour
         //StateManager(BuildingStates.StartDisable);
     }
 
-    
-    
     public void FillNewStatsToThisBuilding(BuildingsScriptableObjects stats,int newLevel)
     {
-        CurrentBuildingInfo = stats;
-        
         thisBudynekIs = stats.whichBudynek;
         
-        upgradeListThisBuilding = stats.buildingLevelsList;
+        CurrentBuildingInfo = stats;
 
+        upgradeListThisBuilding = stats.buildingLevelsList;
+        
+        iRules = stats.buildingLevelsList[newLevel].interactableHexRules;
+        if(iRules.Apply) DetectInteractableHexes(iRules.HexLength * (float)iRules.Range); 
+        
+        //if next level exists
         if (stats.buildingLevelsList.Count > newLevel + 1)
         {
             resourcesUpgradeCost = stats.buildingLevelsList[newLevel+1].thisLevelCost;
@@ -164,7 +173,7 @@ public class BuildingController : MonoBehaviour
         currentLevel = newLevel;
         Debug.Log("building lvl " + currentLevel);
         
-        UpdateModel(); //niepotrzebne bo bedzie prefab budynku i tak
+        UpdateModel();
         
         if (stats.buildingLevelsList[newLevel].newUnit != null)
         {
@@ -172,7 +181,7 @@ public class BuildingController : MonoBehaviour
             CardManager.instance.AddCardToDrawableCollection(unitAdd);
         }
         
-        resourcesCurrentGain = stats.buildingLevelsList[newLevel].newResourcesGainOnTurn;
+        resourcesCurrentMaxGain = stats.buildingLevelsList[newLevel].newResourcesGainOnTurn;
 
         Debug.LogWarning("Be careful with applyNewSell checkbox");
         if (stats.buildingLevelsList[newLevel].applyNewSell)
@@ -181,6 +190,20 @@ public class BuildingController : MonoBehaviour
         }
         
         currentState = BuildingStates.Normal;
+    }
+    
+    private void DetectInteractableHexes(float range)
+    {
+        _interactableHexes = new List<InteractableHex>();
+
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, range);
+
+        foreach (var objectInRange in objectsInRange)
+        {
+            objectInRange.TryGetComponent<InteractableHex>(out InteractableHex hex);
+            if (hex == null) continue;
+            if (hex.InteractWith == thisBudynekIs) _interactableHexes.Add(hex);
+        }
     }
 
     private void RemoveBuffs()
@@ -192,8 +215,6 @@ public class BuildingController : MonoBehaviour
 
     private void UpdateModel()
     {
-        Debug.Log("BUILDING MODEL CHANGE WIP");
-        
         //Mesh
         GetComponent<MeshFilter>().mesh = upgradeListThisBuilding[currentLevel].newMesh;
         //Mesh Collider
@@ -206,7 +227,56 @@ public class BuildingController : MonoBehaviour
 
     private void BuildingActionsOnTurn()
     {
-        EconomyOperations.AddResources(resourcesCurrentGain);
+        if (iRules.Apply)
+        { //if interactable applies
+            CalculateResourcesFromInteractables();
+        }
+        else
+        { //not interactable
+            EconomyOperations.AddResources(resourcesCurrentMaxGain);
+        }
+        
+    }
+
+    private void CalculateResourcesFromInteractables()
+    {
+        foreach (var iHex in _interactableHexes)
+        {
+            ResourcesStruct substractedValue = new ResourcesStruct();
+            
+            PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
+                                                                          BindingFlags.NonPublic |
+                                                                          BindingFlags.Public);
+            foreach (var field in fields)
+            {
+                int fieldValueBeforeCalc = (int)field.GetValue(iHex.HexResources);
+                int fieldMaxGain = (int)field.GetValue(resourcesCurrentMaxGain);
+                field.SetValue(iHex.HexResources,CalculateUnit(fieldMaxGain,fieldValueBeforeCalc));
+
+                int substractedFieldValue = fieldValueBeforeCalc - (int)field.GetValue(iHex.HexResources);
+                field.SetValue(substractedValue,substractedFieldValue);
+            }
+
+            EconomyOperations.AddResources(substractedValue);
+        }
+    }
+
+    private int CalculateUnit(int maxGain, int hexUnit)
+    {
+        for (int i = 0; i < maxGain; i++)
+        {
+            if(hexUnit <= 0)
+            {
+                //hex jest juz pusty i mozna cos tutaj wykonac z tej okazji
+                //natomiast uruchomi sie jezeli tylko jeden surowiec dojdzie do zera
+                //jak np jest 20 drewna i 10 jedzenia i gracz bieze 1 co ture z obu, to akcja bedzie wykonana gdy jedzenie dojdzie do zera
+                break;
+            }
+
+            hexUnit--;
+        }
+
+        return hexUnit;
     }
     
     public void SaveAndChangeStateTo(BuildingStates newState)

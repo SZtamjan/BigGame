@@ -18,6 +18,9 @@ MonoBehaviour:
   desc: Skill issue
   buildingLevelsList:
   - turnOffBuildingForTurns: 0
+    interactableHexRules:
+      apply: 1
+      range: 1
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
@@ -36,10 +39,10 @@ MonoBehaviour:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
-      gold: 2
-      food: 2
-      wood: 2
-      stone: 2
+      gold: 9
+      food: 9
+      wood: 9
+      stone: 9
     applyNewSell: 1
     newSellValue:
       updatedResources:
@@ -81,6 +84,9 @@ MonoBehaviour:
       wood: 0
       stone: 0
   - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
