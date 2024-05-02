@@ -61,7 +61,6 @@ public class HexWUIController : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("JEST DZIALA");
         PrepareMyInfoToDisplay();
         ChangeVisibility(true);
     }
