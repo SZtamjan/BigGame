@@ -1103,7 +1103,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4980083710900234139}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -1706,7 +1706,6 @@ GameObject:
   - component: {fileID: 8781770759750208509}
   - component: {fileID: 4644930079519449649}
   - component: {fileID: 768169438089102874}
-  - component: {fileID: 8968658497212580965}
   m_Layer: 0
   m_Name: Hex_flat_BigForest
   m_TagString: Untagged
@@ -1764,19 +1763,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!135 &8968658497212580965
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8256449790211166535}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8552231189038371074
 GameObject:
   m_ObjectHideFlags: 0

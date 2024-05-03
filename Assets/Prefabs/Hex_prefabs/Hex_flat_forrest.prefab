@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 802093275963208360}
   - component: {fileID: 2531911908222494591}
   - component: {fileID: 4448414734282123502}
-  - component: {fileID: 569962982021206084}
   - component: {fileID: 5915886414367146493}
   m_Layer: 0
   m_Name: Hex_flat_forrest
@@ -34,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 5118950842125287822}
   - {fileID: 8997701907306912591}
+  - {fileID: 2736828800034524787}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,27 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationComponents:
   - {fileID: 2531911908222494591}
---- !u!114 &569962982021206084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29919056458180626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6640f8639725d48b4eda42e1e494e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactWith: 2
-  hexResources:
-    updatedResources:
-      m_PersistentCalls:
-        m_Calls: []
-    gold: 69
-    food: 4
-    wood: 2
-    stone: 0
 --- !u!135 &5915886414367146493
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -594,6 +573,9 @@ GameObject:
   - component: {fileID: 5458917086843008440}
   - component: {fileID: 6207964091130809040}
   - component: {fileID: 655536008510184365}
+  - component: {fileID: 9205959955579209634}
+  - component: {fileID: 4592273997257998483}
+  - component: {fileID: 2177542222531864447}
   m_Layer: 0
   m_Name: Hex_flat_Forrest
   m_TagString: Untagged
@@ -732,6 +714,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76873284c5486064faeafafda661433c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9205959955579209634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852822536171452957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333ffa9e56999584b90017e2e4834571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4592273997257998483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852822536171452957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6640f8639725d48b4eda42e1e494e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactWith: 2
+  hexResources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 10
+    food: 10
+    wood: 10
+    stone: 10
+--- !u!64 &2177542222531864447
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852822536171452957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4972829657626456097, guid: d977a8c837f736b448cd8f1843b01b9c, type: 3}
 --- !u!1 &6927092671744296942
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,3 +951,37 @@ Transform:
   m_Father: {fileID: 6619798660806505353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2932897406483853519
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 802093275963208360}
+    m_Modifications:
+    - target: {fileID: 957179770137722556, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 957179770137722556, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 957179770137722556, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 957179770137722556, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 957179770137722557, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+      propertyPath: m_Name
+      value: Hex WUI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+--- !u!4 &2736828800034524787 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 957179770137722556, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+  m_PrefabInstance: {fileID: 2932897406483853519}
+  m_PrefabAsset: {fileID: 0}

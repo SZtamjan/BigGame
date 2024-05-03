@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestBarack
   m_EditorClassIdentifier: 
   budynekPrefab: {fileID: 6839317198674300167, guid: dc503b1a901cded4a871c042afec56a7, type: 3}
-  whichBudynek: 2
+  whichBudynek: 1
   name: Testowy maniek
   desc: Skill issue
   buildingLevelsList:
@@ -53,6 +53,9 @@ MonoBehaviour:
       wood: 100
       stone: 100
   - turnOffBuildingForTurns: 1
+    interactableHexRules:
+      apply: 0
+      range: 0
     newMesh: {fileID: 4493585093827132993, guid: 924e2f53f01efb0428d77480f6a0cab7, type: 3}
     materials:
     - {fileID: 2100000, guid: 5b503deaed5e1fa479bd0bde42c0966a, type: 2}
