@@ -54,7 +54,7 @@ public class UnitSpawner : MonoBehaviour
     {
         _selectedCard = karta;
         karta.GetComponent<Image>().color = CardManager.instance.selectedCardColor;
-        while (GameManager.instance.CanPlayerMove())
+        while (GameManager.Instance.CanPlayerMove())
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -88,7 +88,7 @@ public class UnitSpawner : MonoBehaviour
                     newUnit.SetSO(unitStats);
                     newUnit.setMyGate(thisGatePatch);
                     thisGatePatch.path[0].unitMain = newUnit;
-                    thisGatePatch.SetTransparent(GameManager.instance.GateTransparency);
+                    thisGatePatch.SetTransparent(GameManager.Instance.GateTransparency);
                     //EconomyResources.Instance.Purchase(stats.resources.Gold);
                     Destroy(karta);
                     CardManager.instance.RevomeCard(karta);

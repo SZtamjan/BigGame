@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6047741877121830519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8504653930848124729}
+  - component: {fileID: 6286494623871304192}
+  - component: {fileID: 4316177869654052200}
+  m_Layer: 0
+  m_Name: BuildingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8504653930848124729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047741877121830519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6286494623871304192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047741877121830519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bb4f3a769e1bc4397201dcbb697f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingMask:
+    serializedVersion: 2
+    m_Bits: 256
+  isBuilding: 0
+  isBuildingEvent: {fileID: 11400000, guid: ed5b117a68997754abb2561b815305ae, type: 2}
+  justBuild: {fileID: 11400000, guid: 32ed56cfb568fb346a7f685d8e36e91f, type: 2}
+  parent: {fileID: 0}
+  budynki: []
+  buildingsStats: []
+  buildingLimitInTotal: 99
+  specificBuildingLimitList: []
+  isColor: 1
+  isBuildingEventTwo: {fileID: 11400000, guid: 50faecd50f96c3141a416849835f77f3, type: 2}
+  regularPlaceableColor: {r: 1, g: 1, b: 1, a: 1}
+  regularNotPlaceableColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
+  placeableColor: {r: 0.07478621, g: 0.5943396, b: 0, a: 1}
+  notPlaceableColor: {r: 0.754717, g: 0, b: 0.715476, a: 1}
+--- !u!114 &4316177869654052200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047741877121830519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa94149bf428a441a37203234b79c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorRules: {fileID: 11400000, guid: e76ef249bcfab764b95aa60f3b62cbf0, type: 2}

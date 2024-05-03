@@ -380,7 +380,7 @@ public class Gate : MonoBehaviour
     [Button]
     public void Test0()
     {
-        SetTransparent(GameManager.instance.GateTransparency);
+        SetTransparent(GameManager.Instance.GateTransparency);
     }
     [Button]
 

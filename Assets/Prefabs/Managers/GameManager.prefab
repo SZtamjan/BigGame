@@ -10,12 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7221646004830917441}
   - component: {fileID: 7221646004830917455}
-  - component: {fileID: 7116246032910578147}
-  - component: {fileID: 4319536920003245370}
-  - component: {fileID: 6058375130558990687}
-  - component: {fileID: 1568248391005656563}
   - component: {fileID: 8481899933841345970}
-  - component: {fileID: 5747275496912248759}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -58,75 +53,6 @@ MonoBehaviour:
   playerTurn: 1
   devMode: 0
   TestDoSpawn: []
---- !u!114 &7116246032910578147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7221646004830917446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196076795195b334faa5e602f32f3a5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRemovedCard: 0
-  WhatEnemyCanSpawn: {fileID: 11400000, guid: cd3044f9f9f54cc4595438efc79e975e, type: 2}
-  _selectedCard: {fileID: 0}
---- !u!114 &4319536920003245370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7221646004830917446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 890d968906b88584c81c8febd4935003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 0.87
---- !u!114 &6058375130558990687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7221646004830917446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7bb4f3a769e1bc4397201dcbb697f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingMask:
-    serializedVersion: 2
-    m_Bits: 256
-  isBuilding: 0
-  isBuildingEvent: {fileID: 11400000, guid: ed5b117a68997754abb2561b815305ae, type: 2}
-  justBuild: {fileID: 11400000, guid: 32ed56cfb568fb346a7f685d8e36e91f, type: 2}
-  parent: {fileID: 0}
-  budynki: []
-  buildingsStats: []
-  buildingLimitInTotal: 99
-  specificBuildingLimitList: []
-  isColor: 1
-  isBuildingEventTwo: {fileID: 11400000, guid: 50faecd50f96c3141a416849835f77f3, type: 2}
-  regularPlaceableColor: {r: 1, g: 1, b: 1, a: 1}
-  regularNotPlaceableColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
-  placeableColor: {r: 0.07478621, g: 0.5943396, b: 0, a: 1}
-  notPlaceableColor: {r: 0.754717, g: 0, b: 0.715476, a: 1}
---- !u!114 &1568248391005656563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7221646004830917446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e076c43568ebafa4cabd1d6f3c2a2e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8481899933841345970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,16 +67,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     sceneIndex: 0
---- !u!114 &5747275496912248759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7221646004830917446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aa94149bf428a441a37203234b79c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorRules: {fileID: 11400000, guid: e76ef249bcfab764b95aa60f3b62cbf0, type: 2}

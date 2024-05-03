@@ -68,7 +68,7 @@ public class PathGenerator : MonoBehaviour
     private List<GameObject> shotColliders(Vector3 center)
     {
         List<GameObject> toReturn = new List<GameObject>();
-        Collider[] hitColliders = Physics.OverlapSphere(center, radius, GameManager.instance.layerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius, GameManager.Instance.layerMask);
         foreach (var item in hitColliders)
         {
             toReturn.Add(item.gameObject);

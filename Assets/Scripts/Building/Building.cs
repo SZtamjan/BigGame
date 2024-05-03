@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
-using static GameManager;
 
 public class Building : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class Building : MonoBehaviour
     public GameEvent isBuildingEvent;
     public GameEvent justBuild;
 
-    public GameObject parent;
+    [HideInInspector] public GameObject parent;
     private GameObject halfTransparent;
 
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
@@ -50,7 +49,8 @@ public class Building : MonoBehaviour
     [ColorUsage(true, true)] public Color placeableColor; //green
     [ColorUsage(true, true)] public Color notPlaceableColor; //gray
 
-    //public Animator animator;
+    //Components
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -58,6 +58,7 @@ public class Building : MonoBehaviour
     }
     void Start()
     {
+        _gameManager = GameManager.Instance;
         budynki = new List<GameObject>();
         cam = Camera.main;
     }
@@ -69,7 +70,7 @@ public class Building : MonoBehaviour
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
     {
-        if (GetComponent<GameManager>().CanPlayerMove())
+        if (_gameManager.CanPlayerMove())
         {
             //Here i want to check if i didnt achieve the limit
             if (parent.transform.childCount! >= buildingLimitInTotal || IsBuildingLimitAchieved(statsy.whichBudynek))
