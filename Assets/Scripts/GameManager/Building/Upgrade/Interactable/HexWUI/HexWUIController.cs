@@ -27,13 +27,30 @@ public class HexWUIController : MonoBehaviour
 
     private void FindMyWUI()
     {
-        Transform parent = transform.parent;
-        foreach (Transform child in parent)
+        if (transform.parent != null)
         {
-            if (child.gameObject.CompareTag("HexWUI"))
+            Transform parent = transform.parent;
+            //find Hex WUI when its on the same level in hierarchy
+            foreach (Transform child in parent)
             {
-                hexWUI = child.gameObject;
-                break;
+                if (child.gameObject.CompareTag("HexWUI"))
+                {
+                    hexWUI = child.gameObject;
+                    break;
+                }
+            }
+        }
+        
+        //find Hex WUI when its child object
+        if (hexWUI == null)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.gameObject.CompareTag("HexWUI"))
+                {
+                    hexWUI = child.gameObject;
+                    break;
+                }
             }
         }
 
