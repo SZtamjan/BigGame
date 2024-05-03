@@ -8,15 +8,13 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public static PlayerMovement instance;
-
 
     [Header("Settings")]
     public float keySpeed = 6f; // predkosc przesuwania kamery WSADem
     public float groundDrag; // Tarcie - jak szybko sie zatrzyma
     public float mouseSpeed = 1f;// predkosc przesuwania kamery myszka
-    public float camHeight = 3f; // warto�� sta�a pozycji kamery w osi Y
+    public float camHeight = 3f; // wartosc stala pozycji kamery w osi Y
 
     [Header("Math Limiters")]
     [Tooltip("Domyślnie zamek gracza")]

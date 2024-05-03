@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &399384177496903716
+--- !u!1 &2764279212915413360
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,57 +8,63 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 399384177496903715}
-  - component: {fileID: 399384177496903714}
-  - component: {fileID: 399384177496903717}
+  - component: {fileID: 4872956227379199205}
+  - component: {fileID: 1104583631539967657}
+  - component: {fileID: 2531055796706565058}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: EconomyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &399384177496903715
+  m_IsActive: 1
+--- !u!4 &4872956227379199205
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399384177496903716}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79683214, y: 3.2471435, z: -3.5197213}
+  m_GameObject: {fileID: 2764279212915413360}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &399384177496903714
+--- !u!114 &1104583631539967657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399384177496903716}
+  m_GameObject: {fileID: 2764279212915413360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196076795195b334faa5e602f32f3a5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c6f6957ef3dc61448fbdcd5f569a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gigaPrefab: {fileID: 4721894399120368837, guid: 7027855f06a62d94882c8317f14ac6ad, type: 3}
---- !u!114 &399384177496903717
+  resources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 0
+    food: 0
+    wood: 0
+    stone: 0
+  playerResourcesSo: {fileID: 11400000, guid: 987e0527b431c9744a874bf4a7a6a8a3, type: 2}
+--- !u!114 &2531055796706565058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399384177496903716}
+  m_GameObject: {fileID: 2764279212915413360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912622da7b78ca8439b5dc2fa8465cf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 623d73aa9d87825408a4fcb57a1886a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexGrid: {fileID: 8234275202817942692, guid: 66360a9f687c58b4483dcdcea5953361, type: 3}
-  StartHex: {fileID: 0}
-  drogaList: []
-  neighbours: []
+  textFullAlpha: 2
+  fadeDuration: 2
