@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6058375130558990687}
   - component: {fileID: 1568248391005656563}
   - component: {fileID: 8481899933841345970}
+  - component: {fileID: 5747275496912248759}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -140,3 +141,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     sceneIndex: 0
+--- !u!114 &5747275496912248759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221646004830917446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa94149bf428a441a37203234b79c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorRules: {fileID: 11400000, guid: e76ef249bcfab764b95aa60f3b62cbf0, type: 2}
