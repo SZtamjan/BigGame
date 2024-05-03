@@ -17,6 +17,12 @@ public class UIController : MonoBehaviour
 
     #region Variables
 
+    //Components
+    [Header("Components")] 
+    [SerializeField] private Camera _camera;
+    private CardManager _cardManager;
+    private PlayerMovement _playerMovement;
+    
     [Header("Menus")]
     [SerializeField] private GameObject QuickMenu;
     [SerializeField] private List<GameObject> menus;
@@ -31,12 +37,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject BuildingsCards;
     [SerializeField] private bool BuildingsCardShowing = false;
     [SerializeField] private List<GameObject> DrawableCards = new List<GameObject>();
-    
-    //Components
-    [Header("Components")] 
-    [SerializeField] private Camera _camera;
-    private CardManager _cardManager;
-    private PlayerMovement _playerMovement;
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
@@ -51,7 +51,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ShowTurn;
     [SerializeField] private TextMeshProUGUI ShowEndDisplay;
 
-    [Header("Warming settings")]
+    [Header("Warning settings")]
     [SerializeField] private TextMeshProUGUI ShowEconomyWarming;
     [SerializeField] private float textFullAlpha = 2f;
     [SerializeField] private float fadeDuration = 2f;
@@ -70,6 +70,9 @@ public class UIController : MonoBehaviour
     [Header("Background Mechanics")] 
     [SerializeField] private GameObject buildingMenu;
     [SerializeField] private GameObject trashCan;
+
+    [Header("Buildings")] 
+    [SerializeField] private TextMeshProUGUI popUpDisplayDisabledForTurns;
 
     //Coroutines
     private Coroutine warningMessage;
@@ -276,6 +279,25 @@ public class UIController : MonoBehaviour
         BuildingsCards.SetActive(state);
         BuildingsCardShowing = state;
 
+    }
+
+    #endregion
+
+    #region Buildings
+
+    public void DisplayForHowLongIsDisabled(int newText)
+    {
+        popUpDisplayDisabledForTurns.text = PluralChecker(newText);
+    }
+
+    private string PluralChecker(int newText)
+    {
+        if (newText == 1)
+        {
+            return "Upgrade time: " + newText + " turn";
+        }
+
+        return "Upgrade time: " + newText + " turns";
     }
 
     #endregion

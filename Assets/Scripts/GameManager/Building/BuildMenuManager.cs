@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Economy.EconomyActions;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BuildMenuManager : EconomyOperations
+public class BuildMenuManager : MonoBehaviour
 {
     public static BuildMenuManager Instance;
     
@@ -65,7 +63,7 @@ public class BuildMenuManager : EconomyOperations
         checkingInProgress = null;
     }
     
-    public void FillData(BuildingsScriptableObjects info)
+    public void FillDataToDisplayOnRightPanel(BuildingsScriptableObjects info)
     {
         _buildingInfo = info;
         
@@ -73,21 +71,16 @@ public class BuildMenuManager : EconomyOperations
         //selectedBuildingImage.sprite = info
         selectedBuildingTitle.text = info.name;
         selectedBuildingDescription.text = info.desc;
-
-        goldDisplay.text = info.resourcesCost.Gold.ToString();
-        stoneDisplay.text = info.resourcesCost.Stone.ToString();
-        woodDisplay.text = info.resourcesCost.Wood.ToString();
-        foodDisplay.text = info.resourcesCost.Food.ToString();
+        
+        goldDisplay.text = info.buildingLevelsList[0].thisLevelCost.Gold.ToString();
+        stoneDisplay.text = info.buildingLevelsList[0].thisLevelCost.Stone.ToString();
+        woodDisplay.text = info.buildingLevelsList[0].thisLevelCost.Wood.ToString();
+        foodDisplay.text = info.buildingLevelsList[0].thisLevelCost.Food.ToString();
     }
     
     public void InitBuyBuilding()
     {
-        // bool CanIBuy = EconomyResources.Instance.CanIBuy(_buildingInfo.cost);
-        // if(CanIBuy)
-        // {
-        //     StartBulding();
-        // }
-        if (CheckIfICanIAfford(_buildingInfo.resourcesCost))
+        if (EconomyOperations.CheckIfICanIAfford(_buildingInfo.buildingLevelsList[0].thisLevelCost))
         {
             StartBulding();
         }
@@ -98,10 +91,4 @@ public class BuildMenuManager : EconomyOperations
         UIController.Instance.BuildingCardsChangeShow(false);
         Building.Instance.StartBuilding(_buildingInfo);
     }
-
-    public void StartDemolition()
-    {
-        DestroyBuilding.Instance.StartDestroying();
-    }
-    
 }

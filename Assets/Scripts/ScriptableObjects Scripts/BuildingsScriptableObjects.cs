@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -5,10 +6,10 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "ScriptableObjects/Buildings/BuildingsStats")]
 public class BuildingsScriptableObjects : ScriptableObject
 {
-    //Prefabs
-    [Header("Budynek")]
-    public GameObject Budynek;
-    public WhichBudynek whichBudynek;
+    //General info
+    [Header("General info")]
+    public GameObject budynekPrefab;
+    public WhichBudynek whichBudynek; //Used for limiting building type per level
     
     //Card Stats
     [Header("Info")]
@@ -16,23 +17,16 @@ public class BuildingsScriptableObjects : ScriptableObject
     public new string name = "domek";
     [SerializeField]
     public string desc = "+5 do hajsu na ture";
-    
-    [Header("Statystyki ")]
+
+    [Header("Statystyki budynku")]
     [SerializeField]
-    public ResourcesStruct resourcesCost;
-    [SerializeField] 
-    public ResourcesStruct resourcesGainOnTurn;
-    [SerializeField] 
-    public ResourcesStruct resourcesSell;
-    
-    [Header("Unit")]
-    [SerializeField]
-    public UnitScriptableObjects UnitAdd;
-    
+    public List<UpdateBuildingStruct> buildingLevelsList;
 }
 
-public enum WhichBudynek
+public enum WhichBudynek //Used for limiting building type per level
 {
+    // jak to coœ bêdzie dodawane, to trzeba równie¿ dodaæ tag (o takiej samej nazwie) do unity (tagi do gameobjectów (tak jak Layer`y))
+    // przy zmianie nazwy równie¿ tak¿e trzeba zaktualizowaæ
     archerBarrack,
     knightBarrack,
     peasantBarrack,

@@ -5,9 +5,7 @@ using UnityEngine;
 [SelectionBase]
 public class ChangeGray : MonoBehaviour
 {
-    private bool isOn = false;
-
-    Renderer renderer;
+    private new Renderer renderer;
     Material[] materials;
 
     private void Start()
@@ -20,7 +18,6 @@ public class ChangeGray : MonoBehaviour
             mat.SetColor("_EmissionColor",Building.Instance.notPlaceableColor);
             mat.DisableKeyword("_EMISSION");
         }
-        isOn = false;
     }
 
     public void ChangeBloom()
@@ -39,7 +36,6 @@ public class ChangeGray : MonoBehaviour
                 }
                 
             }
-            isOn = false;
         }
         else
         {
@@ -54,7 +50,6 @@ public class ChangeGray : MonoBehaviour
                     mat.EnableKeyword("_EMISSION");
                 }
             }
-            isOn = true;
         }
         
     }

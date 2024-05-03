@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 2210264506153187632}
   - component: {fileID: 4127716813313854970}
   - component: {fileID: -6092197928823666758}
-  - component: {fileID: 1989948924046986460}
-  - component: {fileID: 7106340369245868626}
+  - component: {fileID: 763181293562312829}
   m_Layer: 8
   m_Name: hex_flat_light_grass
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +99,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8562928185355181518, guid: 20e19425ae500e04e8a9118caff08ed1, type: 3}
---- !u!114 &1989948924046986460
+--- !u!114 &763181293562312829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,34 +108,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2470335318517443631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72d25df566272634d8773d7c4769d49a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7106340369245868626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2470335318517443631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f691f90ba4ecd9a4abe716cda549198f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: ed5b117a68997754abb2561b815305ae, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1989948924046986460}
-        m_TargetAssemblyTypeName: ChangeGlow, Assembly-CSharp
-        m_MethodName: ChangeBloom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}

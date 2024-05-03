@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using static GameManager;
 
-public class Building : EconomyOperations
+public class Building : MonoBehaviour
 {
     public static Building Instance;
     Camera cam;
@@ -20,9 +20,9 @@ public class Building : EconomyOperations
 
     public GameObject parent;
     private GameObject halfTransparent;
-    
+
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
-    public List<BuildingsStats> buildingsStats; // It stores what building does
+    public List<BuildingController> buildingsStats; // It stores what building does
     
     public List<GameObject> Budynks
     {
@@ -31,7 +31,7 @@ public class Building : EconomyOperations
             return budynki;
         }
     }
-    
+
     [Header(" ")]
     [Header("Limit Buildings")]
     [SerializeField] private int buildingLimitInTotal = 5;
@@ -41,15 +41,15 @@ public class Building : EconomyOperations
     [Header("Build Buildings")]
     public bool isColor = false;
     public GameEvent isBuildingEventTwo;
-    
+
     [Header("Building Colors")]
     [ColorUsage(true, true)] public Color regularPlaceableColor; //green
     [ColorUsage(true, true)] public Color regularNotPlaceableColor; //gray
-    
+
     [Header("Building Bloom")]
     [ColorUsage(true, true)] public Color placeableColor; //green
     [ColorUsage(true, true)] public Color notPlaceableColor; //gray
-    
+
     //public Animator animator;
 
     private void Awake()
@@ -61,15 +61,18 @@ public class Building : EconomyOperations
         budynki = new List<GameObject>();
         cam = Camera.main;
     }
-    
-    
+
+    private void OnDisable()
+    {
+        GetComponent<BuildingInfoSendToDisplayer>().TurnOffWindow();
+    }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
     {
         if (GetComponent<GameManager>().CanPlayerMove())
         {
             //Here i want to check if i didnt achieve the limit
-            if (parent.transform.childCount !>= buildingLimitInTotal || IsBuildingLimitAchieved(statsy.whichBudynek))
+            if (parent.transform.childCount! >= buildingLimitInTotal || IsBuildingLimitAchieved(statsy.whichBudynek))
             {
                 //Tell what if limit is achieved
                 EconomyConditions.Instance.BuildingLimitAchieved();
@@ -80,10 +83,13 @@ public class Building : EconomyOperations
                 if (!isBuilding)
                 {
                     isBuilding = true;
-                
-                    isBuildingEvent.Raise();
-                    isBuildingEventTwo.Raise();
-                
+
+                    //isBuildingEvent.Raise(); //chyba do usunięcia
+                    //isBuildingEventTwo.Raise(); // to też
+
+                    EventManager.Instance.BuldingColorChange(statsy.whichBudynek);
+
+
                     StartCoroutine(WhereToBuild(statsy));
                 }
                 else
@@ -100,12 +106,12 @@ public class Building : EconomyOperations
     private void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
-        GameObject building = Instantiate(statsy.Budynek, posi.position, Quaternion.identity);
+        GameObject building = Instantiate(statsy.budynekPrefab, posi.position, Quaternion.identity);
         building.transform.SetParent(parent.transform, true);
-        building.AddComponent<BuildingsStats>();
-        var buldingStast = building.GetComponent<BuildingsStats>();
-        buldingStast.putStats(statsy);
-        buldingStast.terrainTypeThatWasThere = position;
+        building.AddComponent<BuildingController>();
+        var buldingStast = building.GetComponent<BuildingController>();
+        buldingStast.FillNewStatsToThisBuilding(statsy,0);
+        buldingStast.ReturnTerrainTypeThatWasThere = position;
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
         justBuild.Raise();
@@ -116,10 +122,11 @@ public class Building : EconomyOperations
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         InstantiateHalfTransparentBuilding(statsy);
+        if(halfTransparent != null) halfTransparent.GetComponent<BuildingInfoSendToDisplayer>().enabled = false; //turn off component so upgrade window will NOT pop up - this is not intended and will glitch out
         
         while (isBuilding)
         {
-            MoveOrHideHalfTransparentBuilding();
+            MoveOrHideHalfTransparentBuilding(statsy.whichBudynek);
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -127,7 +134,7 @@ public class Building : EconomyOperations
                 yield return new WaitForEndOfFrame();
                 EndBuilding();
             }
-            
+
             yield return null;
         }
         //animator.SetFloat("speed", 0);
@@ -138,7 +145,14 @@ public class Building : EconomyOperations
 
     private void InstantiateHalfTransparentBuilding(BuildingsScriptableObjects statsy)
     {
-        halfTransparent = Instantiate(statsy.Budynek, new Vector3(0f, -10f, 0f), Quaternion.identity);
+        if (statsy.budynekPrefab != null)
+        {
+            halfTransparent = Instantiate(statsy.budynekPrefab, new Vector3(0f, -10f, 0f), Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("PODEPNIJ PREFAB BUDYNKU W SO BUDYNKU MOZE, CO?");
+        }
         //animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
@@ -151,21 +165,23 @@ public class Building : EconomyOperations
     }
 
 
-    private void MoveOrHideHalfTransparentBuilding()
+    private void MoveOrHideHalfTransparentBuilding(WhichBudynek whichBudynek)
     {
         Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit raycastHit1;
         if (Physics.Raycast(ray1, out raycastHit1, 100, buildingMask))
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
+            var hitObject = raycastHit1.collider.gameObject;
 
+            var tagCheck = ColorChange.Instance.colorRules.CheckType(whichBudynek, hitObject.tag);
+
+            if (EventSystem.current.IsPointerOverGameObject() || !tagCheck)
+            {
+                HidehalfTransparent(halfTransparent);
             }
             else
             {
-                GameObject hit1 = raycastHit1.collider.gameObject;
-                Vector3 place = hit1.transform.position;
+                Vector3 place = hitObject.transform.position;
                 place.y += 0.01f;
                 halfTransparent.transform.position = place;
             }
@@ -173,8 +189,14 @@ public class Building : EconomyOperations
         }
         else
         {
-            halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
+            HidehalfTransparent(halfTransparent);
+
         }
+    }
+
+    private void HidehalfTransparent(GameObject halfTransparent)
+    {
+        halfTransparent.transform.position = new Vector3(0f, -10f, 0f);
     }
 
     private void CheckConditionsAndBuy(BuildingsScriptableObjects statsy)
@@ -183,11 +205,19 @@ public class Building : EconomyOperations
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100, buildingMask))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            GameObject hitObject = hit.collider.gameObject;
+            var tagCheck = ColorChange.Instance.colorRules.CheckType(statsy.whichBudynek, hit.collider.gameObject.tag);
+
+            if (!tagCheck)
             {
-                GameObject hitObject = hit.collider.gameObject;
+                EconomyConditions.Instance.HereIsNotAPlaceToBuild();
+            }
+            else if (!EventSystem.current.IsPointerOverGameObject() && tagCheck)
+            {
+
+
                 Debug.Log(hitObject.name);
-                if(Purchase(statsy.resourcesCost)) Build(hitObject, statsy);
+                if(EconomyOperations.Purchase(statsy.buildingLevelsList[0].thisLevelCost)) Build(hitObject, statsy);
             }
         }
         else
@@ -196,19 +226,20 @@ public class Building : EconomyOperations
             EconomyConditions.Instance.ThereIsABuilding();
         }
     }
-    
+
     private void EndBuilding()
     {
         isBuilding = false;
-        
-        isBuildingEventTwo.Raise();
-        isBuildingEvent.Raise();
+
+        //isBuildingEvent.Raise(); //chyba do usunięcia
+        //isBuildingEventTwo.Raise(); // to też
+        EventManager.Instance.BuldingColorChange(null);
     }
 
     private bool IsBuildingLimitAchieved(WhichBudynek _whichBudynek)
     {
         bool isLimitAchieved = false;
-        
+
         //Checking if there is a limit for the building
         foreach (var bildink in specificBuildingLimitList)
         {
@@ -241,10 +272,12 @@ public class Building : EconomyOperations
 
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
-        AddResources(demolishedBuilding.GetComponent<BuildingsStats>().ReturnResourcesSellValue());
+        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingController>().ReturnResourcesSellValue());
+        //Place previous ground
+        demolishedBuilding.GetComponent<BuildingController>().ReturnTerrainTypeThatWasThere.SetActive(true);
         budynki.Remove(demolishedBuilding);
-        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingsStats>());
+        buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingController>());
         Destroy(demolishedBuilding);
     }
-    
+
 }

@@ -10,9 +10,9 @@ public class ResourcesStruct
     [HideInInspector] public UnityEvent updatedResources;
     
     [SerializeField] private int gold;
-    [SerializeField] private int stone;
-    [SerializeField] private int wood;
     [SerializeField] private int food;
+    [SerializeField] private int wood;
+    [SerializeField] private int stone;
 
     public int Gold
     {
@@ -76,16 +76,21 @@ public class ResourcesStruct
 
     private void InvokeUpdatedResources()
     {
-        updatedResources.Invoke();
+        if(updatedResources != null) updatedResources.Invoke();
     }
     
     
     //Constructors
-    public ResourcesStruct(int gold, int stone, int wood, int food)
+    public ResourcesStruct(int gold,int food, int wood, int stone)
     {
         Gold = gold;
-        Stone = stone;
-        Wood = wood;
         Food = food;
+        Wood = wood;
+        Stone = stone;
+    }
+
+    public ResourcesStruct()
+    {
+        
     }
 }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 802093275963208360}
   - component: {fileID: 2531911908222494591}
   - component: {fileID: 4448414734282123502}
+  - component: {fileID: 569962982021206084}
+  - component: {fileID: 5915886414367146493}
   m_Layer: 0
   m_Name: Hex_flat_forrest
   m_TagString: Untagged
@@ -65,6 +67,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationComponents:
   - {fileID: 2531911908222494591}
+--- !u!114 &569962982021206084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29919056458180626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6640f8639725d48b4eda42e1e494e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactWith: 2
+  hexResources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 69
+    food: 4
+    wood: 2
+    stone: 0
+--- !u!135 &5915886414367146493
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29919056458180626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &82938927276666808
 GameObject:
   m_ObjectHideFlags: 0
