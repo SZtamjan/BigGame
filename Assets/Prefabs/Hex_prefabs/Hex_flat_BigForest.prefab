@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 2104588719358678445}
   - component: {fileID: 1455581120652462696}
   - component: {fileID: 1043361480907830978}
+  - component: {fileID: 7634963615279276653}
   m_Layer: 0
   m_Name: Hex_flat_BigForrest
   m_TagString: Untagged
@@ -1109,6 +1110,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4638258476932964225, guid: ef766797f1a97134299bc9266236d30e, type: 3}
+--- !u!114 &7634963615279276653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980083710900234139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9aa89cdbed441448872d5537f348cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replaceMeWith: {fileID: 2562766308121040280, guid: e0b4e243ed341f84086019413949cfe1, type: 3}
 --- !u!1 &5024183890795940350
 GameObject:
   m_ObjectHideFlags: 0
