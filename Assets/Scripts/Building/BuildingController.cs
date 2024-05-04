@@ -26,6 +26,7 @@ public class BuildingController : MonoBehaviour
     //Upgrade
     private ResourcesStruct resourcesUpgradeCost;
     private ResourcesStruct resourcesCurrentMaxGain;
+
     private ResourcesStruct resourcesCurrentSell;
     private List<UpdateBuildingStruct> upgradeListThisBuilding;
 
@@ -63,10 +64,11 @@ public class BuildingController : MonoBehaviour
         get => currentState;
     }
 
-    public ResourcesStruct UpgradeCost
-    {
-        get => resourcesUpgradeCost;
-    }
+    public ResourcesStruct UpgradeCost => resourcesUpgradeCost;
+
+    public ResourcesStruct ResourcesCurrentMaxGain => resourcesCurrentMaxGain;
+
+    public ResourcesStruct ResourcesCurrentSell => resourcesCurrentSell;
     
     public bool BuildingMaxed
     {
@@ -284,15 +286,6 @@ public class BuildingController : MonoBehaviour
         currentState = newState;
         StateManager(newState);
     }
-
-    #region DestroyBuilding
-
-    public ResourcesStruct ReturnResourcesSellValue()
-    {
-        return resourcesCurrentSell;
-    }
-
-    #endregion
 }
 
 public enum BuildingStates

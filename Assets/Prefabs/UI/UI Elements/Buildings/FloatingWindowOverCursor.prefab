@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 4786009763483910092}
   - component: {fileID: 2024672621521465400}
   m_Layer: 5
-  m_Name: PopUpWindow
+  m_Name: FloatingWindowOverCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1306,11 +1306,6 @@ MonoBehaviour:
   uiCam: {fileID: 0}
   objToMove: {fileID: 6825880464046890405}
   objectOffset: {x: 0, y: 0}
-  infoScript: {fileID: 0}
-  gold: {fileID: 3615117924140952296}
-  food: {fileID: 8419293049181733219}
-  wood: {fileID: 8990317862928002199}
-  stone: {fileID: 5840923661345329847}
 --- !u!225 &2024672621521465400
 CanvasGroup:
   m_ObjectHideFlags: 0
