@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SelectionManeger : MonoBehaviour
 {
-
     [SerializeField]
     private Camera mainCamera;
 

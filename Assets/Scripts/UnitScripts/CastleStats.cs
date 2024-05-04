@@ -43,11 +43,11 @@ public class CastleStats : MonoBehaviour
             Debug.Log("KoniecGry");
             if (!isMyCastle)
             {
-                instance.UpdateGameState(GameState.Victory);
+                Instance.UpdateGameState(GameState.Victory);
             }
             else
             {
-                instance.UpdateGameState(GameState.Lose);
+                Instance.UpdateGameState(GameState.Lose);
             }
         }
 

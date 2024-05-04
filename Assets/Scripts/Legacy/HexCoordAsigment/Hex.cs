@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// podkradniête z t¹d https://youtu.be/htZijEO7ZmE
+// podkradniÄ™te z tÄ…d https://youtu.be/htZijEO7ZmE
 
 [SelectionBase]
 public class Hex : MonoBehaviour
