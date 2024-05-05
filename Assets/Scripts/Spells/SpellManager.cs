@@ -58,6 +58,8 @@ public class SpellManager : MonoBehaviour
                         Gate thisGatePatch = GetPath(hit.collider.tag);
                         if (thisGatePatch == null)
                         {
+                            onComplete.DynamicInvoke(tile);
+                            // tu wy³aczenie koloru
                             break;
                         }
                         tile = GetTile(hit.transform.position, thisGatePatch);
