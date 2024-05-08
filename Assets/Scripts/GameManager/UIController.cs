@@ -109,7 +109,7 @@ public class UIController : MonoBehaviour
 
     public void TurnButtonAction()
     {
-        GameManager.instance.PlayerTurnEnd();
+        GameManager.Instance.PlayerTurnEnd();
     }
 
     public void TurnButtonDisable()
@@ -498,12 +498,12 @@ public class UIController : MonoBehaviour
 
     public void SaveCurrentLevel()
     {
-        GameManager.instance.SaveProgress();
+        GameManager.Instance.SaveProgress();
     }
 
     public void ReloadScene()
     {
-        GameManager.instance.LoadProgress();
+        GameManager.Instance.LoadProgress();
     }
 
     #endregion

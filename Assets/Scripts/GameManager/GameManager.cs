@@ -12,8 +12,7 @@ using static PathControler;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public static GameObject gameManager;
+    public static GameManager Instance;
     public GameState state;
 
     public LayerMask layerMask;
@@ -32,20 +31,21 @@ public class GameManager : MonoBehaviour
 
     public List<UnitScriptableObjects> TestDoSpawn;
 
+    //Components
+    private UnitSpawner _unitSpawner;
+    
     [NonSerialized]
     public float GateTransparency = 0.33f;
 
     private void Awake()
     {
-        gameManager = gameObject;
-        instance = this;
-
-        
+        Instance = this;
     }
 
     void Start()
     {
         turnCounter = 1;
+        _unitSpawner = UnitSpawner.instance;
 
         SaveProgress();
         UpdateGameState(GameState.Start);
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     private void CardStart()
     {
         CardManager.instance.SpawnStartCards();
-        GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+        GameManager.Instance.UpdateGameState(GameState.PlayerTurn);
 
     }
 
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         //PathControler.Instance.StartNewPathWay();
-        GameManager.instance.UpdateGameState(GameState.MapGeneration);
+        GameManager.Instance.UpdateGameState(GameState.MapGeneration);
     }
 
     private void CreatePaths()
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
 
     private void GameStatePlayerTurn()
     {
-        GetComponent<UnitSpawner>().SetRemoved(false); // ?????????????????????
+        _unitSpawner.SetRemoved(false); // ?????????????????????
         EventManager.Instance.NewPlayerTurnFunc();
         if (CardManager.instance.PlayerCards.Count == 0 || turnCounter > 1)
         {
@@ -246,13 +246,13 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
 
 
-            GameManager.instance.StartCoroutine(Endturn(false));
+            GameManager.Instance.StartCoroutine(Endturn(false));
 
         }
         else
         {
             yield return new WaitForEndOfFrame();
-            GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+            GameManager.Instance.UpdateGameState(GameState.PlayerTurn);
         }
     }
 
@@ -307,11 +307,11 @@ public class GameManager : MonoBehaviour
 
         if (playerUnit)
         {
-            GameManager.instance.UpdateGameState(GameState.EnemyTurn);
+            GameManager.Instance.UpdateGameState(GameState.EnemyTurn);
         }
         else
         {
-            GameManager.instance.UpdateGameState(GameState.PlayerTurn);
+            GameManager.Instance.UpdateGameState(GameState.PlayerTurn);
         }
     }
 
