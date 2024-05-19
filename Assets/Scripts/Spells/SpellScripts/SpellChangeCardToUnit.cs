@@ -8,40 +8,71 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "Spells/SpellChangeCardToUnit")]
 public class SpellChangeCardToUnit : SpellsScrptableObject
 {
-
-    private GameObject _Karta;
+    [SerializeField]
+    private List<CardScriptableObject> ICanChangeInTo;
+    private GameObject _ThisCard;
     public override void SpellAction(GameObject karta, bool playerUnit = true, int power = 1)
     {
 
         karta.GetComponent<Image>().color = CardManager.instance.selectedCardColor;
-        _Karta = karta;
+        _ThisCard = karta;
         UIController.Instance.EnableCardButton(false);
         SpellManager.Instance.SelectCard(DoSomethingWithThisCard);
     }
 
 
-    public void DoSomethingWithThisCard(GameObject card)
+    public void DoSomethingWithThisCard(GameObject SelectedCard)
     {
-        _Karta.GetComponent<Image>().color = CardManager.instance.defaultCardColor;
-        if (card==null)
+        _ThisCard.GetComponent<Image>().color = CardManager.instance.defaultCardColor;
+        if (SelectedCard==null)
         {
             Debug.Log("null");
         }
-        else if (card==_Karta)
+        else if (SelectedCard==_ThisCard)
         {
             Debug.Log("Ta sama karta");
         }
-        else
-        {
-            var _kartaStat = _Karta.GetComponent<UnitCardStats>();
-            var newStats = card.GetComponent<UnitCardStats>().Stats;
-            _kartaStat.FillStats(newStats);
 
-            Debug.Log(card.name);
+        else if (ICanChangeInTo.Count==0)
+        {
+            var _ThisCardStat = _ThisCard.GetComponent<UnitCardStats>();
+            var newStats = SelectedCard.GetComponent<UnitCardStats>().Stats;
+            _ThisCardStat.FillStats(newStats);
+
+            Debug.Log($"Zamieniam siê w {newStats.name}");
 
         }
+        else if (checkIfCanChange(SelectedCard))
+        {
+            var _ThisCardStat = _ThisCard.GetComponent<UnitCardStats>();
+            var newStats = SelectedCard.GetComponent<UnitCardStats>().Stats;
+            _ThisCardStat.FillStats(newStats);
+
+            Debug.Log($"Zamieniam siê w {newStats.name}");
+        }
+        else
+        {
+            
+            var newStats = SelectedCard.GetComponent<UnitCardStats>().Stats;
+            Debug.Log($"Nie zamieniam siê w {newStats.name}");
+        }
+
+
         UIController.Instance.EnableCardButton(true);
 
+    }
+
+    private bool checkIfCanChange(GameObject SelectedCard)
+    {
+        var SelectedCardStats = SelectedCard.GetComponent<UnitCardStats> ();
+        foreach (var item in ICanChangeInTo)
+        {
+            if (item.name == SelectedCardStats.Stats.name)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
