@@ -168,6 +168,9 @@ public class Building : MonoBehaviour
 
     private void MoveOrHideHalfTransparentBuilding(WhichBudynek whichBudynek)
     {
+        //Hide DisplayBuildingInfo on start building
+        DisplayBuildingInfo.Instance.gameObject.SetActive(false);
+        
         Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit raycastHit1;
         if (Physics.Raycast(ray1, out raycastHit1, 100, buildingMask))
