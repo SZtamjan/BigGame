@@ -257,6 +257,14 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void EnableCardButton(bool enable)
+    {
+        foreach (var item in CardManager.instance.CardInHand)
+        {
+            item.GetComponent<Button>().enabled = enable;
+        }
+    }
+
     #endregion
 
     #region BuildingCards
