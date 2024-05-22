@@ -40,6 +40,8 @@ public class UIController : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button NextTurnButton;
+    [SerializeField] private Button buildMenuButton;
+    [SerializeField] private Button deckButton;
     
     [Header("Display Resources")]
     [SerializeField] private TextMeshProUGUI showGold;
@@ -121,6 +123,23 @@ public class UIController : MonoBehaviour
     {
         NextTurnButton.interactable = true;
     }
+
+    #endregion
+
+    #region Buttons
+
+    public void SwitchLockBuildMenuButton()
+    {
+        if (buildMenuButton.enabled)
+        {
+            buildMenuButton.enabled = false;
+            return;
+        }
+
+        buildMenuButton.enabled = true;
+    }
+    
+    
 
     #endregion
 
