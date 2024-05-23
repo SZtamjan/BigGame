@@ -72,6 +72,7 @@ public class BuildingInfoSendToDisplayer : MonoBehaviour
 
     private void TurnOnWindow()
     {
+        if(Building.Instance.isBuilding) return;
         StartCoroutine(WaitForBuildingSetUpAndLoadDisplayInfo());
     }
 
