@@ -10,6 +10,7 @@ public class BuildingsScriptableObjects : ScriptableObject
     [Header("General info")]
     public GameObject budynekPrefab;
     public WhichBudynek whichBudynek; //Used for limiting building type per level
+    public Sprite buildingImage;
     
     //Card Stats
     [Header("Info")]
