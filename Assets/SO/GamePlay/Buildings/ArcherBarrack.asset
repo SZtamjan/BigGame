@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
+  m_Name: ArcherBarrack
+  m_EditorClassIdentifier: 
+  budynekPrefab: {fileID: 7657511380786551385, guid: 9557a385335c8d84ca6447c661f5091d, type: 3}
+  whichBudynek: 2
+  name: Archer Barrack
+  desc: Adds an "Archer" card to your deck
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+    - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+    - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
+    newUnit: {fileID: 11400000, guid: 2d8167d53878dea4e8b2baf2f1b65347, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 10
+      food: 0
+      wood: 50
+      stone: 10
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 10
+      stone: 2
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+    - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+    - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
+    newUnit: {fileID: 11400000, guid: 24d176ce3748b4143bd47d467a04cbb9, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 30
+      food: 0
+      wood: 100
+      stone: 20
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 15
+      stone: 4
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+    - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+    - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
+    newUnit: {fileID: 11400000, guid: 323d1189384d0474e89bb19c8632058b, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 90
+      food: 0
+      wood: 180
+      stone: 50
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 30
+      stone: 10
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+    - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+    - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
+    newUnit: {fileID: 11400000, guid: a739d7cd5eaee6b4ebb3bb57effd9037, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 120
+      food: 0
+      wood: 220
+      stone: 60
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 40
+      stone: 20
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+    - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+    - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
+    newUnit: {fileID: 11400000, guid: ecc25b3d402cc4f4dad5866b8b7c5091, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 200
+      food: 0
+      wood: 300
+      stone: 100
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 60
+      stone: 30
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 12a3b07cc8a1d1e41b846c2a74cb4a3d, type: 2}
+    - {fileID: 2100000, guid: 84b8798b682246145aa9df770a9703d1, type: 2}
+    - {fileID: 2100000, guid: 52dcbdbace7556d43a38079de28ff47a, type: 2}
+    newUnit: {fileID: 11400000, guid: ae63c9ecd67ce99439eb795092178cb5, type: 2}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 250
+      food: 0
+      wood: 500
+      stone: 150
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 100
+      stone: 50

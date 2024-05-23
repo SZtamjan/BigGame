@@ -31,6 +31,9 @@ public enum WhichBudynek //Used for limiting building type per level
     knightBarrack,
     peasantBarrack,
     Stable,
-    StoneMine
+    StoneMine,
+    Sawmill,
+    Farm,
+    Tavern
 
 }

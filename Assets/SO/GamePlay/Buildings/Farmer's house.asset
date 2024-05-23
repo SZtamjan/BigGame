@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
+  m_Name: Farmer's house
+  m_EditorClassIdentifier: 
+  budynekPrefab: {fileID: 3625800232451176951, guid: 4feac798c0f1da4408ba89094ed1ae93, type: 3}
+  whichBudynek: 2
+  name: Farmer's house
+  desc: Adds an "Peasant" card to your deck. Built next to a farm, it provides food.
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    interactableHexRules:
+      apply: 1
+      range: 1
+    newMesh: {fileID: -8634917924105841833, guid: 7ff1dcb80953d6b4ab233f12d7b51126, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 8218533b9caab224f8c6e81b42f36b1b, type: 2}
+    - {fileID: 2100000, guid: dcce19893b38da34ab0038391b8c5aab, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 10
+      food: 0
+      wood: 20
+      stone: 0
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 2
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 1
+      range: 1
+    newMesh: {fileID: -8634917924105841833, guid: 7ff1dcb80953d6b4ab233f12d7b51126, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 8218533b9caab224f8c6e81b42f36b1b, type: 2}
+    - {fileID: 2100000, guid: dcce19893b38da34ab0038391b8c5aab, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 20
+      food: 0
+      wood: 30
+      stone: 5
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 5
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 5
+      stone: 0
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 1
+      range: 2
+    newMesh: {fileID: -8634917924105841833, guid: 7ff1dcb80953d6b4ab233f12d7b51126, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 8218533b9caab224f8c6e81b42f36b1b, type: 2}
+    - {fileID: 2100000, guid: dcce19893b38da34ab0038391b8c5aab, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 30
+      food: 0
+      wood: 50
+      stone: 10
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 5
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 15
+      stone: 0
