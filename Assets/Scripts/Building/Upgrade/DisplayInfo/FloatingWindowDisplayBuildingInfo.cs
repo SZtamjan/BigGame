@@ -34,6 +34,7 @@ public class FloatingWindowDisplayBuildingInfo : MonoBehaviour
     private void MoveObjectWithBuildingInfo()
     {
         Vector2 localPoint;
+        if (uiCam == null) Debug.LogError("CONNECT \'UI CAMERA\' TO \'uiCam\' VARIABLE");
         RectTransformUtility.ScreenPointToLocalPointInRectangle(objToMove.parent as RectTransform, Input.mousePosition, uiCam, out localPoint);
         localPoint += objectOffset;
         objToMove.localPosition = localPoint;
