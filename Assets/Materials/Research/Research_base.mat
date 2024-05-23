@@ -15,6 +15,8 @@ Material:
   - _NORMALMAP
   - _OCCLUSIONMAP
   - _OUTLINE
+  - _SPECULARHIGHLIGHTS_OFF
+  - _TOON_SHADING_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -127,7 +129,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: 0
+    - _DiffuseStep: -1
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
     - _DstBlend: 0
@@ -178,17 +180,17 @@ Material:
     - _SpecClipMaskScale: 1
     - _SpecShadowStrength: 1
     - _SpecularClipStrength: 0
-    - _SpecularFalloff: 1
-    - _SpecularHighlights: 1
-    - _SpecularSize: 1
+    - _SpecularFalloff: 0
+    - _SpecularHighlights: 0
+    - _SpecularSize: 0
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
     - _StencilComp: 0
     - _StencilRef: 0
     - _StepViaRampTexture: 0
     - _Surface: 0
-    - _ToonBlending: 1
-    - _ToonEnabled: 0
+    - _ToonBlending: 0.556
+    - _ToonEnabled: 1
     - _UseRampColor: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -202,9 +204,9 @@ Material:
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineDistancFade: {r: -10.8, g: 64.6, b: 0, a: 0}
+    - _OutlineDistancFade: {r: -11.7347, g: 76.34, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.468}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
