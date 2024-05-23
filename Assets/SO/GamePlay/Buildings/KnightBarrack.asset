@@ -10,30 +10,66 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
-  m_Name: Stable
+  m_Name: KnightBarrack
   m_EditorClassIdentifier: 
-  budynekPrefab: {fileID: 3701819333172200624, guid: 87e9e93619cf8a94fb4ef718481b9ecc, type: 3}
-  whichBudynek: 3
-  name: Stable
-  desc: Adds a "Mounted Knight" card to your deck
+  budynekPrefab: {fileID: 2842138248718578753, guid: 654183cb44001b54c93a2019f1da5205, type: 3}
+  whichBudynek: 1
+  name: KnightBarrack
+  desc: Adds an "Knight" card to your deck
   buildingLevelsList:
   - turnOffBuildingForTurns: 0
     interactableHexRules:
       apply: 0
       range: 0
-    newMesh: {fileID: 7682361355122407185, guid: 5a8cb926434adcf43b9991427e88ec48, type: 3}
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
-    - {fileID: 2100000, guid: 866d1c691cd09b24bae751be63b57690, type: 2}
-    - {fileID: 2100000, guid: 36130d3027935604493a5162ec60d744, type: 2}
-    newUnit: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
-      gold: 50
-      food: 20
+      gold: 15
+      food: 0
+      wood: 20
+      stone: 50
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 0
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 20
+      food: 0
       wood: 30
-      stone: 10
+      stone: 70
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
@@ -49,93 +85,26 @@ MonoBehaviour:
           m_Calls: []
       gold: 0
       food: 0
-      wood: 10
-      stone: 5
+      wood: 5
+      stone: 15
   - turnOffBuildingForTurns: 2
     interactableHexRules:
       apply: 0
       range: 0
-    newMesh: {fileID: 7682361355122407185, guid: 5a8cb926434adcf43b9991427e88ec48, type: 3}
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
-    - {fileID: 2100000, guid: 866d1c691cd09b24bae751be63b57690, type: 2}
-    - {fileID: 2100000, guid: 36130d3027935604493a5162ec60d744, type: 2}
-    newUnit: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
       gold: 60
-      food: 30
-      wood: 50
-      stone: 15
-    newResourcesGainOnTurn:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 0
       food: 0
-      wood: 0
-      stone: 0
-    applyNewSell: 1
-    newSellValue:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 0
-      food: 0
-      wood: 15
-      stone: 5
-  - turnOffBuildingForTurns: 2
-    interactableHexRules:
-      apply: 0
-      range: 0
-    newMesh: {fileID: 7682361355122407185, guid: 5a8cb926434adcf43b9991427e88ec48, type: 3}
-    materials:
-    - {fileID: 2100000, guid: 866d1c691cd09b24bae751be63b57690, type: 2}
-    - {fileID: 2100000, guid: 36130d3027935604493a5162ec60d744, type: 2}
-    newUnit: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
-    thisLevelCost:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 80
-      food: 40
-      wood: 60
-      stone: 20
-    newResourcesGainOnTurn:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 0
-      food: 0
-      wood: 0
-      stone: 0
-    applyNewSell: 1
-    newSellValue:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 0
-      food: 0
-      wood: 15
-      stone: 5
-  - turnOffBuildingForTurns: 2
-    interactableHexRules:
-      apply: 0
-      range: 0
-    newMesh: {fileID: 7682361355122407185, guid: 5a8cb926434adcf43b9991427e88ec48, type: 3}
-    materials:
-    - {fileID: 2100000, guid: 866d1c691cd09b24bae751be63b57690, type: 2}
-    - {fileID: 2100000, guid: 36130d3027935604493a5162ec60d744, type: 2}
-    newUnit: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
-    thisLevelCost:
-      updatedResources:
-        m_PersistentCalls:
-          m_Calls: []
-      gold: 85
-      food: 45
       wood: 80
-      stone: 25
+      stone: 150
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
@@ -152,24 +121,25 @@ MonoBehaviour:
       gold: 0
       food: 0
       wood: 20
-      stone: 5
+      stone: 30
   - turnOffBuildingForTurns: 2
     interactableHexRules:
       apply: 0
       range: 0
-    newMesh: {fileID: 7682361355122407185, guid: 5a8cb926434adcf43b9991427e88ec48, type: 3}
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
-    - {fileID: 2100000, guid: 866d1c691cd09b24bae751be63b57690, type: 2}
-    - {fileID: 2100000, guid: 36130d3027935604493a5162ec60d744, type: 2}
-    newUnit: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
-      gold: 90
-      food: 50
-      wood: 90
-      stone: 30
+      gold: 80
+      food: 0
+      wood: 100
+      stone: 180
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
@@ -186,24 +156,60 @@ MonoBehaviour:
       gold: 0
       food: 0
       wood: 25
-      stone: 5
+      stone: 50
   - turnOffBuildingForTurns: 2
     interactableHexRules:
       apply: 0
       range: 0
-    newMesh: {fileID: 7682361355122407185, guid: 5a8cb926434adcf43b9991427e88ec48, type: 3}
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
-    - {fileID: 2100000, guid: 866d1c691cd09b24bae751be63b57690, type: 2}
-    - {fileID: 2100000, guid: 36130d3027935604493a5162ec60d744, type: 2}
-    newUnit: {fileID: 11400000, guid: e04c81fde903d9c458b3a3dd722d7318, type: 2}
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
           m_Calls: []
       gold: 100
-      food: 60
-      wood: 120
-      stone: 35
+      food: 0
+      wood: 100
+      stone: 220
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 0
+      stone: 0
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 0
+      food: 0
+      wood: 25
+      stone: 70
+  - turnOffBuildingForTurns: 2
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
+    - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
+    - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 200
+      food: 0
+      wood: 150
+      stone: 300
     newResourcesGainOnTurn:
       updatedResources:
         m_PersistentCalls:
@@ -220,4 +226,4 @@ MonoBehaviour:
       gold: 0
       food: 0
       wood: 30
-      stone: 10
+      stone: 100

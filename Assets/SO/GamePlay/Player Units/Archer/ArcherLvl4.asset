@@ -10,20 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
-  m_Name: KnightStat
+  m_Name: ArcherLvl4
   m_EditorClassIdentifier: 
-  unit: {fileID: 4777472483807655464, guid: 2ef0964c169612245a279d5eddcbb66a, type: 3}
-  hp: 3
-  damage: 2
-  movmentDistance: 1
-  attackReach: 1
-  playersUnit: 1
-  moveSpeed: 0.5
-  name: Karta wpierdolu
-  desc: To naprawde karta wpierdolu
-  artwork: {fileID: 21300000, guid: 4fa3090de53e2224d950b597de62c075, type: 3}
+  name: Karta Archera
+  desc: To strzela
+  artwork: {fileID: 21300000, guid: b4dda88d506adec4f98172d79cbf108b, type: 3}
+  playersSide: 1
   resources:
-    gold: 15
-    stone: 15
-    wood: 15
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 30
     food: 15
+    wood: 0
+    stone: 0
+  unit: {fileID: 3226842739083308954, guid: 577e86419be52894ab71c24e110928fe, type: 3}
+  hp: 3
+  damage: 5
+  movmentDistance: 1
+  attackReach: 2
+  moveSpeed: 0.5

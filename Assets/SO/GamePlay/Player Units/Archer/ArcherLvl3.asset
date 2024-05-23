@@ -12,18 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
   m_Name: ArcherLvl3
   m_EditorClassIdentifier: 
-  unit: {fileID: 3226842739083308954, guid: 577e86419be52894ab71c24e110928fe, type: 3}
-  hp: 2
-  damage: 2
-  movmentDistance: 1
-  attackReach: 3
-  playersUnit: 1
-  moveSpeed: 0.5
   name: Karta Archera
   desc: To strzela
   artwork: {fileID: 21300000, guid: b4dda88d506adec4f98172d79cbf108b, type: 3}
+  playersSide: 1
   resources:
-    gold: 15
-    stone: 15
-    wood: 15
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 30
     food: 15
+    wood: 0
+    stone: 0
+  unit: {fileID: 3226842739083308954, guid: 577e86419be52894ab71c24e110928fe, type: 3}
+  hp: 3
+  damage: 4
+  movmentDistance: 1
+  attackReach: 2
+  moveSpeed: 0.5
