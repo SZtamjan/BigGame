@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 8348127561766036879}
   - component: {fileID: 4554263842748425340}
   - component: {fileID: 2309390472844965004}
-  m_Layer: 0
+  - component: {fileID: -1860792550998540488}
+  m_Layer: 11
   m_Name: Hex_flat_Farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,6 +152,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   replaceMeWith: {fileID: 2562766308121040280, guid: e0b4e243ed341f84086019413949cfe1, type: 3}
+--- !u!114 &-1860792550998540488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86874611781612037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c833d86679f947449acce0aa1bf54bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2074096258229693519
 PrefabInstance:
   m_ObjectHideFlags: 0
