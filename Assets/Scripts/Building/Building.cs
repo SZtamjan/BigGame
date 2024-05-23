@@ -123,7 +123,19 @@ public class Building : MonoBehaviour
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         InstantiateHalfTransparentBuilding(statsy);
-        if(halfTransparent != null) halfTransparent.GetComponent<BuildingInfoSendToDisplayer>().enabled = false; //turn off component so upgrade window will NOT pop up - this is not intended and will glitch out
+        
+        //turn off component so upgrade window will NOT pop up - this is not intended and will glitch out
+        if(halfTransparent != null) 
+        {
+            if (halfTransparent.TryGetComponent(out BuildingInfoSendToDisplayer buildingInfoSendToDisplayer))
+            {
+                buildingInfoSendToDisplayer.enabled = false;
+            }
+            else
+            {
+                Debug.LogError("ADD \'BuildingInfoSendToDisplayer\' SCRIPT TO THIS BUILDING PREFAB");
+            }
+        }
         
         while (isBuilding)
         {
