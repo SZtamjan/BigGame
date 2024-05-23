@@ -25,8 +25,8 @@ public class BuildingsScriptableObjects : ScriptableObject
 
 public enum WhichBudynek //Used for limiting building type per level
 {
-    // jak to coœ bêdzie dodawane, to trzeba równie¿ dodaæ tag (o takiej samej nazwie) do unity (tagi do gameobjectów (tak jak Layer`y))
-    // przy zmianie nazwy równie¿ tak¿e trzeba zaktualizowaæ
+    // jak to coÅ› bÄ™dzie dodawane, to trzeba rÃ³wnieÅ¼ dodaÄ‡ tag (o takiej samej nazwie) do unity (tagi do gameobjectÃ³w (tak jak Layer`y))
+    // przy zmianie nazwy rÃ³wnieÅ¼ takÅ¼e trzeba zaktualizowaÄ‡
     archerBarrack,
     knightBarrack,
     peasantBarrack,

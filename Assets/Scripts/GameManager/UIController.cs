@@ -71,8 +71,14 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject buildingMenu;
     [SerializeField] private GameObject trashCan;
 
+    [FormerlySerializedAs("popUpDisplayDisabledForTurns")]
     [Header("Buildings")] 
-    [SerializeField] private TextMeshProUGUI popUpDisplayDisabledForTurns;
+    [SerializeField] private TextMeshProUGUI cursorFloatingWindowTitle;
+    [SerializeField] private TextMeshProUGUI cursorFloatingWindowDescription;
+    [SerializeField] private TextMeshProUGUI cursorFloatingWindowGold;
+    [SerializeField] private TextMeshProUGUI cursorFloatingWindowFood;
+    [SerializeField] private TextMeshProUGUI cursorFloatingWindowWood;
+    [SerializeField] private TextMeshProUGUI cursorFloatingWindowStone;
 
     //Coroutines
     private Coroutine warningMessage;
@@ -293,9 +299,26 @@ public class UIController : MonoBehaviour
 
     #region Buildings
 
-    public void DisplayForHowLongIsDisabled(int newText)
+    public void CursorFloatingWindowInfoDisplay(ResourcesStruct res, int newText, string titleText)
     {
-        popUpDisplayDisabledForTurns.text = PluralChecker(newText);
+        cursorFloatingWindowTitle.text = titleText;
+        cursorFloatingWindowDescription.text = PluralChecker(newText);
+        
+        cursorFloatingWindowGold.text = res.Gold.ToString();
+        cursorFloatingWindowFood.text = res.Food.ToString();
+        cursorFloatingWindowWood.text = res.Wood.ToString();
+        cursorFloatingWindowStone.text = res.Stone.ToString();
+    }
+    
+    public void CursorFloatingWindowInfoDisplay(ResourcesStruct res, string titleText)
+    {
+        cursorFloatingWindowTitle.text = titleText;
+        cursorFloatingWindowDescription.text = "Resources that you will get";
+        
+        cursorFloatingWindowGold.text = res.Gold.ToString();
+        cursorFloatingWindowFood.text = res.Food.ToString();
+        cursorFloatingWindowWood.text = res.Wood.ToString();
+        cursorFloatingWindowStone.text = res.Stone.ToString();
     }
 
     private string PluralChecker(int newText)

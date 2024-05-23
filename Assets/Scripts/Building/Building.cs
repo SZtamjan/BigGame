@@ -273,7 +273,7 @@ public class Building : MonoBehaviour
 
     public void RemoveBuilding(GameObject demolishedBuilding)
     {
-        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingController>().ReturnResourcesSellValue());
+        EconomyOperations.AddResources(demolishedBuilding.GetComponent<BuildingController>().ResourcesCurrentSell);
         //Place previous ground
         demolishedBuilding.GetComponent<BuildingController>().ReturnTerrainTypeThatWasThere.SetActive(true);
         budynki.Remove(demolishedBuilding);
