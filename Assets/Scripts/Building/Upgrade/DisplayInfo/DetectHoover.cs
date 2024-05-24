@@ -26,11 +26,8 @@ public class DetectHoover : MonoBehaviour
 
     public void ActivateWindow()
     {
-        if (upgradeBtn.interactable) //if button is disabled, dont show the window
-        {
-            SendDataToWindow();
-            floatingWindow.SetActive(true);
-        }
+        SendDataToWindow();
+        floatingWindow.SetActive(true);
     }
 
     public void DisableWindow()
