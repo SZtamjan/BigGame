@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 959764451928367600}
   - component: {fileID: 4009018980940465729}
   - component: {fileID: -3347982200264534588}
+  - component: {fileID: 559078332196480000}
   m_Layer: 11
   m_Name: Hex_flat_House
   m_TagString: Untagged
@@ -139,3 +140,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c833d86679f947449acce0aa1bf54bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &559078332196480000
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625800232451176951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8634917924105841833, guid: 7ff1dcb80953d6b4ab233f12d7b51126, type: 3}
