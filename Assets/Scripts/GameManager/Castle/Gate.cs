@@ -1,14 +1,9 @@
 using NaughtyAttributes;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
 using static PathClass;
-using static UnityEditor.Progress;
 
 [SelectionBase]
 public class Gate : MonoBehaviour

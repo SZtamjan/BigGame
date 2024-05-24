@@ -1212,6 +1212,10 @@ PrefabInstance:
       propertyPath: popUpWindow
       value: 
       objectReference: {fileID: 3129662470047168795}
+    - target: {fileID: 4854903574494506572, guid: 355c88ccb0a107a4e902ea0b4317b885, type: 3}
+      propertyPath: floatingWindow
+      value: 
+      objectReference: {fileID: 3129662470047168795}
     - target: {fileID: 6177271804615168757, guid: 355c88ccb0a107a4e902ea0b4317b885, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1228,6 +1232,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6544903934462374051, guid: 355c88ccb0a107a4e902ea0b4317b885, type: 3}
+      propertyPath: floatingWindow
+      value: 
+      objectReference: {fileID: 3129662470047168795}
     - target: {fileID: 7993519547852404249, guid: 355c88ccb0a107a4e902ea0b4317b885, type: 3}
       propertyPath: m_Name
       value: BuildingStats
@@ -2659,6 +2667,10 @@ PrefabInstance:
     - target: {fileID: 6766283073660637054, guid: 8ffdd857057f8384fad29eb741f3b311, type: 3}
       propertyPath: m_Name
       value: PopUpWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766283073660637054, guid: 8ffdd857057f8384fad29eb741f3b311, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6825880464046890405, guid: 8ffdd857057f8384fad29eb741f3b311, type: 3}
       propertyPath: m_Pivot.x

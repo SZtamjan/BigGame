@@ -66,9 +66,15 @@ public class BuildMenuManager : MonoBehaviour
     public void FillDataToDisplayOnRightPanel(BuildingsScriptableObjects info)
     {
         _buildingInfo = info;
-        
-        Debug.Log("Brak image");
-        //selectedBuildingImage.sprite = info
+
+        if(info.buildingImage == null)
+        {
+            Debug.LogWarning("Brak image budynku");
+        }
+        else
+        {
+            selectedBuildingImage.sprite = info.buildingImage;
+        }
         selectedBuildingTitle.text = info.name;
         selectedBuildingDescription.text = info.desc;
         
