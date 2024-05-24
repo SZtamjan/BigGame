@@ -23,7 +23,9 @@ public partial class SceneChange : MonoBehaviour
 
     public void LoadMenu()
     {
-        StartCoroutine(LoadSceneAsync(0));
+        //StartCoroutine(LoadSceneAsync(0));
+        Debug.Log("tmp solution");
+        SceneManager.LoadSceneAsync(sceneId);
     }
     
     public void LoadNextScene()
