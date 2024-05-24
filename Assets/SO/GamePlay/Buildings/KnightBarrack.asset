@@ -14,19 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   budynekPrefab: {fileID: 2842138248718578753, guid: 654183cb44001b54c93a2019f1da5205, type: 3}
   whichBudynek: 1
+  buildingImage: {fileID: 21300000, guid: 9f66989c2907f244db6469252e5ad817, type: 3}
   name: KnightBarrack
   desc: Adds an "Knight" card to your deck
   buildingLevelsList:
   - turnOffBuildingForTurns: 0
     interactableHexRules:
-      apply: 0
+      apply: 1
       range: 0
     newMesh: {fileID: -7322027845727977429, guid: c69c88314dd66414d94cab9993370543, type: 3}
     materials:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
-    newUnit: {fileID: 0}
+    newUnit: {fileID: 11400000, guid: cac1ebd836d2f974fb1f2cf627c4b03c, type: 2}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
@@ -43,7 +44,7 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    applyNewSell: 0
+    applyNewSell: 1
     newSellValue:
       updatedResources:
         m_PersistentCalls:
@@ -61,7 +62,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
-    newUnit: {fileID: 0}
+    newUnit: {fileID: 11400000, guid: a29e9503986d88c47a1dd9a83dc0f2be, type: 2}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
@@ -96,7 +97,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
-    newUnit: {fileID: 0}
+    newUnit: {fileID: 11400000, guid: 7c44cba48bce5e1499628fa6f987f718, type: 2}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
@@ -131,7 +132,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
-    newUnit: {fileID: 0}
+    newUnit: {fileID: 11400000, guid: daa77c7928ede424280e83984c314994, type: 2}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
@@ -166,7 +167,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
-    newUnit: {fileID: 0}
+    newUnit: {fileID: 11400000, guid: b2c594a72f4505d42a411bb3a09836e0, type: 2}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:
@@ -201,7 +202,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 8954b882527d1014085a390d197f4fe9, type: 2}
     - {fileID: 2100000, guid: ad21e5fe18bd8b04f9384ec2d5649cfe, type: 2}
     - {fileID: 2100000, guid: 9abd56847b93c2340bc5123704792bf3, type: 2}
-    newUnit: {fileID: 0}
+    newUnit: {fileID: 11400000, guid: cfc4506632fdaee4db357352fc7373e7, type: 2}
     thisLevelCost:
       updatedResources:
         m_PersistentCalls:

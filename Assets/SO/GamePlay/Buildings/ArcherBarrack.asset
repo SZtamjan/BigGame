@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   budynekPrefab: {fileID: 7657511380786551385, guid: 9557a385335c8d84ca6447c661f5091d, type: 3}
   whichBudynek: 2
+  buildingImage: {fileID: 21300000, guid: fe1510eb6716c894d95e28466db0f99c, type: 3}
   name: Archer Barrack
   desc: Adds an "Archer" card to your deck
   buildingLevelsList:
@@ -43,7 +44,7 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    applyNewSell: 0
+    applyNewSell: 1
     newSellValue:
       updatedResources:
         m_PersistentCalls:
@@ -89,7 +90,7 @@ MonoBehaviour:
       stone: 4
   - turnOffBuildingForTurns: 2
     interactableHexRules:
-      apply: 0
+      apply: 1
       range: 0
     newMesh: {fileID: -8813758185404664037, guid: 66e39f908573dab46b6de230ca2d68ee, type: 3}
     materials:
