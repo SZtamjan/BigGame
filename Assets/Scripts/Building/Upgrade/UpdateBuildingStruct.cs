@@ -25,6 +25,6 @@ public class UpdateBuildingStruct
     public ResourcesStruct newResourcesGainOnTurn;
 
     [Header("Sell value")]
-    public bool applyNewSell;
+    public bool applyNewSell=true;
     public ResourcesStruct newSellValue;
 }

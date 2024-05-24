@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   budynekPrefab: {fileID: 86874611781612037, guid: 11b23a4e391d3644397c94cbcfbec73f, type: 3}
   whichBudynek: 6
+  buildingImage: {fileID: 21300000, guid: e91e5b5fdb1d0e84ebad16741bb6436b, type: 3}
   name: Farm
   desc: If built next to a "Farmer's house", it gives food
   buildingLevelsList:
@@ -44,7 +45,7 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    applyNewSell: 0
+    applyNewSell: 1
     newSellValue:
       updatedResources:
         m_PersistentCalls:

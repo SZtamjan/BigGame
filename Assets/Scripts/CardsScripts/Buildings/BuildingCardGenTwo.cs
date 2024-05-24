@@ -40,7 +40,7 @@ public class BuildingCardGenTwo : MonoBehaviour
         _name = infoSource.name;
         _ResourcesGain = infoSource.buildingLevelsList[0].newResourcesGainOnTurn;
         _description = infoSource.desc;
-        _buttonText.text = $"Buduj {_name}";
+        _buttonText.text = $"{_name}";
         _buttonDescription.text = $"kosztuje {_resources.Gold}, a daje {_ResourcesGain},\n{_description}";
 
         _buttonDescription.gameObject.SetActive(false);

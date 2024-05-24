@@ -441,7 +441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40, y: -40}
+  m_AnchoredPosition: {x: -69, y: -137}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3048628649835798461
@@ -576,7 +576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.1, y: -126.99979}
+  m_AnchoredPosition: {x: -49.1, y: -98}
   m_SizeDelta: {x: 368, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949450473871412730
@@ -1032,8 +1032,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 0}
-  m_SizeDelta: {x: 1000, y: 800}
+  m_AnchoredPosition: {x: 531.71, y: -129.6}
+  m_SizeDelta: {x: 795.6, y: 573.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4339622011100733071
 MonoBehaviour:
@@ -1048,15 +1048,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 200
-    m_Right: 200
+    m_Left: 71
+    m_Right: 0
     m_Top: 50
     m_Bottom: 140
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 85.97}
-  m_Spacing: {x: 200, y: 188.8}
+  m_CellSize: {x: 161.18, y: 103.3}
+  m_Spacing: {x: 146.6, y: 81.3}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &5542543302124979359
@@ -1229,8 +1229,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -43, y: -337}
-  m_SizeDelta: {x: 200, y: 150}
+  m_AnchoredPosition: {x: -43, y: -350}
+  m_SizeDelta: {x: 267.1, y: 173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &595575957594865238
 CanvasRenderer:
@@ -1485,7 +1485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.99998, y: -46.999775}
+  m_AnchoredPosition: {x: -42.99998, y: -14}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2933537916802906341
@@ -1543,8 +1543,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1907,7 +1907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -41.85, y: -245.7}
+  m_AnchoredPosition: {x: -41.85, y: -225}
   m_SizeDelta: {x: 353.4, y: 138.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &822996660207565161
@@ -2018,6 +2018,14 @@ PrefabInstance:
       propertyPath: infoSource
       value: 
       objectReference: {fileID: 11400000, guid: 0cc6fb6eff0dbcb40a9bd7105501e7e5, type: 2}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe1510eb6716c894d95e28466db0f99c, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button (2)
@@ -2132,6 +2140,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8774484690791252552}
     m_Modifications:
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9bb7a0e5312f694fb89e906c9cf88cc, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button
@@ -2238,6 +2254,22 @@ PrefabInstance:
       propertyPath: infoSource
       value: 
       objectReference: {fileID: 11400000, guid: 6e68ba279dc31f946a120449d8d6d472, type: 2}
+    - target: {fileID: 6552775901859472904, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552775901859472904, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f66989c2907f244db6469252e5ad817, type: 3}
     - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2368,6 +2400,14 @@ PrefabInstance:
       propertyPath: infoSource
       value: 
       objectReference: {fileID: 11400000, guid: 45a779d14a573904b9591ffe5330c599, type: 2}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4c605abef6a5784cbb9b09ba5aa6cea, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button (4)
@@ -2485,7 +2525,15 @@ PrefabInstance:
     - target: {fileID: 954340515378605114, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: infoSource
       value: 
-      objectReference: {fileID: 11400000, guid: d1e98ee91daead44ca56eeaf8b246130, type: 2}
+      objectReference: {fileID: 11400000, guid: ca52a594f0b58c945a46f07367489490, type: 2}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 608ef88f92ffba7438658999b79d03cd, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button (5)
@@ -2604,6 +2652,14 @@ PrefabInstance:
       propertyPath: infoSource
       value: 
       objectReference: {fileID: 11400000, guid: b58b057ed30baae45963685c876f1f4b, type: 2}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e8f39fb36228c4b9bcd2e8ccc7032a, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button (3)

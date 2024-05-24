@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   budynekPrefab: {fileID: 6839317198674300167, guid: dc503b1a901cded4a871c042afec56a7, type: 3}
   whichBudynek: 4
+  buildingImage: {fileID: 21300000, guid: c9bb7a0e5312f694fb89e906c9cf88cc, type: 3}
   name: Stone Mine
   desc: Obtains stone and gold
   buildingLevelsList:
@@ -42,7 +43,7 @@ MonoBehaviour:
       food: 0
       wood: 0
       stone: 0
-    applyNewSell: 0
+    applyNewSell: 1
     newSellValue:
       updatedResources:
         m_PersistentCalls:

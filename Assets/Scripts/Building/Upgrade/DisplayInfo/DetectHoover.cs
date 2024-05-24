@@ -49,6 +49,12 @@ public class DetectHoover : MonoBehaviour
                 Debug.LogWarning("Probably won't display as intended, not really implemented");
                 break;
             case InfoTypeToSend.SellValue:
+
+                if (bCon.ResourcesCurrentSell == null)
+                {
+                    Debug.LogError("NO SELL VALUE, PLEASE ADD IT IN BUILDING SO");
+                    break;
+                }
                 _floatingWindowDisplayBuildingInfo.FillData(bCon.ResourcesCurrentSell);
                 break;
             default:
