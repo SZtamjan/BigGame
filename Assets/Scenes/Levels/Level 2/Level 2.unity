@@ -16288,21 +16288,21 @@ Transform:
   - {fileID: 1583876160}
   - {fileID: 167956260}
   - {fileID: 1798624410}
+  - {fileID: 426289535}
   - {fileID: 214031457}
   - {fileID: 184277157}
+  - {fileID: 921361095}
   - {fileID: 471841038}
+  - {fileID: 1123949402}
   - {fileID: 156097515}
+  - {fileID: 1333506841}
   - {fileID: 200391091}
   - {fileID: 141803579}
   - {fileID: 383808747}
   - {fileID: 1997439488}
-  - {fileID: 714413420}
-  - {fileID: 426289535}
-  - {fileID: 921361095}
-  - {fileID: 1123949402}
-  - {fileID: 1333506841}
   - {fileID: 1789436078}
   - {fileID: 803959162}
+  - {fileID: 714413420}
   - {fileID: 159420680}
   m_Father: {fileID: 1632808149}
   m_RootOrder: 1
@@ -18534,7 +18534,7 @@ PrefabInstance:
     - target: {fileID: 8217580619755710966, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
       propertyPath: limitFront
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1541132045}
     - target: {fileID: 8217580619755710966, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
       propertyPath: limitRight
       value: 
@@ -20858,6 +20858,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1103459000445348097, guid: dd7ed7ab6c0607a49b47f42968ae038f, type: 3}
   m_PrefabInstance: {fileID: 1540752005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1541132045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6620089799906895079, guid: 90a3be5ebd73ed24c905447b944343de, type: 3}
+  m_PrefabInstance: {fileID: 577830713}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1542763915 stripped
 Transform:
