@@ -16222,6 +16222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d1eef6dca2f4644b5d1643045d5b3d, type: 3}
+--- !u!1 &1012722582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6337081097939491099, guid: 772eb9546ab70044cbff5e3a2fa58bd7, type: 3}
+  m_PrefabInstance: {fileID: 1366823407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1017804012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30896,7 +30901,7 @@ PrefabInstance:
     - target: {fileID: 8217580619755710966, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
       propertyPath: limitBack
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1012722582}
     - target: {fileID: 8217580619755710966, guid: 10484aa2535f8754aa8f9c1dfddd5ee1, type: 3}
       propertyPath: limitFront
       value: 
@@ -31830,8 +31835,8 @@ MonoBehaviour:
   searchRadius: 5
   gates: []
   isPlayerSide: 0
-  MaxHp: 100
-  _hp: 100
+  MaxHp: 20
+  _hp: 20
 --- !u!65 &1889504604
 BoxCollider:
   m_ObjectHideFlags: 0
