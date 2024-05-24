@@ -65,7 +65,7 @@ public class Building : MonoBehaviour
 
     private void OnDisable()
     {
-        GetComponent<BuildingInfoSendToDisplayer>().TurnOffWindow();
+        if(TryGetComponent(out BuildingInfoSendToDisplayer buildingInfoSendToDisplayer)) buildingInfoSendToDisplayer.TurnOffWindow();
     }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
