@@ -81,6 +81,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI cursorFloatingWindowFood;
     [SerializeField] private TextMeshProUGUI cursorFloatingWindowWood;
     [SerializeField] private TextMeshProUGUI cursorFloatingWindowStone;
+    [SerializeField] private Image buildingsBackground;
+    [SerializeField] private float buildingsToValue;
+    [SerializeField] private float buildingsBackgroundFadeDuration;
 
     //Coroutines
     private Coroutine warningMessage;
@@ -184,7 +187,6 @@ public class UIController : MonoBehaviour
     //It teleports to -2000 to prevent deck-cards being unclickable
     private IEnumerator ViewerAnimation()
     {
-        
         if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == -2000 && CardsToDrawViewerBackground.color.a == 0)
         {
             //In
@@ -317,6 +319,30 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Buildings
+
+    public void StartBuildingBackgroundSwitch()
+    {
+        StartCoroutine(StartBuildingBackgroundSwitchCor());
+    }
+
+    private IEnumerator StartBuildingBackgroundSwitchCor()
+    {
+        if (buildingsBackground.color.a > buildingsToValue - .1f)
+        {
+            buildingsBackground.DOFade(0, buildingsBackgroundFadeDuration).onPlay = () =>
+            {
+                BuildingsCards.gameObject.SetActive(false);
+            };
+        }else if (Mathf.Round(buildingsBackground.color.a) == 0)
+        {
+            buildingsBackground.DOFade(buildingsToValue, buildingsBackgroundFadeDuration).onPlay = () =>
+            {
+                BuildingsCards.gameObject.SetActive(true);
+            };
+        }
+
+        yield return null;
+    }
 
     public void CursorFloatingWindowInfoDisplay(ResourcesStruct res, int newText, string titleText)
     {
