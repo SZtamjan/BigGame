@@ -108,8 +108,9 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.z = verticalInput; 
         moveDirection.x = horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * keySpeed * 10f, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * (keySpeed * 10f), ForceMode.Force);
 
+        if(minX == 0 && minZ == 0) return;
         float x = Mathf.Clamp(transform.position.x, minX, maxX);
         float z = Mathf.Clamp(transform.position.z, minZ, maxZ);
         transform.position = new Vector3(x, camHeight, z);
