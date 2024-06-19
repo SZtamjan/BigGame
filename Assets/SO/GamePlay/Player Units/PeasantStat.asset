@@ -12,18 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
   m_Name: PeasantStat
   m_EditorClassIdentifier: 
+  name: STACHU JONES
+  desc: Hmm, I would like to eat something good for dinner.
+  artwork: {fileID: 21300000, guid: 35044961a293b6d429e38cdad71ad627, type: 3}
+  playersSide: 1
+  resources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 15
+    food: 15
+    wood: 15
+    stone: 15
   unit: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
   hp: 5
   damage: 2
   movmentDistance: 1
   attackReach: 1
-  playersUnit: 1
   moveSpeed: 0.5
-  name: Stachu Jones
-  desc: "Trzeba Ci\u0119 ostatecznie rozpierdoli\u0107"
-  artwork: {fileID: 21300000, guid: cc2012be6007ccb478bf982bd5f7b869, type: 3}
-  resources:
-    gold: 15
-    stone: 15
-    wood: 15
-    food: 15
