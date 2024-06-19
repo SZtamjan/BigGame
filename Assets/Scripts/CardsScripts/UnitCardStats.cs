@@ -11,7 +11,8 @@ using static UnitsStatsClass;
 
 public class UnitCardStats : MonoBehaviour
 {
-    [DisableIf("Always")] [SerializeField] private CardScriptableObject cardInfo; //Serialized only for debug purpose
+    private bool _disableFieldInInspector = true;
+    [DisableIf("_disableFieldInInspector")] [SerializeField] private CardScriptableObject cardInfo; //Serialized only for debug purpose
     public CardScriptableObject CardInfo
     {
         get => cardInfo;

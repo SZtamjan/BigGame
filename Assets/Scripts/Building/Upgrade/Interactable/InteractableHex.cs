@@ -9,6 +9,8 @@ public class InteractableHex : MonoBehaviour
     [SerializeField] private WhichBudynek interactWith;
     [SerializeField] private ResourcesStruct hexResources;
 
+    private Coroutine _repalaceHexCor;
+    
     public WhichBudynek InteractWith
     {
         get => interactWith;
@@ -35,6 +37,6 @@ public class InteractableHex : MonoBehaviour
             if ((int)field.GetValue(hexResources) == 0) counter++;
         }
         
-        if (counter == fieldsCount) StartCoroutine(GetComponent<ReplaceHex>().ReplaceMe());
+        if (counter == fieldsCount && _repalaceHexCor == null) _repalaceHexCor = StartCoroutine(GetComponent<ReplaceHex>().ReplaceMe());
     }
 }

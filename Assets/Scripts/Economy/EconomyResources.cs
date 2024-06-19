@@ -9,7 +9,7 @@ public class EconomyResources : MonoBehaviour
 {
     #region Resources
 
-    private ResourcesStruct _resources;
+    [HideInInspector] [SerializeField] private ResourcesStruct _resources;
 
     public ResourcesStruct Resources
     {
@@ -32,9 +32,6 @@ public class EconomyResources : MonoBehaviour
     {
         if (_resources == null) _resources = new ResourcesStruct();
         Instance = this;
-    }
-    private void Start()
-    {
         FillResourcesOnStart();
     }
 
