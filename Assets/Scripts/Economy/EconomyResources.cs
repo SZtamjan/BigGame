@@ -9,7 +9,8 @@ public class EconomyResources : MonoBehaviour
 {
     #region Resources
 
-    private ResourcesStruct _resources;
+
+    [HideInInspector] [SerializeField] private ResourcesStruct _resources;
 
     public ResourcesStruct Resources
     {
