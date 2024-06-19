@@ -106,6 +106,7 @@ public class BuildingController : MonoBehaviour
                 BuildingActionsOnTurn();
                 break;
             case BuildingStates.StartUpgrade:
+                FixTurnOffFor();
                 RemoveBuffs();
                 break;
             case BuildingStates.StartDisable:
@@ -116,6 +117,12 @@ public class BuildingController : MonoBehaviour
                 GetComponent<BuildingInfoSendToDisplayer>().CheckConditionsForButtonUpgradeVisibility();
                 break;
         }
+    }
+
+    private void FixTurnOffFor()
+    {
+        //it fixes a misscalculation - without it, game upgrades a building one tour before it should do so
+        turnOffForTurns++;
     }
     
     private void NewTurnTrigger() //Called at the start of every turn
