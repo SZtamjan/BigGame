@@ -1,45 +1,56 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using NaughtyAttributes;
 using static UnitsStatsClass;
 
 public class UnitCardStats : MonoBehaviour
 {
-    [SerializeField] private CardScriptableObject stats; //Serialized only for debug purpose
-
-    public CardScriptableObject Stats
+    [DisableIf("Always")] [SerializeField] private CardScriptableObject cardInfo; //Serialized only for debug purpose
+    public CardScriptableObject CardInfo
     {
-        get => stats;
-        private set => stats = value;
+        get => cardInfo;
+        private set => cardInfo = value;
     }
 
     [SerializeField] private new TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI desc;
-    [SerializeField] private TextMeshProUGUI cost;
+    [SerializeField] private TextMeshProUGUI gold;
+    [SerializeField] private TextMeshProUGUI food;
+    [SerializeField] private TextMeshProUGUI hp;
+    [SerializeField] private TextMeshProUGUI damage;
+    
 
     public void FillStats(CardScriptableObject newStats)
     {
-        Stats = newStats;
+        CardInfo = newStats;
         GetCardStats();
     }
 
     private void GetCardStats()
     {
-        Sprite cardArtwork = Stats.artwork;
+        Sprite cardArtwork = CardInfo.artwork;
 
         gameObject.GetComponent<Image>().sprite = cardArtwork;
-        name.text = Stats.name;
-        desc.text = Stats.desc;
-        cost.text = Stats.resources.Gold.ToString();
+        
+        name.text = CardInfo.name;
+        desc.text = CardInfo.desc;
+        
+        gold.text = CardInfo.resources.Gold.ToString();
+        food.text = CardInfo.resources.Food.ToString();
+        
+        //hp.text = stats.hp.ToString();
+        //damage.text = stats.hp.ToString();
     }
 
     public TextMeshProUGUI[] ReturnTexts()
     {
-        return new[] { name, desc, cost };
+        return new[] { name, desc, gold };
     }
 
     [Button]//Guzik Do Testu

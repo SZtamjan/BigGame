@@ -18,7 +18,7 @@ public class AutoDisableCard : MonoBehaviour
 
     private void ChangeGray()
     {
-        if (!EconomyOperations.CheckIfICanIAfford(GetComponent<UnitCardStats>().Stats.resources,false))
+        if (!EconomyOperations.CheckIfICanIAfford(GetComponent<UnitCardStats>().CardInfo.resources,false))
         {
             GetComponent<Button>().interactable = false;
 
