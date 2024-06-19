@@ -1117,6 +1117,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1130794422}
     m_Modifications:
+    - target: {fileID: 5296371488138083471, guid: f9d1422b0db8e5844a752a7b1e20c422, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7de9feb246c83e744b245f6726752394, type: 2}
+    - target: {fileID: 5296371488138083471, guid: f9d1422b0db8e5844a752a7b1e20c422, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1b4f8410fe03224387f9f62dca363e6, type: 2}
     - target: {fileID: 5944894164030561626, guid: f9d1422b0db8e5844a752a7b1e20c422, type: 3}
       propertyPath: m_Name
       value: Enemy_Castle_gate_2
@@ -16306,14 +16314,14 @@ Transform:
   - {fileID: 141803579}
   - {fileID: 383808747}
   - {fileID: 1997439488}
-  - {fileID: 714413420}
   - {fileID: 860000291}
+  - {fileID: 601407047}
+  - {fileID: 1237711827}
+  - {fileID: 714413420}
   - {fileID: 1426996812}
   - {fileID: 150847879}
   - {fileID: 1845538048}
-  - {fileID: 601407047}
   - {fileID: 262815875}
-  - {fileID: 1237711827}
   m_Father: {fileID: 1632808149}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

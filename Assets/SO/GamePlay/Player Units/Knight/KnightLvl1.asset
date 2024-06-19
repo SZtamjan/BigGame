@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
   m_Name: KnightLvl1
   m_EditorClassIdentifier: 
-  name: Karta wpierdolu
-  desc: To naprawde karta wpierdolu
+  name: Knight
+  desc: I live for glory
   artwork: {fileID: 21300000, guid: 5fd249e4add0ae047ba520ffa9c14822, type: 3}
   playersSide: 1
   resources:
     updatedResources:
       m_PersistentCalls:
         m_Calls: []
-    gold: 50
-    food: 30
+    gold: 20
+    food: 10
     wood: 0
     stone: 0
   unit: {fileID: 4777472483807655464, guid: 2ef0964c169612245a279d5eddcbb66a, type: 3}
