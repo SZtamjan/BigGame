@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1165322373173549035}
   - component: {fileID: 7026302577047179664}
   - component: {fileID: 1634200325189507003}
+  - component: {fileID: 6946927710674140789}
   m_Layer: 5
   m_Name: UnitCard2.0
   m_TagString: Card
@@ -219,6 +220,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 220, y: 352}
   m_EdgeRadius: 0
+--- !u!114 &6946927710674140789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199085340779551909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1.53, y: -2.04}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1337660547732486231
 GameObject:
   m_ObjectHideFlags: 0
