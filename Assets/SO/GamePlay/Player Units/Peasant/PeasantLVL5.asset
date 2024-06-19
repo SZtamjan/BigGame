@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
-  m_Name: ArcherLvlDefault
+  m_Name: PeasantLVL5
   m_EditorClassIdentifier: 
-  name: Karta Archera
-  desc: To strzela
-  artwork: {fileID: 21300000, guid: b71c976bfc4f7a64daa9934544b20adc, type: 3}
+  name: STACHU JONES
+  desc: Hmm, I would like to eat something good for dinner.
+  artwork: {fileID: 21300000, guid: 082bdf219fe26954a856df15521f9459, type: 3}
   playersSide: 1
   resources:
     updatedResources:
       m_PersistentCalls:
         m_Calls: []
-    gold: 15
-    food: 15
-    wood: 15
-    stone: 15
-  unit: {fileID: 3226842739083308954, guid: 577e86419be52894ab71c24e110928fe, type: 3}
-  hp: 2
-  damage: 2
+    gold: 50
+    food: 35
+    wood: 0
+    stone: 0
+  unit: {fileID: 1336259257979325049, guid: ac9b729799c701e44aa649d710c8a722, type: 3}
+  hp: 10
+  damage: 6
   movmentDistance: 1
-  attackReach: 3
+  attackReach: 1
   moveSpeed: 0.5

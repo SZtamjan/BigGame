@@ -1082,7 +1082,7 @@ MonoBehaviour:
         m_Calls: []
     gold: 69
     food: 4
-    wood: 2
+    wood: 60
     stone: 0
 --- !u!114 &1455581120652462696
 MonoBehaviour:
@@ -1978,6 +1978,10 @@ PrefabInstance:
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 26453a852af92fc41aa5b52797ccdee0, type: 2}
+    - target: {fileID: 957179768774645907, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6397601985131303982, guid: 26453a852af92fc41aa5b52797ccdee0, type: 2}
     - target: {fileID: 957179770137722556, guid: ffb223d1dd1dcbc4ab7d3b301e90c65d, type: 3}
       propertyPath: m_RootOrder
       value: 2
