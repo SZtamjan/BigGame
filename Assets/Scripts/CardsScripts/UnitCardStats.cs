@@ -44,8 +44,11 @@ public class UnitCardStats : MonoBehaviour
         gold.text = CardInfo.resources.Gold.ToString();
         food.text = CardInfo.resources.Food.ToString();
         
-        //hp.text = stats.hp.ToString();
-        //damage.text = stats.hp.ToString();
+        var cd = CardInfo.GetStatsCard();
+        if(cd == null) return;
+        if(cd[1] < 0) return;
+        hp.text = cd[0].ToString();
+        damage.text = cd[1].ToString();
     }
 
     public TextMeshProUGUI[] ReturnTexts()
@@ -56,7 +59,7 @@ public class UnitCardStats : MonoBehaviour
     [Button]//Guzik Do Testu
     public void XDDD()
     {
-        var cd = Stats.GetStatsCard();
+        var cd = CardInfo.GetStatsCard();
         foreach (var item in cd)
         {
             Debug.Log(item);
