@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Very Inteligent form  of inteligence
+  m_text: Lorem Ipsum is simply dummy text of the printing and
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 26453a852af92fc41aa5b52797ccdee0, type: 2}
   m_sharedMaterial: {fileID: 6397601985131303982, guid: 26453a852af92fc41aa5b52797ccdee0, type: 2}
@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 4493125245529755013}
   - component: {fileID: 3299147590317657580}
   - component: {fileID: 6311231912048174190}
+  - component: {fileID: 6493497037897684438}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -428,8 +429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.4051}
-  m_SizeDelta: {x: 180, y: 22.9899}
+  m_AnchoredPosition: {x: 0.2423, y: -2.5118}
+  m_SizeDelta: {x: 122.0496, y: 21.0316}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3299147590317657580
 CanvasRenderer:
@@ -496,7 +497,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -0.85
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -528,3 +529,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6493497037897684438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604528571434840388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081983198429ca646819e49c577769fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_radius: 155.73
+  m_arcDegrees: 35.4
+  m_angularOffset: -90
+  m_maxDegreesPerLetter: 360
