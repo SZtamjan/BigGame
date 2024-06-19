@@ -61,9 +61,15 @@ public class DisplayBuildingInfo : MonoBehaviour
     {
         selectedBuilding = currBuildingObj;
         BuildingController selectedController = selectedBuilding.GetComponent<BuildingController>();
-        
-        Debug.Log("Brak image");
-        //selectedBuildingImage.sprite = info
+
+        if (info.buildingImage == null)
+        {
+            Debug.Log("Brak image");
+        }
+        else
+        {
+            buildingImage.sprite = info.buildingImage;
+        }
         title.text = info.name;
         desc.text = info.desc;
 

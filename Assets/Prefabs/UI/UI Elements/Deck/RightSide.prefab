@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Koniec tury
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26453a852af92fc41aa5b52797ccdee0, type: 2}
+  m_sharedMaterial: {fileID: 6397601985131303982, guid: 26453a852af92fc41aa5b52797ccdee0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 4614869107661318920}
   - component: {fileID: 761352244326349718}
   - component: {fileID: 5353651077769892304}
+  - component: {fileID: 4255238672160135718}
   m_Layer: 5
   m_Name: NextTurn
   m_TagString: Untagged
@@ -383,3 +384,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4255238672160135718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066777090507793724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.69411767}
+  m_EffectDistance: {x: 9.6, y: -15.32}
+  m_UseGraphicAlpha: 1
