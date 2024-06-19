@@ -8,10 +8,13 @@ public abstract class CardScriptableObject : ScriptableObject
     [Header("Karta ")]
     [SerializeField]
     public new string name = "Karta wpierdolu";
+
     [SerializeField]
     public string desc = "To naprawdê karta wpierdolu";
+
     [SerializeField]
     public Sprite artwork;
+
     [SerializeField]
     public bool playersSide = true;
 
@@ -23,4 +26,6 @@ public abstract class CardScriptableObject : ScriptableObject
     public abstract object GetStats();
 
     public abstract void CardAction(GameObject karta, CardScriptableObject stats);
+
+    public abstract int[] GetStatsCard();
 }

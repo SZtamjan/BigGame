@@ -14,19 +14,27 @@ public class UnitScriptableObjects : CardScriptableObject
     [Header("Statystyki ")]
     [SerializeField]
     public int hp = 5;
+
     [SerializeField]
     public int damage = 2;
+
     [SerializeField]
     public int movmentDistance = 1;
+
     [SerializeField]
-    public int attackReach = 1;    
+    public int attackReach = 1;
+
     [SerializeField]
     public float moveSpeed = 0.5f;
 
-   
     public override void CardAction(GameObject karta, CardScriptableObject stats)
     {
         UnitSpawner.instance.SpawnMyUnit(karta, stats);
+    }
+
+    public override int[] GetStatsCard()
+    {
+        return new int[] { hp, damage };
     }
 
     public override object GetStats()
@@ -39,8 +47,7 @@ public class UnitScriptableObjects : CardScriptableObject
         stats.attackReach = attackReach;
         stats.playersSide = playersSide;
         stats.moveSpeed = moveSpeed;
-       
+
         return stats;
     }
-
 }
