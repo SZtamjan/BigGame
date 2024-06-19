@@ -5,15 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerResources", menuName = "ScriptableObjects/PlayerResources")]
 public class PlayerResources : ScriptableObject
 {
-    [Header("Surowce")]
-    public int gold;
-    public int stone;
-    public int wood;
-    public int food;
+    [Header("Surowce na start")]
+    public ResourcesStruct playerResources;
     
     //Prefabs
     [Header("Akcje")]
-    public int cashCastleOnTurn = 10;
-    
-    
+    public ResourcesStruct resourcesOnTurn;
+
+
 }

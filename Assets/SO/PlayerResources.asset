@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052364e72b6ab4c478e28fda2444e826, type: 3}
   m_Name: PlayerResources
   m_EditorClassIdentifier: 
-  gold: 200
-  stone: 200
-  wood: 200
-  food: 200
-  cashCastleOnTurn: 10
+  playerResources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 20
+    food: 200
+    wood: 200
+    stone: 200
+  resourcesOnTurn:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 1
+    food: 1
+    wood: 1
+    stone: 1
