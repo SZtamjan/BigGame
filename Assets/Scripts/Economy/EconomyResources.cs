@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Economy.EconomyActions;
@@ -32,6 +33,10 @@ public class EconomyResources : MonoBehaviour
     {
         if (_resources == null) _resources = new ResourcesStruct();
         Instance = this;
+    }
+
+    private void Start()
+    {
         FillResourcesOnStart();
     }
 
