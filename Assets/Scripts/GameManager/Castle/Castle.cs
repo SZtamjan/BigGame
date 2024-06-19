@@ -30,6 +30,16 @@ public class Castle : MonoBehaviour
         set
         {
             _hp = value;
+            if (_hp <= 0)
+            {
+                if (isPlayerSide)
+                {
+                    GameManager.Instance.UpdateGameState(GameManager.GameState.Lose);
+                    return;
+                }
+                
+                GameManager.Instance.UpdateGameState(GameManager.GameState.Victory);
+            }
             UIController.Instance.CastleHpSetHealth(_hp, isPlayerSide);
         }
     }
