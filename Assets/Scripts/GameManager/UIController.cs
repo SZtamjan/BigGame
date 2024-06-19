@@ -342,6 +342,7 @@ public class UIController : MonoBehaviour
 
     private string PluralChecker(int newText)
     {
+        newText++;
         if (newText == 1)
         {
             return "Upgrade time: " + newText + " turn";
