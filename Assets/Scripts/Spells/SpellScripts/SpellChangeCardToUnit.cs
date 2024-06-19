@@ -36,25 +36,25 @@ public class SpellChangeCardToUnit : SpellsScrptableObject
         else if (ICanChangeInTo.Count==0)
         {
             var _ThisCardStat = _ThisCard.GetComponent<UnitCardStats>();
-            var newStats = SelectedCard.GetComponent<UnitCardStats>().Stats;
+            var newStats = SelectedCard.GetComponent<UnitCardStats>().CardInfo;
             _ThisCardStat.FillStats(newStats);
 
-            Debug.Log($"Zamieniam siê w {newStats.name}");
+            Debug.Log($"Zamieniam siÄ™ w {newStats.name}");
 
         }
         else if (checkIfCanChange(SelectedCard))
         {
             var _ThisCardStat = _ThisCard.GetComponent<UnitCardStats>();
-            var newStats = SelectedCard.GetComponent<UnitCardStats>().Stats;
+            var newStats = SelectedCard.GetComponent<UnitCardStats>().CardInfo;
             _ThisCardStat.FillStats(newStats);
 
-            Debug.Log($"Zamieniam siê w {newStats.name}");
+            Debug.Log($"Zamieniam siÄ™ w {newStats.name}");
         }
         else
         {
             
-            var newStats = SelectedCard.GetComponent<UnitCardStats>().Stats;
-            Debug.Log($"Nie zamieniam siê w {newStats.name}");
+            var newStats = SelectedCard.GetComponent<UnitCardStats>().CardInfo;
+            Debug.Log($"Nie zamieniam siÄ™ w {newStats.name}");
         }
 
 
@@ -67,7 +67,7 @@ public class SpellChangeCardToUnit : SpellsScrptableObject
         var SelectedCardStats = SelectedCard.GetComponent<UnitCardStats> ();
         foreach (var item in ICanChangeInTo)
         {
-            if (item.name == SelectedCardStats.Stats.name)
+            if (item.name == SelectedCardStats.CardInfo.name)
             {
                 return true;
             }
