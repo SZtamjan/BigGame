@@ -30,9 +30,13 @@ public class SceneHandler : MonoBehaviour
         onlyOne = true;
     }
 
+   
+    
     private void PlaySonk()
     {
+        //ta zmienna jest skopiowana i wklejona do gamemenegera!!!
         AudioManager.instance.GetComponent<AudioManager>().KorutynaCzas();
+        //do tad
     }
 
 
