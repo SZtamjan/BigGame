@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Start:
                 StartingFunction();
+                AudioManager.instance.GetComponent<AudioManager>().KorutynaCzas();  //ta zmienna jest skopiowana z Scene Handler'a !!!
                 break;
             case GameState.MapGeneration:
                 CreatePaths();
