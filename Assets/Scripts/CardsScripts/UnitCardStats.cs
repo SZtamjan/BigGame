@@ -54,7 +54,7 @@ public class UnitCardStats : MonoBehaviour
 
     public TextMeshProUGUI[] ReturnTexts()
     {
-        return new[] { name, desc, gold };
+        return new[] { name, desc, gold, food, hp, damage };
     }
 
     [Button]//Guzik Do Testu
