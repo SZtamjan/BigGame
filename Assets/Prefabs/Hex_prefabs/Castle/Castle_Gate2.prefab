@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 2948647809787087803}
   - component: {fileID: 5228248067089232684}
   - component: {fileID: -4664047723142522066}
+  - component: {fileID: 3891015276744184586}
   m_Layer: 0
   m_Name: Castle_Gate2
   m_TagString: Untagged
@@ -443,6 +444,8 @@ MonoBehaviour:
   newTag: 
   _secondGate: {fileID: 0}
   _MyCastle: {fileID: 0}
+  fadeDuration: 0.66
+  materialIndex: 1
 --- !u!65 &-4664047723142522066
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -456,6 +459,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.86602515, y: 0.00000015646219, z: 1}
   m_Center: {x: 0, y: 0.125, z: -0.000000014901161}
+--- !u!114 &3891015276744184586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741171873182411374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &4459882862345788517
 GameObject:
   m_ObjectHideFlags: 0

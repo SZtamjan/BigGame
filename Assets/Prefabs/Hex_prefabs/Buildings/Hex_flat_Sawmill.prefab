@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 871506190118688262}
   - component: {fileID: -1581123072968432697}
   - component: {fileID: -654675766651654018}
+  - component: {fileID: -6742053468218468843}
   m_Layer: 11
   m_Name: Hex_flat_Sawmill
   m_TagString: Untagged
@@ -154,3 +155,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8901431490081492394, guid: dee0279100e52d242af57bdcfa351d7e, type: 3}
+--- !u!114 &-6742053468218468843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596885124391195437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}

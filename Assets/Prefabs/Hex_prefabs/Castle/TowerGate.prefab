@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5417198231601815152}
   - component: {fileID: 6034953832692249915}
   - component: {fileID: 1462218523275179817}
+  - component: {fileID: 9022464118770662599}
   m_Layer: 11
   m_Name: TowerGate
   m_TagString: Untagged
@@ -113,6 +114,8 @@ MonoBehaviour:
   newTag: 
   _secondGate: {fileID: 0}
   _MyCastle: {fileID: 0}
+  fadeDuration: 0.66
+  materialIndex: 1
 --- !u!65 &5417198231601815152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,3 +169,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9022464118770662599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004512532490229782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
