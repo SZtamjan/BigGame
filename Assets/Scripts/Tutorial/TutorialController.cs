@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class TutorialController : MonoBehaviour
 {
@@ -52,17 +49,20 @@ public class TutorialController : MonoBehaviour
                 tutorialSection.uiBackground.SetActive(true);
             }
 
-            for (int i = 0; i < tutorialSection.dialogFragment.Count; i++)
+            for (int i = 0; i < tutorialSection.dialogElement.Count; i++)
             {
                 if (tutorialSection.displayDialogOnObject == null)
                 {
                     Debug.LogError("Brak uzupelnionego \'displayDialogOnObject\' w liscie tutorial");
                     yield break;
                 }
-
-                tutorialSection.displayDialogOnObject.text = tutorialSection.dialogFragment[i];
+                
+                tutorialSection.displayDialogOnObject.text = tutorialSection.dialogElement[i].dialogFragment;
+                if (tutorialSection.dialogElement[i].zbikArt != null)
+                    tutorialSection.dialogElement[i].uiElementForZbik.sprite = tutorialSection.dialogElement[i].zbikArt;
+                
                 Debug.Log("Waiting for dialog to continue");
-                if (i != tutorialSection.dialogFragment.Count - 1) yield return new WaitUntil(() => _dialogContinue);
+                if (i != tutorialSection.dialogElement.Count - 1) yield return new WaitUntil(() => _dialogContinue);
                 _dialogContinue = false;
             }
 

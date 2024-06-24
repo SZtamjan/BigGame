@@ -7,6 +7,6 @@ using UnityEngine;
 public class TutorialSection
 {
     public TextMeshProUGUI displayDialogOnObject;
-    [Header("")] public List<string> dialogFragment;
+    [Header("")] public List<TutorialDialogFragment> dialogElement;
     public GameObject uiBackground;
 }
