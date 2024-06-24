@@ -22,31 +22,30 @@ public class Building : MonoBehaviour
 
     [SerializeField] private List<GameObject> budynki; // It stores all buildings placed by player
     public List<BuildingController> buildingsStats; // It stores what building does
-    
+
     public List<GameObject> Budynks
     {
-        get
-        {
-            return budynki;
-        }
+        get { return budynki; }
     }
 
-    [Header(" ")]
-    [Header("Limit Buildings")]
-    [SerializeField] private int buildingLimitInTotal = 5;
+    [Header(" ")] [Header("Limit Buildings")] [SerializeField]
+    private int buildingLimitInTotal = 5;
+
     [SerializeField] private List<BuildingLimits> specificBuildingLimitList;
 
-    [Header(" ")]
-    [Header("Build Buildings")]
+    [Header(" ")] [Header("Build Buildings")]
     public bool isColor = false;
+
     public GameEvent isBuildingEventTwo;
 
-    [Header("Building Colors")]
-    [ColorUsage(true, true)] public Color regularPlaceableColor; //green
+    [Header("Building Colors")] [ColorUsage(true, true)]
+    public Color regularPlaceableColor; //green
+
     [ColorUsage(true, true)] public Color regularNotPlaceableColor; //gray
 
-    [Header("Building Bloom")]
-    [ColorUsage(true, true)] public Color placeableColor; //green
+    [Header("Building Bloom")] [ColorUsage(true, true)]
+    public Color placeableColor; //green
+
     [ColorUsage(true, true)] public Color notPlaceableColor; //gray
 
     //Components
@@ -56,6 +55,7 @@ public class Building : MonoBehaviour
     {
         Instance = this;
     }
+
     void Start()
     {
         _gameManager = GameManager.Instance;
@@ -65,7 +65,8 @@ public class Building : MonoBehaviour
 
     private void OnDisable()
     {
-        if(TryGetComponent(out BuildingInfoSendToDisplayer buildingInfoSendToDisplayer)) buildingInfoSendToDisplayer.TurnOffWindow();
+        if (TryGetComponent(out BuildingInfoSendToDisplayer buildingInfoSendToDisplayer))
+            buildingInfoSendToDisplayer.TurnOffWindow();
     }
 
     public void StartBuilding(BuildingsScriptableObjects statsy)
@@ -104,6 +105,7 @@ public class Building : MonoBehaviour
             EconomyConditions.Instance.NotUrTurn();
         }
     }
+
     private void Build(GameObject position, BuildingsScriptableObjects statsy)
     {
         Transform posi = position.transform;
@@ -111,7 +113,7 @@ public class Building : MonoBehaviour
         building.transform.SetParent(parent.transform, true);
         building.AddComponent<BuildingController>();
         var buldingStast = building.GetComponent<BuildingController>();
-        buldingStast.FillNewStatsToThisBuilding(statsy,0);
+        buldingStast.FillNewStatsToThisBuilding(statsy, 0);
         buldingStast.ReturnTerrainTypeThatWasThere = position;
         budynki.Add(building);
         buildingsStats.Add(buldingStast);
@@ -123,9 +125,9 @@ public class Building : MonoBehaviour
     IEnumerator WhereToBuild(BuildingsScriptableObjects statsy)
     {
         InstantiateHalfTransparentBuilding(statsy);
-        
+
         //turn off component so upgrade window will NOT pop up - this is not intended and will glitch out
-        if(halfTransparent != null) 
+        if (halfTransparent != null)
         {
             if (halfTransparent.TryGetComponent(out BuildingInfoSendToDisplayer buildingInfoSendToDisplayer))
             {
@@ -136,7 +138,7 @@ public class Building : MonoBehaviour
                 Debug.LogError("ADD \'BuildingInfoSendToDisplayer\' SCRIPT TO THIS BUILDING PREFAB");
             }
         }
-        
+
         while (isBuilding)
         {
             MoveOrHideHalfTransparentBuilding(statsy.whichBudynek);
@@ -150,6 +152,7 @@ public class Building : MonoBehaviour
 
             yield return null;
         }
+
         //animator.SetFloat("speed", 0);
         Destroy(halfTransparent);
 
@@ -166,6 +169,7 @@ public class Building : MonoBehaviour
         {
             Debug.LogWarning("PODEPNIJ PREFAB BUDYNKU W SO BUDYNKU MOZE, CO?");
         }
+
         //animator.SetFloat("speed", 1);
         Renderer renderer = halfTransparent.GetComponent<Renderer>();
         Material[] materials = renderer.materials;
@@ -182,7 +186,7 @@ public class Building : MonoBehaviour
     {
         //Hide DisplayBuildingInfo on start building
         DisplayBuildingInfo.Instance.gameObject.SetActive(false);
-        
+
         Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit raycastHit1;
         if (Physics.Raycast(ray1, out raycastHit1, 100, buildingMask))
@@ -201,12 +205,10 @@ public class Building : MonoBehaviour
                 place.y += 0.01f;
                 halfTransparent.transform.position = place;
             }
-
         }
         else
         {
             HidehalfTransparent(halfTransparent);
-
         }
     }
 
@@ -232,11 +234,15 @@ public class Building : MonoBehaviour
             {
                 if (_gameManager.state != GameManager.GameState.PlayerTurn)
                 {
-                    EconomyConditions.Instance.NotUrTurn();
-                    return;
+                    if (!TutorialController.Instance.AllowBuildingBypass)
+                    {
+                        EconomyConditions.Instance.NotUrTurn();
+                        return;
+                    }
                 }
+
                 Debug.Log(hitObject.name);
-                if(EconomyOperations.Purchase(statsy.buildingLevelsList[0].thisLevelCost)) Build(hitObject, statsy);
+                if (EconomyOperations.Purchase(statsy.buildingLevelsList[0].thisLevelCost)) Build(hitObject, statsy);
             }
         }
         else
@@ -267,7 +273,8 @@ public class Building : MonoBehaviour
                 //Checking if limit for the building is achieved
                 int iloscPostawionych = 0;
 
-                foreach (var buildink in buildingsStats) //I'm iterating through placed buildings to count the amount of them
+                foreach (var buildink in
+                         buildingsStats) //I'm iterating through placed buildings to count the amount of them
                 {
                     if (bildink.jakiBudynek == buildink.thisBudynekIs)
                     {
@@ -298,5 +305,4 @@ public class Building : MonoBehaviour
         buildingsStats.Remove(demolishedBuilding.GetComponent<BuildingController>());
         Destroy(demolishedBuilding);
     }
-
 }

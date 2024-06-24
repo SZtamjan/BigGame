@@ -24,7 +24,7 @@ public class UnitSpawner : MonoBehaviour
     {
         instance = this;
     }
-    
+
     //[SerializeField] private Color _SelectedCard;
     //private Color _DefaultCardColor = Color.white;
     public GameObject _selectedCard;
@@ -40,7 +40,7 @@ public class UnitSpawner : MonoBehaviour
         if (_SpawnerCoroutine != null)
         {
             StopCoroutine(_SpawnerCoroutine);
-            _SpawnerCoroutine=null;
+            _SpawnerCoroutine = null;
             karta.GetComponent<Image>().color = CardManager.instance.defaultCardColor;
         }
         else
@@ -57,15 +57,16 @@ public class UnitSpawner : MonoBehaviour
 
         yield return new WaitUntil(() => GameManager.Instance.CanPlayerMove());
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-                
+
         if (!Physics.Raycast(ray, out hit))
         {
             StartCoroutine(UnselectCard(karta));
             yield break;
         }
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             StartCoroutine(UnselectCard(karta));
@@ -80,21 +81,26 @@ public class UnitSpawner : MonoBehaviour
             StartCoroutine(UnselectCard(karta));
             yield break;
         }
-
+        
         if (GameManager.Instance.state != GameManager.GameState.PlayerTurn)
         {
-            EconomyConditions.Instance.NotUrTurn();
-            StartCoroutine(UnselectCard(karta));
-            yield break;
+            if (!TutorialController.Instance.AllowUnitBypass)
+            {
+                EconomyConditions.Instance.NotUrTurn();
+                StartCoroutine(UnselectCard(karta));
+                yield break;
+            }
         }
-            
+
         if (CheckSpawnConditions(thisGatePatch, stats))
         {
             Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
             Vector3 spawn = thisGatePatch.path[0].position;
             UnitsStats unitStats = (UnitsStats)stats.GetStats();
 
-            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, unitStats.unit).GetComponent<UnitControler>();
+            UnitControler newUnit =
+                SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, unitStats.unit)
+                    .GetComponent<UnitControler>();
             newUnit.SetSO(unitStats);
             newUnit.setMyGate(thisGatePatch);
             thisGatePatch.path[0].unitMain = newUnit;
@@ -103,11 +109,11 @@ public class UnitSpawner : MonoBehaviour
             Destroy(karta);
             CardManager.instance.RevomeCard(karta);
             UIController.Instance.ArrangeCards();
-                
+
             StartCoroutine(UnselectCard(karta));
             yield break;
         }
-        
+
         StartCoroutine(UnselectCard(karta));
         yield break;
     }
@@ -120,7 +126,7 @@ public class UnitSpawner : MonoBehaviour
         UIController.Instance.SwitchTrashcanActive();
         Debug.Log("wyczyszczono selected");
         _selectedCard = null;
-        
+
         yield return null;
     }
 
@@ -141,12 +147,15 @@ public class UnitSpawner : MonoBehaviour
     {
         if (gate.path[0].unitMain != null)
         {
-            EconomyConditions.Instance.ThereIsAUnit(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "HEX IS OCCUPIED"
+            EconomyConditions.Instance
+                .ThereIsAUnit(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "HEX IS OCCUPIED"
             return false;
         }
+
         if (!EconomyOperations.Purchase(stats.resources))
         {
-            EconomyConditions.Instance.NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS / NOT YOUR TURN"
+            EconomyConditions.Instance
+                .NotEnoughCash(); //Tu można zrobić funckje która na środku ekranu pokazuje tekst "YOU CAN'T AFFORD IT / NOT ENOUGH FUNDS / NOT YOUR TURN"
             return false;
         }
 
@@ -165,7 +174,9 @@ public class UnitSpawner : MonoBehaviour
             Vector3 rotation = gate.path.Last().position - gate.path[gate.path.Count - 2].position;
             Vector3 spawn = gate.path.Last().position;
             var unitStats = (UnitsStats)stats.GetStats();
-            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y - 90f, unitStats.unit).GetComponent<UnitControler>();
+            UnitControler newUnit =
+                SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y - 90f, unitStats.unit)
+                    .GetComponent<UnitControler>();
             newUnit.SetSO(unitStats);
             newUnit.setMyGate(gate);
             gate.path.Last().unitMain = newUnit;
@@ -180,14 +191,13 @@ public class UnitSpawner : MonoBehaviour
 
     private GameObject SpawnObjectAtLocation(float posX, float posY, float posZ, float rota, GameObject spawn)
     {
-
         GameObject newObject;
         newObject = Instantiate(spawn, new Vector3(posX, posY, posZ), transform.rotation);
         newObject.transform.Rotate(0, rota, 0);
         newObject.transform.SetParent(GameObject.Find("Grid").transform, false);
         return newObject;
-
     }
+
     public void PutToList(GameObject unit, Castleee miejsce)
     {
         miejsce.jednostka = unit;
@@ -200,6 +210,4 @@ public class UnitSpawner : MonoBehaviour
         Random rnd = new Random();
         return rnd.Next(max);
     }
-
-
 }

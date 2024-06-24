@@ -18,6 +18,8 @@ public class TutorialController : MonoBehaviour
     [Header("Dialog setup")]
     [SerializeField] private List<TutorialSection> dialog;
 
+    private int _currentIteration;
+
     private Coroutine _interactionStepCor;
     private Coroutine _dialogStepCor;
     
@@ -26,6 +28,16 @@ public class TutorialController : MonoBehaviour
     public bool IsTutorial
     {
         get => isTutorial;
+    }
+
+    public bool AllowBuildingBypass
+    {
+        get => dialog[_currentIteration].allowBuilding;
+    }
+
+    public bool AllowUnitBypass
+    {
+        get => dialog[_currentIteration].allowUnits;
     }
 
     #endregion
@@ -66,6 +78,8 @@ public class TutorialController : MonoBehaviour
     {
         for (int i = 0; i < dialog.Count; i++)
         {
+            _currentIteration = i;
+                
             if (dialog[i].uiBackground != null)
             {
                 dialog[i].uiBackground.SetActive(true);

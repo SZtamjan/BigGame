@@ -16,6 +16,10 @@ public class TutorialSection
     
     [Header("Dialog")]
     public List<string> dialogFragment;
+
+    [Header("Bypass settings")] 
+    public bool allowBuilding;
+    public bool allowUnits;
     
     [Header("Interaction Background")]
     [Tooltip("Optional")] public GameObject uiBackground;
