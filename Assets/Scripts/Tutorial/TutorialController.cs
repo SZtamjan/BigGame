@@ -47,7 +47,12 @@ public class TutorialController : MonoBehaviour
     {
         foreach (TutorialSection tutorialSection in dialog)
         {
-            foreach (string dialogFragment in tutorialSection.dialogFragment)
+            if (tutorialSection.uiBackground != null)
+            {
+                tutorialSection.uiBackground.SetActive(true);
+            }
+
+            for (int i = 0; i < tutorialSection.dialogFragment.Count; i++)
             {
                 if (tutorialSection.displayDialogOnObject == null)
                 {
@@ -55,27 +60,20 @@ public class TutorialController : MonoBehaviour
                     yield break;
                 }
 
-                tutorialSection.displayDialogOnObject.text = dialogFragment;
+                tutorialSection.displayDialogOnObject.text = tutorialSection.dialogFragment[i];
                 Debug.Log("Waiting for dialog to continue");
-                yield return new WaitUntil(() => _dialogContinue);
+                if (i != tutorialSection.dialogFragment.Count - 1) yield return new WaitUntil(() => _dialogContinue);
                 _dialogContinue = false;
-
             }
 
-            if (tutorialSection.uiBackground == null)
+            if (tutorialSection.uiBackground != null)
             {
-                Debug.LogWarning("Skipping tutorial background");
-                continue;
+                Debug.Log("Waiting for interaction to happen");
+                yield return new WaitUntil(() => _interactionContinue);
+                _interactionContinue = false;
+            
+                tutorialSection.uiBackground.SetActive(false);
             }
-            
-            tutorialSection.uiBackground.SetActive(true);
-            
-            Debug.Log("Waiting for interaction to happen");
-            yield return new WaitUntil(() => _interactionContinue);
-            _interactionContinue = false;
-            
-            tutorialSection.uiBackground.SetActive(false);
-            
         }
 
         GameManager.Instance.UpdateGameState(GameManager.GameState.PlayerTurn);
@@ -98,7 +96,7 @@ public class TutorialController : MonoBehaviour
     }
     
     [Button]
-    public void NextIteration()
+    public void TutorialInteraction()
     {
         if(_interactionStepCor == null) _interactionStepCor = StartCoroutine(TmpAllowInteractionContinue());
     }
