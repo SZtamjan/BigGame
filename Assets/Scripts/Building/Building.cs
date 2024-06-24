@@ -230,15 +230,18 @@ public class Building : MonoBehaviour
             }
             else if (!EventSystem.current.IsPointerOverGameObject() && tagCheck)
             {
-
-
+                if (_gameManager.state != GameManager.GameState.PlayerTurn)
+                {
+                    EconomyConditions.Instance.NotUrTurn();
+                    return;
+                }
                 Debug.Log(hitObject.name);
                 if(EconomyOperations.Purchase(statsy.buildingLevelsList[0].thisLevelCost)) Build(hitObject, statsy);
             }
         }
         else
         {
-            //Je�eli jest obiekt to przesta� budowa�
+            //Jezeli jest obiekt to przestan budowac
             EconomyConditions.Instance.ThereIsABuilding();
         }
     }

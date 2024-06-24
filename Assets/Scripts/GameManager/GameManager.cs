@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.GameEnd;
         }
-        Debug.Log(newState);
+        //Debug.Log(newState);
         //state = newState;
         switch (newState)
         {
