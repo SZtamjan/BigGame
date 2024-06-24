@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.GameEnd;
         }
-        //Debug.Log(newState);
+        Debug.Log(newState);
         //state = newState;
         switch (newState)
         {
@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
                 CardStart();
                 break;
             case GameState.StartTutorial:
+                SwitchTurnButton();
                 GoThroughTutorial();
                 break;
             case GameState.PlayerTurn:
@@ -115,6 +116,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SwitchTurnButton()
+    {
+        if (state != GameState.PlayerTurn)
+        {
+            UIController.Instance.TurnButtonDisable();
+        }
+        else
+        {
+            UIController.Instance.TurnButtonActivate();
+        }
+    }
     
     private void GoThroughTutorial()
     {
