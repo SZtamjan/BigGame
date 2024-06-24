@@ -54,53 +54,66 @@ public class UnitSpawner : MonoBehaviour
     {
         _selectedCard = karta;
         karta.GetComponent<Image>().color = CardManager.instance.selectedCardColor;
-        while (GameManager.Instance.CanPlayerMove())
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
+
+        yield return new WaitUntil(() => GameManager.Instance.CanPlayerMove());
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
                 
-                if (!Physics.Raycast(ray, out hit))
-                {
-                    break;
-                }
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    break;
-                }
-
-                Debug.Log("Hit object with tag: " + hit.collider.tag);
-
-                Gate thisGatePatch = GetPath(hit.collider.tag);
-                if (thisGatePatch == null)
-                {
-                    break;
-                }
-
-                if (CheckSpawnConditions(thisGatePatch, stats))
-                {
-                    Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
-                    Vector3 spawn = thisGatePatch.path[0].position;
-                    UnitsStats unitStats = (UnitsStats)stats.GetStats();
-
-                    UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, unitStats.unit).GetComponent<UnitControler>();
-                    newUnit.SetSO(unitStats);
-                    newUnit.setMyGate(thisGatePatch);
-                    thisGatePatch.path[0].unitMain = newUnit;
-                    thisGatePatch.SetTransparent(GameManager.Instance.GateTransparency);
-                    //EconomyResources.Instance.Purchase(stats.resources.Gold);
-                    Destroy(karta);
-                    CardManager.instance.RevomeCard(karta);
-                    UIController.Instance.ArrangeCards();
-                    break;
-                }
-
-            }
-            yield return null;
-
-
+        if (!Physics.Raycast(ray, out hit))
+        {
+            StartCoroutine(UnselectCard(karta));
+            yield break;
         }
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            StartCoroutine(UnselectCard(karta));
+            yield break;
+        }
+
+        Debug.Log("Hit object with tag: " + hit.collider.tag);
+
+        Gate thisGatePatch = GetPath(hit.collider.tag);
+        if (thisGatePatch == null)
+        {
+            StartCoroutine(UnselectCard(karta));
+            yield break;
+        }
+
+        if (GameManager.Instance.state != GameManager.GameState.PlayerTurn)
+        {
+            EconomyConditions.Instance.NotUrTurn();
+            StartCoroutine(UnselectCard(karta));
+            yield break;
+        }
+            
+        if (CheckSpawnConditions(thisGatePatch, stats))
+        {
+            Vector3 rotation = thisGatePatch.path[0].position - thisGatePatch.path[1].position;
+            Vector3 spawn = thisGatePatch.path[0].position;
+            UnitsStats unitStats = (UnitsStats)stats.GetStats();
+
+            UnitControler newUnit = SpawnObjectAtLocation(spawn.x, spawn.y + 0.15f, spawn.z, rotation.y + 90f, unitStats.unit).GetComponent<UnitControler>();
+            newUnit.SetSO(unitStats);
+            newUnit.setMyGate(thisGatePatch);
+            thisGatePatch.path[0].unitMain = newUnit;
+            thisGatePatch.SetTransparent(GameManager.Instance.GateTransparency);
+            //EconomyResources.Instance.Purchase(stats.resources.Gold);
+            Destroy(karta);
+            CardManager.instance.RevomeCard(karta);
+            UIController.Instance.ArrangeCards();
+                
+            StartCoroutine(UnselectCard(karta));
+            yield break;
+        }
+        
+        StartCoroutine(UnselectCard(karta));
+        yield break;
+    }
+
+    private IEnumerator UnselectCard(GameObject karta)
+    {
         karta.GetComponent<Image>().color = CardManager.instance.defaultCardColor;
         _SpawnerCoroutine = null;
         yield return new WaitForSeconds(.1f);
