@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.GameEnd;
         }
+        Debug.Log(newState);
         //state = newState;
         switch (newState)
         {
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
     
     private void GoThroughTutorial()
     {
-        StartCoroutine(_tutorialController.GoThroughTutorial());
+        _tutorialController.AskForTutorial();
     }
 
     private void CameraSetting()
@@ -379,8 +380,6 @@ public class GameManager : MonoBehaviour
         StartTutorial,
         PlayerTurn,
         EnemyTurn,
-        TutVictory,
-        TutLose,
         Victory,
         Lose,
         GameEnd

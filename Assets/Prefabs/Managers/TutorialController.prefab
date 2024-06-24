@@ -44,14 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af27e46cf2ad45ec91a336bbb3b37a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTutorial: 1
+  isTutorial: 0
+  tutorialQuestionObject: {fileID: 0}
   dialog:
-  - dialogFragment:
+  - displayDialogOnObject: {fileID: 0}
+    zbikArt: {fileID: 0}
+    uiElementForZbik: {fileID: 0}
+    dialogFragment:
     - Zrobisz mi kawe?
     - I frytki do tego
-    displayDialogOnObject: {fileID: 0}
     uiBackground: {fileID: 0}
-  - dialogFragment:
+  - displayDialogOnObject: {fileID: 0}
+    zbikArt: {fileID: 0}
+    uiElementForZbik: {fileID: 0}
+    dialogFragment:
     - Pleaseeee
-    displayDialogOnObject: {fileID: 0}
     uiBackground: {fileID: 0}
