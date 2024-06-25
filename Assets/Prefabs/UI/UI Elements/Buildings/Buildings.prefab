@@ -865,8 +865,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1889925807085540237}
   m_HandleRect: {fileID: 7368666049822631767}
   m_Direction: 2
-  m_Value: 0.50000024
-  m_Size: 0.8110594
+  m_Value: 0.15717182
+  m_Size: 0.7379997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1383,10 +1383,10 @@ RectTransform:
   m_Father: {fileID: 7829109906008456593}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.09447034}
-  m_AnchorMax: {x: 1, y: 0.90552974}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1.4000015, y: 0}
+  m_SizeDelta: {x: 2.81, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5215836957105261936
 CanvasRenderer:
@@ -1468,8 +1468,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.2}
-  m_AnchoredPosition: {x: -89.99994, y: 230.2}
-  m_SizeDelta: {x: -180, y: 0}
+  m_AnchoredPosition: {x: -37, y: 299.1998}
+  m_SizeDelta: {x: -73.9, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4339622011100733071
 MonoBehaviour:
@@ -1486,13 +1486,13 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
-    m_Bottom: 0
+    m_Top: 60
+    m_Bottom: 60
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 161.18, y: 103.3}
-  m_Spacing: {x: 146.6, y: 81.3}
+  m_Spacing: {x: 171.98, y: 81.3}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &5185637825989188979
@@ -2118,8 +2118,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.6699982, y: 4.529999}
-  m_SizeDelta: {x: -3.35, y: -68.73}
+  m_AnchoredPosition: {x: 1.6749992, y: 1.3299866}
+  m_SizeDelta: {x: -3.35, y: -72.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8383263782734533305
 GameObject:
@@ -2315,10 +2315,10 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 40
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 5269613661316301610}
   m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 3289397931530866711}
   m_HorizontalScrollbarVisibility: 0
   m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: 0
@@ -2661,10 +2661,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8774484690791252552}
     m_Modifications:
-    - target: {fileID: 954340515378605114, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
-      propertyPath: infoSource
-      value: 
-      objectReference: {fileID: 11400000, guid: ca52a594f0b58c945a46f07367489490, type: 2}
     - target: {fileID: 6552775901859472904, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -2673,10 +2669,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 608ef88f92ffba7438658999b79d03cd, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button (6)
@@ -2699,7 +2691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216042550468414528, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9216042550468414528, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2707,7 +2699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216042550468414528, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9216042550468414528, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2791,6 +2783,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8774484690791252552}
     m_Modifications:
+    - target: {fileID: 954340515378605114, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: infoSource
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ee844a104920e44bb8b64965a27ddbe, type: 2}
     - target: {fileID: 6552775901859472904, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_sharedMaterial
       value: 
