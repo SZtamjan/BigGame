@@ -190,13 +190,13 @@ public class UIController : MonoBehaviour
             //In
             CardsToDrawViewerScroller.transform.DOLocalMoveY(-1000f, .0f);
             
-            CardsToDrawViewerScroller.transform.DOLocalMoveY(0, .5f).SetEase(Ease.OutBack);
+            CardsToDrawViewerScroller.transform.DOLocalMoveY(120, .5f).SetEase(Ease.OutBack);
             CardsToDrawViewerBackground.DOFade(.8f, .5f).onPlay = () =>
             {
                 CardsToDrawViewerBackground.gameObject.SetActive(true);
             };
         }
-        else if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) == 0 && CardsToDrawViewerBackground.color.a == .8f)
+        else if (Math.Round(CardsToDrawViewerScroller.transform.localPosition.y) >= 0 && CardsToDrawViewerBackground.color.a == .8f)
         {
             //Out
             Tween myTween =  CardsToDrawViewerScroller.transform.DOLocalMoveY(-1000, .5f).SetEase(Ease.InBack);

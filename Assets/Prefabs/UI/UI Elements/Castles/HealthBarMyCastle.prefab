@@ -141,7 +141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.8999939, y: 22}
+  m_AnchoredPosition: {x: -0.8999939, y: 15.409764}
   m_SizeDelta: {x: 7.03, y: 7.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6486572811246235863
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3600438677738606041}
   - component: {fileID: 7376363098705501417}
   m_Layer: 5
-  m_Name: Border
+  m_Name: Castle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ RectTransform:
   m_GameObject: {fileID: 3415952090645491330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2421127721387739836}
@@ -293,8 +293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -129, y: 0.00024032593}
-  m_SizeDelta: {x: 627.40063, y: 171.20508}
+  m_AnchoredPosition: {x: -256.3, y: -31.8}
+  m_SizeDelta: {x: 882.5, y: 240.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3678069242236401703
 CanvasRenderer:
@@ -369,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.8000488, y: 21.689947}
+  m_AnchoredPosition: {x: -0.8000488, y: 15.1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6058836878852877573
