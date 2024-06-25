@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4274158812527844760}
   - component: {fileID: 936475348367626813}
   - component: {fileID: 3106340352970991351}
+  - component: {fileID: 9188011625842110972}
+  - component: {fileID: -3072722520620072225}
   m_Layer: 0
   m_Name: Castle_Gate1
   m_TagString: Untagged
@@ -84,3 +86,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9188011625842110972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466377978955663138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1000681b1ed13114381d2813a676a159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerSide: 0
+  path: []
+  searchRadius: 0.8
+  newTag: 
+  _secondGate: {fileID: 0}
+  _MyCastle: {fileID: 0}
+  fadeDuration: 0.66
+  materialIndex: 1
+--- !u!114 &-3072722520620072225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466377978955663138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}

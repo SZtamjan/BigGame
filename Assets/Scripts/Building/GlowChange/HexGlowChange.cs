@@ -11,7 +11,7 @@ public class HexGlowChange : MonoBehaviour
 
     void Start()
     {
-        _materials = GetComponent<MeshRenderer>().materials;
+        _materials = GetComponent<Renderer>().materials;
         _defaultTextures = new Texture[_materials.Length];
         _myLayer = gameObject.layer;
         if (MeError)

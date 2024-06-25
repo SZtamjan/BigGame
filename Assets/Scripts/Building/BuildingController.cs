@@ -91,7 +91,8 @@ public class BuildingController : MonoBehaviour
 
     private void OnDisable()
     {
-        RemoveBuffs();
+      // zakomentowane bo robi problemy w sumie nie wiemy po co to jest xd
+        //RemoveBuffs();
         EventManager.NewPlayerTurn -= NewTurnTrigger;
     }
 

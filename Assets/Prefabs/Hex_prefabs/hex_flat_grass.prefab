@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4097541097768682066}
   - component: {fileID: 8671053697731806188}
   - component: {fileID: 490187204275793012}
+  - component: {fileID: 3687807384652880128}
   m_Layer: 8
   m_Name: hex_flat_grass
   m_TagString: Grass
@@ -140,3 +141,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3687807384652880128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562766308121040280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}

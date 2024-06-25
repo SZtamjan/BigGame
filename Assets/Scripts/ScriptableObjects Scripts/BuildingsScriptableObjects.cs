@@ -30,11 +30,12 @@ public enum WhichBudynek //Used for limiting building type per level
     // przy zmianie nazwy również także trzeba zaktualizować
     archerBarrack,
     knightBarrack,
-    peasantBarrack,
+    House,
     Stable,
     StoneMine,
     Sawmill,
     Farm,
-    Tavern
+    Tavern,
+    Las
 
 }
