@@ -95,7 +95,7 @@ public class BuildingInfoSendToDisplayer : MonoBehaviour
         BuildingController myBController = GetComponent<BuildingController>();
         ShowUpgradeButton(true);
         
-        if (!EconomyOperations.CheckIfICanIAfford(myBController.UpgradeCost))
+        if (!EconomyOperations.CheckIfICanIAfford(myBController.UpgradeCost,false))
         {
             ShowUpgradeButton(false);
             return;
