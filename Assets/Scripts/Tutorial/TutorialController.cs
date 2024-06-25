@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using TMPro;
@@ -47,6 +48,11 @@ public class TutorialController : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -57,17 +63,20 @@ public class TutorialController : MonoBehaviour
 
     public void AskForTutorial()
     {
+        if(LackOfTutQuestionObject()) return;
         tutorialQuestionObject.SetActive(true);
     }
 
     public void SkipTutorial()
     {
+        if(LackOfTutQuestionObject()) return;
         GameManager.Instance.UpdateGameState(GameManager.GameState.PlayerTurn);
         tutorialQuestionObject.SetActive(false);
     }
 
     public void RunTutorial()
     {
+        if(LackOfTutQuestionObject()) return;
         tutorialQuestionObject.SetActive(false);
         StartCoroutine(GoThroughTutorial());
     }
@@ -186,4 +195,16 @@ public class TutorialController : MonoBehaviour
     }
     
     #endregion
+
+    private bool LackOfTutQuestionObject()
+    {
+        if (tutorialQuestionObject == null)
+        {
+            Debug.LogError("BRAK PRZYPISANEGO OBIEKTU TutorialQuestion w TutorialController - obiekt powinien byc jako dziecko obiektu UI");
+            return true;
+        }
+
+        return false;
+    }
+    
 }
