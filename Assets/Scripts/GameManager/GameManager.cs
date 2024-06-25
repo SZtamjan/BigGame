@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     //Components
     private UnitSpawner _unitSpawner;
+    private TutorialController _tutorialController;
     
     [NonSerialized]
     public float GateTransparency = 0.33f;
@@ -46,7 +47,8 @@ public class GameManager : MonoBehaviour
     {
         turnCounter = 1;
         _unitSpawner = UnitSpawner.instance;
-
+        _tutorialController = TutorialController.Instance;
+        
         SaveProgress();
         UpdateGameState(GameState.Start);
     }
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.GameEnd;
         }
+        Debug.Log(newState);
         //state = newState;
         switch (newState)
         {
@@ -75,6 +78,10 @@ public class GameManager : MonoBehaviour
                 CreatePaths();
                 CameraSetting();
                 CardStart();
+                break;
+            case GameState.StartTutorial:
+                SwitchTurnButton();
+                GoThroughTutorial();
                 break;
             case GameState.PlayerTurn:
                 GameStatePlayerTurn();
@@ -98,8 +105,32 @@ public class GameManager : MonoBehaviour
     private void CardStart()
     {
         CardManager.instance.SpawnStartCards();
-        GameManager.Instance.UpdateGameState(GameState.PlayerTurn);
 
+        if (_tutorialController.IsTutorial)
+        {
+            UpdateGameState(GameState.StartTutorial);
+        }
+        else
+        {
+            UpdateGameState(GameState.PlayerTurn);
+        }
+    }
+
+    private void SwitchTurnButton()
+    {
+        if (state != GameState.PlayerTurn)
+        {
+            UIController.Instance.TurnButtonDisable();
+        }
+        else
+        {
+            UIController.Instance.TurnButtonActivate();
+        }
+    }
+    
+    private void GoThroughTutorial()
+    {
+        _tutorialController.AskForTutorial();
     }
 
     private void CameraSetting()
@@ -358,6 +389,7 @@ public class GameManager : MonoBehaviour
     {
         Start,
         MapGeneration,
+        StartTutorial,
         PlayerTurn,
         EnemyTurn,
         Victory,
