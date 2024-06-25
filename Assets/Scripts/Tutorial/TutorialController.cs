@@ -11,7 +11,8 @@ public class TutorialController : MonoBehaviour
     
     [Header("Ask for Tutorial - Turn On/Off Tutorial")]
     [SerializeField] private bool isTutorial;
-    [SerializeField] private GameObject tutorialQuestionObject;
+
+    [Required("Tutorial Question Object CANNOT BE NULL")] [SerializeField] private GameObject tutorialQuestionObject;
 
     private bool _interactionContinue = false; 
     private bool _dialogContinue = false;
