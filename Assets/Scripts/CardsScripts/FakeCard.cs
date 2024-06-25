@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public class FakeCard : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI namee;
+    [SerializeField] private new TextMeshProUGUI namee;
     [SerializeField] private TextMeshProUGUI desc;
-    [SerializeField] private TextMeshProUGUI cost;
+    [SerializeField] private TextMeshProUGUI gold;
+    [SerializeField] private TextMeshProUGUI food;
+    [SerializeField] private TextMeshProUGUI hp;
+    [SerializeField] private TextMeshProUGUI damage;
 
     public new string name;
 
@@ -17,9 +20,18 @@ public class FakeCard : MonoBehaviour
         Sprite cardArtwork = stats.artwork;
 
         gameObject.GetComponent<Image>().sprite = cardArtwork;
+        
         namee.text = stats.name;
         name = stats.name;
         desc.text = stats.desc;
-        cost.text = stats.resources.Gold.ToString();
+        
+        gold.text = stats.resources.Gold.ToString();
+        food.text = stats.resources.Food.ToString();
+        
+        var cd = stats.GetStatsCard();
+        if(cd == null) return;
+        if(cd[1] < 0) return;
+        hp.text = cd[0].ToString();
+        damage.text = cd[1].ToString();
     }
 }
