@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 798099463787276873}
   - component: {fileID: 5926945966339412224}
   - component: {fileID: -4939755166190468346}
-  - component: {fileID: 5082151075502506442}
   m_Layer: 11
   m_Name: Hex_flat_Archer_barrack
   m_TagString: Untagged
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 559551174753405806}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -156,17 +156,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c833d86679f947449acce0aa1bf54bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5082151075502506442
-MonoBehaviour:
+--- !u!1001 &4897529629742719225
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6993846864331882723}
+    m_Modifications:
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0903
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9192
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.182
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5386646881361459864, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+--- !u!4 &559551174753405806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4914669178500656023, guid: 7a95094667b689a4099e715694ea8056, type: 3}
+  m_PrefabInstance: {fileID: 4897529629742719225}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7657511380786551385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MeError: 0
-  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
