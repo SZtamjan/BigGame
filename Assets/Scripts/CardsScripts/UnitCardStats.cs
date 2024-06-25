@@ -56,14 +56,4 @@ public class UnitCardStats : MonoBehaviour
     {
         return new[] { name, desc, gold, food, hp, damage };
     }
-
-    [Button]//Guzik Do Testu
-    public void XDDD()
-    {
-        var cd = CardInfo.GetStatsCard();
-        foreach (var item in cd)
-        {
-            Debug.Log(item);
-        }
-    }
 }
