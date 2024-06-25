@@ -42,10 +42,10 @@ public class DetectHoover : MonoBehaviour
         switch (whatToSend)
         {
             case InfoTypeToSend.UpgradeValue:
-                _floatingWindowDisplayBuildingInfo.FillData(bCon.UpgradeCost,bCon.TurnOffForTurns);
+                _floatingWindowDisplayBuildingInfo.FillDataUpgrade(bCon.UpgradeCost,bCon.TurnOffForTurns);
                 break;
             case InfoTypeToSend.GainValue:
-                _floatingWindowDisplayBuildingInfo.FillData(bCon.ResourcesCurrentMaxGain);
+                _floatingWindowDisplayBuildingInfo.FillDataDemo(bCon.ResourcesCurrentMaxGain);
                 Debug.LogWarning("Probably won't display as intended, not really implemented");
                 break;
             case InfoTypeToSend.SellValue:
@@ -55,7 +55,7 @@ public class DetectHoover : MonoBehaviour
                     Debug.LogError("NO SELL VALUE, PLEASE ADD IT IN BUILDING SO");
                     break;
                 }
-                _floatingWindowDisplayBuildingInfo.FillData(bCon.ResourcesCurrentSell);
+                _floatingWindowDisplayBuildingInfo.FillDataDemo(bCon.ResourcesCurrentSell);
                 break;
             default:
                 Debug.LogWarning("Exception :(");

@@ -10,18 +10,18 @@ Material:
   m_Name: BigForestLeaves
   m_Shader: {fileID: 4800000, guid: 933f24cde1e3f6a41818f56d729421ab, type: 3}
   m_ValidKeywords:
-  - _HALFTONESHAPE_DOT
+  - _ALPHATEST_ON
+  - _HALFTONESHAPE_STRIPE
   - _OUTLINE
   - _RIMLIGHTING_ON
-  - _SPECULARHIGHLIGHTS_OFF
   - _TOON_SHADING_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2500
   stringTagMap:
-    RenderType: Opaque
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -116,14 +116,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
+    - _AlphaClip: 1
     - _Blend: 0
     - _BrushLowerCut: 0
     - _BrushSize: 0.8
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -146,7 +146,7 @@ Material:
     - _HalfToneDiffuseStep: 0
     - _HalfToneEnabled: 0
     - _HalfToneIncludeReceivedShadow: 0
-    - _HalfToneShape: 0
+    - _HalfToneShape: 1
     - _HalfToneUvMode: 0
     - _HalftoneFadeDistance: 10
     - _HalftoneFadeToColor: 0
@@ -180,7 +180,7 @@ Material:
     - _SpecShadowStrength: 1
     - _SpecularClipStrength: 0
     - _SpecularFalloff: 1
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SpecularSize: 1
     - _SpherizeNormalEnabled: 0
     - _SrcBlend: 1
@@ -188,7 +188,7 @@ Material:
     - _StencilRef: 0
     - _StepViaRampTexture: 0
     - _Surface: 0
-    - _ToonBlending: 0.777
+    - _ToonBlending: 0
     - _ToonEnabled: 1
     - _UVSec: 0
     - _UseRampColor: 0
@@ -204,8 +204,8 @@ Material:
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineDistancFade: {r: -23.135357, g: 69.19385, b: 0, a: 0}
-    - _RimColor: {r: 0.056603797, g: 0.16981131, b: 0, a: 1}
+    - _OutlineDistancFade: {r: 0.3940544, g: 69.19385, b: 0, a: 0}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}

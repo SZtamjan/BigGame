@@ -40,11 +40,11 @@ public class FloatingWindowDisplayBuildingInfo : MonoBehaviour
         objToMove.localPosition = localPoint;
     }
 
-    public void FillData(ResourcesStruct res, int turnedOffForTurns)
+    public void FillDataUpgrade(ResourcesStruct res, int turnedOffForTurns)
     {
         _uiController.CursorFloatingWindowInfoDisplay(res,turnedOffForTurns,titleForUpgrade);
     }
-    public void FillData(ResourcesStruct res)
+    public void FillDataDemo(ResourcesStruct res)
     {
         _uiController.CursorFloatingWindowInfoDisplay(res, titleForSell);
     }

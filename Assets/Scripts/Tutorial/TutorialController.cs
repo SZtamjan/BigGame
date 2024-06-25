@@ -12,7 +12,7 @@ public class TutorialController : MonoBehaviour
     [Header("Ask for Tutorial - Turn On/Off Tutorial")]
     [SerializeField] private bool isTutorial;
 
-    [Required("Tutorial Question Object CANNOT BE NULL")] [SerializeField] private GameObject tutorialQuestionObject;
+    [ShowIf("isTutorial")] [Required("Tutorial Question Object CANNOT BE NULL")] [SerializeField] private GameObject tutorialQuestionObject;
 
     private bool _interactionContinue = false; 
     private bool _dialogContinue = false;
@@ -47,11 +47,6 @@ public class TutorialController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
