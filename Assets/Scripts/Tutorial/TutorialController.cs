@@ -115,10 +115,19 @@ public class TutorialController : MonoBehaviour
 
             if (dialog[i].uiBackground != null)
             {
-                Debug.Log("Waiting for interaction to happen");
-                yield return new WaitUntil(() => _interactionContinue);
-                _interactionContinue = false;
-            
+                if (dialog[i].waitForDialog)
+                {
+                    Debug.Log("Waiting for dialog to continue");
+                    yield return new WaitUntil(() => _dialogContinue);
+                    _dialogContinue = false;
+                }
+                else
+                {
+                    Debug.Log("Waiting for interaction to happen");
+                    yield return new WaitUntil(() => _interactionContinue);
+                    _interactionContinue = false;
+                }
+                
                 dialog[i].uiBackground.SetActive(false);
             }
             else
