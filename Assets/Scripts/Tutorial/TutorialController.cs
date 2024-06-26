@@ -101,7 +101,7 @@ public class TutorialController : MonoBehaviour
                 if (dialog[i].displayDialogOnObject != null)
                 {
                     dialog[i].displayDialogOnObject.gameObject.SetActive(true);
-                    dialog[i].displayDialogOnObject.text = dialog[i].dialogFragment[j];
+                    dialog[i].displayDialogOnObject.text = dialog[i].dialogFragment[j] + "\n" + dialog[i].additionalInfo;
                 }
 
                 
