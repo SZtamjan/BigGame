@@ -16,6 +16,7 @@ public class TutorialSection
     
     [Header("Dialog")]
     public List<string> dialogFragment;
+    public string additionalInfo;
 
     [Header("Bypass settings")] 
     public bool allowBuilding;
