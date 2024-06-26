@@ -20,6 +20,9 @@ public class TutorialController : MonoBehaviour
     [Header("Dialog setup")]
     [SerializeField] private List<TutorialSection> dialog;
 
+    [Header("Settings")] 
+    [SerializeField] private List<GameObject> turnOffForTutorial;
+
     private int _currentIteration;
 
     private Coroutine _interactionStepCor;
@@ -81,6 +84,8 @@ public class TutorialController : MonoBehaviour
 
     public IEnumerator GoThroughTutorial()
     {
+        ChangeObjectsForTutPeriod(false);
+        
         for (int i = 0; i < dialog.Count; i++)
         {
             _currentIteration = i;
@@ -165,6 +170,7 @@ public class TutorialController : MonoBehaviour
             }
         }
 
+        ChangeObjectsForTutPeriod(true);
         GameManager.Instance.UpdateGameState(GameManager.GameState.PlayerTurn);
     }
 
@@ -211,6 +217,14 @@ public class TutorialController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void ChangeObjectsForTutPeriod(bool isOn)
+    {
+        foreach (var objs in turnOffForTutorial)
+        {
+            objs.SetActive(isOn);
+        }
     }
     
 }
