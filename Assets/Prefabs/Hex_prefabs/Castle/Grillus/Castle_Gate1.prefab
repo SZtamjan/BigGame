@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5693476470268165842}
   - component: {fileID: 1170373622889151089}
   - component: {fileID: 5107838716089031404}
+  - component: {fileID: 6823285257067230572}
   m_Layer: 0
   m_Name: Castle_Gate1
   m_TagString: Gate
@@ -119,3 +120,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.83, y: 0.54, z: 0.54}
   m_Center: {x: 0, y: 0.48176152, z: -0.000000014901161}
+--- !u!114 &6823285257067230572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053883393107517191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}

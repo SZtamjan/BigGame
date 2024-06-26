@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3042084768242383913}
   - component: {fileID: 8432403115703289220}
+  - component: {fileID: 8077844756286826294}
   m_Layer: 0
   m_Name: postprocess
   m_TagString: Untagged
@@ -44,8 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsGlobal: 1
+  m_IsGlobal: 0
   priority: 0
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: ae96be269090dd74bbb8f79160c3d91c, type: 2}
+--- !u!65 &8077844756286826294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8648560618473700364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.7125292, y: 1.988548, z: 4.1746283}
+  m_Center: {x: -0.18814611, y: -0.3367325, z: 0.19885635}
