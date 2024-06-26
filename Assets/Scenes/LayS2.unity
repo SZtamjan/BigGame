@@ -31221,10 +31221,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
@@ -31232,7 +31236,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1707435840}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1822379660}
+    - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
@@ -31240,11 +31252,23 @@ PrefabInstance:
       value: TutorialInteraction
       objectReference: {fileID: 0}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: ChangeZoomLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: TutorialController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065246532229337615, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8085868723320458020, guid: 9e259061d59278447a586e9627a7d785, type: 3}
@@ -31359,6 +31383,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7135915739899159673, guid: 9e259061d59278447a586e9627a7d785, type: 3}
   m_PrefabInstance: {fileID: 1822379656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1822379660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3992635806873267847, guid: 9e259061d59278447a586e9627a7d785, type: 3}
+  m_PrefabInstance: {fileID: 1822379656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069e0e5901e4f364e94b2d066265ca0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1823481881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3616170078862256307, guid: 43c963d0acd22b445ac6eceb8e596992, type: 3}
