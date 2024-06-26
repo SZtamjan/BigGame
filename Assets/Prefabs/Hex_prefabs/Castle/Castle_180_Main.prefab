@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6196940565290297146}
   - component: {fileID: 466139957939445884}
   - component: {fileID: 5638959978261516407}
+  - component: {fileID: 7260382696518086806}
   m_Layer: 0
   m_Name: Murki na murku 1
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7260382696518086806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220786043311752896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &1144988814166570092
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +234,7 @@ GameObject:
   - component: {fileID: 877235219881390340}
   - component: {fileID: 7670290817004504369}
   - component: {fileID: 7381142911602206982}
+  - component: {fileID: 8476726419887613245}
   m_Layer: 0
   m_Name: Murki na murku 2
   m_TagString: Untagged
@@ -291,6 +307,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8476726419887613245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505601189860071303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &1527163093450668212
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +332,7 @@ GameObject:
   - component: {fileID: 719151280816052621}
   - component: {fileID: 2464501066852490909}
   - component: {fileID: 7295647830349463768}
+  - component: {fileID: 5972248290242551409}
   m_Layer: 0
   m_Name: "Wie\u017Ca.002"
   m_TagString: Untagged
@@ -374,6 +405,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5972248290242551409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527163093450668212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &2068429294381876326
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +430,7 @@ GameObject:
   - component: {fileID: 6161471221378048300}
   - component: {fileID: 7942303553077264597}
   - component: {fileID: 886645623013353868}
+  - component: {fileID: 137477141047505539}
   m_Layer: 0
   m_Name: Banner.001
   m_TagString: Untagged
@@ -457,6 +503,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &137477141047505539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068429294381876326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &3539164548727115087
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +528,7 @@ GameObject:
   - component: {fileID: 6031399195513984078}
   - component: {fileID: 1110862797499077635}
   - component: {fileID: 7706567497150026042}
+  - component: {fileID: 8278279963846844341}
   m_Layer: 0
   m_Name: Hex_SideV1
   m_TagString: Untagged
@@ -540,6 +601,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8278279963846844341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539164548727115087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &4328685087390511527
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +626,7 @@ GameObject:
   - component: {fileID: 6538392518683734540}
   - component: {fileID: 6260756913226822975}
   - component: {fileID: 7619091758176768438}
+  - component: {fileID: 8424319795795541569}
   m_Layer: 0
   m_Name: Banner.002
   m_TagString: Untagged
@@ -623,6 +699,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8424319795795541569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4328685087390511527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &4493765456814748254
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +724,7 @@ GameObject:
   - component: {fileID: 7364441906253853491}
   - component: {fileID: 3518625813095927127}
   - component: {fileID: 4954597330494039076}
+  - component: {fileID: 2295596764166722741}
   m_Layer: 0
   m_Name: "Murki na wie\u017Cy 1 "
   m_TagString: Untagged
@@ -706,6 +797,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2295596764166722741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493765456814748254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &4516863522924535710
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +822,7 @@ GameObject:
   - component: {fileID: 2388969063830233089}
   - component: {fileID: 9086605311025405025}
   - component: {fileID: 1453482346982216388}
+  - component: {fileID: 1406099210695888224}
   m_Layer: 0
   m_Name: "Pod\u0142oga wie\u017Ca"
   m_TagString: Untagged
@@ -789,6 +895,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1406099210695888224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4516863522924535710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &4962725878072803287
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +920,7 @@ GameObject:
   - component: {fileID: 2964871742755058745}
   - component: {fileID: 2807797275964548603}
   - component: {fileID: 8660987056099606158}
+  - component: {fileID: 2652687926707357934}
   m_Layer: 0
   m_Name: Mur 1
   m_TagString: Untagged
@@ -872,6 +993,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2652687926707357934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962725878072803287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &5885123788854794202
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +1018,7 @@ GameObject:
   - component: {fileID: 9072098247186934084}
   - component: {fileID: 3007274468830002592}
   - component: {fileID: 6966230577185029221}
+  - component: {fileID: 5004199878267420888}
   m_Layer: 0
   m_Name: "Pod\u0142oga mur 1"
   m_TagString: Untagged
@@ -955,6 +1091,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5004199878267420888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885123788854794202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &7773902478390781668
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +1116,7 @@ GameObject:
   - component: {fileID: 43540231580447946}
   - component: {fileID: 4239699779008657822}
   - component: {fileID: 8533114951725634200}
+  - component: {fileID: 6589454109901182498}
   m_Layer: 0
   m_Name: Banner
   m_TagString: Untagged
@@ -1038,6 +1189,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6589454109901182498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773902478390781668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &8125326821446730398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1214,7 @@ GameObject:
   - component: {fileID: 4293981951955370602}
   - component: {fileID: 2370923384934613291}
   - component: {fileID: 8795170113225309682}
+  - component: {fileID: 7097284594244627066}
   m_Layer: 0
   m_Name: "Pod\u0142oga mur 2"
   m_TagString: Untagged
@@ -1121,6 +1287,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7097284594244627066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8125326821446730398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
 --- !u!1 &9042791053805267339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1312,7 @@ GameObject:
   - component: {fileID: 4086301394728822008}
   - component: {fileID: 2936039315474276229}
   - component: {fileID: 6203256239415820931}
+  - component: {fileID: 6816635984207937259}
   m_Layer: 0
   m_Name: Mur 2
   m_TagString: Untagged
@@ -1204,3 +1385,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6816635984207937259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042791053805267339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ec1635d917394a92db197f2e7d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeError: 0
+  texstura: {fileID: 2800000, guid: e97a2ffa56e9dac4e9f914d0e0abdeb5, type: 3}
