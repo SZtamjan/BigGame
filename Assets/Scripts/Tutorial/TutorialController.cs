@@ -101,18 +101,13 @@ public class TutorialController : MonoBehaviour
                 if (dialog[i].displayDialogOnObject != null)
                 {
                     dialog[i].displayDialogOnObject.gameObject.SetActive(true);
-                    dialog[i].displayDialogOnObject.text = dialog[i].dialogFragment[j]+ "\n(Press E to continue)";
+                    dialog[i].displayDialogOnObject.text = dialog[i].dialogFragment[j];
                 }
 
                 
-                if (j != dialog[i].dialogFragment.Count - 1)
+                if (j < dialog[i].dialogFragment.Count - 1)
                 {
                     Debug.Log("Waiting for dialog to continue");
-                    yield return new WaitUntil(() => _dialogContinue);
-                }
-                if (i == dialog.Count - 1 && j == dialog[i].dialogFragment.Count - 1)
-                {
-                    Debug.Log("Waiting for last dialog to continue");
                     yield return new WaitUntil(() => _dialogContinue);
                 }
                 _dialogContinue = false;
@@ -126,7 +121,13 @@ public class TutorialController : MonoBehaviour
             
                 dialog[i].uiBackground.SetActive(false);
             }
-            
+            else
+            {
+                Debug.Log("Waiting for last dialog in fragment to continue");
+                yield return new WaitUntil(() => _dialogContinue);
+                _dialogContinue = false;
+            }
+
             if (i+1 < dialog.Count)
             {
                 if (dialog[i + 1].zbikArt != null)
