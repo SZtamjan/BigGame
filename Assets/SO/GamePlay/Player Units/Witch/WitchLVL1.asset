@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b83408f04c203645a305e3daea32000, type: 3}
+  m_Name: WitchLVL1
+  m_EditorClassIdentifier: 
+  name: Witch
+  desc: I will protect you
+  artwork: {fileID: 21300000, guid: e35c52d69722d094d83cc211453d8836, type: 3}
+  playersSide: 1
+  resources:
+    updatedResources:
+      m_PersistentCalls:
+        m_Calls: []
+    gold: 20
+    food: 20
+    wood: 0
+    stone: 0
+  unit: {fileID: 2619095350111568401, guid: 746dae9422e4d5048b6c403cc4609239, type: 3}
+  hp: 5
+  damage: 2
+  movmentDistance: 1
+  attackReach: 2
+  moveSpeed: 0.5

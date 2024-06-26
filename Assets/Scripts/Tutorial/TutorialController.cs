@@ -20,6 +20,9 @@ public class TutorialController : MonoBehaviour
     [Header("Dialog setup")]
     [SerializeField] private List<TutorialSection> dialog;
 
+    [Header("Settings")] 
+    [SerializeField] private List<GameObject> turnOffForTutorial;
+
     private int _currentIteration;
 
     private Coroutine _interactionStepCor;
@@ -81,6 +84,8 @@ public class TutorialController : MonoBehaviour
 
     public IEnumerator GoThroughTutorial()
     {
+        ChangeObjectsForTutPeriod(false);
+        
         for (int i = 0; i < dialog.Count; i++)
         {
             _currentIteration = i;
@@ -101,18 +106,13 @@ public class TutorialController : MonoBehaviour
                 if (dialog[i].displayDialogOnObject != null)
                 {
                     dialog[i].displayDialogOnObject.gameObject.SetActive(true);
-                    dialog[i].displayDialogOnObject.text = dialog[i].dialogFragment[j];
+                    dialog[i].displayDialogOnObject.text = dialog[i].dialogFragment[j] + "\n" + dialog[i].additionalInfo;
                 }
 
                 
-                if (j != dialog[i].dialogFragment.Count - 1)
+                if (j < dialog[i].dialogFragment.Count - 1)
                 {
                     Debug.Log("Waiting for dialog to continue");
-                    yield return new WaitUntil(() => _dialogContinue);
-                }
-                if (i == dialog.Count - 1 && j == dialog[i].dialogFragment.Count - 1)
-                {
-                    Debug.Log("Waiting for last dialog to continue");
                     yield return new WaitUntil(() => _dialogContinue);
                 }
                 _dialogContinue = false;
@@ -120,13 +120,28 @@ public class TutorialController : MonoBehaviour
 
             if (dialog[i].uiBackground != null)
             {
-                Debug.Log("Waiting for interaction to happen");
-                yield return new WaitUntil(() => _interactionContinue);
-                _interactionContinue = false;
-            
+                if (dialog[i].waitForDialog)
+                {
+                    Debug.Log("Waiting for dialog to continue");
+                    yield return new WaitUntil(() => _dialogContinue);
+                    _dialogContinue = false;
+                }
+                else
+                {
+                    Debug.Log("Waiting for interaction to happen");
+                    yield return new WaitUntil(() => _interactionContinue);
+                    _interactionContinue = false;
+                }
+                
                 dialog[i].uiBackground.SetActive(false);
             }
-            
+            else
+            {
+                Debug.Log("Waiting for last dialog in fragment to continue");
+                yield return new WaitUntil(() => _dialogContinue);
+                _dialogContinue = false;
+            }
+
             if (i+1 < dialog.Count)
             {
                 if (dialog[i + 1].zbikArt != null)
@@ -155,6 +170,7 @@ public class TutorialController : MonoBehaviour
             }
         }
 
+        ChangeObjectsForTutPeriod(true);
         GameManager.Instance.UpdateGameState(GameManager.GameState.PlayerTurn);
     }
 
@@ -201,6 +217,14 @@ public class TutorialController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void ChangeObjectsForTutPeriod(bool isOn)
+    {
+        foreach (var objs in turnOffForTutorial)
+        {
+            objs.SetActive(isOn);
+        }
     }
     
 }

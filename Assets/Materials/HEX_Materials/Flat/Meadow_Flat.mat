@@ -12,6 +12,7 @@ Material:
   m_ValidKeywords:
   - _HALFTONESHAPE_DOT
   - _NORMALMAP
+  - _TOON_SHADING_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -184,8 +185,8 @@ Material:
     - _StencilRef: 0
     - _StepViaRampTexture: 0
     - _Surface: 0
-    - _ToonBlending: 1
-    - _ToonEnabled: 0
+    - _ToonBlending: 0.822
+    - _ToonEnabled: 1
     - _UseRampColor: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

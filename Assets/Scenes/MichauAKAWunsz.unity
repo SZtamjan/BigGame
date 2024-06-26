@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.4072403, g: 0.6795426, b: 0.7379107, a: 1}
   m_AmbientEquatorColor: {r: 0.13140032, g: 0.100436084, b: 0.3490566, a: 1}
   m_AmbientGroundColor: {r: 0.12995577, g: 0.34117648, b: 0.09803922, a: 1}
-  m_AmbientIntensity: 0.32
+  m_AmbientIntensity: 0.3
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.20984167, g: 0.9622642, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 988bf24ba3dfd3e4c8fc2e5ef1378655, type: 2}
@@ -14783,6 +14783,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6490811826260064630, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490811826260064630, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7203101441182389875, guid: 730067a4339690347978b1cc6d2ed80d, type: 3}

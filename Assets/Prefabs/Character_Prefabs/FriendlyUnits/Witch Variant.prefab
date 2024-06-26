@@ -180,7 +180,7 @@ PrefabInstance:
     - target: {fileID: -1318793775937199065, guid: 1ac8044a12b4ea64e97e4c8fa07f2792, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ae1ae6b43b0543044bededc92fc8cfa6, type: 2}
+      objectReference: {fileID: 2100000, guid: 11dc0232c812b7940afc68a19d35a64a, type: 2}
     - target: {fileID: 919132149155446097, guid: 1ac8044a12b4ea64e97e4c8fa07f2792, type: 3}
       propertyPath: m_Name
       value: Witch Variant
@@ -224,7 +224,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c62465ebe359864893fad9f823eff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitScriptableObjects: {fileID: 0}
+  unitStats:
+    unit: {fileID: 0}
+    hp: 0
+    damage: 0
+    movmentDistance: 0
+    attackReach: 0
+    playersSide: 0
+    moveSpeed: 0
   hpbar: {fileID: 7356581428211866730}
   hp: 0
   hidenHP: 0
@@ -239,11 +246,10 @@ MonoBehaviour:
   isMovving: 0
   isPojectileFlying: 0
   IdleAnimationsNumber: 1
-  _RangedUnit: 1
   projectileToSpawn: {fileID: 0}
   projectileStartingPoint: {fileID: 0}
   _SupportUnit: 1
-  shieldPower: 2
+  shieldPower: 1
   _mountedUnit: 0
   _SecondAnimator: {fileID: 0}
 --- !u!4 &3392114269430962347 stripped

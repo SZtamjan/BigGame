@@ -176,7 +176,7 @@ public class UIController : MonoBehaviour
         ChangeZoomLock();
     }
 
-    private void ChangeZoomLock()
+    public void ChangeZoomLock()
     {
         _playerMovement.GetComponent<CamZoom>().ChangeZoomLock();
     }
