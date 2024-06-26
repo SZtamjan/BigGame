@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,4 +25,5 @@ public class TutorialSection
     
     [Header("Interaction Background")]
     [Tooltip("Optional")] public GameObject uiBackground;
+    [Tooltip("If uiBackground is not null then it decides what to wait for")] public bool waitForDialog;
 }

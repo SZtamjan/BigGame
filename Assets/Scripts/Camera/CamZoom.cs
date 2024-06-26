@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamZoom : MonoBehaviour
 {
+    private Camera mainCam;
     public float zoomSpeed = 15.0f;
     public float zoomMin = 60.0f;
     public float zoomMax = 90.0f;
@@ -19,7 +20,8 @@ public class CamZoom : MonoBehaviour
 
     private void Start()
     {
-        currentZoom = Camera.main.fieldOfView;
+        mainCam = Camera.main;
+        currentZoom = mainCam.fieldOfView;
     }
 
     private void Update()
@@ -30,11 +32,9 @@ public class CamZoom : MonoBehaviour
         {
             currentZoom -= scrollWheelInput * zoomSpeed;
 
-            // Clamp the zoom level to zoomMin and zoomMax
             currentZoom = Mathf.Clamp(currentZoom, zoomMin, zoomMax);
         }
 
-        // Set the camera's field of view based on the currentZoom value
-        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, currentZoom, Time.deltaTime * zoomSpeed);
+        mainCam.fieldOfView = Mathf.Lerp(mainCam.fieldOfView, currentZoom, Time.deltaTime * zoomSpeed);
     }
 }
