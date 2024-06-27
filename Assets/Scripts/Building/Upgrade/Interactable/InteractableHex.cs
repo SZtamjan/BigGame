@@ -21,6 +21,7 @@ public class InteractableHex : MonoBehaviour
         get
         {
             CheckIfEmptyAndSend();
+            if(hexResources == null) Debug.LogError("xd");
             return hexResources;//ciekawe czy po return zadziala
         }
     }
@@ -30,6 +31,7 @@ public class InteractableHex : MonoBehaviour
         PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                       BindingFlags.NonPublic |
                                                                       BindingFlags.Public);
+        string dwa = gameObject.name.ToString();
         int fieldsCount = fields.Length;
         int counter = 0;
         foreach (var field in fields)
