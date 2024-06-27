@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828272d2756a20459f46f402ce71590, type: 3}
+  m_Name: GoldMine
+  m_EditorClassIdentifier: 
+  budynekPrefab: {fileID: 8385309570490642172, guid: 42d1243fb4dca8d469aa5a82be06f240, type: 3}
+  whichBudynek: 10
+  buildingImage: {fileID: 21300000, guid: bc339af67b9c10a4e90438087342d26f, type: 3}
+  name: Gold Mine
+  desc: Provides large amounts of gold and some stone
+  buildingLevelsList:
+  - turnOffBuildingForTurns: 0
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: 7268573771503313100, guid: e02cac379a477f448abd956a556b674e, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 9fa5a8efb6991e64ba20e688b82a24b4, type: 2}
+    - {fileID: 2100000, guid: afb2ac23f84c47d43a777d4253b2ada6, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 150
+      food: 80
+      wood: 60
+      stone: 20
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 20
+      food: 0
+      wood: 0
+      stone: 5
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 25
+      food: 12
+      wood: 10
+      stone: 5
+  - turnOffBuildingForTurns: 3
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: 7268573771503313100, guid: e02cac379a477f448abd956a556b674e, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 9fa5a8efb6991e64ba20e688b82a24b4, type: 2}
+    - {fileID: 2100000, guid: afb2ac23f84c47d43a777d4253b2ada6, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 200
+      food: 100
+      wood: 80
+      stone: 40
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 30
+      food: 0
+      wood: 0
+      stone: 8
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 40
+      food: 20
+      wood: 15
+      stone: 10
+  - turnOffBuildingForTurns: 3
+    interactableHexRules:
+      apply: 0
+      range: 0
+    newMesh: {fileID: 7268573771503313100, guid: e02cac379a477f448abd956a556b674e, type: 3}
+    materials:
+    - {fileID: 2100000, guid: 9fa5a8efb6991e64ba20e688b82a24b4, type: 2}
+    - {fileID: 2100000, guid: afb2ac23f84c47d43a777d4253b2ada6, type: 2}
+    newUnit: {fileID: 0}
+    thisLevelCost:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 250
+      food: 120
+      wood: 100
+      stone: 60
+    newResourcesGainOnTurn:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 35
+      food: 0
+      wood: 0
+      stone: 10
+    applyNewSell: 1
+    newSellValue:
+      updatedResources:
+        m_PersistentCalls:
+          m_Calls: []
+      gold: 50
+      food: 25
+      wood: 20
+      stone: 15
