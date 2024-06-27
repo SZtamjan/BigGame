@@ -37,6 +37,7 @@ public enum WhichBudynek //Used for limiting building type per level
     Farm,
     Tavern,
     Las,
-    MageTower
+    MageTower,
+    GoldMine
 
 }

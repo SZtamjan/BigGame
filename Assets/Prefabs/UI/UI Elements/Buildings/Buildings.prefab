@@ -2661,6 +2661,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8774484690791252552}
     m_Modifications:
+    - target: {fileID: 954340515378605114, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
+      propertyPath: infoSource
+      value: 
+      objectReference: {fileID: 11400000, guid: 05c528fabba25b2408fb0a181e24307b, type: 2}
     - target: {fileID: 6552775901859472904, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -2672,7 +2676,7 @@ PrefabInstance:
     - target: {fileID: 7509551791567262858, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e8ab39fccfcd82146aba87de0c2f8175, type: 3}
+      objectReference: {fileID: 21300000, guid: bc339af67b9c10a4e90438087342d26f, type: 3}
     - target: {fileID: 9041470783989313721, guid: 121d1ca8abd86e944b2138f9f786f5e5, type: 3}
       propertyPath: m_Name
       value: Button (6)
