@@ -14158,6 +14158,14 @@ PrefabInstance:
       propertyPath: playerResourcesSo
       value: 
       objectReference: {fileID: 11400000, guid: 4af70d7571bb1e944bf09bfa35490224, type: 2}
+    - target: {fileID: 6620836834920641056, guid: 80852efc14ecb9249a3d471ff20db7b4, type: 3}
+      propertyPath: PlayerCards.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620836834920641056, guid: 80852efc14ecb9249a3d471ff20db7b4, type: 3}
+      propertyPath: PlayerCards.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: dc3969ff1b26ea74b8e0f27aa0217694, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80852efc14ecb9249a3d471ff20db7b4, type: 3}
 --- !u!4 &882912713 stripped
