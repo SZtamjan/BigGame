@@ -21,6 +21,7 @@ public class InteractableHex : MonoBehaviour
         get
         {
             CheckIfEmptyAndSend();
+            if(hexResources == null) Debug.LogError("xd");
             return hexResources;//ciekawe czy po return zadziala
         }
     }
