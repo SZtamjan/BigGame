@@ -31,7 +31,6 @@ public class InteractableHex : MonoBehaviour
         PropertyInfo[] fields = typeof(ResourcesStruct).GetProperties(BindingFlags.Instance |
                                                                       BindingFlags.NonPublic |
                                                                       BindingFlags.Public);
-        string dwa = gameObject.name.ToString();
         int fieldsCount = fields.Length;
         int counter = 0;
         foreach (var field in fields)
