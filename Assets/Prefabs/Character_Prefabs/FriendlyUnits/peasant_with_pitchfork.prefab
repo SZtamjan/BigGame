@@ -810,7 +810,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c62465ebe359864893fad9f823eff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitScriptableObjects: {fileID: 11400000, guid: 356379d564c607e4a858bba8689b9604, type: 2}
+  unitStats:
+    unit: {fileID: 0}
+    hp: 0
+    damage: 0
+    movmentDistance: 0
+    attackReach: 0
+    playersSide: 0
+    moveSpeed: 0
   hpbar: {fileID: 5747741489843528367}
   hp: 1
   hidenHP: 0
@@ -825,7 +832,6 @@ MonoBehaviour:
   isMovving: 0
   isPojectileFlying: 0
   IdleAnimationsNumber: 1
-  _RangedUnit: 0
   projectileToSpawn: {fileID: 0}
   projectileStartingPoint: {fileID: 0}
   _SupportUnit: 0
@@ -4492,7 +4498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7621105725289394849, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7699654955040106221, guid: e436c9a0625d11e43ad50bb7d0370965, type: 3}
       propertyPath: m_Pivot.x
